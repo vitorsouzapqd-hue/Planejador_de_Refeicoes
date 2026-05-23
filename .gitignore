@@ -1,0 +1,7 @@
+node_modules
+.nuxt
+.output
+.env
+.npm-cache
+.nuxt-dev*.log
+npm-debug.log*
