@@ -4,6 +4,7 @@ import type {
   AdminRecipeIngredient,
   AdminRecipeIngredientInput,
 } from '../../composables/useAdminRecipes'
+import type { Ingredient } from '../../types/ingredient'
 import type { IngredientRole, RoundingMode } from '../../types/recipe'
 
 type EditableIngredient = AdminRecipeIngredientInput & {
@@ -12,6 +13,7 @@ type EditableIngredient = AdminRecipeIngredientInput & {
 
 const props = defineProps<{
   ingredients: AdminRecipeIngredient[]
+  masterIngredients?: Ingredient[]
   pending?: boolean
 }>()
 
@@ -22,7 +24,19 @@ const emit = defineEmits<{
 const validationMessage = ref<string | null>(null)
 const items = ref<EditableIngredient[]>([])
 
-const shoppingCategories = ['Proteínas', 'Hortifruti', 'Outros', 'Temperos à gosto']
+const shoppingCategories = [
+  'Proteínas',
+  'Carboidratos',
+  'Vegetais',
+  'Frutas',
+  'Laticínios',
+  'Congelados',
+  'Temperos e Condimentos',
+  'Despensa',
+  'Bebidas',
+  'Utilidades',
+  'Outros',
+]
 const ingredientRoles: Array<{ value: IngredientRole; label: string }> = [
   { value: 'main', label: 'main' },
   { value: 'complement', label: 'complement' },
@@ -43,6 +57,7 @@ watch(
   (nextIngredients) => {
     items.value = nextIngredients.map((ingredient) => ({
       localId: ingredient.id,
+      ingredientId: ingredient.ingredientId,
       name: ingredient.name,
       shoppingCategory: ingredient.shoppingCategory,
       ingredientRole: ingredient.ingredientRole,
@@ -64,6 +79,7 @@ watch(
 function addIngredient() {
   items.value.push({
     localId: `new-${Date.now()}-${items.value.length}`,
+    ingredientId: null,
     name: '',
     shoppingCategory: 'Outros',
     ingredientRole: 'complement',
@@ -107,12 +123,24 @@ function applyRoleDefaults(ingredient: EditableIngredient) {
   }
 
   if (ingredient.ingredientRole === 'seasoning') {
-    ingredient.shoppingCategory = 'Temperos à gosto'
+    ingredient.shoppingCategory = 'Temperos e Condimentos'
     ingredient.isFreeSeasoning = true
     ingredient.baseQuantity = null
     ingredient.roundingStep = null
     ingredient.roundingMode = 'none'
   }
+}
+
+function applyMasterIngredient(ingredient: EditableIngredient) {
+  const masterIngredient = props.masterIngredients?.find((item) => item.id === ingredient.ingredientId)
+  if (!masterIngredient) return
+
+  ingredient.name = masterIngredient.name
+  ingredient.displayName = masterIngredient.displayName ?? masterIngredient.name
+  ingredient.shoppingCategory = masterIngredient.shoppingCategory
+  ingredient.unit = masterIngredient.defaultUnit
+  ingredient.roundingMode = masterIngredient.purchaseRules.defaultRoundingMode
+  ingredient.roundingStep = masterIngredient.purchaseRules.defaultRoundingStep
 }
 
 function submitIngredients() {
@@ -131,6 +159,7 @@ function normalizeItems(): AdminRecipeIngredientInput[] {
     const isCritical = ingredient.isCritical || ingredient.ingredientRole === 'critical'
 
     return {
+      ingredientId: ingredient.ingredientId,
       name: ingredient.name.trim(),
       shoppingCategory: ingredient.shoppingCategory.trim() || 'Outros',
       ingredientRole: ingredient.ingredientRole,
@@ -165,6 +194,9 @@ function getValidationError() {
 
     if (!ingredient.shoppingCategory.trim()) return 'Informe a categoria de compra.'
     if (!ingredient.unit?.trim() && !isFreeSeasoning) return 'Informe a unit do ingrediente.'
+    if (!ingredient.ingredientId && findMasterIngredientByName(ingredient.name)) {
+      return 'Selecione o ingrediente mestre quando ele já existir na base.'
+    }
     if (!isFreeSeasoning && normalizeNumber(ingredient.baseQuantity) === null) {
       return 'Informe base_quantity dos ingredientes calculados.'
     }
@@ -184,6 +216,28 @@ function normalizeNumber(value: unknown) {
 
   return Number.isNaN(numericValue) ? null : numericValue
 }
+
+function findMasterIngredientByName(name: string) {
+  const normalizedName = normalize(name)
+
+  return props.masterIngredients?.find((ingredient) => {
+    const names = [
+      ingredient.name,
+      ingredient.displayName ?? '',
+      ...ingredient.aliases,
+    ].map(normalize)
+
+    return names.includes(normalizedName)
+  })
+}
+
+function normalize(value: string) {
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLocaleLowerCase('pt-BR')
+    .trim()
+}
 </script>
 
 <template>
@@ -193,6 +247,8 @@ function normalizeNumber(value: unknown) {
         <p class="section-kicker">Ingredientes</p>
         <p class="admin-helper-text">
           Use main para o ingrediente principal. Temperos à gosto ficam sem quantidade calculada.
+          Se o ingrediente ainda não existir, crie em
+          <NuxtLink class="admin-inline-link" to="/admin/ingredientes/novo">Ingredientes</NuxtLink>.
         </p>
       </div>
 
@@ -236,6 +292,24 @@ function normalizeNumber(value: unknown) {
       </div>
 
       <div class="admin-form-grid">
+        <div class="field">
+          <label :for="`ingredient-master-${ingredient.localId}`">ingrediente mestre</label>
+          <select
+            :id="`ingredient-master-${ingredient.localId}`"
+            v-model="ingredient.ingredientId"
+            @change="applyMasterIngredient(ingredient)"
+          >
+            <option :value="null">Sem vínculo</option>
+            <option
+              v-for="masterIngredient in masterIngredients"
+              :key="masterIngredient.id"
+              :value="masterIngredient.id"
+            >
+              {{ masterIngredient.displayName ?? masterIngredient.name }}
+            </option>
+          </select>
+        </div>
+
         <div class="field">
           <label :for="`ingredient-name-${ingredient.localId}`">nome</label>
           <input :id="`ingredient-name-${ingredient.localId}`" v-model="ingredient.name" type="text">

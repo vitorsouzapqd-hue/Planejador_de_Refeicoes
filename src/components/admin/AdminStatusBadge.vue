@@ -6,9 +6,9 @@ defineProps<{
 }>()
 
 const labels: Record<RecipeStatus, string> = {
-  draft: 'draft',
-  published: 'published',
-  archived: 'archived',
+  draft: 'Rascunho',
+  published: 'Publicada',
+  archived: 'Arquivada',
 }
 </script>
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { useRoute } from '#imports'
+import { computed, onMounted, ref } from 'vue'
+import { navigateTo, useRoute } from '#imports'
 import AdminShell from '../../../components/admin/AdminShell.vue'
 import AdminIngredientEditor from '../../../components/admin/AdminIngredientEditor.vue'
 import AdminRecipeImageUploader from '../../../components/admin/AdminRecipeImageUploader.vue'
@@ -18,6 +18,7 @@ import {
   type AdminRecipeStepInput,
   type AdminTag,
 } from '../../../composables/useAdminRecipes'
+import type { Ingredient } from '../../../types/ingredient'
 import type { RecipeStatus } from '../../../types/recipe'
 
 definePageMeta({
@@ -30,6 +31,7 @@ const ingredients = ref<AdminRecipeIngredient[]>([])
 const steps = ref<AdminRecipeStep[]>([])
 const categories = ref<AdminCategory[]>([])
 const tags = ref<AdminTag[]>([])
+const masterIngredients = ref<Ingredient[]>([])
 const pending = ref(false)
 const pendingIngredients = ref(false)
 const pendingSteps = ref(false)
@@ -38,8 +40,11 @@ const errorMessage = ref<string | null>(null)
 const savedMessage = ref<string | null>(null)
 
 const {
+  deleteRecipe,
   getRecipe,
+  isRecipeSlugAvailable,
   listCategories,
+  listIngredients,
   listRecipeIngredients,
   listRecipeSteps,
   listTags,
@@ -49,6 +54,23 @@ const {
   updateRecipeStatus,
 } = useAdminRecipes()
 
+const publicationPendingItems = computed(() => {
+  if (!recipe.value) return []
+
+  const items: string[] = []
+  if (!recipe.value.name.trim()) items.push('nome')
+  if (!recipe.value.categoryId) items.push('categoria')
+  if (!recipe.value.imagePath) items.push('imagem')
+  if (!recipe.value.baseRawWeightG || recipe.value.baseRawWeightG <= 0) items.push('peso cru base')
+  if (!recipe.value.baseReadyWeightG || recipe.value.baseReadyWeightG <= 0) items.push('peso pronto base')
+  if (!ingredients.value.some((ingredient) => ingredient.ingredientRole === 'main')) {
+    items.push('ingrediente principal')
+  }
+  if (steps.value.length === 0) items.push('modo de preparo')
+
+  return items
+})
+
 onMounted(loadRecipe)
 
 async function loadRecipe() {
@@ -56,27 +78,29 @@ async function loadRecipe() {
   errorMessage.value = null
 
   try {
-    const [loadedRecipe, categoryList, tagList] = await Promise.all([
+    const [loadedRecipe, categoryList, tagList, ingredientList] = await Promise.all([
       getRecipe(String(route.params.id)),
       listCategories(),
       listTags(),
+      listIngredients(),
     ])
 
     recipe.value = loadedRecipe
     categories.value = categoryList
     tags.value = tagList
+    masterIngredients.value = ingredientList
 
     if (loadedRecipe) {
-      const [ingredientList, stepList] = await Promise.all([
+      const [recipeIngredients, recipeSteps] = await Promise.all([
         listRecipeIngredients(loadedRecipe.id),
         listRecipeSteps(loadedRecipe.id),
       ])
 
-      ingredients.value = ingredientList
-      steps.value = stepList
+      ingredients.value = recipeIngredients
+      steps.value = recipeSteps
     }
-  } catch {
-    errorMessage.value = 'Não foi possível carregar a receita.'
+  } catch (error) {
+    errorMessage.value = getErrorMessage(error, 'Nao foi possivel carregar a receita.')
   } finally {
     loading.value = false
   }
@@ -90,11 +114,17 @@ async function submitRecipe(input: AdminRecipeInput) {
   savedMessage.value = null
 
   try {
+    const slugIsAvailable = await isRecipeSlugAvailable(input.slug, recipe.value.id)
+    if (!slugIsAvailable) {
+      errorMessage.value = 'Esse slug ja esta em uso. Ajuste o slug antes de salvar.'
+      return
+    }
+
     await updateRecipe(recipe.value.id, input)
     await loadRecipe()
     savedMessage.value = 'Receita salva.'
-  } catch {
-    errorMessage.value = 'Não foi possível salvar a receita.'
+  } catch (error) {
+    errorMessage.value = getErrorMessage(error, 'Nao foi possivel salvar a receita.')
   } finally {
     pending.value = false
   }
@@ -106,12 +136,25 @@ async function setStatus(status: RecipeStatus) {
   errorMessage.value = null
   savedMessage.value = null
 
+  if (status === 'published' && publicationPendingItems.value.length > 0) {
+    errorMessage.value = `Resolva antes de publicar: ${publicationPendingItems.value.join(', ')}.`
+    return
+  }
+
+  pending.value = true
+
   try {
     await updateRecipeStatus(recipe.value.id, status)
     await loadRecipe()
-    savedMessage.value = 'Status atualizado.'
-  } catch {
-    errorMessage.value = 'Não foi possível atualizar o status.'
+    savedMessage.value = status === 'published'
+      ? 'Receita publicada.'
+      : status === 'archived'
+        ? 'Receita arquivada.'
+        : 'Receita voltou para rascunho.'
+  } catch (error) {
+    errorMessage.value = getErrorMessage(error, 'Nao foi possivel atualizar o status.')
+  } finally {
+    pending.value = false
   }
 }
 
@@ -126,8 +169,9 @@ async function submitIngredients(input: AdminRecipeIngredientInput[]) {
     await saveRecipeIngredients(recipe.value.id, input)
     ingredients.value = await listRecipeIngredients(recipe.value.id)
     savedMessage.value = 'Ingredientes salvos.'
-  } catch {
-    errorMessage.value = 'Não foi possível salvar os ingredientes.'
+    await refreshRecipeOnly()
+  } catch (error) {
+    errorMessage.value = getErrorMessage(error, 'Nao foi possivel salvar os ingredientes.')
   } finally {
     pendingIngredients.value = false
   }
@@ -144,16 +188,51 @@ async function submitSteps(input: AdminRecipeStepInput[]) {
     await saveRecipeSteps(recipe.value.id, input)
     steps.value = await listRecipeSteps(recipe.value.id)
     savedMessage.value = 'Passos salvos.'
-  } catch {
-    errorMessage.value = 'Não foi possível salvar os passos.'
+    await refreshRecipeOnly()
+  } catch (error) {
+    errorMessage.value = getErrorMessage(error, 'Nao foi possivel salvar os passos.')
   } finally {
     pendingSteps.value = false
   }
 }
 
-async function handleImageUploaded() {
-  await loadRecipe()
+async function handleImageChanged() {
+  await refreshRecipeOnly()
   savedMessage.value = 'Imagem atualizada.'
+}
+
+async function refreshRecipeOnly() {
+  if (!recipe.value) return
+  recipe.value = await getRecipe(recipe.value.id)
+}
+
+async function deleteCurrentRecipe() {
+  if (!recipe.value) return
+
+  const confirmation =
+    recipe.value.status === 'published'
+      ? `Excluir a receita publicada "${recipe.value.name}"? Ela saira do app do aluno.`
+      : `Excluir a receita "${recipe.value.name}"? Ingredientes, passos e tags vinculadas serao removidos.`
+
+  if (!confirm(confirmation)) return
+
+  pending.value = true
+  errorMessage.value = null
+  savedMessage.value = null
+
+  try {
+    await deleteRecipe(recipe.value.id)
+    await navigateTo('/admin/receitas')
+  } catch (error) {
+    errorMessage.value = getErrorMessage(error, 'Nao foi possivel excluir a receita.')
+  } finally {
+    pending.value = false
+  }
+}
+
+function getErrorMessage(error: unknown, fallback: string) {
+  if (error instanceof Error && error.message.trim()) return error.message
+  return fallback
 }
 </script>
 
@@ -161,43 +240,73 @@ async function handleImageUploaded() {
   <AdminShell>
     <section class="admin-page-header">
       <div>
-        <p class="hero-panel__kicker">Editar receita</p>
-        <h1>{{ recipe?.name ?? 'Receita' }}</h1>
-        <p>Edite a receita, ingredientes e modo de preparo.</p>
+        <p class="admin-page-header__kicker">Editar receita</p>
+        <h1 class="admin-page-header__title">{{ recipe?.name ?? 'Receita' }}</h1>
+        <p class="admin-page-header__sub">Edite a receita, ingredientes, imagem e modo de preparo.</p>
       </div>
 
-      <AdminStatusBadge v-if="recipe" :status="recipe.status" />
+      <div class="admin-row-actions admin-row-actions--inline">
+        <AdminStatusBadge v-if="recipe" :status="recipe.status" />
+        <NuxtLink class="secondary-button" to="/admin/receitas">
+          <BaseIcon name="arrow-left" />
+          Voltar
+        </NuxtLink>
+      </div>
     </section>
 
     <section v-if="loading" class="admin-card">
-      <p>Carregando receita...</p>
+      <div class="admin-loading-state">
+        <div class="admin-spinner" aria-hidden="true" />
+        <p>Carregando receita...</p>
+      </div>
     </section>
 
     <section v-else-if="!recipe" class="admin-card">
-      <p>{{ errorMessage ?? 'Receita não encontrada.' }}</p>
-      <NuxtLink class="secondary-button" to="/admin/receitas">Voltar</NuxtLink>
+      <div class="admin-empty-state">
+        <BaseIcon name="alert" />
+        <p>{{ errorMessage ?? 'Receita nao encontrada.' }}</p>
+        <NuxtLink class="secondary-button" to="/admin/receitas">Voltar</NuxtLink>
+      </div>
     </section>
 
-    <section v-else class="admin-card">
+    <section v-else class="admin-card admin-editor-card">
       <div class="admin-row-actions admin-row-actions--top">
-        <button class="secondary-button" type="button" @click="setStatus('published')">Publicar</button>
-        <button class="secondary-button" type="button" @click="setStatus('archived')">Arquivar</button>
-        <button class="secondary-button" type="button" @click="setStatus('draft')">Salvar como draft</button>
+        <button class="secondary-button" type="button" :disabled="pending" @click="setStatus('published')">
+          <BaseIcon name="check" />
+          Publicar
+        </button>
+        <button class="secondary-button" type="button" :disabled="pending" @click="setStatus('archived')">
+          <BaseIcon name="archive" />
+          Arquivar
+        </button>
+        <button class="secondary-button" type="button" :disabled="pending" @click="setStatus('draft')">
+          <BaseIcon name="edit" />
+          Salvar como draft
+        </button>
+        <button class="danger-button" type="button" :disabled="pending" @click="deleteCurrentRecipe">
+          <BaseIcon name="trash" />
+          Excluir receita
+        </button>
       </div>
 
       <p v-if="errorMessage" class="form-error">{{ errorMessage }}</p>
       <p v-if="savedMessage" class="admin-success-message">{{ savedMessage }}</p>
 
+      <section v-if="publicationPendingItems.length" class="admin-warning-message">
+        <strong>Pendencias para publicar</strong>
+        <p>{{ publicationPendingItems.join(', ') }}</p>
+      </section>
+
       <AdminRecipeImageUploader
         :recipe-id="recipe.id"
         :recipe-name="recipe.name"
         :image-path="recipe.imagePath"
-        @uploaded="handleImageUploaded"
+        @changed="handleImageChanged"
       />
 
       <AdminRecipeForm
         :initial-recipe="recipe"
-        submit-label="Salvar alterações"
+        submit-label="Salvar alteracoes"
         :pending="pending"
         :categories="categories"
         :tags="tags"
@@ -206,6 +315,7 @@ async function handleImageUploaded() {
 
       <AdminIngredientEditor
         :ingredients="ingredients"
+        :master-ingredients="masterIngredients"
         :pending="pendingIngredients"
         @save="submitIngredients"
       />

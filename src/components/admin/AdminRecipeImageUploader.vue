@@ -9,24 +9,21 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  uploaded: [imagePath: string]
+  changed: [imagePath: string | null]
 }>()
 
-const { getRecipeImagePublicUrl, uploadRecipeImage } = useAdminRecipes()
+const { getRecipeImagePublicUrl, removeRecipeImage, uploadRecipeImage } = useAdminRecipes()
 
 const selectedFile = ref<File | null>(null)
 const localPreviewUrl = ref<string | null>(null)
 const imageFailed = ref(false)
 const uploading = ref(false)
+const removing = ref(false)
 const errorMessage = ref<string | null>(null)
 
-const currentImageUrl = computed(() => {
-  if (localPreviewUrl.value) return localPreviewUrl.value
-
-  return getRecipeImagePublicUrl(props.imagePath)
-})
-
-const canUpload = computed(() => Boolean(selectedFile.value) && !uploading.value)
+const currentImageUrl = computed(() => localPreviewUrl.value ?? getRecipeImagePublicUrl(props.imagePath))
+const canUpload = computed(() => Boolean(selectedFile.value) && !uploading.value && !removing.value)
+const canRemove = computed(() => Boolean(props.imagePath) && !uploading.value && !removing.value)
 
 watch(
   () => props.imagePath,
@@ -68,11 +65,30 @@ async function submitUpload() {
     const imagePath = await uploadRecipeImage(props.recipeId, selectedFile.value)
     selectedFile.value = null
     revokeLocalPreview()
-    emit('uploaded', imagePath)
-  } catch {
-    errorMessage.value = 'Não foi possível enviar a imagem.'
+    emit('changed', imagePath)
+  } catch (error) {
+    errorMessage.value = getErrorMessage(error, 'Nao foi possivel enviar a imagem.')
   } finally {
     uploading.value = false
+  }
+}
+
+async function submitRemove() {
+  if (!props.imagePath) return
+  if (!confirm(`Remover a imagem de "${props.recipeName}"?`)) return
+
+  removing.value = true
+  errorMessage.value = null
+
+  try {
+    await removeRecipeImage(props.recipeId, props.imagePath)
+    selectedFile.value = null
+    revokeLocalPreview()
+    emit('changed', null)
+  } catch (error) {
+    errorMessage.value = getErrorMessage(error, 'Nao foi possivel remover a imagem.')
+  } finally {
+    removing.value = false
   }
 }
 
@@ -82,6 +98,11 @@ function revokeLocalPreview() {
   URL.revokeObjectURL(localPreviewUrl.value)
   localPreviewUrl.value = null
 }
+
+function getErrorMessage(error: unknown, fallback: string) {
+  if (error instanceof Error && error.message.trim()) return error.message
+  return fallback
+}
 </script>
 
 <template>
@@ -90,7 +111,7 @@ function revokeLocalPreview() {
       <div>
         <p class="section-kicker">Imagem da receita</p>
         <p class="admin-helper-text">
-          Envie ou substitua a foto principal exibida para o aluno.
+          Envie, substitua ou remova a foto principal exibida para o aluno.
         </p>
       </div>
     </div>
@@ -125,9 +146,16 @@ function revokeLocalPreview() {
 
         <p v-if="errorMessage" class="form-error">{{ errorMessage }}</p>
 
-        <button class="primary-button" type="button" :disabled="!canUpload" @click="submitUpload">
-          {{ uploading ? 'Enviando...' : imagePath ? 'Substituir imagem' : 'Enviar imagem' }}
-        </button>
+        <div class="admin-row-actions admin-row-actions--inline">
+          <button class="primary-button" type="button" :disabled="!canUpload" @click="submitUpload">
+            <BaseIcon name="upload" />
+            {{ uploading ? 'Enviando...' : imagePath ? 'Substituir imagem' : 'Enviar imagem' }}
+          </button>
+          <button class="danger-button" type="button" :disabled="!canRemove" @click="submitRemove">
+            <BaseIcon name="trash" />
+            Remover imagem
+          </button>
+        </div>
       </div>
     </div>
   </section>

@@ -20,19 +20,20 @@ const errorMessage = ref<string | null>(null)
 const categories = ref<AdminCategory[]>([])
 const tags = ref<AdminTag[]>([])
 
-const { createRecipe, listCategories, listTags } = useAdminRecipes()
+const { createRecipe, isRecipeSlugAvailable, listCategories, listTags } = useAdminRecipes()
 
 onMounted(loadMeta)
 
 async function loadMeta() {
   loadingMeta.value = true
+  errorMessage.value = null
 
   try {
     const [categoryList, tagList] = await Promise.all([listCategories(), listTags()])
     categories.value = categoryList
     tags.value = tagList
-  } catch {
-    errorMessage.value = 'Não foi possível carregar categorias e tags.'
+  } catch (error) {
+    errorMessage.value = getErrorMessage(error, 'Nao foi possivel carregar categorias e tags.')
   } finally {
     loadingMeta.value = false
   }
@@ -43,13 +44,24 @@ async function submitRecipe(input: AdminRecipeInput) {
   errorMessage.value = null
 
   try {
+    const slugIsAvailable = await isRecipeSlugAvailable(input.slug)
+    if (!slugIsAvailable) {
+      errorMessage.value = 'Esse slug ja esta em uso. Ajuste o slug antes de salvar.'
+      return
+    }
+
     const id = await createRecipe(input)
     navigateTo(`/admin/receitas/${id}`)
-  } catch {
-    errorMessage.value = 'Não foi possível criar a receita.'
+  } catch (error) {
+    errorMessage.value = getErrorMessage(error, 'Nao foi possivel criar a receita.')
   } finally {
     pending.value = false
   }
+}
+
+function getErrorMessage(error: unknown, fallback: string) {
+  if (error instanceof Error && error.message.trim()) return error.message
+  return fallback
 }
 </script>
 
@@ -57,15 +69,24 @@ async function submitRecipe(input: AdminRecipeInput) {
   <AdminShell>
     <section class="admin-page-header">
       <div>
-        <p class="hero-panel__kicker">Nova receita</p>
-        <h1>Criar receita</h1>
-        <p>Cadastre os dados principais da receita. Ingredientes e preparo avançado entram na próxima etapa.</p>
+        <p class="admin-page-header__kicker">Nova receita</p>
+        <h1 class="admin-page-header__title">Criar receita</h1>
+        <p class="admin-page-header__sub">
+          Cadastre a base da receita; depois complete imagem, ingredientes e modo de preparo.
+        </p>
       </div>
+      <NuxtLink class="secondary-button" to="/admin/receitas">
+        <BaseIcon name="arrow-left" />
+        Voltar
+      </NuxtLink>
     </section>
 
-    <section class="admin-card">
+    <section class="admin-card admin-editor-card">
       <p v-if="errorMessage" class="form-error">{{ errorMessage }}</p>
-      <p v-if="loadingMeta">Carregando categorias e tags...</p>
+      <div v-if="loadingMeta" class="admin-loading-state">
+        <div class="admin-spinner" aria-hidden="true" />
+        <p>Carregando categorias e tags...</p>
+      </div>
       <AdminRecipeForm
         v-else
         submit-label="Criar receita"
