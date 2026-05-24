@@ -1125,6 +1125,9 @@ Resolver o deploy desatualizado publicando no GitHub a versao atual da raiz do p
 - Rodado `npm run typecheck` com sucesso.
 - Rodado `npm run build` com sucesso.
 - Preparado commit a partir da raiz atual usando o gitdir de publicacao existente.
+- Criado o commit `32af212 Publish current meal planner app`.
+- Enviado `main` para o GitHub, atualizando `origin/main` de `98b8e06` para `32af212`.
+- Atualizado `.gitignore` para ignorar logs e worktrees temporarios locais.
 - Mantidos fora do commit `.env`, logs, caches, builds locais, `node_modules`, worktrees temporarios e `fotos_pratos`.
 
 ### Comandos rodados
@@ -1134,10 +1137,14 @@ Resolver o deploy desatualizado publicando no GitHub a versao atual da raiz do p
 - `git --git-dir='_publish-gitdir-20260523-0128' --work-tree='.' add -A -- .gitignore .env.example package.json package-lock.json nuxt.config.ts tsconfig.json README.md prd_planejador_de_refeicoes.md AGENTS.md docs scripts src supabase public`
 - `git --git-dir='_publish-gitdir-20260523-0128' --work-tree='.' diff --cached --stat`
 - `git --git-dir='_publish-gitdir-20260523-0128' --work-tree='.' status --short --branch`
+- `git --git-dir='_publish-gitdir-20260523-0128' --work-tree='.' commit -m "Publish current meal planner app"`
+- `git --git-dir='_publish-gitdir-20260523-0128' --work-tree='.' push origin main`
+- `git --git-dir='_publish-gitdir-20260523-0128' ls-remote origin refs/heads/main`
 
 ### Erros encontrados
 
 - Nenhum erro em typecheck ou build.
+- `git diff --cached --check` encontrou avisos de whitespace no pacote local acumulado, mas sem impacto funcional no build.
 
 ### Avisos encontrados
 
@@ -1152,6 +1159,4 @@ Resolver o deploy desatualizado publicando no GitHub a versao atual da raiz do p
 
 ### Proximos passos
 
-- Fazer push para `origin/main`.
-- Confirmar que o remoto aponta para o novo commit.
 - Aguardar ou verificar novo deploy na Vercel pelo painel, ja que a CLI `vercel` nao esta disponivel localmente.

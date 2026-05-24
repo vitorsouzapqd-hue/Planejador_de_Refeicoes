@@ -4,4 +4,8 @@ node_modules
 .env
 .npm-cache
 .nuxt-dev*.log
+.codex-devserver*.log
+.commit-worktree/
+.publish-worktree-*/
+_publish-gitdir-*/
 npm-debug.log*
