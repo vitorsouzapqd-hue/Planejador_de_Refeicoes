@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from 'vue'
 import AdminShell from '../../components/admin/AdminShell.vue'
+import { useAdminDataTransfer } from '../../composables/useAdminDataTransfer'
 import {
   useAdminSettings,
   type AdminSetting,
@@ -18,13 +19,21 @@ const {
   listSettings,
   updateSetting,
 } = useAdminSettings()
+const {
+  downloadPayload,
+  exportAdminData,
+  importAdminData,
+} = useAdminDataTransfer()
 
 const settings = ref<AdminSetting[]>([])
 const loading = ref(true)
 const pending = ref(false)
+const transferPending = ref(false)
 const errorMessage = ref<string | null>(null)
 const savedMessage = ref<string | null>(null)
 const editingSettingId = ref<string | null>(null)
+const importFileInput = ref<HTMLInputElement | null>(null)
+const selectedImportFileName = ref<string | null>(null)
 
 const form = reactive<AdminSettingInput>({
   key: '',
@@ -34,6 +43,58 @@ const form = reactive<AdminSettingInput>({
 const submitLabel = computed(() => editingSettingId.value ? 'Salvar configuração' : 'Criar configuração')
 
 onMounted(loadSettings)
+
+async function exportData() {
+  transferPending.value = true
+  errorMessage.value = null
+  savedMessage.value = null
+
+  try {
+    downloadPayload(await exportAdminData())
+    savedMessage.value = 'Arquivo de dados exportado.'
+  } catch (error) {
+    errorMessage.value = getErrorMessage(error, 'Não foi possível exportar os dados do admin.')
+  } finally {
+    transferPending.value = false
+  }
+}
+
+function chooseImportFile() {
+  importFileInput.value?.click()
+}
+
+async function importData(event: Event) {
+  const input = event.target as HTMLInputElement
+  const file = input.files?.[0]
+  if (!file) return
+
+  selectedImportFileName.value = file.name
+
+  const confirmed = confirm(
+    'Importar dados do admin? Receitas, ingredientes, medidas, tags, categorias, configurações e itens de compra com a mesma chave serão atualizados.',
+  )
+  if (!confirmed) {
+    input.value = ''
+    selectedImportFileName.value = null
+    return
+  }
+
+  transferPending.value = true
+  errorMessage.value = null
+  savedMessage.value = null
+
+  try {
+    const payload = JSON.parse(await file.text())
+    const result = await importAdminData(payload)
+    await loadSettings()
+    savedMessage.value = `Importação concluída: ${result.recipeCount} receitas, ${result.ingredientCount} ingredientes, ${result.catalogCount} itens de compra e ${result.settingCount} configurações.`
+  } catch (error) {
+    errorMessage.value = getErrorMessage(error, 'Não foi possível importar o arquivo. Confira se ele foi exportado pelo painel admin.')
+  } finally {
+    transferPending.value = false
+    input.value = ''
+  }
+}
 
 async function loadSettings() {
   loading.value = true
@@ -120,6 +181,11 @@ function getValidationError() {
 
   return null
 }
+
+function getErrorMessage(error: unknown, fallback: string) {
+  if (error instanceof Error && error.message.trim()) return error.message
+  return fallback
+}
 </script>
 
 <template>
@@ -128,12 +194,49 @@ function getValidationError() {
       <div>
         <p class="admin-page-header__kicker">Configurações</p>
         <h1 class="admin-page-header__title">Configurações do app</h1>
-        <p class="admin-page-header__sub">Edite pares de chave e valor usados pela aplicação.</p>
+        <p class="admin-page-header__sub">Edite dados operacionais e faça cópias de segurança do painel.</p>
       </div>
     </section>
 
     <p v-if="errorMessage" class="form-error">{{ errorMessage }}</p>
     <p v-if="savedMessage" class="admin-success-message">{{ savedMessage }}</p>
+
+    <section class="admin-card admin-transfer-panel">
+      <div class="admin-editor-header">
+        <div>
+          <p class="section-kicker">Dados do admin</p>
+          <h2>Importar e exportar em massa</h2>
+          <p>
+            Gere um arquivo JSON com receitas, ingredientes, medidas, tags, categorias,
+            configurações e itens da Lista de Compras.
+          </p>
+        </div>
+      </div>
+
+      <div class="admin-transfer-actions">
+        <button class="primary-button" type="button" :disabled="transferPending" @click="exportData">
+          <BaseIcon name="download" />
+          {{ transferPending ? 'Processando...' : 'Exportar dados' }}
+        </button>
+
+        <button class="secondary-button" type="button" :disabled="transferPending" @click="chooseImportFile">
+          <BaseIcon name="upload" />
+          Importar arquivo
+        </button>
+
+        <input
+          ref="importFileInput"
+          class="admin-file-input"
+          type="file"
+          accept="application/json,.json"
+          @change="importData"
+        >
+      </div>
+
+      <p class="admin-helper-text">
+        {{ selectedImportFileName ? `Arquivo selecionado: ${selectedImportFileName}` : 'A importação atualiza registros com a mesma chave e reconstrói vínculos internos.' }}
+      </p>
+    </section>
 
     <section class="admin-card">
       <div class="admin-editor-header">
@@ -185,9 +288,11 @@ function getValidationError() {
         </div>
 
         <div class="admin-row-actions">
-          <button class="secondary-button" type="button" @click="editSetting(setting)">Editar</button>
-          <button class="danger-button" type="button" :disabled="pending" @click="removeSetting(setting)">
-            Excluir
+          <button class="icon-button" type="button" :aria-label="`Editar ${setting.key}`" title="Editar" @click="editSetting(setting)">
+            <BaseIcon name="edit" />
+          </button>
+          <button class="icon-button icon-button--danger" type="button" :disabled="pending" :aria-label="`Excluir ${setting.key}`" title="Excluir" @click="removeSetting(setting)">
+            <BaseIcon name="trash" />
           </button>
         </div>
       </article>

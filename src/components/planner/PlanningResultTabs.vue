@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type ResultTab = 'summary' | 'shopping' | 'preparation' | 'portioning'
+type ResultTab = 'summary' | 'planning' | 'shopping' | 'preparation' | 'portioning'
 
 defineProps<{
   tabs: Array<{ id: ResultTab; label: string }>

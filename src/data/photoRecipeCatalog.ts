@@ -13,6 +13,7 @@ type PhotoCatalogItem = {
   type: string
   shoppingCategory: string
   ingredientName?: string
+  ingredientNames?: string[]
   baseRawWeightG?: number
   baseReadyWeightG?: number
   prepTimeMinutes?: number
@@ -64,17 +65,17 @@ const photoCatalogItems: PhotoCatalogItem[] = [
   createCarb('pure-inhame', 'Purê de Inhame', 'pure', 'Inhame cru', 1000, 950, 2, 3, 2),
   createCarb('pure-mandioca', 'Purê de Mandioca', 'pure', 'Mandioca crua', 1000, 950, 2, 3, 2),
 
-  createSalad('salada-cozida-beterraba-cenoura', 'Salada Cozida de Beterraba e Cenoura', 'cozida', 'Beterraba e cenoura cruas'),
-  createSalad('salada-cozida-brocolis-couveflor', 'Salada Cozida de Brócolis e Couve-flor', 'cozida', 'Brócolis e couve-flor crus'),
-  createSalad('salada-cozida-cenoura-brocolis', 'Salada Cozida de Cenoura e Brócolis', 'cozida', 'Cenoura e brócolis crus'),
-  createSalad('salada-cozida-cenoura-shoyu', 'Salada Cozida de Cenoura com Shoyu', 'cozida', 'Cenoura crua'),
-  createSalad('salada-cozida-repolhoverde-repolhoroxo', 'Salada Cozida de Repolho Verde e Roxo', 'cozida', 'Repolho verde e roxo crus'),
-  createSalad('salada-crua-agriao-pepino-manga', 'Salada Crua de Agrião, Pepino e Manga', 'crua', 'Agrião, pepino e manga'),
-  createSalad('salada-crua-alface-pepino-tomate', 'Salada Crua de Alface, Pepino e Tomate', 'crua', 'Alface, pepino e tomate'),
-  createSalad('salada-crua-alface-tomate-cebolaroxa', 'Salada Crua de Alface, Tomate e Cebola Roxa', 'crua', 'Alface, tomate e cebola roxa'),
-  createSalad('salada-crua-beterraba-cenoura', 'Salada Crua de Beterraba e Cenoura', 'crua', 'Beterraba e cenoura cruas'),
-  createSalad('salada-crua-couve-tomate', 'Salada Crua de Couve e Tomate', 'crua', 'Couve e tomate'),
-  createSalad('salada-crua-repolho-cenoura', 'Salada Crua de Repolho e Cenoura', 'crua', 'Repolho e cenoura crus'),
+  createSalad('salada-cozida-beterraba-cenoura', 'Salada Cozida de Beterraba e Cenoura', 'cozida', ['Beterraba', 'Cenoura']),
+  createSalad('salada-cozida-brocolis-couveflor', 'Salada Cozida de Brócolis e Couve-flor', 'cozida', ['Brócolis', 'Couve-flor']),
+  createSalad('salada-cozida-cenoura-brocolis', 'Salada Cozida de Cenoura e Brócolis', 'cozida', ['Cenoura', 'Brócolis']),
+  createSalad('salada-cozida-cenoura-shoyu', 'Salada Cozida de Cenoura com Shoyu', 'cozida', ['Cenoura']),
+  createSalad('salada-cozida-repolhoverde-repolhoroxo', 'Salada Cozida de Repolho Verde e Roxo', 'cozida', ['Repolho verde', 'Repolho roxo']),
+  createSalad('salada-crua-agriao-pepino-manga', 'Salada Crua de Agrião, Pepino e Manga', 'crua', ['Agrião', 'Pepino', 'Manga']),
+  createSalad('salada-crua-alface-pepino-tomate', 'Salada Crua de Alface, Pepino e Tomate', 'crua', ['Alface', 'Pepino', 'Tomate']),
+  createSalad('salada-crua-alface-tomate-cebolaroxa', 'Salada Crua de Alface, Tomate e Cebola Roxa', 'crua', ['Alface', 'Tomate', 'Cebola roxa']),
+  createSalad('salada-crua-beterraba-cenoura', 'Salada Crua de Beterraba e Cenoura', 'crua', ['Beterraba', 'Cenoura']),
+  createSalad('salada-crua-couve-tomate', 'Salada Crua de Couve e Tomate', 'crua', ['Couve', 'Tomate']),
+  createSalad('salada-crua-repolho-cenoura', 'Salada Crua de Repolho e Cenoura', 'crua', ['Repolho', 'Cenoura']),
 
   createFruit('fruta-abacaxi', 'Abacaxi', 'abacaxi'),
   createFruit('fruta-banana', 'Banana', 'banana'),
@@ -162,7 +163,7 @@ function mapPhotoCatalogItem(item: PhotoCatalogItem): Recipe {
     reheatInstructions: item.module === 'saladas'
       ? 'Consumir fria.'
       : 'Reaquecer se fizer sentido para a preparação.',
-    lockedRecipeWarning: 'Use essa preparação como aparece na sua dieta. Não use o app para substituir ou montar dieta.',
+    lockedRecipeWarning: 'Use o peso pronto que aparece na sua dieta para definir as porções. O preparo pode ser ajustado mantendo as quantidades proporcionais.',
     nutrition: {
       kcalPer100g: null,
       proteinGPer100g: null,
@@ -185,25 +186,23 @@ function mapPhotoCatalogItem(item: PhotoCatalogItem): Recipe {
         slug: item.type,
       },
     ],
-    ingredients: [
-      {
-        id: `photo-${item.fileSlug}-ingredient-main`,
-        recipeId: `photo-${item.fileSlug}`,
-        name: item.ingredientName ?? item.name,
-        shoppingCategory: item.shoppingCategory,
-        ingredientRole: 'main',
-        baseQuantity: rawWeight,
-        unit: 'g',
-        isCritical: false,
-        isFreeSeasoning: false,
-        includeInShoppingList: true,
-        roundingStep: item.module === 'saladas' ? 50 : 100,
-        roundingMode: 'up',
-        displayName: item.ingredientName ?? item.name,
-        notes: null,
-        sortOrder: 1,
-      },
-    ],
+    ingredients: getCatalogIngredientNames(item).map((ingredientName, ingredientIndex, ingredientNames) => ({
+      id: `photo-${item.fileSlug}-ingredient-main-${ingredientIndex + 1}`,
+      recipeId: `photo-${item.fileSlug}`,
+      name: ingredientName,
+      shoppingCategory: item.shoppingCategory,
+      ingredientRole: 'main',
+      baseQuantity: rawWeight / ingredientNames.length,
+      unit: 'g',
+      isCritical: false,
+      isFreeSeasoning: false,
+      includeInShoppingList: true,
+      roundingStep: item.module === 'saladas' ? 50 : 100,
+      roundingMode: 'up',
+      displayName: ingredientName,
+      notes: null,
+      sortOrder: ingredientIndex + 1,
+    })),
     steps: [
       {
         id: `photo-${item.fileSlug}-step-1`,
@@ -282,7 +281,7 @@ function createSalad(
   fileSlug: string,
   name: string,
   type: 'crua' | 'cozida',
-  ingredientName: string,
+  ingredientNames: string[],
 ): PhotoCatalogItem {
   return {
     fileSlug,
@@ -290,7 +289,7 @@ function createSalad(
     module: 'saladas',
     type,
     shoppingCategory: 'Vegetais',
-    ingredientName,
+    ingredientNames,
     baseRawWeightG: 1000,
     baseReadyWeightG: type === 'crua' ? 1000 : 900,
     costLevel: 2,
@@ -299,6 +298,10 @@ function createSalad(
     practicalityLevel: 3,
     freezesWell: false,
   }
+}
+
+function getCatalogIngredientNames(item: PhotoCatalogItem) {
+  return item.ingredientNames?.length ? item.ingredientNames : [item.ingredientName ?? item.name]
 }
 
 function createFruit(

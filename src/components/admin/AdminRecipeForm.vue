@@ -21,6 +21,13 @@ const emit = defineEmits<{
 
 const validationMessage = ref<string | null>(null)
 const typeSuggestions = ['frango', 'carne', 'suino', 'peixe', 'ovos', 'arroz', 'batata', 'legumes', 'fruta']
+const levelOptions = [1, 2, 3, 4] as const
+const defaultRecipeGuidance =
+  'Use o peso pronto que aparece na dieta para definir as porções. O preparo pode ser ajustado mantendo as quantidades proporcionais.'
+
+function setLevel(field: 'costLevel' | 'timeLevel' | 'workLevel' | 'practicalityLevel', value: number) {
+  form[field] = value
+}
 
 const form = reactive<AdminRecipeInput>({
   categoryId: null,
@@ -48,8 +55,7 @@ const form = reactive<AdminRecipeInput>({
   freezesWell: true,
   storageInstructions: '',
   reheatInstructions: '',
-  lockedRecipeWarning:
-    'Siga a receita como está. Não adicione óleo, azeite, creme, requeijão, queijo, molhos ou ingredientes extras fora da receita.',
+  lockedRecipeWarning: defaultRecipeGuidance,
   kcalPer100g: null,
   proteinGPer100g: null,
   carbsGPer100g: null,
@@ -180,12 +186,12 @@ function getValidationError() {
   if (!form.name.trim()) return 'Informe o nome da receita.'
   if (!form.slug.trim()) return 'Informe o slug da receita.'
   if (!form.categoryId) return 'Escolha uma categoria.'
-  if (!form.status) return 'Escolha o status.'
+  if (!form.status) return 'Escolha a situação.'
   if (!form.baseRawWeightG || form.baseRawWeightG <= 0) return 'Informe o rendimento base cru.'
   if (!form.baseReadyWeightG || form.baseReadyWeightG <= 0) return 'Informe o rendimento pronto estimado.'
   if (!isOptionalPositive(form.baseCleanWeightG)) return 'Peso limpo precisa ser maior ou igual a zero.'
-  if (!isOptionalPositive(form.correctionFactor)) return 'Fator de correcao precisa ser maior ou igual a zero.'
-  if (!isOptionalPositive(form.cookingFactor)) return 'Fator de coccao precisa ser maior ou igual a zero.'
+  if (!isOptionalPositive(form.correctionFactor)) return 'Fator de correção precisa ser maior ou igual a zero.'
+  if (!isOptionalPositive(form.cookingFactor)) return 'Fator de cocção precisa ser maior ou igual a zero.'
   if (!isLevelValid(form.costLevel)) return 'Custo precisa estar entre 1 e 4.'
   if (!isLevelValid(form.timeLevel)) return 'Tempo de Preparo precisa estar entre 1 e 4.'
   if (!isLevelValid(form.workLevel)) return 'Dificuldade precisa estar entre 1 e 4.'
@@ -281,11 +287,11 @@ function slugify(value: string) {
         </div>
 
         <div class="field">
-          <label for="recipe-status">Status</label>
+          <label for="recipe-status">Situação</label>
           <select id="recipe-status" v-model="form.status" required>
-            <option value="draft">draft</option>
-            <option value="published">published</option>
-            <option value="archived">archived</option>
+            <option value="draft">Rascunho</option>
+            <option value="published">Publicada</option>
+            <option value="archived">Arquivada</option>
           </select>
         </div>
 
@@ -381,23 +387,75 @@ function slugify(value: string) {
 
       <div class="admin-form-grid admin-form-grid--four">
         <div class="field">
-          <label for="cost">Custo</label>
-          <input id="cost" v-model.number="form.costLevel" type="number" min="1" max="4">
+          <label>Custo</label>
+          <div class="admin-tabs" role="radiogroup" aria-label="Custo">
+            <button
+              v-for="level in levelOptions"
+              :key="`cost-${level}`"
+              class="admin-tab"
+              :class="{ 'admin-tab--active': form.costLevel === level }"
+              type="button"
+              role="radio"
+              :aria-checked="form.costLevel === level"
+              @click="setLevel('costLevel', level)"
+            >
+              {{ level }}
+            </button>
+          </div>
         </div>
 
         <div class="field">
-          <label for="time">Tempo de Preparo</label>
-          <input id="time" v-model.number="form.timeLevel" type="number" min="1" max="4">
+          <label>Tempo de Preparo</label>
+          <div class="admin-tabs" role="radiogroup" aria-label="Tempo de Preparo">
+            <button
+              v-for="level in levelOptions"
+              :key="`time-${level}`"
+              class="admin-tab"
+              :class="{ 'admin-tab--active': form.timeLevel === level }"
+              type="button"
+              role="radio"
+              :aria-checked="form.timeLevel === level"
+              @click="setLevel('timeLevel', level)"
+            >
+              {{ level }}
+            </button>
+          </div>
         </div>
 
         <div class="field">
-          <label for="work">Dificuldade</label>
-          <input id="work" v-model.number="form.workLevel" type="number" min="1" max="4">
+          <label>Dificuldade</label>
+          <div class="admin-tabs" role="radiogroup" aria-label="Dificuldade">
+            <button
+              v-for="level in levelOptions"
+              :key="`work-${level}`"
+              class="admin-tab"
+              :class="{ 'admin-tab--active': form.workLevel === level }"
+              type="button"
+              role="radio"
+              :aria-checked="form.workLevel === level"
+              @click="setLevel('workLevel', level)"
+            >
+              {{ level }}
+            </button>
+          </div>
         </div>
 
         <div class="field">
-          <label for="practicality">Versatilidade</label>
-          <input id="practicality" v-model.number="form.practicalityLevel" type="number" min="1" max="4">
+          <label>Versatilidade</label>
+          <div class="admin-tabs" role="radiogroup" aria-label="Versatilidade">
+            <button
+              v-for="level in levelOptions"
+              :key="`practicality-${level}`"
+              class="admin-tab"
+              :class="{ 'admin-tab--active': form.practicalityLevel === level }"
+              type="button"
+              role="radio"
+              :aria-checked="form.practicalityLevel === level"
+              @click="setLevel('practicalityLevel', level)"
+            >
+              {{ level }}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -421,7 +479,7 @@ function slugify(value: string) {
       </div>
 
       <div class="field">
-        <label for="locked-warning">Aviso de receita fixa</label>
+        <label for="locked-warning">Orientação de preparo</label>
         <textarea id="locked-warning" v-model="form.lockedRecipeWarning" rows="3" />
       </div>
     </section>

@@ -69,7 +69,7 @@ const counters = computed(() => [
 const healthItems = computed(() => [
   {
     label: 'Receitas sem imagem',
-    description: 'Afeta cards, revisao e tela de receita.',
+    description: 'Afeta cartões, revisão e tela de receita.',
     value: recipesWithoutImage.value.length,
     to: '/admin/receitas?tab=pendencias',
     severity: recipesWithoutImage.value.length ? 'danger' : 'ok',
@@ -77,7 +77,7 @@ const healthItems = computed(() => [
   },
   {
     label: 'Sem ingrediente principal',
-    description: 'Impede calculo de compra e rendimento.',
+    description: 'Impede cálculo de compra e rendimento.',
     value: recipesWithoutMainIngredient.value.length,
     to: '/admin/receitas?tab=pendencias',
     severity: recipesWithoutMainIngredient.value.length ? 'danger' : 'ok',
@@ -92,8 +92,8 @@ const healthItems = computed(() => [
     icon: 'list-check',
   },
   {
-    label: 'Ingredientes sem nutricao',
-    description: 'Prejudica conferencia e confianca.',
+    label: 'Ingredientes sem nutrição',
+    description: 'Prejudica conferência e confiança.',
     value: ingredientsWithoutNutrition.value.length,
     to: '/admin/ingredientes?qualidade=sem-nutricao',
     severity: ingredientsWithoutNutrition.value.length ? 'warn' : 'ok',
@@ -101,7 +101,7 @@ const healthItems = computed(() => [
   },
   {
     label: 'Itens de compra ativos',
-    description: 'Lista mae pronta para selecao.',
+    description: 'Lista mãe pronta para seleção.',
     value: activeCatalogItems.value.length,
     to: '/admin/catalogo-compras?ativo=ativos',
     severity: 'ok',
@@ -121,19 +121,19 @@ const modules = [
   {
     to: '/admin/receitas',
     label: 'Receitas',
-    description: 'Imagem, preparo, rendimento, nutricao, video e publicacao.',
+    description: 'Imagem, preparo, rendimento, nutrição, vídeo e publicação.',
     icon: 'file-text',
   },
   {
     to: '/admin/ingredientes',
     label: 'Ingredientes',
-    description: 'Tabela nutricional, unidades, fatores de correcao e medidas.',
+    description: 'Tabela nutricional, unidades, fatores de correção e medidas.',
     icon: 'grain',
   },
   {
     to: '/admin/catalogo-compras',
-    label: 'Lista mae',
-    description: 'Itens selecionaveis por categoria para compras do aluno.',
+    label: 'Lista mãe',
+    description: 'Itens selecionáveis por categoria para compras do aluno.',
     icon: 'shopping-cart',
   },
   {
@@ -167,7 +167,7 @@ async function loadCounters() {
     ingredients.value = ingredientList
     catalogItems.value = catalog.items.value
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel carregar os dados do painel.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível carregar os dados do painel.')
   } finally {
     loadingCounters.value = false
   }
@@ -195,7 +195,7 @@ function getErrorMessage(error: unknown, fallback: string) {
     <section class="admin-page-header">
       <div>
         <p class="admin-page-header__kicker">Painel</p>
-        <h1 class="admin-page-header__title">Admin</h1>
+        <h1 class="admin-page-header__title">Painel admin</h1>
         <p class="admin-page-header__sub">
           Controle receitas, ingredientes, lista de compras e dados que alimentam o planejador do aluno.
         </p>
@@ -209,18 +209,18 @@ function getErrorMessage(error: unknown, fallback: string) {
 
     <section class="admin-hero-panel">
       <div>
-        <p class="admin-page-header__kicker">Central de conteudo</p>
-        <strong>O app so fica bom se o banco estiver limpo.</strong>
+        <p class="admin-page-header__kicker">Central de conteúdo</p>
+        <strong>O app só fica bom se o banco estiver limpo.</strong>
         <p>Priorize receitas completas, ingredientes conectados e itens de compra revisados.</p>
       </div>
       <NuxtLink class="secondary-button" to="/admin/receitas?tab=pendencias">
-        Ver pendencias
+        Ver pendências
       </NuxtLink>
     </section>
 
     <p v-if="errorMessage" class="form-error">{{ errorMessage }}</p>
 
-    <section class="admin-stat-grid" aria-label="Resumo do conteudo">
+    <section class="admin-stat-grid" aria-label="Resumo do conteúdo">
       <article
         v-for="counter in counters"
         :key="counter.label"
@@ -238,9 +238,9 @@ function getErrorMessage(error: unknown, fallback: string) {
     <div class="admin-dashboard-layout">
       <section class="admin-card">
         <div class="admin-card__header">
-          <p class="admin-section-kicker">Saude do conteudo</p>
-          <h2 class="admin-card__title">Pendencias que afetam o app</h2>
-          <p>O objetivo aqui e mostrar o que impede uma receita ou item de funcionar bem no planejamento.</p>
+          <p class="admin-section-kicker">Saúde do conteúdo</p>
+          <h2 class="admin-card__title">Pendências que afetam o app</h2>
+          <p>O objetivo aqui é mostrar o que impede uma receita ou item de funcionar bem no planejamento.</p>
         </div>
 
         <div class="admin-health-grid">
@@ -267,7 +267,7 @@ function getErrorMessage(error: unknown, fallback: string) {
         <div class="admin-card__header">
           <p class="admin-section-kicker">Agora</p>
           <h2 class="admin-card__title">Fila de trabalho</h2>
-          <p>Proximas acoes recomendadas.</p>
+          <p>Próximas ações recomendadas.</p>
         </div>
 
         <div v-if="workQueue.length" class="admin-activity-list">
@@ -275,18 +275,18 @@ function getErrorMessage(error: unknown, fallback: string) {
             <span aria-hidden="true"><BaseIcon :name="item.icon" /></span>
             <span>
               <strong>{{ item.label }}</strong>
-              <small>{{ item.value }} itens precisam de revisao.</small>
+              <small>{{ item.value }} itens precisam de revisão.</small>
             </span>
           </NuxtLink>
         </div>
         <div v-else class="admin-empty-state admin-empty-state--compact">
           <BaseIcon name="check-circle" />
-          <p>Nenhuma pendencia critica agora.</p>
+          <p>Nenhuma pendência crítica agora.</p>
         </div>
       </aside>
     </div>
 
-    <section class="admin-home-grid" aria-label="Secoes do admin">
+    <section class="admin-home-grid" aria-label="Seções do admin">
       <NuxtLink
         v-for="module in modules"
         :key="module.to"

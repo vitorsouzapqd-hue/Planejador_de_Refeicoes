@@ -11,6 +11,7 @@ import ProteinRecipeCard from '../components/planner/ProteinRecipeCard.vue'
 import ProteinReviewStep from '../components/planner/ProteinReviewStep.vue'
 import StepperControl from '../components/planner/StepperControl.vue'
 import {
+  availablePlanningGroupSlugs,
   getPlanningGroup,
   getPlanningGroupItemName,
   getPlanningGroupName,
@@ -18,7 +19,7 @@ import {
   normalizePlanningGroupSlug,
   planningGroups,
 } from '../data/planningGroups'
-import { usePlannerState } from '../composables/usePlannerState'
+import { DEFAULT_TOTAL_PORTIONS_GOAL, usePlannerState } from '../composables/usePlannerState'
 import { useRecipes } from '../composables/useRecipes'
 import {
   calculateGroupTotalPortions,
@@ -98,6 +99,11 @@ onMounted(async () => {
 
   await loadRecipes()
 
+  if (route.query.adicionar === '1') {
+    activeStep.value = 'planning-type'
+    return
+  }
+
   if (route.query.editar === '1' && planning.value.selectedGroupSlugs.length > 0) {
     activeStep.value = getAllPlanningErrors().length === 0 ? 'review' : 'weights'
     activeGroupIndex.value = Math.max(0, planning.value.selectedGroupSlugs.length - 1)
@@ -113,8 +119,33 @@ const currentGroupName = computed(() => getPlanningGroupName(currentGroupSlug.va
 const currentGroupSingularName = computed(() => getPlanningGroupSingularName(currentGroupSlug.value))
 const currentGroupItemName = computed(() => getPlanningGroupItemName(currentGroupSlug.value))
 const currentFilters = computed(() => currentGroupSlug.value ? filtersByGroup[currentGroupSlug.value] : filtersByGroup.proteinas)
-const currentTotalPortionsGoal = computed(() => currentGroupPlan.value?.totalPortionsGoal ?? 1)
+const currentTotalPortionsGoal = computed(() => currentGroupPlan.value?.totalPortionsGoal ?? DEFAULT_TOTAL_PORTIONS_GOAL)
 const currentGroupSelectedRecipeIds = computed(() => currentGroupPlan.value?.selectedRecipes.map((recipe) => recipe.recipeId) ?? [])
+const plannedGroupSummaries = computed(() =>
+  availablePlanningGroupSlugs
+    .map((groupSlug) => {
+      const groupPlan = planning.value.groups[groupSlug]
+      if (!groupPlan || groupPlan.selectedRecipes.length === 0) return null
+
+      return {
+        groupSlug,
+        groupName: getPlanningGroupName(groupSlug),
+        totalPortions: calculatePlannedPortions(groupPlan),
+        recipeCount: groupPlan.selectedRecipes.length,
+      }
+    })
+    .filter((group): group is {
+      groupSlug: PlanningGroupSlug
+      groupName: string
+      totalPortions: number
+      recipeCount: number
+    } => Boolean(group)),
+)
+const availableGroupSummaries = computed(() =>
+  availablePlanningGroupSlugs
+    .filter((groupSlug) => !selectedGroupIds.value.includes(groupSlug))
+    .map((groupSlug) => getPlanningGroupName(groupSlug)),
+)
 
 const currentGroupRecipes = computed(() => {
   const group = currentGroup.value
@@ -188,10 +219,26 @@ const currentPlanningRecipe = computed(() => {
 })
 const currentSelectedCount = computed(() => currentGroupSelectedRecipeIds.value.length)
 const distributedPortions = computed(() =>
-  currentGroupPlan.value ? calculateDistributedPortions(currentGroupPlan.value.selectedRecipes) : 0,
+  calculateDistributedPortions(currentPlanningRecipesWithData.value),
 )
 const reviewTotalPortions = computed(() =>
   planningGroupsWithData.value.reduce((total, group) => total + calculateGroupTotalPortions(group), 0),
+)
+
+const reviewTotalRecipes = computed(() =>
+  planningGroupsWithData.value.reduce((total, group) => total + group.recipes.length, 0),
+)
+
+const currentRecipePortions = computed(() =>
+  currentPlanningRecipe.value?.lines.reduce((t, l) => t + (l.portions ?? 0), 0) ?? 0,
+)
+
+const currentRecipeWeightReadyG = computed(() =>
+  currentPlanningRecipe.value?.lines[0]?.weightReadyG ?? null,
+)
+
+const currentRecipeTotalWeight = computed(() =>
+  currentRecipeWeightReadyG.value ? currentRecipePortions.value * currentRecipeWeightReadyG.value : null,
 )
 
 const currentStepNumber = computed(() => {
@@ -213,6 +260,12 @@ const distributionMessage = computed(() => {
 
   if (diff > 0) return `Ainda faltam ${diff} porções para distribuir.`
   if (diff < 0) return `Você distribuiu ${Math.abs(diff)} porções a mais.`
+
+  const hasZeroPortionRecipe = currentGroupPlan.value?.selectedRecipes.some(
+    (planningRecipe) => calculateRecipePortions(planningRecipe) < 1,
+  ) ?? false
+
+  if (hasZeroPortionRecipe) return 'Cada preparação precisa receber pelo menos 1 porção.'
 
   return 'Total distribuído.'
 })
@@ -259,7 +312,7 @@ function continueGroupSelection() {
   }
 
   setSelectedGroups(selectedGroupIds.value)
-  activeGroupIndex.value = 0
+  activeGroupIndex.value = getNextGroupIndexToPlan(selectedGroupIds.value)
   activeFilter.value = 'todos'
   search.value = ''
   activeStep.value = 'total-portions'
@@ -268,7 +321,7 @@ function continueGroupSelection() {
 function updateTotalPortions(value: number | null) {
   if (!currentGroupSlug.value) return
 
-  const total = value ?? 1
+  const total = value ?? DEFAULT_TOTAL_PORTIONS_GOAL
   setGroupTotalPortionsGoal(currentGroupSlug.value, total)
   totalPortionsError.value = null
 }
@@ -453,9 +506,10 @@ function prepareReview() {
   const errors = getAllPlanningErrors()
 
   if (errors.length > 0) {
-    activeStep.value = errors[0]?.includes('distribuir') || errors[0]?.includes('porções a mais')
-      ? 'distribution'
-      : 'weights'
+    const isDistributionError = errors[0]?.includes('distribuir') ||
+      errors[0]?.includes('porções a mais') ||
+      errors[0]?.includes('pelo menos 1 porção')
+    activeStep.value = isDistributionError ? 'distribution' : 'weights'
     weightValidationMessage.value = errors[0] ?? 'Revise o planejamento antes de continuar.'
     return
   }
@@ -470,11 +524,42 @@ function editWeights() {
   activeStep.value = 'weights'
 }
 
+function goToEditDistribution(groupSlug: string) {
+  const idx = selectedFunctionalGroups.value.indexOf(groupSlug as PlanningGroupSlug)
+  if (idx >= 0) activeGroupIndex.value = idx
+  distributionValidationMessage.value = null
+  weightValidationMessage.value = null
+  activeStep.value = 'distribution'
+}
+
+function goToEditWeight(groupSlug: string, recipeId: string) {
+  const groupIdx = selectedFunctionalGroups.value.indexOf(groupSlug as PlanningGroupSlug)
+  if (groupIdx >= 0) {
+    activeGroupIndex.value = groupIdx
+    const group = planning.value.groups[groupSlug as PlanningGroupSlug]
+    const recipeIdx = group?.selectedRecipes.findIndex((r) => r.recipeId === recipeId) ?? -1
+    activeWeightIndex.value = recipeIdx >= 0 ? recipeIdx : 0
+  }
+  distributionValidationMessage.value = null
+  weightValidationMessage.value = null
+  activeStep.value = 'weights'
+}
+
+function addAnotherGroup() {
+  selectedGroupIds.value = [...planning.value.selectedGroupSlugs]
+  moduleMessage.value = null
+  groupSelectionError.value = null
+  activeStep.value = 'planning-type'
+}
+
 function generatePlan() {
   const errors = getAllPlanningErrors()
 
   if (errors.length > 0) {
-    activeStep.value = 'weights'
+    const isDistributionError = errors[0]?.includes('distribuir') ||
+      errors[0]?.includes('porções a mais') ||
+      errors[0]?.includes('pelo menos 1 porção')
+    activeStep.value = isDistributionError ? 'distribution' : 'weights'
     weightValidationMessage.value = errors[0] ?? 'Revise o planejamento antes de continuar.'
     return
   }
@@ -509,7 +594,7 @@ function persistSelectedRecipes(groupSlug: PlanningGroupSlug, selectedRecipeIds:
 function getGroupPlan(groupSlug: PlanningGroupSlug): PlanningGroupPlan {
   return planning.value.groups[groupSlug] ?? {
     groupSlug,
-    totalPortionsGoal: 1,
+    totalPortionsGoal: DEFAULT_TOTAL_PORTIONS_GOAL,
     selectedRecipes: [],
   }
 }
@@ -631,6 +716,32 @@ function calculateRecipePortions(planningRecipe: PlanningRecipe) {
   return planningRecipe.lines.reduce((total, line) => total + (line.portions ?? 0), 0)
 }
 
+function calculatePlannedPortions(groupPlan: PlanningGroupPlan) {
+  return groupPlan.selectedRecipes.reduce((total, planningRecipe) => {
+    return total + calculateRecipePortions(planningRecipe)
+  }, 0)
+}
+
+function getNextGroupIndexToPlan(groupSlugs: PlanningGroupSlug[]) {
+  const incompleteIndex = groupSlugs.findIndex((groupSlug) => Boolean(getFirstGroupError(groupSlug)))
+
+  return incompleteIndex >= 0 ? incompleteIndex : Math.max(0, groupSlugs.length - 1)
+}
+
+function getFirstGroupError(groupSlug: PlanningGroupSlug) {
+  const groupPlan = getGroupPlan(groupSlug)
+
+  if (!groupPlan.totalPortionsGoal || groupPlan.totalPortionsGoal < 1) return 'total'
+  if (groupPlan.selectedRecipes.length === 0) return 'recipes'
+  if (getDistributionError(groupSlug)) return 'distribution'
+
+  for (const planningRecipe of groupPlan.selectedRecipes) {
+    if (getRecipeWeightErrors(groupSlug, planningRecipe.recipeId).length > 0) return 'weights'
+  }
+
+  return null
+}
+
 function createEmptyLine(): PlanningLine {
   return {
     weightReadyG: null,
@@ -662,6 +773,32 @@ function normalize(value: string) {
         @toggle="togglePlanningGroup"
       />
 
+      <section
+        v-if="plannedGroupSummaries.length || availableGroupSummaries.length"
+        class="planning-group-status"
+        aria-label="Estado dos grupos do planejamento"
+      >
+        <div v-if="plannedGroupSummaries.length">
+          <p class="section-kicker">Já planejados</p>
+          <div class="planning-group-status__chips">
+            <span
+              v-for="group in plannedGroupSummaries"
+              :key="group.groupSlug"
+              class="planning-group-chip planning-group-chip--done"
+            >
+              {{ group.groupName }} · {{ group.totalPortions || group.recipeCount }} {{ group.totalPortions ? 'porções' : 'item selecionado' }}
+            </span>
+          </div>
+        </div>
+
+        <div v-if="availableGroupSummaries.length">
+          <p class="section-kicker">Ainda podem entrar</p>
+          <p class="planning-group-status__text">
+            {{ availableGroupSummaries.join(', ') }}
+          </p>
+        </div>
+      </section>
+
       <p v-if="moduleMessage" class="flow-inline-message">
         {{ moduleMessage }}
       </p>
@@ -682,10 +819,13 @@ function normalize(value: string) {
       :total-steps="totalFlowSteps"
       :kicker="`${activeGroupIndex + 1} de ${selectedFunctionalGroups.length} grupos`"
       :title="`Quantas porções de ${currentGroupSingularName} você quer planejar?`"
-      text="Escolha um número inteiro. Não precisa ser por dia nem por semana."
+      text="Almoço e jantar por 7 dias = 14 porções. Ajuste conforme sua rotina."
     >
       <section class="total-portions-card total-portions-card--interactive">
-        <p class="total-portions-card__value">{{ currentTotalPortionsGoal }}</p>
+        <p class="total-portions-card__value">
+          {{ currentTotalPortionsGoal }}
+          <span>porções</span>
+        </p>
         <input
           class="portion-slider"
           :value="currentTotalPortionsGoal"
@@ -798,10 +938,26 @@ function normalize(value: string) {
       :title="`Distribua suas ${currentTotalPortionsGoal} porções de ${currentGroupSingularName}`"
       text="Defina quantas porções cada preparação vai receber. A soma precisa fechar exatamente o total."
     >
+      <template #header-extras>
+        <div class="distribution-metrics">
+          <div class="distribution-metric">
+            <strong>{{ distributedPortions }}</strong>
+            <span>Distribuídas</span>
+          </div>
+          <div class="distribution-metric">
+            <strong>{{ Math.max(0, currentTotalPortionsGoal - distributedPortions) }}</strong>
+            <span>Faltando</span>
+          </div>
+          <div class="distribution-metric">
+            <strong>{{ currentSelectedCount }}</strong>
+            <span>Preparos</span>
+          </div>
+        </div>
+      </template>
+
       <ProteinPortionDistributionStep
         :recipes="currentPlanningRecipesWithData"
         :total-portions="currentTotalPortionsGoal"
-        :distributed-portions="distributedPortions"
         :group-label="currentGroupSingularName"
         @update-portions="updateRecipeDistribution"
       />
@@ -811,7 +967,6 @@ function normalize(value: string) {
         secondary-label="Voltar"
         :meta="`${distributedPortions} de ${currentTotalPortionsGoal} porções distribuídas`"
         :hint="distributionValidationMessage ?? distributionMessage"
-        :primary-disabled="!distributionReady"
         :ready="distributionReady"
         @primary="continueDistribution"
         @secondary="previousStep"
@@ -822,10 +977,27 @@ function normalize(value: string) {
       v-else-if="activeStep === 'weights'"
       :current-step="currentStepNumber"
       :total-steps="totalFlowSteps"
-      kicker="Pesos da dieta"
-      :title="`Informe os pesos das ${currentGroupName.toLowerCase()}`"
-      text="Preencha o peso pronto que aparece no seu app de dieta."
+      :kicker="currentGroupName"
+      title="Informe o peso pronto da sua dieta"
+      text="Use o peso que aparece no seu app de dieta para cada alimento."
     >
+      <template #header-extras>
+        <div class="distribution-metrics">
+          <div class="distribution-metric">
+            <strong>{{ activeWeightIndex + 1 }}/{{ currentSelectedRecipes.length }}</strong>
+            <span>Preparo</span>
+          </div>
+          <div class="distribution-metric">
+            <strong>{{ currentRecipePortions }}</strong>
+            <span>Porções</span>
+          </div>
+          <div class="distribution-metric">
+            <strong>{{ currentRecipeTotalWeight ? `${currentRecipeTotalWeight}g` : '—' }}</strong>
+            <span>Total pronto</span>
+          </div>
+        </div>
+      </template>
+
       <section v-if="!currentWeightRecipe || !currentPlanningRecipe" class="empty-state empty-state--soft">
         <p>Nenhuma opção selecionada ainda.</p>
         <button class="primary-button" type="button" @click="activeStep = 'recipes'">
@@ -858,19 +1030,59 @@ function normalize(value: string) {
       v-else
       :current-step="currentStepNumber"
       :total-steps="totalFlowSteps"
-      kicker="Revisão"
+      kicker="Tudo pronto"
       title="Revise seu planejamento"
-      text="Confira quantidades e pesos antes de gerar o plano."
+      text="Confira grupos, preparações, porções e pesos antes de gerar o plano final."
+      :hero-style="true"
     >
+      <template #header-extras>
+        <div class="review-hero-pills">
+          <div class="review-hero-pill">
+            <strong>{{ reviewTotalPortions }}</strong>
+            <span>porções</span>
+          </div>
+          <div class="review-hero-pill">
+            <strong>{{ selectedFunctionalGroups.length }}</strong>
+            <span>grupos</span>
+          </div>
+          <div class="review-hero-pill">
+            <strong>{{ reviewTotalRecipes }}</strong>
+            <span>preparos</span>
+          </div>
+        </div>
+
+        <div class="review-status-panel">
+          <div class="review-status-panel__icon" aria-hidden="true">
+            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <div>
+            <strong>Planejamento pronto para gerar.</strong>
+            <span>Depois disso, o app monta compras, preparo e porcionamento final.</span>
+          </div>
+        </div>
+      </template>
+
       <ProteinReviewStep
         :groups="planningGroupsWithData"
         :total-portions="reviewTotalPortions"
+        @edit-distribution="goToEditDistribution"
+        @edit-weight="goToEditWeight"
       />
 
+      <button class="review-add-btn" type="button" @click="addAnotherGroup">
+        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 5v14M5 12h14" />
+        </svg>
+        Planejar mais itens
+      </button>
+
       <PlanningActionBar
-        primary-label="Gerar planejamento completo"
+        primary-label="Gerar plano"
         secondary-label="Voltar"
-        :meta="`Total planejado: ${reviewTotalPortions} porções`"
+        meta="Pronto para gerar"
+        hint="Compras, preparo e porcionamento"
         ready
         @primary="generatePlan"
         @secondary="editWeights"

@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, onMounted } from 'vue'
+import { useRoute } from '#imports'
 import { usePlannerState } from '../../composables/usePlannerState'
+import { useStudentTheme } from '../../composables/useStudentTheme'
 import BaseIcon from '../ui/BaseIcon.vue'
 
 const { planning, clearPlanning } = usePlannerState()
-const themeStorageKey = 'meal_planner_theme'
-const isDarkMode = ref(false)
+const route = useRoute()
+const { isDarkMode, themeButtonLabel, loadTheme, toggleTheme } = useStudentTheme()
 
 const totalPortions = computed(() =>
   planning.value.selectedGroupSlugs.reduce((groupTotal, groupSlug) => {
@@ -18,30 +20,17 @@ const totalPortions = computed(() =>
   }, 0),
 )
 
-const themeButtonLabel = computed(() => (isDarkMode.value ? 'Claro' : 'Escuro'))
+const appFrameClass = computed(() => ({
+  'app-frame--result': route.path === '/resultado',
+}))
 
 onMounted(() => {
-  isDarkMode.value = localStorage.getItem(themeStorageKey) === 'dark'
-  applyTheme()
+  loadTheme()
 })
-
-watch(isDarkMode, (nextTheme) => {
-  applyTheme()
-  localStorage.setItem(themeStorageKey, nextTheme ? 'dark' : 'light')
-})
-
-function toggleTheme() {
-  isDarkMode.value = !isDarkMode.value
-}
-
-function applyTheme() {
-  document.documentElement.classList.toggle('theme-dark', isDarkMode.value)
-  document.documentElement.style.colorScheme = isDarkMode.value ? 'dark' : 'light'
-}
 </script>
 
 <template>
-  <div class="app-frame">
+  <div class="app-frame" :class="appFrameClass">
     <div class="student-shell">
       <header class="student-shell__topbar">
         <div class="student-shell__topbar-inner">

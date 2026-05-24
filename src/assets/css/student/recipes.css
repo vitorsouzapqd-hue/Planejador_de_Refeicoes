@@ -1,0 +1,220 @@
+.recipes-page {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.recipes-page .filter-row {
+  gap: 0.35rem;
+}
+
+.recipes-page .pill-button {
+  min-height: 30px;
+  padding-inline: 0.75rem;
+  font-size: 0.75rem;
+}
+
+.library-list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.library-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 250, 243, 0.78);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.library-card--active {
+  border-color: rgba(189, 32, 23, .28);
+  box-shadow: 0 0 0 3px rgba(189, 32, 23, .10);
+}
+
+.library-card__button {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 78px 1fr;
+  gap: var(--space-3);
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: var(--space-3);
+  text-align: left;
+}
+
+.library-card__image-wrap {
+  display: block;
+  min-height: 86px;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background:
+    linear-gradient(135deg, rgba(232, 68, 42, 0.2), rgba(216, 140, 238, 0.12)),
+    var(--color-bg-soft);
+}
+
+.library-card__image,
+.library-card__image-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 86px;
+  object-fit: contain;
+}
+
+.library-card__image-placeholder {
+  display: grid;
+  place-items: center;
+  color: var(--color-muted);
+  font-size: 2rem;
+  font-weight: 950;
+}
+
+.library-card__content {
+  display: grid;
+  gap: var(--space-2);
+  align-content: start;
+  min-width: 0;
+}
+
+.library-card__title {
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 950;
+  line-height: 1.1;
+}
+
+.recipe-detail {
+  display: grid;
+  gap: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 250, 243, 0.80);
+  box-shadow: var(--shadow-card);
+  padding: 17px;
+}
+
+.recipe-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  align-items: end;
+  background: rgba(26, 18, 13, 0.42);
+  padding: var(--space-4);
+}
+
+.recipe-detail--modal {
+  position: relative;
+  max-height: min(92vh, 820px);
+  width: min(100%, 430px);
+  margin: 0 auto;
+  overflow-y: auto;
+  border-radius: 22px 22px 0 0;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 -28px 80px rgba(34, 21, 13, .28);
+  background: var(--color-panel-soft);
+}
+
+.recipe-modal__close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 2;
+  display: inline-grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-panel) 88%, transparent);
+  color: var(--color-text);
+}
+
+.recipe-detail__hero {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.recipe-detail__media {
+  min-height: 220px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(135deg, rgba(232, 68, 42, 0.22), rgba(216, 140, 238, 0.12)),
+    var(--color-bg-soft);
+}
+
+.recipe-detail__image,
+.recipe-detail__image-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: contain;
+}
+
+.recipe-detail__image-placeholder {
+  display: grid;
+  place-items: center;
+  color: var(--color-muted);
+  font-size: 4rem;
+  font-weight: 950;
+}
+
+.recipe-detail__intro {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.recipe-detail__intro h2 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 1.65rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.recipe-detail__intro p {
+  margin: 0;
+  color: var(--color-soft);
+  line-height: 1.5;
+}
+
+.recipe-detail__attributes {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.detail-section {
+  display: grid;
+  gap: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-4);
+}
+
+.detail-section p {
+  margin: 0;
+  color: var(--color-soft);
+  line-height: 1.5;
+}
+
+.detail-note {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.detail-list {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding-left: var(--space-5);
+  color: var(--color-soft);
+  line-height: 1.5;
+}
+
+.detail-list--ordered {
+  gap: var(--space-3);
+}
+
+.detail-list--compact {
+  gap: 0.35rem;
+}

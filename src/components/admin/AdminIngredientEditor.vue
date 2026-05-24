@@ -4,6 +4,7 @@ import type {
   AdminRecipeIngredient,
   AdminRecipeIngredientInput,
 } from '../../composables/useAdminRecipes'
+import { hasCompoundShoppingName } from '../../services/shoppingIngredientIdentity'
 import type { Ingredient } from '../../types/ingredient'
 import type { IngredientRole, RoundingMode } from '../../types/recipe'
 
@@ -38,16 +39,16 @@ const shoppingCategories = [
   'Outros',
 ]
 const ingredientRoles: Array<{ value: IngredientRole; label: string }> = [
-  { value: 'main', label: 'main' },
-  { value: 'complement', label: 'complement' },
-  { value: 'critical', label: 'critical' },
-  { value: 'seasoning', label: 'seasoning' },
+  { value: 'main', label: 'Principal' },
+  { value: 'complement', label: 'Complemento' },
+  { value: 'critical', label: 'Sensível' },
+  { value: 'seasoning', label: 'Tempero' },
 ]
 const roundingModes: Array<{ value: RoundingMode; label: string }> = [
-  { value: 'up', label: 'up' },
-  { value: 'nearest', label: 'nearest' },
-  { value: 'manual', label: 'manual' },
-  { value: 'none', label: 'none' },
+  { value: 'up', label: 'Arredondar para cima' },
+  { value: 'nearest', label: 'Mais próximo' },
+  { value: 'manual', label: 'Manual' },
+  { value: 'none', label: 'Sem arredondamento' },
 ]
 
 const canSave = computed(() => getValidationError() === null)
@@ -131,6 +132,11 @@ function applyRoleDefaults(ingredient: EditableIngredient) {
   }
 }
 
+function setIngredientRole(ingredient: EditableIngredient, role: IngredientRole) {
+  ingredient.ingredientRole = role
+  applyRoleDefaults(ingredient)
+}
+
 function applyMasterIngredient(ingredient: EditableIngredient) {
   const masterIngredient = props.masterIngredients?.find((item) => item.id === ingredient.ingredientId)
   if (!masterIngredient) return
@@ -185,7 +191,7 @@ function getValidationError() {
   if (namedItems.length !== items.value.length) return 'Remova ou preencha ingredientes sem nome.'
 
   if (!namedItems.some((ingredient) => ingredient.ingredientRole === 'main')) {
-    return 'Marque um ingrediente como main para o cálculo da compra crua.'
+    return 'Marque um ingrediente como principal para o cálculo da compra crua.'
   }
 
   for (const ingredient of namedItems) {
@@ -193,12 +199,22 @@ function getValidationError() {
       ingredient.isFreeSeasoning || ingredient.ingredientRole === 'seasoning'
 
     if (!ingredient.shoppingCategory.trim()) return 'Informe a categoria de compra.'
-    if (!ingredient.unit?.trim() && !isFreeSeasoning) return 'Informe a unit do ingrediente.'
+    if (!ingredient.unit?.trim() && !isFreeSeasoning) return 'Informe a unidade do ingrediente.'
+    if (
+      ingredient.includeInShoppingList &&
+      !isFreeSeasoning &&
+      hasCompoundShoppingName(ingredient.displayName || ingredient.name)
+    ) {
+      return 'Ingredientes da Lista de Compras precisam ser individuais. Separe nomes compostos em linhas diferentes.'
+    }
+    if (ingredient.includeInShoppingList && !isFreeSeasoning && !ingredient.ingredientId) {
+      return 'Selecione o ingrediente mestre para todo item que entra na Lista de Compras.'
+    }
     if (!ingredient.ingredientId && findMasterIngredientByName(ingredient.name)) {
       return 'Selecione o ingrediente mestre quando ele já existir na base.'
     }
     if (!isFreeSeasoning && normalizeNumber(ingredient.baseQuantity) === null) {
-      return 'Informe base_quantity dos ingredientes calculados.'
+      return 'Informe a quantidade base dos ingredientes calculados.'
     }
   }
 
@@ -246,7 +262,7 @@ function normalize(value: string) {
       <div>
         <p class="section-kicker">Ingredientes</p>
         <p class="admin-helper-text">
-          Use main para o ingrediente principal. Temperos à gosto ficam sem quantidade calculada.
+          Use "principal" para o ingrediente principal. Temperos à gosto ficam sem quantidade calculada.
           Se o ingrediente ainda não existir, crie em
           <NuxtLink class="admin-inline-link" to="/admin/ingredientes/novo">Ingredientes</NuxtLink>.
         </p>
@@ -270,30 +286,40 @@ function normalize(value: string) {
         <strong>Ingrediente {{ index + 1 }}</strong>
         <div class="admin-row-actions">
           <button
-            class="secondary-button"
+            class="icon-button"
             type="button"
             :disabled="index === 0"
+            :aria-label="`Subir ingrediente ${index + 1}`"
+            title="Subir"
             @click="moveIngredient(index, -1)"
           >
-            Subir
+            <BaseIcon name="chevron-up" />
           </button>
           <button
-            class="secondary-button"
+            class="icon-button"
             type="button"
             :disabled="index === items.length - 1"
+            :aria-label="`Descer ingrediente ${index + 1}`"
+            title="Descer"
             @click="moveIngredient(index, 1)"
           >
-            Descer
+            <BaseIcon name="chevron-down" />
           </button>
-          <button class="secondary-button" type="button" @click="removeIngredient(index)">
-            Remover
+          <button
+            class="icon-button icon-button--danger"
+            type="button"
+            :aria-label="`Remover ingrediente ${index + 1}`"
+            title="Remover"
+            @click="removeIngredient(index)"
+          >
+            <BaseIcon name="trash" />
           </button>
         </div>
       </div>
 
       <div class="admin-form-grid">
         <div class="field">
-          <label :for="`ingredient-master-${ingredient.localId}`">ingrediente mestre</label>
+          <label :for="`ingredient-master-${ingredient.localId}`">Ingrediente mestre</label>
           <select
             :id="`ingredient-master-${ingredient.localId}`"
             v-model="ingredient.ingredientId"
@@ -311,17 +337,17 @@ function normalize(value: string) {
         </div>
 
         <div class="field">
-          <label :for="`ingredient-name-${ingredient.localId}`">nome</label>
+          <label :for="`ingredient-name-${ingredient.localId}`">Nome</label>
           <input :id="`ingredient-name-${ingredient.localId}`" v-model="ingredient.name" type="text">
         </div>
 
         <div class="field">
-          <label :for="`ingredient-display-${ingredient.localId}`">display_name</label>
+          <label :for="`ingredient-display-${ingredient.localId}`">Nome de exibição</label>
           <input :id="`ingredient-display-${ingredient.localId}`" v-model="ingredient.displayName" type="text">
         </div>
 
         <div class="field">
-          <label :for="`ingredient-category-${ingredient.localId}`">categoria de compra</label>
+          <label :for="`ingredient-category-${ingredient.localId}`">Categoria de compra</label>
           <select :id="`ingredient-category-${ingredient.localId}`" v-model="ingredient.shoppingCategory">
             <option v-for="category in shoppingCategories" :key="category" :value="category">
               {{ category }}
@@ -330,20 +356,25 @@ function normalize(value: string) {
         </div>
 
         <div class="field">
-          <label :for="`ingredient-role-${ingredient.localId}`">ingredient_role</label>
-          <select
-            :id="`ingredient-role-${ingredient.localId}`"
-            v-model="ingredient.ingredientRole"
-            @change="applyRoleDefaults(ingredient)"
-          >
-            <option v-for="role in ingredientRoles" :key="role.value" :value="role.value">
+          <label>Função na receita</label>
+          <div class="admin-tabs" role="radiogroup" :aria-label="`Função do ingrediente ${index + 1}`">
+            <button
+              v-for="role in ingredientRoles"
+              :key="role.value"
+              class="admin-tab"
+              :class="{ 'admin-tab--active': ingredient.ingredientRole === role.value }"
+              type="button"
+              role="radio"
+              :aria-checked="ingredient.ingredientRole === role.value"
+              @click="setIngredientRole(ingredient, role.value)"
+            >
               {{ role.label }}
-            </option>
-          </select>
+            </button>
+          </div>
         </div>
 
         <div class="field">
-          <label :for="`ingredient-base-${ingredient.localId}`">base_quantity</label>
+          <label :for="`ingredient-base-${ingredient.localId}`">Quantidade base</label>
           <input
             :id="`ingredient-base-${ingredient.localId}`"
             v-model.number="ingredient.baseQuantity"
@@ -355,7 +386,7 @@ function normalize(value: string) {
         </div>
 
         <div class="field">
-          <label :for="`ingredient-unit-${ingredient.localId}`">unit</label>
+          <label :for="`ingredient-unit-${ingredient.localId}`">Unidade</label>
           <input
             :id="`ingredient-unit-${ingredient.localId}`"
             v-model="ingredient.unit"
@@ -366,7 +397,7 @@ function normalize(value: string) {
         </div>
 
         <div class="field">
-          <label :for="`ingredient-rounding-step-${ingredient.localId}`">rounding_step</label>
+          <label :for="`ingredient-rounding-step-${ingredient.localId}`">Passo de arredondamento</label>
           <input
             :id="`ingredient-rounding-step-${ingredient.localId}`"
             v-model.number="ingredient.roundingStep"
@@ -378,7 +409,7 @@ function normalize(value: string) {
         </div>
 
         <div class="field">
-          <label :for="`ingredient-rounding-mode-${ingredient.localId}`">rounding_mode</label>
+          <label :for="`ingredient-rounding-mode-${ingredient.localId}`">Modo de arredondamento</label>
           <select
             :id="`ingredient-rounding-mode-${ingredient.localId}`"
             v-model="ingredient.roundingMode"
@@ -394,7 +425,7 @@ function normalize(value: string) {
       <div class="admin-boolean-grid">
         <label class="checkbox-field">
           <input v-model="ingredient.isCritical" type="checkbox">
-          is_critical
+          Ingrediente sensível
         </label>
 
         <label class="checkbox-field">
@@ -403,17 +434,17 @@ function normalize(value: string) {
             type="checkbox"
             @change="applyRoleDefaults(ingredient)"
           >
-          is_free_seasoning
+          Tempero livre
         </label>
 
         <label class="checkbox-field">
           <input v-model="ingredient.includeInShoppingList" type="checkbox">
-          include_in_shopping_list
+          Entrar na Lista de Compras
         </label>
       </div>
 
       <div class="field">
-        <label :for="`ingredient-notes-${ingredient.localId}`">notes</label>
+        <label :for="`ingredient-notes-${ingredient.localId}`">Observações</label>
         <textarea :id="`ingredient-notes-${ingredient.localId}`" v-model="ingredient.notes" rows="2" />
       </div>
     </article>

@@ -67,7 +67,7 @@ async function submitUpload() {
     revokeLocalPreview()
     emit('changed', imagePath)
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel enviar a imagem.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível enviar a imagem.')
   } finally {
     uploading.value = false
   }
@@ -86,7 +86,7 @@ async function submitRemove() {
     revokeLocalPreview()
     emit('changed', null)
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel remover a imagem.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível remover a imagem.')
   } finally {
     removing.value = false
   }

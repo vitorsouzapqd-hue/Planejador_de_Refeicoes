@@ -20,13 +20,15 @@ export function createRecipesProvider(config: RecipesProviderConfig): RecipesPro
     return staticCatalogProvider
   }
 
-  const supabaseProvider = createSupabaseRecipesProvider({
+  if (!config.supabaseClient && (!config.supabaseUrl || !config.supabaseAnonKey)) {
+    return staticCatalogProvider
+  }
+
+  return createSupabaseRecipesProvider({
     supabaseClient: config.supabaseClient,
     supabaseUrl: config.supabaseUrl ?? '',
     supabaseAnonKey: config.supabaseAnonKey ?? '',
   })
-
-  return createHybridRecipesProvider(supabaseProvider, staticCatalogProvider)
 }
 
 export type { RecipeListFilters, RecipesProvider } from './recipesProvider'

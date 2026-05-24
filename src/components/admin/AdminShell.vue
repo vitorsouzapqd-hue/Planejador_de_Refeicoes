@@ -6,12 +6,12 @@ const { signOut } = useAdminAuth()
 const route = useRoute()
 
 const navLinks = [
-  { to: '/admin', label: 'Inicio', exact: true, icon: 'home' },
+  { to: '/admin', label: 'Início', exact: true, icon: 'home' },
   { to: '/admin/receitas', label: 'Receitas', exact: false, icon: 'file-text' },
   { to: '/admin/ingredientes', label: 'Ingredientes', exact: false, icon: 'grain' },
   { to: '/admin/catalogo-compras', label: 'Lista de Compras', exact: false, icon: 'shopping-cart' },
   { to: '/admin/metadados', label: 'Metadados', exact: false, icon: 'tags' },
-  { to: '/admin/configuracoes', label: 'Configuracoes', exact: false, icon: 'settings' },
+  { to: '/admin/configuracoes', label: 'Configurações', exact: false, icon: 'settings' },
 ]
 
 function isActive(link: typeof navLinks[number]) {
@@ -34,12 +34,12 @@ async function handleSignOut() {
             <span aria-hidden="true">A</span>
           </div>
           <div class="admin-brand__text">
-            <span class="admin-brand__eyebrow">Admin</span>
+            <span class="admin-brand__eyebrow">Painel</span>
             <span class="admin-brand__title">Planejador</span>
           </div>
         </NuxtLink>
 
-        <nav class="admin-nav" aria-label="Painel Admin">
+        <nav class="admin-nav" aria-label="Painel administrativo">
           <span class="admin-nav__label">Principal</span>
           <NuxtLink
             v-for="link in navLinks"

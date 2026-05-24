@@ -1,4 +1,5 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
+import type { Ingredient, IngredientHouseholdMeasure } from '../../types/ingredient'
 import type { Recipe, RecipeIngredient, RecipeStep, RecipeTag } from '../../types/recipe'
 import {
   getRecipePracticalityLevel,
@@ -22,8 +23,16 @@ type RecipeRow = {
   type: string | null
   status: 'draft' | 'published' | 'archived'
   image_path: string | null
+  reference_video_url: string | null
+  reference_video_title: string | null
+  reference_video_source: string | null
+  reference_video_notes: string | null
   base_raw_weight_g: number
+  base_clean_weight_g: number | null
   base_ready_weight_g: number
+  cooking_method: string | null
+  correction_factor: number | null
+  cooking_factor: number | null
   base_yield_note: string | null
   cost_level: number | null
   time_level: number | null
@@ -59,6 +68,7 @@ type RecipeRow = {
 type IngredientRow = {
   id: string
   recipe_id: string
+  ingredient_id: string | null
   name: string
   shopping_category: string
   ingredient_role: 'main' | 'complement' | 'critical' | 'seasoning'
@@ -77,6 +87,49 @@ type IngredientRow = {
   purchase_unit: string | null
   package_label: string | null
   buy_in_whole_packages: boolean | null
+  ingredients: MasterIngredientRow | null
+}
+
+type MasterIngredientRow = {
+  id: string
+  name: string
+  slug: string
+  display_name: string | null
+  aliases: string[] | null
+  shopping_category: string
+  default_unit: string
+  is_active: boolean
+  kcal_per_100g: number | null
+  protein_g_per_100g: number | null
+  carbs_g_per_100g: number | null
+  fat_g_per_100g: number | null
+  fiber_g_per_100g: number | null
+  sodium_mg_per_100g: number | null
+  nutrition_source: string | null
+  nutrition_notes: string | null
+  default_rounding_mode: 'up' | 'nearest' | 'manual' | 'none'
+  default_rounding_step: number | null
+  buy_in_whole_packages: boolean
+  package_size_g: number | null
+  package_label: string | null
+  purchase_increment_g: number | null
+  default_correction_factor: number | null
+  edible_portion_percent: number | null
+  correction_notes: string | null
+  notes: string | null
+  sort_order: number
+  ingredient_household_measures: HouseholdMeasureRow[]
+}
+
+type HouseholdMeasureRow = {
+  id: string
+  ingredient_id: string
+  measure_name: string
+  grams_equivalent: number | null
+  ml_equivalent: number | null
+  is_default: boolean
+  notes: string | null
+  sort_order: number
 }
 
 type StepRow = {
@@ -101,8 +154,16 @@ const recipeSelect = `
   type,
   status,
   image_path,
+  reference_video_url,
+  reference_video_title,
+  reference_video_source,
+  reference_video_notes,
   base_raw_weight_g,
+  base_clean_weight_g,
   base_ready_weight_g,
+  cooking_method,
+  correction_factor,
+  cooking_factor,
   base_yield_note,
   cost_level,
   time_level,
@@ -131,6 +192,7 @@ const recipeSelect = `
   recipe_ingredients (
     id,
     recipe_id,
+    ingredient_id,
     name,
     shopping_category,
     ingredient_role,
@@ -148,7 +210,46 @@ const recipeSelect = `
     purchase_increment_g,
     purchase_unit,
     package_label,
-    buy_in_whole_packages
+    buy_in_whole_packages,
+    ingredients (
+      id,
+      name,
+      slug,
+      display_name,
+      aliases,
+      shopping_category,
+      default_unit,
+      is_active,
+      kcal_per_100g,
+      protein_g_per_100g,
+      carbs_g_per_100g,
+      fat_g_per_100g,
+      fiber_g_per_100g,
+      sodium_mg_per_100g,
+      nutrition_source,
+      nutrition_notes,
+      default_rounding_mode,
+      default_rounding_step,
+      buy_in_whole_packages,
+      package_size_g,
+      package_label,
+      purchase_increment_g,
+      default_correction_factor,
+      edible_portion_percent,
+      correction_notes,
+      notes,
+      sort_order,
+      ingredient_household_measures (
+        id,
+        ingredient_id,
+        measure_name,
+        grams_equivalent,
+        ml_equivalent,
+        is_default,
+        notes,
+        sort_order
+      )
+    )
   ),
   recipe_steps (
     id,
@@ -279,8 +380,16 @@ function mapRecipeRow(row: RecipeRow, supabase: SupabaseClient): Recipe {
     status: row.status,
     imagePath: row.image_path,
     imageUrl: resolveRecipeImageUrl(row.image_path, supabase),
+    referenceVideoUrl: row.reference_video_url,
+    referenceVideoTitle: row.reference_video_title,
+    referenceVideoSource: row.reference_video_source,
+    referenceVideoNotes: row.reference_video_notes,
     baseRawWeightG: Number(row.base_raw_weight_g),
+    baseCleanWeightG: toNullableNumber(row.base_clean_weight_g),
     baseReadyWeightG: Number(row.base_ready_weight_g),
+    cookingMethod: row.cooking_method,
+    correctionFactor: toNullableNumber(row.correction_factor),
+    cookingFactor: toNullableNumber(row.cooking_factor),
     baseYieldNote: row.base_yield_note,
     prepTimeMinutes: getRecipePrepTimeMinutes(attributeSource),
     costLevel: row.cost_level,
@@ -331,27 +440,108 @@ function resolveRecipeImageUrl(
 }
 
 function mapIngredientRow(row: IngredientRow): RecipeIngredient {
+  const ingredient = row.ingredients ? mapMasterIngredientRow(row.ingredients) : null
+  const baseQuantity = row.base_quantity === null ? null : Number(row.base_quantity)
+  const unit = row.unit ?? ingredient?.defaultUnit ?? null
+  const isCritical = row.is_critical
+  const isFreeSeasoning = row.is_free_seasoning
+  const roundingStep =
+    row.rounding_step === null
+      ? ingredient?.purchaseRules.defaultRoundingStep ?? null
+      : Number(row.rounding_step)
+  const roundingMode = row.rounding_mode ?? ingredient?.purchaseRules.defaultRoundingMode ?? 'up'
+
   return {
     id: row.id,
     recipeId: row.recipe_id,
+    ingredientId: row.ingredient_id,
+    ingredient,
     name: row.name,
-    shoppingCategory: row.shopping_category,
+    shoppingCategory: ingredient?.shoppingCategory ?? row.shopping_category ?? 'Outros',
     ingredientRole: row.ingredient_role,
-    baseQuantity: row.base_quantity === null ? null : Number(row.base_quantity),
-    unit: row.unit,
-    isCritical: row.is_critical,
-    isFreeSeasoning: row.is_free_seasoning,
+    role: row.ingredient_role,
+    baseQuantity,
+    quantidade: baseQuantity,
+    unit,
+    unidade: unit,
+    isCritical,
+    critical: isCritical,
+    isFreeSeasoning,
+    seasoning: isFreeSeasoning,
     includeInShoppingList: row.include_in_shopping_list,
-    roundingStep: row.rounding_step === null ? null : Number(row.rounding_step),
-    roundingMode: row.rounding_mode,
-    displayName: row.display_name,
+    roundingStep,
+    roundingMode,
+    displayName: row.display_name ?? ingredient?.displayName ?? null,
     notes: row.notes,
     sortOrder: row.sort_order,
-    packageSizeG: row.package_size_g === null ? null : Number(row.package_size_g),
-    purchaseIncrementG: row.purchase_increment_g === null ? null : Number(row.purchase_increment_g),
+    packageSizeG:
+      row.package_size_g === null
+        ? ingredient?.purchaseRules.packageSizeG ?? null
+        : Number(row.package_size_g),
+    purchaseIncrementG:
+      row.purchase_increment_g === null
+        ? ingredient?.purchaseRules.purchaseIncrementG ?? null
+        : Number(row.purchase_increment_g),
     purchaseUnit: row.purchase_unit,
-    packageLabel: row.package_label,
-    buyInWholePackages: row.buy_in_whole_packages,
+    packageLabel: row.package_label ?? ingredient?.purchaseRules.packageLabel ?? null,
+    buyInWholePackages:
+      row.buy_in_whole_packages === null
+        ? ingredient?.purchaseRules.buyInWholePackages ?? null
+        : row.buy_in_whole_packages,
+  }
+}
+
+function mapMasterIngredientRow(row: MasterIngredientRow): Ingredient {
+  return {
+    id: row.id,
+    name: row.name,
+    slug: row.slug,
+    displayName: row.display_name,
+    aliases: row.aliases ?? [],
+    shoppingCategory: row.shopping_category,
+    defaultUnit: row.default_unit,
+    isActive: row.is_active,
+    nutrition: {
+      kcalPer100g: toNullableNumber(row.kcal_per_100g),
+      proteinGPer100g: toNullableNumber(row.protein_g_per_100g),
+      carbsGPer100g: toNullableNumber(row.carbs_g_per_100g),
+      fatGPer100g: toNullableNumber(row.fat_g_per_100g),
+      fiberGPer100g: toNullableNumber(row.fiber_g_per_100g),
+      sodiumMgPer100g: toNullableNumber(row.sodium_mg_per_100g),
+      nutritionSource: row.nutrition_source,
+      nutritionNotes: row.nutrition_notes,
+    },
+    purchaseRules: {
+      defaultRoundingMode: row.default_rounding_mode,
+      defaultRoundingStep: toNullableNumber(row.default_rounding_step),
+      buyInWholePackages: row.buy_in_whole_packages,
+      packageSizeG: toNullableNumber(row.package_size_g),
+      packageLabel: row.package_label,
+      purchaseIncrementG: toNullableNumber(row.purchase_increment_g),
+    },
+    correctionFactors: {
+      defaultCorrectionFactor: toNullableNumber(row.default_correction_factor),
+      ediblePortionPercent: toNullableNumber(row.edible_portion_percent),
+      correctionNotes: row.correction_notes,
+    },
+    notes: row.notes,
+    sortOrder: row.sort_order,
+    householdMeasures: [...(row.ingredient_household_measures ?? [])]
+      .sort((a, b) => a.sort_order - b.sort_order)
+      .map(mapHouseholdMeasureRow),
+  }
+}
+
+function mapHouseholdMeasureRow(row: HouseholdMeasureRow): IngredientHouseholdMeasure {
+  return {
+    id: row.id,
+    ingredientId: row.ingredient_id,
+    measureName: row.measure_name,
+    gramsEquivalent: toNullableNumber(row.grams_equivalent),
+    mlEquivalent: toNullableNumber(row.ml_equivalent),
+    isDefault: row.is_default,
+    notes: row.notes,
+    sortOrder: row.sort_order,
   }
 }
 

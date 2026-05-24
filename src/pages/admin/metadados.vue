@@ -351,15 +351,19 @@ function getErrorMessage(error: unknown, fallback: string) {
         </div>
 
         <div class="admin-row-actions">
-          <button class="secondary-button" type="button" @click="editCategory(category)">Editar</button>
+          <button class="icon-button" type="button" :aria-label="`Editar ${category.name}`" title="Editar" @click="editCategory(category)">
+            <BaseIcon name="edit" />
+          </button>
           <button
             v-if="(categoryUsage[category.id] ?? 0) === 0"
-            class="danger-button"
+            class="icon-button icon-button--danger"
             type="button"
             :disabled="pending"
+            :aria-label="`Excluir ${category.name}`"
+            title="Excluir"
             @click="deleteCategory(category)"
           >
-            Excluir
+            <BaseIcon name="trash" />
           </button>
         </div>
       </article>
@@ -413,15 +417,19 @@ function getErrorMessage(error: unknown, fallback: string) {
         </div>
 
         <div class="admin-row-actions">
-          <button class="secondary-button" type="button" @click="editTag(tag)">Editar</button>
+          <button class="icon-button" type="button" :aria-label="`Editar ${tag.name}`" title="Editar" @click="editTag(tag)">
+            <BaseIcon name="edit" />
+          </button>
           <button
             v-if="(tagUsage[tag.id] ?? 0) === 0"
-            class="danger-button"
+            class="icon-button icon-button--danger"
             type="button"
             :disabled="pending"
+            :aria-label="`Excluir ${tag.name}`"
+            title="Excluir"
             @click="deleteTag(tag)"
           >
-            Excluir
+            <BaseIcon name="trash" />
           </button>
         </div>
       </article>

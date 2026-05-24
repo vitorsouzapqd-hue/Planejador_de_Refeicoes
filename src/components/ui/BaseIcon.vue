@@ -85,6 +85,11 @@ defineProps<{
       <path d="m7 9 5-5 5 5" />
       <path d="M5 20h14" />
     </template>
+    <template v-else-if="name === 'download'">
+      <path d="M12 4v12" />
+      <path d="m7 11 5 5 5-5" />
+      <path d="M5 20h14" />
+    </template>
     <template v-else-if="name === 'grain'">
       <path d="M12 22V3" />
       <path d="M7 7c0 2.8 2.2 5 5 5" />
@@ -174,6 +179,9 @@ defineProps<{
       <circle cx="9" cy="20" r="1" />
       <circle cx="18" cy="20" r="1" />
       <path d="M2 3h3l2.4 12.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L21 7H6" />
+    </template>
+    <template v-else-if="name === 'play'">
+      <path d="M8 5v14l11-7Z" />
     </template>
     <template v-else-if="name === 'wallet'">
       <path d="M19 7V6a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h14a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6" />
@@ -265,6 +273,12 @@ defineProps<{
     <template v-else-if="name === 'arrow-left'">
       <path d="m12 19-7-7 7-7" />
       <path d="M19 12H5" />
+    </template>
+    <template v-else-if="name === 'chevron-up'">
+      <path d="m6 15 6-6 6 6" />
+    </template>
+    <template v-else-if="name === 'chevron-down'">
+      <path d="m6 9 6 6 6-6" />
     </template>
     <template v-else-if="name === 'arrow-right'">
       <path d="m12 5 7 7-7 7" />

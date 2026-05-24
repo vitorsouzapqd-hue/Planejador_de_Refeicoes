@@ -52,7 +52,7 @@ const tabs = computed(() => [
   { value: 'todas', label: 'Todas', count: summary.value.total },
   { value: 'publicadas', label: 'Publicadas', count: summary.value.published },
   { value: 'rascunhos', label: 'Rascunhos', count: summary.value.draft },
-  { value: 'pendencias', label: 'Pendencias', count: summary.value.issues },
+  { value: 'pendencias', label: 'Pendências', count: summary.value.issues },
   { value: 'prontas', label: 'Prontas', count: summary.value.ready },
 ])
 
@@ -93,7 +93,7 @@ async function loadRecipes() {
     recipes.value = recipeList
     categories.value = categoryList
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel carregar as receitas.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível carregar as receitas.')
     recipes.value = []
     categories.value = []
   } finally {
@@ -124,7 +124,7 @@ async function setStatus(recipe: AdminRecipe, status: RecipeStatus) {
         ? 'Receita arquivada.'
         : 'Receita voltou para rascunho.'
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel atualizar o status da receita.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível atualizar a situação da receita.')
   } finally {
     actionPendingId.value = null
   }
@@ -139,7 +139,7 @@ async function duplicate(recipe: AdminRecipe) {
     const newId = await duplicateRecipe(recipe.id)
     navigateTo(`/admin/receitas/${newId}`)
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel duplicar a receita.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível duplicar a receita.')
   } finally {
     actionPendingId.value = null
   }
@@ -196,7 +196,7 @@ function getErrorMessage(error: unknown, fallback: string) {
         <p class="admin-page-header__kicker">Receitas</p>
         <h1 class="admin-page-header__title">Gerenciar receitas</h1>
         <p class="admin-page-header__sub">
-          Controle publicacao, imagem, ingredientes, rendimento, preparo e tudo que aparece para o aluno.
+          Controle publicação, imagem, ingredientes, rendimento, preparo e tudo que aparece para o aluno.
         </p>
       </div>
       <NuxtLink class="primary-button" to="/admin/receitas/nova">
@@ -206,10 +206,10 @@ function getErrorMessage(error: unknown, fallback: string) {
     </section>
 
     <section class="admin-summary-row" aria-label="Resumo das receitas">
-      <article class="admin-summary-card"><strong>{{ summary.total }}</strong><span>receitas no catalogo</span></article>
+      <article class="admin-summary-card"><strong>{{ summary.total }}</strong><span>receitas no catálogo</span></article>
       <article class="admin-summary-card"><strong>{{ summary.published }}</strong><span>publicadas</span></article>
       <article class="admin-summary-card"><strong>{{ summary.draft }}</strong><span>rascunhos</span></article>
-      <article class="admin-summary-card"><strong>{{ summary.issues }}</strong><span>com pendencia</span></article>
+      <article class="admin-summary-card"><strong>{{ summary.issues }}</strong><span>com pendência</span></article>
     </section>
 
     <p v-if="errorMessage" class="form-error">{{ errorMessage }}</p>
@@ -236,7 +236,7 @@ function getErrorMessage(error: unknown, fallback: string) {
         </div>
 
         <div class="field">
-          <label for="recipe-status-filter">Status</label>
+          <label for="recipe-status-filter">Situação</label>
           <select id="recipe-status-filter" v-model="statusFilter">
             <option value="todos">Todos</option>
             <option value="draft">Rascunho</option>
@@ -293,10 +293,10 @@ function getErrorMessage(error: unknown, fallback: string) {
     <section v-else class="admin-table-card">
       <div class="admin-table-head admin-table-head--recipes">
         <div>Receita</div>
-        <div>Status</div>
+        <div>Situação</div>
         <div>Categoria</div>
         <div>Completude</div>
-        <div>Acoes</div>
+        <div>Ações</div>
       </div>
 
       <article v-for="recipe in filteredRecipes" :key="recipe.id" class="admin-recipe-row">
@@ -334,12 +334,12 @@ function getErrorMessage(error: unknown, fallback: string) {
             {{ recipe.hasSteps ? 'Com preparo' : 'Sem passos' }}
           </span>
           <span :class="recipe.referenceVideoUrl ? 'admin-flag--ok' : ''">
-            {{ recipe.referenceVideoUrl ? 'Com video' : 'Sem video' }}
+            {{ recipe.referenceVideoUrl ? 'Com vídeo' : 'Sem vídeo' }}
           </span>
         </div>
 
         <div class="admin-row-actions">
-          <NuxtLink class="icon-button" :to="`/admin/receitas/${recipe.id}`" :aria-label="`Editar ${recipe.name}`">
+          <NuxtLink class="icon-button" :to="`/admin/receitas/${recipe.id}`" :aria-label="`Editar ${recipe.name}`" title="Editar">
             <BaseIcon name="edit" />
           </NuxtLink>
           <button
@@ -348,6 +348,7 @@ function getErrorMessage(error: unknown, fallback: string) {
             type="button"
             :disabled="actionPendingId === recipe.id"
             :aria-label="`Publicar ${recipe.name}`"
+            title="Publicar"
             @click="setStatus(recipe, 'published')"
           >
             <BaseIcon name="check" />
@@ -358,6 +359,7 @@ function getErrorMessage(error: unknown, fallback: string) {
             type="button"
             :disabled="actionPendingId === recipe.id"
             :aria-label="`Arquivar ${recipe.name}`"
+            title="Arquivar"
             @click="setStatus(recipe, 'archived')"
           >
             <BaseIcon name="archive" />
@@ -367,6 +369,7 @@ function getErrorMessage(error: unknown, fallback: string) {
             type="button"
             :disabled="actionPendingId === recipe.id"
             :aria-label="`Duplicar ${recipe.name}`"
+            title="Duplicar"
             @click="duplicate(recipe)"
           >
             <BaseIcon name="copy" />

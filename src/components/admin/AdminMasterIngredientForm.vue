@@ -9,6 +9,7 @@ import {
   ingredientShoppingCategories,
   roundingModes,
 } from '../../composables/useAdminIngredients'
+import { hasCompoundShoppingName } from '../../services/shoppingIngredientIdentity'
 
 type EditableMeasure = AdminIngredientMeasureInput & {
   localId: string
@@ -186,6 +187,9 @@ function normalizeMeasures(): AdminIngredientMeasureInput[] {
 function getValidationError() {
   if (!form.name.trim()) return 'Informe o nome do ingrediente.'
   if (!form.slug.trim()) return 'Informe o slug do ingrediente.'
+  if (hasCompoundShoppingName(form.displayName || form.name)) {
+    return 'Ingrediente mestre precisa ser um item individual de compra. Separe nomes compostos em ingredientes diferentes.'
+  }
   if (!form.shoppingCategory) return 'Escolha a categoria de compra.'
   if (!form.defaultUnit.trim()) return 'Informe a unidade padrão.'
   if (Number(form.sortOrder) < 0) return 'A ordem precisa ser maior ou igual a zero.'
@@ -259,6 +263,17 @@ function slugify(value: string) {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '')
 }
+
+function getRoundingModeLabel(mode: string) {
+  const labels: Record<string, string> = {
+    up: 'Arredondar para cima',
+    nearest: 'Mais próximo',
+    manual: 'Manual',
+    none: 'Sem arredondamento',
+  }
+
+  return labels[mode] ?? mode
+}
 </script>
 
 <template>
@@ -312,7 +327,7 @@ function slugify(value: string) {
       </div>
 
       <div class="field">
-        <label for="ingredient-aliases">Aliases/sinônimos</label>
+        <label for="ingredient-aliases">Apelidos/sinônimos</label>
         <input id="ingredient-aliases" v-model="aliasesText" type="text" placeholder="separe por vírgulas">
       </div>
 
@@ -394,14 +409,34 @@ function slugify(value: string) {
         <div class="admin-nested-card__top">
           <strong>Medida {{ index + 1 }}</strong>
           <div class="admin-row-actions">
-            <button class="secondary-button" type="button" :disabled="index === 0" @click="moveMeasure(index, -1)">
-              Subir
+            <button
+              class="icon-button"
+              type="button"
+              :disabled="index === 0"
+              :aria-label="`Subir medida ${index + 1}`"
+              title="Subir"
+              @click="moveMeasure(index, -1)"
+            >
+              <BaseIcon name="chevron-up" />
             </button>
-            <button class="secondary-button" type="button" :disabled="index === measures.length - 1" @click="moveMeasure(index, 1)">
-              Descer
+            <button
+              class="icon-button"
+              type="button"
+              :disabled="index === measures.length - 1"
+              :aria-label="`Descer medida ${index + 1}`"
+              title="Descer"
+              @click="moveMeasure(index, 1)"
+            >
+              <BaseIcon name="chevron-down" />
             </button>
-            <button class="secondary-button" type="button" @click="removeMeasure(index)">
-              Remover
+            <button
+              class="icon-button icon-button--danger"
+              type="button"
+              :aria-label="`Remover medida ${index + 1}`"
+              title="Remover"
+              @click="removeMeasure(index)"
+            >
+              <BaseIcon name="trash" />
             </button>
           </div>
         </div>
@@ -443,7 +478,7 @@ function slugify(value: string) {
           <label for="ingredient-rounding-mode">Modo de arredondamento padrão</label>
           <select id="ingredient-rounding-mode" v-model="form.defaultRoundingMode">
             <option v-for="mode in roundingModes" :key="mode" :value="mode">
-              {{ mode }}
+              {{ getRoundingModeLabel(mode) }}
             </option>
           </select>
         </div>
@@ -479,11 +514,6 @@ function slugify(value: string) {
           <label for="ingredient-purchase-increment">Incremento de compra em gramas</label>
           <input id="ingredient-purchase-increment" v-model.number="form.purchaseIncrementG" type="number" min="0" step="0.1">
         </div>
-      </div>
-
-      <div class="field">
-        <label for="ingredient-buy-notes">Observações de compra</label>
-        <textarea id="ingredient-buy-notes" v-model="form.notes" rows="2" />
       </div>
     </section>
 

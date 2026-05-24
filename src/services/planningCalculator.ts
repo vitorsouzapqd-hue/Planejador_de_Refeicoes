@@ -9,6 +9,7 @@ import type {
   ShoppingListItem,
 } from '../types/planner'
 import type { RecipeIngredient, RoundingMode } from '../types/recipe'
+import { expandShoppingIngredient } from './shoppingIngredientIdentity'
 
 type CompletePlanningLine = {
   weightReadyG: number
@@ -101,61 +102,64 @@ export function consolidateShoppingList(
     const rawNeeded = calculateRawNeeded(readyWeight, recipe.baseRawWeightG, recipe.baseReadyWeightG)
     const recipeScale = rawNeeded / recipe.baseRawWeightG
 
-    for (const ingredient of recipe.ingredients) {
-      if (!ingredient.includeInShoppingList) continue
+    for (const sourceIngredient of recipe.ingredients) {
+      const ingredientFragments = expandShoppingIngredient(sourceIngredient)
 
-      const scaled =
-        ingredient.ingredientRole === 'main'
-          ? {
-              ingredient,
-              quantity: rawNeeded,
-              displayQuantity: null,
-              unit: ingredient.unit,
-            }
-          : scaleIngredient(ingredient, recipeScale)
+      for (const { ingredient, quantityShare } of ingredientFragments) {
+        if (!ingredient.includeInShoppingList) continue
 
-      const displayName = ingredient.displayName ?? ingredient.name
-      const shoppingCategory = normalizeShoppingCategory(ingredient.shoppingCategory, ingredient)
-      const key = [
-        shoppingCategory,
-        normalizeKey(displayName),
-        ingredient.unit ?? '',
-        ingredient.ingredientRole,
-        ingredient.isFreeSeasoning ? 'free-seasoning' : 'measured',
-      ].join('|')
+        const scaled =
+          ingredient.ingredientRole === 'main'
+            ? {
+                ingredient,
+                quantity: rawNeeded * getMainIngredientQuantityShare(
+                  ingredient,
+                  recipe.baseRawWeightG,
+                  quantityShare,
+                ),
+                displayQuantity: null,
+                unit: ingredient.unit,
+              }
+            : scaleIngredient(ingredient, recipeScale)
 
-      const existing = items.get(key)
+        const displayName = ingredient.displayName ?? ingredient.name
+        const shoppingCategory = normalizeShoppingCategory(ingredient.shoppingCategory, ingredient)
+        const key = buildShoppingKey(ingredient, shoppingCategory, displayName)
 
-      if (existing) {
-        existing.rawQuantity =
-          existing.rawQuantity === null || scaled.quantity === null
-            ? null
-            : existing.rawQuantity + scaled.quantity
-        existing.quantity = existing.rawQuantity
-        existing.isCritical = existing.isCritical || ingredient.isCritical
-        continue
+        const existing = items.get(key)
+
+        if (existing) {
+          existing.rawQuantity =
+            existing.rawQuantity === null || scaled.quantity === null
+              ? null
+              : existing.rawQuantity + scaled.quantity
+          existing.quantity = existing.rawQuantity
+          existing.isCritical = existing.isCritical || ingredient.isCritical
+          continue
+        }
+
+        const packageConfig = getWholePackageConfig(ingredient)
+
+        items.set(key, {
+          key,
+          ingredientId: ingredient.ingredientId,
+          name: ingredient.name,
+          displayName,
+          shoppingCategory,
+          ingredientRole: ingredient.ingredientRole,
+          quantity: scaled.quantity,
+          rawQuantity: scaled.quantity,
+          unit: scaled.unit,
+          isCritical: ingredient.isCritical,
+          isFreeSeasoning: ingredient.isFreeSeasoning,
+          notes: ingredient.notes,
+          roundingStep: ingredient.roundingStep,
+          roundingMode: ingredient.roundingMode,
+          packageSizeG: packageConfig?.packageSizeG ?? null,
+          packageLabel: packageConfig?.packageLabel ?? null,
+          buyInWholePackages: Boolean(packageConfig),
+        })
       }
-
-      const packageConfig = getWholePackageConfig(ingredient)
-
-      items.set(key, {
-        key,
-        name: ingredient.name,
-        displayName,
-        shoppingCategory,
-        ingredientRole: ingredient.ingredientRole,
-        quantity: scaled.quantity,
-        rawQuantity: scaled.quantity,
-        unit: scaled.unit,
-        isCritical: ingredient.isCritical,
-        isFreeSeasoning: ingredient.isFreeSeasoning,
-        notes: ingredient.notes,
-        roundingStep: ingredient.roundingStep,
-        roundingMode: ingredient.roundingMode,
-        packageSizeG: packageConfig?.packageSizeG ?? null,
-        packageLabel: packageConfig?.packageLabel ?? null,
-        buyInWholePackages: Boolean(packageConfig),
-      })
     }
   }
 
@@ -176,6 +180,7 @@ export function consolidateShoppingList(
 
     const finalItem: ShoppingListItem = {
       key: item.key,
+      ingredientId: item.ingredientId,
       name: item.name,
       displayName: item.displayName,
       shoppingCategory: item.shoppingCategory,
@@ -291,6 +296,7 @@ export function generatePreparationRecipes(
 ): PreparationRecipeResult[] {
   return planningGroups.flatMap((group) =>
     group.recipes.map((planningRecipe) => {
+      const completeLines = getCompleteLines(planningRecipe.lines)
       const readyWeightG = calculateReadyWeight(planningRecipe.lines)
       const rawNeededG = calculateRawNeeded(
         readyWeightG,
@@ -306,12 +312,40 @@ export function generatePreparationRecipes(
         mainIngredient ? getWholePackageConfig(mainIngredient) : null,
       )
       const recipeScale = rawNeededG / planningRecipe.recipe.baseRawWeightG
+      const mainIngredientName = getMainIngredientName(planningRecipe.recipe.ingredients)
+      const yieldNote =
+        planningRecipe.recipe.baseYieldNote ??
+        'Rendimento estimado com base na receita cadastrada.'
+      const transformationStages = [
+        {
+          label: 'cru',
+          quantityG: rawNeededG,
+        },
+        ...(planningRecipe.recipe.baseCleanWeightG
+          ? [
+              {
+                label: 'limpo',
+                quantityG: planningRecipe.recipe.baseCleanWeightG * recipeScale,
+              },
+            ]
+          : []),
+        {
+          label: 'pronto',
+          quantityG: readyWeightG,
+        },
+      ]
       const scaledIngredients = planningRecipe.recipe.ingredients
         .filter((ingredient) => ingredient.includeInShoppingList)
-        .map((ingredient) => {
+        .flatMap((ingredient) => expandShoppingIngredient(ingredient))
+        .map(({ ingredient, quantityShare }) => {
           if (ingredient.ingredientRole === 'main') {
+            const mainIngredientShare = getMainIngredientQuantityShare(
+              ingredient,
+              planningRecipe.recipe.baseRawWeightG,
+              quantityShare,
+            )
             const roundedPurchase = applyPurchaseRounding(
-              rawNeededG,
+              rawNeededG * mainIngredientShare,
               ingredient.unit,
               ingredient.roundingStep,
               ingredient.roundingMode,
@@ -320,7 +354,7 @@ export function generatePreparationRecipes(
 
             return {
               ingredient,
-              quantity: rawNeededG,
+              quantity: rawNeededG * mainIngredientShare,
               displayQuantity: roundedPurchase.quantity,
               unit: ingredient.unit,
             }
@@ -328,20 +362,30 @@ export function generatePreparationRecipes(
 
           return scaleIngredient(ingredient, recipeScale)
         })
+      const mainScaledIngredients = scaledIngredients.filter((scaledIngredient) => {
+        return scaledIngredient.ingredient.ingredientRole === 'main' && !scaledIngredient.ingredient.isFreeSeasoning
+      })
+      const mainPurchaseText = mainScaledIngredients.length
+        ? mainScaledIngredients.map((scaledIngredient) => formatScaledIngredient(scaledIngredient)).join('; ')
+        : formatMainPurchase(roundedRawNeededG, mainIngredientName ?? 'ingrediente principal cru')
+      const rawPurchaseG = mainScaledIngredients.length
+        ? mainScaledIngredients.reduce((total, scaledIngredient) => {
+            return total + (scaledIngredient.displayQuantity ?? scaledIngredient.quantity ?? 0)
+          }, 0)
+        : roundedRawNeededG.quantity ?? rawNeededG
 
       const textLines: string[] = [
         planningRecipe.recipe.name,
         '',
         'Você vai preparar:',
-        ...getCompleteLines(planningRecipe.lines).map(
+        ...completeLines.map(
           (line) => `- ${line.portions} porções de ${line.weightReadyG}g`,
         ),
         '',
         `Total pronto necessário: ${formatQuantity(readyWeightG, 'g')}`,
-        `Compra sugerida: ${formatMainPurchase(
-          roundedRawNeededG,
-          getMainIngredientName(planningRecipe.recipe.ingredients) ?? 'ingrediente principal cru',
-        )}`,
+        `Compre aproximadamente: ${mainPurchaseText}`,
+        `Rendimento estimado: ${formatTransformationStages(transformationStages)}.`,
+        yieldNote,
         '',
         'Ingredientes:',
         ...scaledIngredients.map((scaledIngredient) => `- ${formatScaledIngredient(scaledIngredient)}`),
@@ -350,7 +394,7 @@ export function generatePreparationRecipes(
         ...planningRecipe.recipe.steps.map((step) => `${step.stepNumber}. ${step.instruction}`),
         '',
         planningRecipe.recipe.lockedRecipeWarning ??
-          'Siga a receita como está. Não adicione óleo, azeite, creme, requeijão, queijo, molhos ou ingredientes extras fora da receita.',
+          'Use o peso pronto que aparece na sua dieta para definir as porções. O preparo pode ser ajustado mantendo as quantidades proporcionais.',
         'Depois de pronto, pese a preparação antes de separar as porções.',
       ]
 
@@ -359,8 +403,24 @@ export function generatePreparationRecipes(
         groupSlug: group.groupSlug,
         groupName: group.groupName,
         recipeName: planningRecipe.recipe.name,
+        recipeSlug: planningRecipe.recipe.slug,
+        imagePath: planningRecipe.recipe.imagePath,
+        imageUrl: planningRecipe.recipe.imageUrl,
+        referenceVideoUrl: planningRecipe.recipe.referenceVideoUrl,
+        referenceVideoTitle: planningRecipe.recipe.referenceVideoTitle,
+        referenceVideoSource: planningRecipe.recipe.referenceVideoSource,
+        referenceVideoNotes: planningRecipe.recipe.referenceVideoNotes,
+        lockedRecipeWarning: planningRecipe.recipe.lockedRecipeWarning,
+        lines: completeLines,
         readyWeightG,
-        rawNeededG: roundedRawNeededG.quantity ?? rawNeededG,
+        rawNeededG,
+        rawPurchaseG,
+        mainIngredientName,
+        baseRawWeightG: planningRecipe.recipe.baseRawWeightG,
+        baseReadyWeightG: planningRecipe.recipe.baseReadyWeightG,
+        baseYieldNote: planningRecipe.recipe.baseYieldNote,
+        yieldNote,
+        transformationStages,
         text: textLines.join('\n').trim(),
       }
     }),
@@ -392,9 +452,9 @@ export function generatePortioningText(planningGroups: PlanningGroupWithData[]):
 
   lines.push(`Total: ${totalPortions} porções`)
   lines.push('')
-  lines.push('Se render menos do que o esperado, não reduza o peso das porções para fazer render. Separe as porções no peso planejado.')
+  lines.push('Se render menos do que o esperado, separe as porções no peso planejado.')
   lines.push('')
-  lines.push('Se sobrar preparação pronta, guarde como porção extra. Não aumente o peso das porções planejadas.')
+  lines.push('Se sobrar preparação pronta, guarde como porção extra e mantenha o peso planejado para cada porção.')
 
   return lines.join('\n').trim()
 }
@@ -422,6 +482,8 @@ function applyPurchaseRounding(
     return {
       quantity: null,
       packageCount: null,
+      packageSizeG: null,
+      packageLabel: null,
     }
   }
 
@@ -431,26 +493,31 @@ function applyPurchaseRounding(
     return {
       quantity: packageCount * packageConfig.packageSizeG,
       packageCount,
+      packageSizeG: packageConfig.packageSizeG,
+      packageLabel: packageConfig.packageLabel,
     }
   }
 
   return {
     quantity: applyRounding(value, step, mode),
     packageCount: null,
+    packageSizeG: null,
+    packageLabel: null,
   }
 }
 
 function formatShoppingItem(item: ShoppingListItem): string {
+  if (item.isFreeSeasoning) return `${item.displayName} à gosto`
   if (item.quantity === null) return item.displayName
 
   if (item.packageCount && item.packageSizeG && item.packageLabel && item.unit === 'g') {
-    const suffix = item.isCritical ? ' (não aumentar)' : ''
+    const suffix = item.isCritical ? ' (medir com atenção)' : ''
 
-    return `${formatQuantity(item.quantity, item.unit)} de ${item.displayName} (${item.packageCount} ${pluralizePackageLabel(item.packageLabel, item.packageCount)} de ${formatQuantity(item.packageSizeG, 'g')})${suffix}`
+    return `${formatQuantity(item.quantity, item.unit)} de ${item.displayName} (${formatPackageCount(item.packageCount, item.packageLabel, item.packageSizeG)})${suffix}`
   }
 
   const quantity = formatQuantity(item.quantity, item.unit)
-  const suffix = item.isCritical ? ' (não aumentar)' : ''
+  const suffix = item.isCritical ? ' (medir com atenção)' : ''
 
   return `${quantity} de ${item.displayName}${suffix}`
 }
@@ -461,7 +528,7 @@ function formatScaledIngredient(scaledIngredient: ScaledIngredient): string {
 
   if (ingredient.isFreeSeasoning || displayQuantity === null) return `${displayName} à gosto`
 
-  const suffix = ingredient.isCritical ? ' (não aumentar)' : ''
+  const suffix = ingredient.isCritical ? ' (medir com atenção)' : ''
 
   return `${formatQuantity(displayQuantity, unit)} de ${displayName}${suffix}`
 }
@@ -472,6 +539,12 @@ function formatQuantity(quantity: number, unit: string | null): string {
   if (!unit) return formatDecimal(quantity)
 
   return `${formatDecimal(quantity)} ${unit}`
+}
+
+function formatTransformationStages(stages: Array<{ label: string; quantityG: number }>): string {
+  return stages
+    .map((stage) => `${formatQuantity(stage.quantityG, 'g')} ${stage.label}`)
+    .join(' -> ')
 }
 
 function formatDecimal(value: number): string {
@@ -513,6 +586,18 @@ function getMainIngredient(ingredients: RecipeIngredient[]): RecipeIngredient | 
   return ingredients.find((ingredient) => ingredient.ingredientRole === 'main') ?? null
 }
 
+function getMainIngredientQuantityShare(
+  ingredient: RecipeIngredient,
+  baseRawWeightG: number,
+  fallbackShare: number,
+) {
+  if (ingredient.baseQuantity !== null && ingredient.baseQuantity > 0 && baseRawWeightG > 0) {
+    return ingredient.baseQuantity / baseRawWeightG
+  }
+
+  return fallbackShare
+}
+
 function getWholePackageConfig(ingredient: RecipeIngredient): WholePackageConfig | null {
   if (ingredient.buyInWholePackages && ingredient.packageSizeG && ingredient.packageSizeG > 0) {
     return {
@@ -521,25 +606,21 @@ function getWholePackageConfig(ingredient: RecipeIngredient): WholePackageConfig
     }
   }
 
-  const normalizedName = normalizeKey(ingredient.displayName ?? ingredient.name)
-
-  if (ingredient.ingredientRole === 'main' && normalizedName.includes('peito de frango') && ingredient.unit === 'g') {
-    return {
-      packageSizeG: 1000,
-      packageLabel: 'pacote',
-    }
-  }
-
   return null
 }
 
 function formatMainPurchase(
-  purchase: { quantity: number | null; packageCount: number | null },
+  purchase: {
+    quantity: number | null
+    packageCount: number | null
+    packageSizeG?: number | null
+    packageLabel?: string | null
+  },
   ingredientName: string,
 ) {
   if (purchase.quantity === null) return ingredientName
-  if (purchase.packageCount) {
-    return `${formatQuantity(purchase.quantity, 'g')} de ${ingredientName} (${purchase.packageCount} ${pluralizePackageLabel('pacote', purchase.packageCount)} de 1kg)`
+  if (purchase.packageCount && purchase.packageSizeG && purchase.packageLabel) {
+    return `${formatQuantity(purchase.quantity, 'g')} de ${ingredientName} (${formatPackageCount(purchase.packageCount, purchase.packageLabel, purchase.packageSizeG)})`
   }
 
   return `${formatQuantity(purchase.quantity, 'g')} de ${ingredientName}`
@@ -547,9 +628,43 @@ function formatMainPurchase(
 
 function pluralizePackageLabel(label: string, count: number) {
   if (count === 1) return label
+  if (label.startsWith('pacote de ')) return label.replace(/^pacote de /, 'pacotes de ')
+  if (label.startsWith('unidade de ')) return label.replace(/^unidade de /, 'unidades de ')
   if (label.endsWith('s')) return label
 
   return `${label}s`
+}
+
+function formatPackageCount(count: number, label: string, packageSizeG: number) {
+  const pluralLabel = pluralizePackageLabel(label, count)
+  const normalizedLabel = normalizeKey(label)
+
+  if (normalizedLabel.includes('kg') || normalizedLabel.includes('g')) {
+    return `${count} ${pluralLabel}`
+  }
+
+  return `${count} ${pluralLabel} de ${formatQuantity(packageSizeG, 'g')}`
+}
+
+function buildShoppingKey(
+  ingredient: RecipeIngredient,
+  shoppingCategory: string,
+  displayName: string,
+) {
+  const quantityMode = ingredient.isFreeSeasoning ? 'free-seasoning' : 'measured'
+  const unit = ingredient.isFreeSeasoning ? 'free' : ingredient.unit ?? ''
+
+  if (ingredient.ingredientId) {
+    return ['ingredient', ingredient.ingredientId, unit, quantityMode].join('|')
+  }
+
+  return [
+    'fallback',
+    normalizeKey(displayName),
+    normalizeKey(shoppingCategory),
+    unit,
+    quantityMode,
+  ].join('|')
 }
 
 function normalizeShoppingCategory(category: string, ingredient: RecipeIngredient): string {

@@ -48,6 +48,7 @@ export type ScaledIngredient = {
 
 export type ShoppingListItem = {
   key: string
+  ingredientId?: string | null
   name: string
   displayName: string
   shoppingCategory: string
@@ -84,8 +85,30 @@ export type PreparationRecipeResult = {
   groupSlug: PlanningGroupSlug
   groupName: string
   recipeName: string
+  recipeSlug: string
+  imagePath: string | null
+  imageUrl?: string | null
+  referenceVideoUrl?: string | null
+  referenceVideoTitle?: string | null
+  referenceVideoSource?: string | null
+  referenceVideoNotes?: string | null
+  lockedRecipeWarning?: string | null
+  lines: Array<{
+    weightReadyG: number
+    portions: number
+  }>
   readyWeightG: number
   rawNeededG: number
+  rawPurchaseG: number
+  mainIngredientName: string | null
+  baseRawWeightG: number
+  baseReadyWeightG: number
+  baseYieldNote: string | null
+  yieldNote: string
+  transformationStages: Array<{
+    label: string
+    quantityG: number
+  }>
   text: string
 }
 

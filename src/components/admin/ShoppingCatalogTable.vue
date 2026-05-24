@@ -16,7 +16,7 @@ defineEmits<{
   <section v-if="pending" class="admin-card">
     <div class="admin-loading-state">
       <div class="admin-spinner" aria-hidden="true" />
-      <p>Carregando Lista de Compras...</p>
+        <p>Carregando Lista de Compras...</p>
     </div>
   </section>
 
@@ -34,10 +34,10 @@ defineEmits<{
   <section v-else class="admin-table-card">
     <div class="admin-table-head admin-table-head--catalog">
       <div>Item</div>
-      <div>Status</div>
+      <div>Situação</div>
       <div>Tipo</div>
-      <div>Vinculo</div>
-      <div>Acoes</div>
+      <div>Vínculo</div>
+      <div>Ações</div>
     </div>
 
     <article
@@ -71,7 +71,7 @@ defineEmits<{
       </div>
 
       <div class="admin-row-actions">
-        <NuxtLink class="icon-button" :to="`/admin/catalogo-compras/${item.id}`" :aria-label="`Editar ${item.displayName ?? item.name}`">
+        <NuxtLink class="icon-button" :to="`/admin/catalogo-compras/${item.id}`" :aria-label="`Editar ${item.displayName ?? item.name}`" title="Editar">
           <BaseIcon name="edit" />
         </NuxtLink>
         <button
@@ -79,6 +79,7 @@ defineEmits<{
           class="icon-button"
           type="button"
           :aria-label="`Desativar ${item.displayName ?? item.name}`"
+          title="Desativar"
           @click="$emit('deactivate', item)"
         >
           <BaseIcon name="archive" />
@@ -88,6 +89,7 @@ defineEmits<{
           class="icon-button"
           type="button"
           :aria-label="`Ativar ${item.displayName ?? item.name}`"
+          title="Ativar"
           @click="$emit('activate', item)"
         >
           <BaseIcon name="check" />

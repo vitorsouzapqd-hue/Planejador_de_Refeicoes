@@ -1,0 +1,148 @@
+@media (min-width: 700px) {
+  .recipe-modal {
+    align-items: center;
+  }
+
+  .app-frame {
+    min-height: calc(100vh - 32px);
+    margin-block: 16px;
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  .bottom-nav {
+    bottom: 16px;
+    border-radius: 0 0 18px 18px;
+  }
+
+  .sticky-action {
+    bottom: 89px;
+  }
+
+  .flow-action-bar {
+    bottom: 89px;
+    border-radius: 0 0 18px 18px;
+  }
+
+  .result-section__header {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+
+  .recipe-detail__hero {
+    grid-template-columns: 180px 1fr;
+    align-items: start;
+  }
+
+  .recipe-detail__media,
+  .recipe-detail__image,
+  .recipe-detail__image-placeholder {
+    min-height: 180px;
+  }
+
+  .admin-shell {
+    grid-template-columns: 260px 1fr;
+  }
+
+  .admin-sidebar {
+    min-height: 100vh;
+    border-right: 1px solid var(--color-border);
+    border-bottom: 0;
+  }
+
+  .admin-main {
+    padding: var(--space-6);
+  }
+
+  .admin-page-header {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+
+  .admin-stat-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .admin-alert-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .admin-recipe-row {
+    grid-template-columns: 72px minmax(180px, 1fr) auto minmax(180px, auto) auto;
+    align-items: center;
+  }
+
+  .admin-ingredient-row {
+    grid-template-columns: minmax(220px, 1fr) minmax(260px, auto) auto;
+    align-items: center;
+  }
+
+  .admin-home-grid,
+  .admin-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-form-grid--four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .admin-editor-header,
+  .admin-nested-card__top,
+  .preparation-card__header {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+
+  .admin-boolean-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .admin-image-uploader {
+    grid-template-columns: 240px 1fr;
+    align-items: start;
+  }
+
+  .admin-image-preview,
+  .admin-image-preview img {
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 390px) {
+  .recipe-card__button {
+    grid-template-columns: 96px 1fr;
+  }
+
+  .attribute-bars {
+    grid-template-columns: 104px minmax(36px, 1fr);
+  }
+
+  .sticky-action__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .sticky-action__buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .planning-type-card {
+    grid-template-columns: 48px 1fr;
+  }
+
+  .planning-type-card__status {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .flow-action-bar__inner,
+  .flow-action-bar__buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+

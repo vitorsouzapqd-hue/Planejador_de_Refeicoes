@@ -33,7 +33,7 @@ async function loadMeta() {
     categories.value = categoryList
     tags.value = tagList
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel carregar categorias e tags.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível carregar categorias e tags.')
   } finally {
     loadingMeta.value = false
   }
@@ -46,14 +46,14 @@ async function submitRecipe(input: AdminRecipeInput) {
   try {
     const slugIsAvailable = await isRecipeSlugAvailable(input.slug)
     if (!slugIsAvailable) {
-      errorMessage.value = 'Esse slug ja esta em uso. Ajuste o slug antes de salvar.'
+      errorMessage.value = 'Esse slug já está em uso. Ajuste o slug antes de salvar.'
       return
     }
 
     const id = await createRecipe(input)
     navigateTo(`/admin/receitas/${id}`)
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel criar a receita.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível criar a receita.')
   } finally {
     pending.value = false
   }

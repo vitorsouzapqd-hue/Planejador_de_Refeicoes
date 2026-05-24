@@ -1,3 +1,5 @@
+import type { Ingredient } from './ingredient'
+
 export type RecipeStatus = 'draft' | 'published' | 'archived'
 
 export type IngredientRole = 'main' | 'complement' | 'critical' | 'seasoning'
@@ -22,13 +24,20 @@ export type RecipeTag = {
 export type RecipeIngredient = {
   id: string
   recipeId: string
+  ingredientId?: string | null
+  ingredient?: Ingredient | null
   name: string
   shoppingCategory: string
   ingredientRole: IngredientRole
+  role?: IngredientRole
   baseQuantity: number | null
+  quantidade?: number | null
   unit: string | null
+  unidade?: string | null
   isCritical: boolean
+  critical?: boolean
   isFreeSeasoning: boolean
+  seasoning?: boolean
   includeInShoppingList: boolean
   roundingStep: number | null
   roundingMode: RoundingMode
@@ -70,8 +79,16 @@ export type Recipe = {
   status: RecipeStatus
   imagePath: string | null
   imageUrl?: string | null
+  referenceVideoUrl?: string | null
+  referenceVideoTitle?: string | null
+  referenceVideoSource?: string | null
+  referenceVideoNotes?: string | null
   baseRawWeightG: number
+  baseCleanWeightG?: number | null
   baseReadyWeightG: number
+  cookingMethod?: string | null
+  correctionFactor?: number | null
+  cookingFactor?: number | null
   baseYieldNote: string | null
   prepTimeMinutes: number | null
   costLevel: number | null

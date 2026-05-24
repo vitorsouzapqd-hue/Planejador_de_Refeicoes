@@ -5,7 +5,14 @@ import { useAdminAuth } from '../../composables/useAdminAuth'
 
 const email = ref('')
 const password = ref('')
-const { authPending, authError, loadAdminSession, signIn } = useAdminAuth()
+const {
+  authPending,
+  authError,
+  confirmationSent,
+  loadAdminSession,
+  resendConfirmation,
+  signIn,
+} = useAdminAuth()
 
 onMounted(async () => {
   const session = await loadAdminSession()
@@ -16,13 +23,17 @@ async function submitLogin() {
   const success = await signIn(email.value, password.value)
   if (success) navigateTo('/admin')
 }
+
+async function submitResendConfirmation() {
+  await resendConfirmation(email.value)
+}
 </script>
 
 <template>
   <main class="admin-login">
     <section class="admin-login__panel">
       <div>
-        <p class="hero-panel__kicker">Admin</p>
+        <p class="hero-panel__kicker">Painel</p>
         <h1>Entrar no painel</h1>
         <p>Use seu acesso administrativo do Supabase Auth.</p>
       </div>
@@ -39,9 +50,21 @@ async function submitLogin() {
         </div>
 
         <p v-if="authError" class="form-error">{{ authError }}</p>
+        <p v-if="confirmationSent" class="admin-success-message">
+          E-mail de confirmação reenviado. Abra sua caixa de entrada e confirme o acesso antes de entrar.
+        </p>
 
         <button class="primary-button" type="submit" :disabled="authPending">
           {{ authPending ? 'Entrando...' : 'Entrar' }}
+        </button>
+
+        <button
+          class="secondary-button"
+          type="button"
+          :disabled="authPending || !email"
+          @click="submitResendConfirmation"
+        >
+          Reenviar confirmação
         </button>
       </form>
     </section>

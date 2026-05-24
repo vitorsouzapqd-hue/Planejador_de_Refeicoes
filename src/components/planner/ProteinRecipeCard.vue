@@ -4,6 +4,7 @@ import type { Recipe } from '../../types/recipe'
 import { resolveRecipeImage } from '../../utils/recipeImages'
 import BaseIcon from '../ui/BaseIcon.vue'
 import RecipeAttributeBars from './RecipeAttributeBars.vue'
+import RecipeVideoModal from '../ui/RecipeVideoModal.vue'
 
 const props = defineProps<{
   recipe: Recipe
@@ -15,6 +16,7 @@ defineEmits<{
 }>()
 
 const imageFailed = ref(false)
+const showVideoModal = ref(false)
 
 const imageSrc = computed(() => {
   if (imageFailed.value) return null
@@ -106,9 +108,9 @@ function formatType(type: string | null) {
 
         <span class="protein-recipe-card__status" aria-label="Atributos da preparação">
           <RecipeAttributeBars label="Custo" :value="recipe.costLevel" tone="lower" />
-          <RecipeAttributeBars label="Tempo" :value="recipe.timeLevel" tone="lower" />
-          <RecipeAttributeBars label="Trabalho" :value="recipe.workLevel" tone="lower" />
-          <RecipeAttributeBars label="Praticidade" :value="recipe.practicalityLevel ?? recipe.versatilityLevel" />
+          <RecipeAttributeBars label="Tempo de Preparo" :value="recipe.timeLevel" tone="lower" />
+          <RecipeAttributeBars label="Dificuldade" :value="recipe.workLevel" tone="lower" />
+          <RecipeAttributeBars label="Versatilidade" :value="recipe.practicalityLevel ?? recipe.versatilityLevel" />
         </span>
       </span>
     </button>
@@ -116,6 +118,17 @@ function formatType(type: string | null) {
     <details class="protein-recipe-card__details">
       <summary>Ingredientes e observações</summary>
       <div class="protein-recipe-card__extra">
+        <div v-if="recipe.referenceVideoUrl" class="protein-recipe-card__video-action">
+          <button 
+            type="button" 
+            class="secondary-button" 
+            style="width: 100%; margin-bottom: 0.75rem;"
+            @click="showVideoModal = true"
+          >
+            <BaseIcon name="play-circle" style="margin-right: 0.5rem;" />
+            Assistir Vídeo de Referência
+          </button>
+        </div>
         <p v-if="ingredientsPreview">
           Ingredientes principais: {{ ingredientsPreview }}.
         </p>
@@ -133,5 +146,11 @@ function formatType(type: string | null) {
         </p>
       </div>
     </details>
+
+    <RecipeVideoModal
+      v-if="showVideoModal"
+      :video-url="recipe.referenceVideoUrl ?? null"
+      @close="showVideoModal = false"
+    />
   </article>
 </template>

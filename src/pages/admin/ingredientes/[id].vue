@@ -37,7 +37,7 @@ async function loadIngredient() {
   try {
     ingredient.value = await getIngredient(String(route.params.id))
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel carregar o ingrediente.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível carregar o ingrediente.')
   } finally {
     loading.value = false
   }
@@ -56,7 +56,7 @@ async function submitIngredient(
   try {
     const slugIsAvailable = await isIngredientSlugAvailable(input.slug, ingredient.value.id)
     if (!slugIsAvailable) {
-      errorMessage.value = 'Esse slug ja esta em uso. Ajuste o slug antes de salvar.'
+      errorMessage.value = 'Esse slug já está em uso. Ajuste o slug antes de salvar.'
       return
     }
 
@@ -64,7 +64,7 @@ async function submitIngredient(
     await loadIngredient()
     savedMessage.value = 'Ingrediente salvo.'
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel salvar o ingrediente.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível salvar o ingrediente.')
   } finally {
     pending.value = false
   }
@@ -73,7 +73,7 @@ async function submitIngredient(
 async function deleteCurrentIngredient() {
   if (!ingredient.value) return
 
-  if (!confirm(`Excluir o ingrediente "${ingredient.value.displayName ?? ingredient.value.name}"? Essa acao so funciona quando nao ha vinculos com receitas ou Lista de Compras.`)) return
+  if (!confirm(`Excluir o ingrediente "${ingredient.value.displayName ?? ingredient.value.name}"? Essa ação só funciona quando não há vínculos com receitas ou Lista de Compras.`)) return
 
   pending.value = true
   errorMessage.value = null
@@ -83,7 +83,7 @@ async function deleteCurrentIngredient() {
     await deleteIngredientIfUnused(ingredient.value.id)
     await navigateTo('/admin/ingredientes')
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel excluir o ingrediente.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível excluir o ingrediente.')
   } finally {
     pending.value = false
   }
@@ -120,7 +120,7 @@ function getErrorMessage(error: unknown, fallback: string) {
     <section v-else-if="!ingredient" class="admin-card">
       <div class="admin-empty-state">
         <BaseIcon name="alert" />
-        <p>{{ errorMessage ?? 'Ingrediente nao encontrado.' }}</p>
+        <p>{{ errorMessage ?? 'Ingrediente não encontrado.' }}</p>
         <NuxtLink class="secondary-button" to="/admin/ingredientes">
           Voltar para ingredientes
         </NuxtLink>

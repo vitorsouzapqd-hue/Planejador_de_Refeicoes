@@ -9,6 +9,7 @@ import type {
 } from '../types/planner'
 
 export const PLANNER_STORAGE_KEY = 'meal_planner_current_plan'
+export const DEFAULT_TOTAL_PORTIONS_GOAL = 14
 
 const emptyPlanning = (): CurrentPlanning => ({
   selectedGroupSlugs: [],
@@ -17,7 +18,7 @@ const emptyPlanning = (): CurrentPlanning => ({
 
 const emptyGroupPlan = (groupSlug: PlanningGroupSlug): PlanningGroupPlan => ({
   groupSlug,
-  totalPortionsGoal: null,
+  totalPortionsGoal: DEFAULT_TOTAL_PORTIONS_GOAL,
   selectedRecipes: [],
 })
 
@@ -183,6 +184,7 @@ function normalizeStoredPlanning(storedPlanning: Partial<CurrentPlanning> & Reco
         ...emptyGroupPlan(groupSlug),
         ...(storedGroup ?? {}),
         groupSlug,
+        totalPortionsGoal: storedGroup?.totalPortionsGoal ?? DEFAULT_TOTAL_PORTIONS_GOAL,
       }
     }
 
@@ -203,7 +205,7 @@ function normalizeStoredPlanning(storedPlanning: Partial<CurrentPlanning> & Reco
     groups: {
       [oldModule]: {
         groupSlug: oldModule,
-        totalPortionsGoal: storedPlanning.totalPortionsGoal ?? null,
+        totalPortionsGoal: storedPlanning.totalPortionsGoal ?? DEFAULT_TOTAL_PORTIONS_GOAL,
         selectedRecipes: storedPlanning.selectedRecipes ?? [],
       },
     },

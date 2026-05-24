@@ -100,7 +100,7 @@ async function loadRecipe() {
       steps.value = recipeSteps
     }
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel carregar a receita.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível carregar a receita.')
   } finally {
     loading.value = false
   }
@@ -116,7 +116,7 @@ async function submitRecipe(input: AdminRecipeInput) {
   try {
     const slugIsAvailable = await isRecipeSlugAvailable(input.slug, recipe.value.id)
     if (!slugIsAvailable) {
-      errorMessage.value = 'Esse slug ja esta em uso. Ajuste o slug antes de salvar.'
+      errorMessage.value = 'Esse slug já está em uso. Ajuste o slug antes de salvar.'
       return
     }
 
@@ -124,7 +124,7 @@ async function submitRecipe(input: AdminRecipeInput) {
     await loadRecipe()
     savedMessage.value = 'Receita salva.'
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel salvar a receita.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível salvar a receita.')
   } finally {
     pending.value = false
   }
@@ -152,7 +152,7 @@ async function setStatus(status: RecipeStatus) {
         ? 'Receita arquivada.'
         : 'Receita voltou para rascunho.'
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel atualizar o status.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível atualizar a situação.')
   } finally {
     pending.value = false
   }
@@ -171,7 +171,7 @@ async function submitIngredients(input: AdminRecipeIngredientInput[]) {
     savedMessage.value = 'Ingredientes salvos.'
     await refreshRecipeOnly()
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel salvar os ingredientes.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível salvar os ingredientes.')
   } finally {
     pendingIngredients.value = false
   }
@@ -190,7 +190,7 @@ async function submitSteps(input: AdminRecipeStepInput[]) {
     savedMessage.value = 'Passos salvos.'
     await refreshRecipeOnly()
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel salvar os passos.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível salvar os passos.')
   } finally {
     pendingSteps.value = false
   }
@@ -211,8 +211,8 @@ async function deleteCurrentRecipe() {
 
   const confirmation =
     recipe.value.status === 'published'
-      ? `Excluir a receita publicada "${recipe.value.name}"? Ela saira do app do aluno.`
-      : `Excluir a receita "${recipe.value.name}"? Ingredientes, passos e tags vinculadas serao removidos.`
+      ? `Excluir a receita publicada "${recipe.value.name}"? Ela sairá do app do aluno.`
+      : `Excluir a receita "${recipe.value.name}"? Ingredientes, passos e tags vinculadas serão removidos.`
 
   if (!confirm(confirmation)) return
 
@@ -224,7 +224,7 @@ async function deleteCurrentRecipe() {
     await deleteRecipe(recipe.value.id)
     await navigateTo('/admin/receitas')
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel excluir a receita.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível excluir a receita.')
   } finally {
     pending.value = false
   }
@@ -264,7 +264,7 @@ function getErrorMessage(error: unknown, fallback: string) {
     <section v-else-if="!recipe" class="admin-card">
       <div class="admin-empty-state">
         <BaseIcon name="alert" />
-        <p>{{ errorMessage ?? 'Receita nao encontrada.' }}</p>
+        <p>{{ errorMessage ?? 'Receita não encontrada.' }}</p>
         <NuxtLink class="secondary-button" to="/admin/receitas">Voltar</NuxtLink>
       </div>
     </section>
@@ -281,7 +281,7 @@ function getErrorMessage(error: unknown, fallback: string) {
         </button>
         <button class="secondary-button" type="button" :disabled="pending" @click="setStatus('draft')">
           <BaseIcon name="edit" />
-          Salvar como draft
+          Voltar para rascunho
         </button>
         <button class="danger-button" type="button" :disabled="pending" @click="deleteCurrentRecipe">
           <BaseIcon name="trash" />
@@ -293,7 +293,7 @@ function getErrorMessage(error: unknown, fallback: string) {
       <p v-if="savedMessage" class="admin-success-message">{{ savedMessage }}</p>
 
       <section v-if="publicationPendingItems.length" class="admin-warning-message">
-        <strong>Pendencias para publicar</strong>
+        <strong>Pendências para publicar</strong>
         <p>{{ publicationPendingItems.join(', ') }}</p>
       </section>
 
@@ -306,7 +306,7 @@ function getErrorMessage(error: unknown, fallback: string) {
 
       <AdminRecipeForm
         :initial-recipe="recipe"
-        submit-label="Salvar alteracoes"
+        submit-label="Salvar alterações"
         :pending="pending"
         :categories="categories"
         :tags="tags"

@@ -36,7 +36,7 @@ async function loadItem() {
   try {
     item.value = await catalog.getItem(String(route.params.id))
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel carregar o item da Lista de Compras.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível carregar o item da Lista de Compras.')
   } finally {
     loading.value = false
   }
@@ -60,7 +60,7 @@ async function submitItem(input: ShoppingCatalogInput) {
   try {
     const slugIsAvailable = await catalog.isSlugAvailable(input.slug, item.value.id)
     if (!slugIsAvailable) {
-      errorMessage.value = 'Esse slug ja esta em uso. Ajuste o slug antes de salvar.'
+      errorMessage.value = 'Esse slug já está em uso. Ajuste o slug antes de salvar.'
       return
     }
 
@@ -68,7 +68,7 @@ async function submitItem(input: ShoppingCatalogInput) {
     await loadItem()
     savedMessage.value = 'Item salvo.'
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel salvar o item da Lista de Compras.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível salvar o item da Lista de Compras.')
   } finally {
     pending.value = false
   }
@@ -77,7 +77,7 @@ async function submitItem(input: ShoppingCatalogInput) {
 async function deleteCurrentItem() {
   if (!item.value) return
 
-  if (!confirm(`Excluir o item "${item.value.displayName ?? item.value.name}"? Essa acao so funciona quando ele nao esta vinculado a ingrediente.`)) return
+  if (!confirm(`Excluir o item "${item.value.displayName ?? item.value.name}"? Essa ação só funciona quando ele não está vinculado a ingrediente.`)) return
 
   pending.value = true
   errorMessage.value = null
@@ -87,7 +87,7 @@ async function deleteCurrentItem() {
     await catalog.deleteItemIfUnused(item.value.id)
     await navigateTo('/admin/catalogo-compras')
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel excluir o item da Lista de Compras.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível excluir o item da Lista de Compras.')
   } finally {
     pending.value = false
   }
@@ -105,7 +105,7 @@ function getErrorMessage(error: unknown, fallback: string) {
       <div>
         <p class="admin-page-header__kicker">Editar Lista de Compras</p>
         <h1 class="admin-page-header__title">{{ item?.displayName ?? item?.name ?? 'Item da Lista de Compras' }}</h1>
-        <p class="admin-page-header__sub">Atualize categoria, quantidade padrao, status e vinculo opcional.</p>
+        <p class="admin-page-header__sub">Atualize categoria, quantidade padrão, situação e vínculo opcional.</p>
       </div>
 
       <NuxtLink class="secondary-button" to="/admin/catalogo-compras">
@@ -124,7 +124,7 @@ function getErrorMessage(error: unknown, fallback: string) {
     <section v-else-if="!item" class="admin-card">
       <div class="admin-empty-state">
         <BaseIcon name="alert" />
-        <p>{{ errorMessage ?? 'Item nao encontrado.' }}</p>
+        <p>{{ errorMessage ?? 'Item não encontrado.' }}</p>
       </div>
     </section>
 

@@ -34,14 +34,14 @@ async function submitItem(input: ShoppingCatalogInput) {
   try {
     const slugIsAvailable = await catalog.isSlugAvailable(input.slug)
     if (!slugIsAvailable) {
-      errorMessage.value = 'Esse slug ja esta em uso. Ajuste o slug antes de salvar.'
+      errorMessage.value = 'Esse slug já está em uso. Ajuste o slug antes de salvar.'
       return
     }
 
     const id = await catalog.createItem(input)
     navigateTo(`/admin/catalogo-compras/${id}`)
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel criar o item da Lista de Compras.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível criar o item da Lista de Compras.')
   } finally {
     pending.value = false
   }

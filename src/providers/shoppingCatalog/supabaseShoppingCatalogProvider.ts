@@ -252,7 +252,6 @@ function normalizeSupabaseError(error: unknown) {
 
   const message = 'message' in error ? String(error.message) : ''
   if (message.toLocaleLowerCase('pt-BR').includes('invalid api key')) {
-    return new Error('Chave publica do Supabase invalida. Atualize NUXT_PUBLIC_SUPABASE_ANON_KEY no .env.')
     return new Error('Chave pública do Supabase inválida. Atualize NUXT_PUBLIC_SUPABASE_ANON_KEY no .env.')
   }
 

@@ -118,29 +118,39 @@ function getValidationError() {
         <strong>Passo {{ index + 1 }}</strong>
         <div class="admin-row-actions">
           <button
-            class="secondary-button"
+            class="icon-button"
             type="button"
             :disabled="index === 0"
+            :aria-label="`Subir passo ${index + 1}`"
+            title="Subir"
             @click="moveStep(index, -1)"
           >
-            Subir
+            <BaseIcon name="chevron-up" />
           </button>
           <button
-            class="secondary-button"
+            class="icon-button"
             type="button"
             :disabled="index === items.length - 1"
+            :aria-label="`Descer passo ${index + 1}`"
+            title="Descer"
             @click="moveStep(index, 1)"
           >
-            Descer
+            <BaseIcon name="chevron-down" />
           </button>
-          <button class="secondary-button" type="button" @click="removeStep(index)">
-            Remover
+          <button
+            class="icon-button icon-button--danger"
+            type="button"
+            :aria-label="`Remover passo ${index + 1}`"
+            title="Remover"
+            @click="removeStep(index)"
+          >
+            <BaseIcon name="trash" />
           </button>
         </div>
       </div>
 
       <div class="field">
-        <label :for="`step-instruction-${step.localId}`">instruction</label>
+        <label :for="`step-instruction-${step.localId}`">Instrução</label>
         <textarea :id="`step-instruction-${step.localId}`" v-model="step.instruction" rows="3" />
       </div>
     </article>

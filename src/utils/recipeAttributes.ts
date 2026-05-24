@@ -73,7 +73,7 @@ export function getRecipeVersatilityLevel(recipe: RecipeAttributeSource): number
 }
 
 export function formatPrepTime(minutes: number | null): string {
-  if (!minutes) return 'Tempo não informado'
+  if (!minutes) return 'Tempo de Preparo não informado'
   if (minutes < 60) return `${minutes} min`
 
   const hours = Math.floor(minutes / 60)

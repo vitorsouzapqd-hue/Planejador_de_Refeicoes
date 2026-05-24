@@ -8,7 +8,14 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "typecheck": "nuxt typecheck",
-    "import:recipe-images": "node --experimental-strip-types scripts/import-recipe-images.ts"
+    "audit:recipe-dossier": "vite-node --script scripts/audit-recipe-dossier.ts",
+    "audit:recipe-shopping": "vite-node --script scripts/audit-recipe-shopping-integrity.ts",
+    "import:carb-dossier": "vite-node --script scripts/import-carb-dossier.ts",
+    "import:recipe-dossier": "vite-node --script scripts/import-recipe-dossier.ts",
+    "import:recipe-images": "node --experimental-strip-types scripts/import-recipe-images.ts",
+    "import:shopping-catalog": "node --experimental-strip-types scripts/import-shopping-catalog-from-markdown.ts",
+    "sync:household-measures": "vite-node --script scripts/sync-household-measures.ts",
+    "sync:photo-recipes": "vite-node --script scripts/sync-photo-catalog-recipes.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",

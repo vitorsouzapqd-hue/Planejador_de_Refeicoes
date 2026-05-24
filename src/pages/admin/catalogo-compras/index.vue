@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
+import { useRoute } from '#imports'
 import AdminShell from '../../../components/admin/AdminShell.vue'
 import ShoppingCatalogTable from '../../../components/admin/ShoppingCatalogTable.vue'
 import { normalize, shoppingCategoryOrder, useShoppingCatalog } from '../../../composables/useShoppingCatalog'
@@ -9,11 +10,12 @@ definePageMeta({
   middleware: 'admin-auth',
 })
 
+const route = useRoute()
 const catalog = useShoppingCatalog()
 const search = ref('')
-const categoryFilter = ref('todos')
+const categoryFilter = ref(String(route.query.categoria ?? 'todos'))
 const subcategoryFilter = ref('todos')
-const activeFilter = ref('todos')
+const activeFilter = ref(String(route.query.ativo ?? 'todos'))
 const foodFilter = ref('todos')
 const feedbackMessage = ref<string | null>(null)
 const errorMessage = ref<string | null>(null)
@@ -66,9 +68,6 @@ const filteredItems = computed(() => {
 })
 
 onMounted(() => {
-  const params = new URLSearchParams(window.location.search)
-  activeFilter.value = params.get('ativo') ?? 'todos'
-  categoryFilter.value = params.get('categoria') ?? 'todos'
   catalog.loadItems()
 })
 
@@ -85,7 +84,7 @@ async function setActive(item: ShoppingCatalogItem, isActive: boolean) {
     await catalog.loadItems()
     feedbackMessage.value = isActive ? 'Item ativado.' : 'Item desativado.'
   } catch (error) {
-    errorMessage.value = getErrorMessage(error, 'Nao foi possivel atualizar o item.')
+    errorMessage.value = getErrorMessage(error, 'Não foi possível atualizar o item.')
   }
 }
 
@@ -123,7 +122,7 @@ function getErrorMessage(error: unknown, fallback: string) {
           <label for="catalog-search">Busca</label>
           <div class="admin-input-shell">
             <BaseIcon name="search" />
-            <input id="catalog-search" v-model="search" type="search" placeholder="Nome ou sinonimo">
+            <input id="catalog-search" v-model="search" type="search" placeholder="Nome ou sinônimo">
           </div>
         </div>
 

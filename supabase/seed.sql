@@ -65,7 +65,7 @@ values
     true,
     'Manter refrigerado por até 3 dias ou congelar em porções.',
     'Reaquecer em panela ou micro-ondas até ficar bem quente.',
-    'Siga a receita como está. Não adicione óleo, azeite, creme, requeijão, queijo, molhos ou ingredientes extras fora da receita.',
+    'Use o peso pronto que aparece na sua dieta para definir as porções. O preparo pode ser ajustado mantendo as quantidades proporcionais.',
     1
   ),
   (
@@ -87,7 +87,7 @@ values
     true,
     'Manter refrigerado por até 3 dias ou congelar.',
     'Reaquecer em panela, mexendo para manter úmido.',
-    'Siga a receita como está. Não adicione óleo, azeite, creme, requeijão, queijo, molhos ou ingredientes extras fora da receita.',
+    'Use o peso pronto que aparece na sua dieta para definir as porções. O preparo pode ser ajustado mantendo as quantidades proporcionais.',
     2
   ),
   (
@@ -109,7 +109,7 @@ values
     true,
     'Manter refrigerado por até 3 dias ou congelar.',
     'Reaquecer com um pouco do caldo do preparo.',
-    'Siga a receita como está. Não adicione óleo, azeite, creme, requeijão, queijo, molhos ou ingredientes extras fora da receita.',
+    'Use o peso pronto que aparece na sua dieta para definir as porções. O preparo pode ser ajustado mantendo as quantidades proporcionais.',
     3
   )
 on conflict (slug) do update set
@@ -199,13 +199,13 @@ values
   ('30000000-0000-0000-0000-000000000001', 'Peito de frango cru', 'Proteínas', 'main', 1000, 'g', false, false, true, 100, 'up', 'peito de frango cru', null, 1),
   ('30000000-0000-0000-0000-000000000001', 'Tomate médio', 'Hortifruti', 'complement', 2, 'un', false, false, true, 1, 'up', 'tomates médios', null, 2),
   ('30000000-0000-0000-0000-000000000001', 'Cebola média', 'Hortifruti', 'complement', 1, 'un', false, false, true, 1, 'up', 'cebolas médias', null, 3),
-  ('30000000-0000-0000-0000-000000000001', 'Óleo', 'Outros', 'critical', 1, 'colher de sopa', true, false, true, 1, 'up', 'óleo', 'Ingrediente sensível: não aumentar.', 4),
+  ('30000000-0000-0000-0000-000000000001', 'Óleo', 'Outros', 'critical', 1, 'colher de sopa', true, false, true, 1, 'up', 'óleo', 'Ingrediente sensível: medir com atenção.', 4),
   ('30000000-0000-0000-0000-000000000001', 'Sal, pimenta e páprica', 'Temperos', 'seasoning', null, null, false, true, true, null, 'none', 'sal, pimenta e páprica', null, 5),
 
   ('30000000-0000-0000-0000-000000000002', 'Patinho moído cru', 'Proteínas', 'main', 1000, 'g', false, false, true, 100, 'up', 'patinho moído cru', null, 1),
   ('30000000-0000-0000-0000-000000000002', 'Cebola média', 'Hortifruti', 'complement', 1, 'un', false, false, true, 1, 'up', 'cebolas médias', null, 2),
   ('30000000-0000-0000-0000-000000000002', 'Alho', 'Hortifruti', 'complement', 2, 'dentes', false, false, true, 1, 'up', 'dentes de alho', null, 3),
-  ('30000000-0000-0000-0000-000000000002', 'Óleo', 'Outros', 'critical', 1, 'colher de sopa', true, false, true, 1, 'up', 'óleo', 'Ingrediente sensível: não aumentar.', 4),
+  ('30000000-0000-0000-0000-000000000002', 'Óleo', 'Outros', 'critical', 1, 'colher de sopa', true, false, true, 1, 'up', 'óleo', 'Ingrediente sensível: medir com atenção.', 4),
   ('30000000-0000-0000-0000-000000000002', 'Sal, pimenta e cheiro-verde', 'Temperos', 'seasoning', null, null, false, true, true, null, 'none', 'sal, pimenta e cheiro-verde', null, 5),
 
   ('30000000-0000-0000-0000-000000000003', 'Lombo suíno cru', 'Proteínas', 'main', 1000, 'g', false, false, true, 100, 'up', 'lombo suíno cru', null, 1),

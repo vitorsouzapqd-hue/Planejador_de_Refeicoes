@@ -20,9 +20,9 @@ const iconName = computed(() => {
     .toLocaleLowerCase('pt-BR')
 
   if (normalizedLabel.includes('custo')) return 'wallet'
-  if (normalizedLabel.includes('tempo') || normalizedLabel.includes('velocidade')) return 'clock'
-  if (normalizedLabel.includes('trabalho') || normalizedLabel.includes('dificuldade')) return 'chef-hat'
-  if (normalizedLabel.includes('praticidade') || normalizedLabel.includes('versatilidade')) return 'sparkle'
+  if (normalizedLabel.includes('tempo')) return 'clock'
+  if (normalizedLabel.includes('dificuldade')) return 'chef-hat'
+  if (normalizedLabel.includes('versatilidade')) return 'sparkle'
 
   return 'gauge'
 })

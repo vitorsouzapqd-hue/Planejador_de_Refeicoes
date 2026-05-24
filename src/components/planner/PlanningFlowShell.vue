@@ -8,6 +8,7 @@ defineProps<{
   kicker?: string
   title: string
   text?: string
+  heroStyle?: boolean
 }>()
 </script>
 
@@ -23,7 +24,10 @@ defineProps<{
       :kicker="kicker"
       :title="title"
       :text="text"
-    />
+      :hero-style="heroStyle"
+    >
+      <slot name="header-extras" />
+    </PlanningStepHeader>
 
     <slot />
   </section>

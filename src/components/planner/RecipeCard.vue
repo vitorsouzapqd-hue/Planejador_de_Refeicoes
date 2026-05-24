@@ -61,9 +61,9 @@ function formatType(type: string | null) {
 
         <span class="recipe-card__attributes">
           <RecipeAttributeBars label="Custo" :value="recipe.costLevel" tone="lower" />
-          <RecipeAttributeBars label="Tempo" :value="recipe.timeLevel" tone="lower" />
-          <RecipeAttributeBars label="Trabalho" :value="recipe.workLevel" tone="lower" />
-          <RecipeAttributeBars label="Praticidade" :value="recipe.practicalityLevel ?? recipe.versatilityLevel" />
+          <RecipeAttributeBars label="Tempo de Preparo" :value="recipe.timeLevel" tone="lower" />
+          <RecipeAttributeBars label="Dificuldade" :value="recipe.workLevel" tone="lower" />
+          <RecipeAttributeBars label="Versatilidade" :value="recipe.practicalityLevel ?? recipe.versatilityLevel" />
         </span>
       </span>
     </button>

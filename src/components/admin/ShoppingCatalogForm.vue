@@ -6,6 +6,7 @@ import {
   type ShoppingCatalogInput,
   type ShoppingCatalogItem,
 } from '../../composables/useShoppingCatalog'
+import { hasCompoundShoppingName } from '../../services/shoppingIngredientIdentity'
 import type { Ingredient } from '../../types/ingredient'
 
 const props = defineProps<{
@@ -96,6 +97,9 @@ function submitForm() {
 function getValidationError() {
   if (!form.name.trim()) return 'Informe o nome do item.'
   if (!form.slug.trim()) return 'Informe o slug.'
+  if (hasCompoundShoppingName(form.displayName || form.name)) {
+    return 'Item da Lista de Compras precisa representar um item individual de mercado.'
+  }
   if (!form.shoppingCategory) return 'Escolha a categoria de compra.'
   if (Number(form.sortOrder) < 0) return 'A ordem precisa ser maior ou igual a zero.'
 
@@ -188,7 +192,7 @@ function slugify(value: string) {
       </div>
 
       <div class="field">
-        <label for="catalog-aliases">Aliases/sinônimos</label>
+        <label for="catalog-aliases">Apelidos/sinônimos</label>
         <input id="catalog-aliases" v-model="aliasesText" type="text" placeholder="separe por vírgulas">
       </div>
 

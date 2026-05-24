@@ -2,7 +2,7 @@ import type { Recipe } from '../../types/recipe'
 import type { RecipeListFilters, RecipesProvider } from './recipesProvider'
 
 const lockedRecipeWarning =
-  'Siga a receita como está. Não adicione óleo, azeite, creme, requeijão, queijo, molhos ou ingredientes extras fora da receita.'
+  'Use o peso pronto que aparece na sua dieta para definir as porções. O preparo pode ser ajustado mantendo as quantidades proporcionais.'
 
 const mockRecipes: Recipe[] = [
   {
@@ -23,6 +23,7 @@ const mockRecipes: Recipe[] = [
     status: 'published',
     imagePath: '/recipe-images/frango-desfiado.png',
     imageUrl: '/recipe-images/frango-desfiado.png',
+    referenceVideoUrl: 'https://youtube.com/shorts/3OcuuJec_Qc',
     baseRawWeightG: 1000,
     baseReadyWeightG: 750,
     baseYieldNote: '1kg de peito de frango cru rende cerca de 750g pronto.',
