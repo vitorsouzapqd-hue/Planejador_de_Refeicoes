@@ -1162,3 +1162,58 @@ Resolver o deploy desatualizado publicando no GitHub a versao atual da raiz do p
 ### Proximos passos
 
 - Aguardar ou verificar novo deploy na Vercel pelo painel, ja que a CLI `vercel` nao esta disponivel localmente.
+
+## 2026-05-24 - Corrigir fallback da Lista de Compras
+
+### LLM usada
+
+Codex
+
+### Objetivo
+
+Corrigir o modal "Adicionar da Lista de Compras", que mostrava `Supabase nao configurado` e ficava sem itens quando as variaveis publicas do Supabase nao estavam disponiveis.
+
+### Arquivos alterados
+
+- `src/composables/useShoppingCatalog.ts`
+- `src/data/mockShoppingCatalogItems.ts`
+- `src/providers/shoppingCatalog/index.ts`
+- `src/providers/shoppingCatalog/mockShoppingCatalogProvider.ts`
+- `src/providers/shoppingCatalog/shoppingCatalogProvider.ts`
+- `src/providers/shoppingCatalog/supabaseShoppingCatalogProvider.ts`
+- `docs/AI_DECISIONS.md`
+- `docs/AI_WORKLOG.md`
+
+### O que foi feito
+
+- Criado um contrato comum para providers de Lista de Compras.
+- Criado provider estatico de leitura para a Lista de Compras com 227 itens gerados do rascunho versionado.
+- Ajustado `useShoppingCatalog()` para escolher Supabase quando configurado e fallback estatico quando Supabase estiver indisponivel ou `NUXT_PUBLIC_DATA_PROVIDER=mock`.
+- Mantidas operacoes administrativas de escrita dependentes de Supabase, com erro claro no fallback.
+- Preservado o fluxo `UI -> composable -> provider`, sem mock direto em componente.
+
+### Comandos rodados
+
+- `npm run typecheck`
+- `npm run build`
+- `node --experimental-strip-types --input-type=module -e "import { createMockShoppingCatalogProvider } from './src/providers/shoppingCatalog/mockShoppingCatalogProvider.ts'; const provider = createMockShoppingCatalogProvider(); const all = await provider.listActiveItems(); const aves = await provider.listActiveItems({ category: 'Proteínas', subcategory: 'Aves' }); const carbo = await provider.listActiveItems({ category: 'Carboidratos' }); console.log(JSON.stringify({ total: all.length, aves: aves.length, carboidratos: carbo.length, first: all[0]?.name }, null, 2));"`
+- `node --experimental-strip-types --input-type=module -e "import { mockShoppingCatalogItems } from './src/data/mockShoppingCatalogItems.ts'; const all = mockShoppingCatalogItems.filter((item) => item.isActive); const aves = all.filter((item) => item.shoppingCategory === 'Proteínas' && item.shoppingSubcategory === 'Aves'); const carbo = all.filter((item) => item.shoppingCategory === 'Carboidratos'); console.log(JSON.stringify({ total: all.length, aves: aves.length, carboidratos: carbo.length, first: all[0]?.name }, null, 2));"`
+
+### Erros encontrados
+
+- A primeira checagem direta do provider estatico falhou fora do Nuxt porque o Node ESM nao resolveu import TypeScript sem extensao. `npm run typecheck` e `npm run build` passaram, e a checagem direta do arquivo de dados confirmou 227 itens ativos.
+
+### Avisos encontrados
+
+- Build manteve aviso de sourcemap possivelmente incorreto em `nuxt:module-preload-polyfill`.
+- Build manteve `DEP0155` relacionado a export mapping com barra final em dependencia `@vue/shared`.
+
+### Riscos
+
+- O fallback estatico e somente leitura e pode ficar desatualizado em relacao ao Supabase se o catalogo real for editado no admin.
+- O bundle do composable da Lista de Compras aumentou por carregar o catalogo estatico como fallback.
+
+### Proximos passos
+
+- Configurar/confirmar `NUXT_PUBLIC_SUPABASE_URL` e `NUXT_PUBLIC_SUPABASE_ANON_KEY` na Vercel para usar o catalogo real em producao.
+- Considerar dividir o catalogo estatico em chunk proprio se o tamanho do bundle virar gargalo.

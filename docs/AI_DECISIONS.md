@@ -160,3 +160,13 @@ Motivo: o GitHub `main` estava parado no commit `98b8e06`, enquanto as mudancas 
 Decisao complementar: publicar apenas arquivos de projeto versionaveis, deixando fora `.env`, logs, caches, builds locais, `node_modules`, worktrees temporarios e fotos brutas fora de `public`.
 
 Motivo: o objetivo e atualizar producao sem vazar segredo local nem enviar artefatos gerados pela maquina.
+
+## 2026-05-24 - Lista de Compras tem fallback local de leitura
+
+Decisao: a Lista de Compras do aluno deve usar um provider estatico de leitura quando Supabase nao estiver configurado ou quando `NUXT_PUBLIC_DATA_PROVIDER=mock`.
+
+Motivo: o fluxo do aluno nao deve ficar vazio com a mensagem `Supabase nao configurado` quando o ambiente publico nao tiver as variaveis do Supabase. O fallback continua atras de `useShoppingCatalog() -> provider`, sem importacao direta de mock por componente.
+
+Decisao complementar: operacoes administrativas de escrita no fallback devem falhar com mensagem clara.
+
+Motivo: criar, editar, ativar ou excluir itens da Lista de Compras exige Supabase para persistencia real. Permitir escrita apenas em memoria poderia dar falsa confirmacao no admin.

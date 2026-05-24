@@ -5,6 +5,7 @@ import type {
   ShoppingCatalogInput,
   ShoppingCatalogItem,
 } from '../../types/shoppingCatalog'
+import type { ShoppingCatalogProvider } from './shoppingCatalogProvider'
 
 type ShoppingCatalogRow = {
   id: string
@@ -44,7 +45,7 @@ const shoppingCatalogSelect = `
   updated_at
 `
 
-export function createSupabaseShoppingCatalogProvider(client?: SupabaseClient | null) {
+export function createSupabaseShoppingCatalogProvider(client?: SupabaseClient | null): ShoppingCatalogProvider {
   function requireClient() {
     const supabase = client ?? useSupabaseClient()
 

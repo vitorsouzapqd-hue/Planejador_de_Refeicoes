@@ -1,5 +1,7 @@
 import { computed, ref } from 'vue'
-import { createSupabaseShoppingCatalogProvider } from '../providers/shoppingCatalog/supabaseShoppingCatalogProvider'
+import { useRuntimeConfig } from '#imports'
+import { useSupabaseClient } from './useSupabaseClient'
+import { createShoppingCatalogProvider } from '../providers/shoppingCatalog'
 import {
   shoppingCatalogCategories,
   shoppingCatalogSubcategories,
@@ -13,7 +15,18 @@ export const shoppingCategoryOrder = shoppingCatalogCategories
 export const shoppingSubcategoryOrder = shoppingCatalogSubcategories
 
 export function useShoppingCatalog() {
-  const provider = createSupabaseShoppingCatalogProvider()
+  const runtimeConfig = useRuntimeConfig()
+  const publicConfig = runtimeConfig.public as {
+    dataProvider?: 'supabase' | 'mock'
+    supabaseUrl?: string
+    supabaseAnonKey?: string
+  }
+  const provider = createShoppingCatalogProvider({
+    dataProvider: publicConfig.dataProvider ?? 'supabase',
+    supabaseClient: useSupabaseClient(),
+    supabaseUrl: publicConfig.supabaseUrl,
+    supabaseAnonKey: publicConfig.supabaseAnonKey,
+  })
   const items = ref<ShoppingCatalogItem[]>([])
   const pending = ref(false)
   const errorMessage = ref<string | null>(null)
