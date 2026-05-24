@@ -3,9 +3,11 @@ node_modules
 .output
 .env
 .npm-cache
+.claude/
 .nuxt-dev*.log
 .codex-devserver*.log
 .commit-worktree/
 .publish-worktree-*/
 _publish-gitdir-*/
+fotos_pratos/
 npm-debug.log*

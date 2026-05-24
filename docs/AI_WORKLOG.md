@@ -1126,8 +1126,8 @@ Resolver o deploy desatualizado publicando no GitHub a versao atual da raiz do p
 - Rodado `npm run build` com sucesso.
 - Preparado commit a partir da raiz atual usando o gitdir de publicacao existente.
 - Criado o commit `32af212 Publish current meal planner app`.
-- Enviado `main` para o GitHub, atualizando `origin/main` de `98b8e06` para `32af212`.
-- Atualizado `.gitignore` para ignorar logs e worktrees temporarios locais.
+- Enviado `main` para o GitHub, atualizando `origin/main` a partir de `98b8e06`.
+- Atualizado `.gitignore` para ignorar logs, worktrees temporarios locais, `.claude` e fotos brutas locais.
 - Mantidos fora do commit `.env`, logs, caches, builds locais, `node_modules`, worktrees temporarios e `fotos_pratos`.
 
 ### Comandos rodados
@@ -1140,11 +1140,13 @@ Resolver o deploy desatualizado publicando no GitHub a versao atual da raiz do p
 - `git --git-dir='_publish-gitdir-20260523-0128' --work-tree='.' commit -m "Publish current meal planner app"`
 - `git --git-dir='_publish-gitdir-20260523-0128' --work-tree='.' push origin main`
 - `git --git-dir='_publish-gitdir-20260523-0128' ls-remote origin refs/heads/main`
+- `git --git-dir='_publish-gitdir-20260523-0128' --work-tree='.' commit -m "Ignore local publish artifacts"`
 
 ### Erros encontrados
 
 - Nenhum erro em typecheck ou build.
 - `git diff --cached --check` encontrou avisos de whitespace no pacote local acumulado, mas sem impacto funcional no build.
+- `gh api`: falhou porque `gh` nao esta instalado ou nao esta no PATH.
 
 ### Avisos encontrados
 
