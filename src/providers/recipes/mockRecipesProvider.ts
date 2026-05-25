@@ -55,7 +55,9 @@ const mockRecipes: Recipe[] = [
       createIngredient('mock-frango-desfiado', 'Tomate médio', 'Hortifruti', 'complement', 2, 'un', 1, false, false, 2, 'tomates médios'),
       createIngredient('mock-frango-desfiado', 'Cebola média', 'Hortifruti', 'complement', 1, 'un', 1, false, false, 3, 'cebolas médias'),
       createIngredient('mock-frango-desfiado', 'Óleo', 'Outros', 'critical', 1, 'colher de sopa', 1, true, false, 4),
-      createIngredient('mock-frango-desfiado', 'Sal, pimenta e páprica', 'Temperos', 'seasoning', null, null, null, false, true, 5),
+      createIngredient('mock-frango-desfiado', 'Sal', 'Temperos', 'seasoning', null, null, null, false, true, 5),
+      createIngredient('mock-frango-desfiado', 'Pimenta', 'Temperos', 'seasoning', null, null, null, false, true, 6),
+      createIngredient('mock-frango-desfiado', 'Páprica', 'Temperos', 'seasoning', null, null, null, false, true, 7),
     ],
     steps: [
       createStep('mock-frango-desfiado', 1, 'Cozinhe o frango com os temperos e vegetais da receita.'),
@@ -113,7 +115,9 @@ const mockRecipes: Recipe[] = [
       createIngredient('mock-patinho-refogado', 'Cebola média', 'Hortifruti', 'complement', 1, 'un', 1, false, false, 2, 'cebolas médias'),
       createIngredient('mock-patinho-refogado', 'Alho', 'Hortifruti', 'complement', 2, 'dentes', 1, false, false, 3),
       createIngredient('mock-patinho-refogado', 'Óleo', 'Outros', 'critical', 1, 'colher de sopa', 1, true, false, 4),
-      createIngredient('mock-patinho-refogado', 'Sal, pimenta e cheiro-verde', 'Temperos', 'seasoning', null, null, null, false, true, 5),
+      createIngredient('mock-patinho-refogado', 'Sal', 'Temperos', 'seasoning', null, null, null, false, true, 5),
+      createIngredient('mock-patinho-refogado', 'Pimenta', 'Temperos', 'seasoning', null, null, null, false, true, 6),
+      createIngredient('mock-patinho-refogado', 'Cheiro-verde', 'Temperos', 'seasoning', null, null, null, false, true, 7),
     ],
     steps: [
       createStep('mock-patinho-refogado', 1, 'Refogue a cebola e o alho com o óleo da receita.'),
@@ -170,7 +174,9 @@ const mockRecipes: Recipe[] = [
       createIngredient('mock-lombo-desfiado', 'Lombo suíno cru', 'Proteínas', 'main', 1000, 'g', 100, false, false, 1),
       createIngredient('mock-lombo-desfiado', 'Cebola média', 'Hortifruti', 'complement', 1, 'un', 1, false, false, 2, 'cebolas médias'),
       createIngredient('mock-lombo-desfiado', 'Molho de tomate', 'Outros', 'critical', 1, 'sachê', 1, true, false, 3),
-      createIngredient('mock-lombo-desfiado', 'Sal, pimenta e louro', 'Temperos', 'seasoning', null, null, null, false, true, 4),
+      createIngredient('mock-lombo-desfiado', 'Sal', 'Temperos', 'seasoning', null, null, null, false, true, 4),
+      createIngredient('mock-lombo-desfiado', 'Pimenta', 'Temperos', 'seasoning', null, null, null, false, true, 5),
+      createIngredient('mock-lombo-desfiado', 'Louro', 'Temperos', 'seasoning', null, null, null, false, true, 6),
     ],
     steps: [
       createStep('mock-lombo-desfiado', 1, 'Cozinhe o lombo com os temperos e ingredientes da receita.'),

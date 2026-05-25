@@ -20,6 +20,7 @@ const distributedPortions = computed(() =>
   props.recipes.reduce((total, r) => total + getRecipePortions(r), 0),
 )
 const remainingPortions = computed(() => props.totalPortions - distributedPortions.value)
+const maxPortionsPerRecipe = computed(() => Math.max(props.totalPortions * 2, 1))
 
 const statusTitle = computed(() => {
   if (remainingPortions.value === 0) return 'Distribuição fechada.'
@@ -74,6 +75,11 @@ function updateInput(recipeId: string, event: Event) {
     return
   }
   emit('updatePortions', recipeId, Math.min(props.totalPortions * 2, Math.max(1, Number(raw))))
+}
+
+function updateRange(recipeId: string, event: Event) {
+  const value = Number((event.target as HTMLInputElement).value)
+  emit('updatePortions', recipeId, value > 0 ? value : null)
 }
 
 function zerar(recipeId: string) {
@@ -157,6 +163,7 @@ function tudo(recipeId: string) {
             :disabled="getRecipePortions(planningRecipe) <= 0"
             :aria-label="`Reduzir porções de ${planningRecipe.recipe.name}`"
             @click="decrement(planningRecipe.recipeId, getRecipePortions(planningRecipe))"
+            @dblclick.prevent
           >
             <BaseIcon name="minus" />
           </button>
@@ -179,10 +186,22 @@ function tudo(recipeId: string) {
             type="button"
             :aria-label="`Aumentar porções de ${planningRecipe.recipe.name}`"
             @click="increment(planningRecipe.recipeId, getRecipePortions(planningRecipe))"
+            @dblclick.prevent
           >
             <BaseIcon name="plus" />
           </button>
         </div>
+
+        <input
+          class="distribution-card__range"
+          type="range"
+          min="0"
+          :max="maxPortionsPerRecipe"
+          step="1"
+          :value="getRecipePortions(planningRecipe)"
+          :aria-label="`Distribuir porÃ§Ãµes de ${planningRecipe.recipe.name}`"
+          @input="updateRange(planningRecipe.recipeId, $event)"
+        >
 
         <div class="distribution-card__bar" aria-hidden="true">
           <div

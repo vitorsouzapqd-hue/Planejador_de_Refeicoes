@@ -921,6 +921,11 @@
   cursor: not-allowed;
 }
 
+.distribution-card__range {
+  width: calc(100% - 24px);
+  margin: 0 12px 10px;
+}
+
 .distribution-card__amount {
   height: 47px;
   border-radius: var(--radius-md);

@@ -58,6 +58,24 @@ const photoVegetableItems = photoShoppingList.find((category) => category.catego
 assertShoppingItem(photoVegetableItems, 'Beterraba', 400)
 assertShoppingItem(photoVegetableItems, 'Cenoura', 400)
 
+const watermelon = listPhotoCatalogRecipes().find((recipe) => recipe.slug === 'fruta-melancia')
+if (!watermelon) throw new Error('Receita fotografica de melancia nao encontrada.')
+if (watermelon.baseRawWeightG <= watermelon.baseReadyWeightG) {
+  throw new Error(
+    `Melancia deveria considerar fator de correcao. Compra base: ${watermelon.baseRawWeightG}g, peso pronto: ${watermelon.baseReadyWeightG}g.`,
+  )
+}
+
+const watermelonShoppingList = consolidateShoppingList([
+  {
+    recipeId: watermelon.id,
+    recipe: watermelon,
+    lines: [{ weightReadyG: 1000, portions: 1 }],
+  },
+])
+const fruitItems = watermelonShoppingList.find((category) => category.category === 'Frutas')?.items ?? []
+assertShoppingItem(fruitItems, 'Melancia', 2000)
+
 const genericCompoundRecipe = createRecipe({
   name: 'Mix de legumes',
   ingredients: [

@@ -36,6 +36,7 @@ const totalWeight = computed(() =>
 )
 
 const presets = [25, 50, 100, 150]
+const maxWeightReadyG = 1000
 
 watch(
   () => props.recipe.id,
@@ -46,6 +47,11 @@ watch(
 
 function setPreset(value: number) {
   emit('updateWeight', props.recipe.id, value)
+}
+
+function updateWeightRange(event: Event) {
+  const value = Number((event.target as HTMLInputElement).value)
+  emit('updateWeight', props.recipe.id, value > 0 ? value : null)
 }
 </script>
 
@@ -93,6 +99,17 @@ function setPreset(value: number) {
         input-label="peso em gramas"
         @update="emit('updateWeight', recipe.id, $event)"
       />
+
+      <input
+        class="weight-control__range"
+        type="range"
+        min="0"
+        :max="maxWeightReadyG"
+        step="5"
+        :value="weightReadyG ?? 0"
+        aria-label="Ajustar peso pronto em gramas"
+        @input="updateWeightRange"
+      >
 
       <div class="weight-presets">
         <button

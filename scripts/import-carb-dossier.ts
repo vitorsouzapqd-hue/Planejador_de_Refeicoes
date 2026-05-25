@@ -1,6 +1,7 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import { existsSync, readFileSync } from 'node:fs'
 import path from 'node:path'
+import { splitCompoundShoppingName } from '../src/services/shoppingIngredientIdentity'
 import { normalizeNameToSlug } from '../src/utils/recipeImages'
 
 type Env = Record<string, string | undefined>
@@ -198,29 +199,33 @@ function parseIngredients(section: string): ParsedIngredient[] {
   const rows = parseMarkdownRows(block)
   let mainAssigned = false
 
-  return rows.map(([name = '', quantityText = '']) => {
+  return rows.flatMap(([name = '', quantityText = '']) => {
     const sourceName = cleanText(name)
     const cleanQuantity = cleanText(quantityText)
     const isFreeSeasoning = isQuantityFreeSeasoning(cleanQuantity)
     const quantity = parseQuantity(cleanQuantity)
     const role: IngredientRole = !isFreeSeasoning && !mainAssigned ? 'main' : isFreeSeasoning ? 'seasoning' : 'complement'
     if (role === 'main') mainAssigned = true
-    const canonical = canonicalizeIngredient(sourceName, isFreeSeasoning)
+    const ingredientNames = getIndividualIngredientNames(sourceName, isFreeSeasoning)
 
-    return {
-      sourceName,
-      purchaseName: canonical.purchaseName,
-      displayName: canonical.displayName,
-      quantityText: cleanQuantity,
-      quantity: quantity.value,
-      unit: quantity.unit,
-      role,
-      includeInShoppingList: true,
-      isFreeSeasoning,
-      shoppingCategory: inferShoppingCategory(canonical.purchaseName, role),
-      aliases: canonical.aliases,
-      nutrition: ingredientNutritionByName.get(normalizeKey(sourceName)) ?? emptyNutrition(),
-    }
+    return ingredientNames.map((ingredientName) => {
+      const canonical = canonicalizeIngredient(ingredientName, isFreeSeasoning)
+
+      return {
+        sourceName,
+        purchaseName: canonical.purchaseName,
+        displayName: canonical.displayName,
+        quantityText: cleanQuantity,
+        quantity: quantity.value,
+        unit: quantity.unit,
+        role,
+        includeInShoppingList: true,
+        isFreeSeasoning,
+        shoppingCategory: inferShoppingCategory(canonical.purchaseName, role),
+        aliases: canonical.aliases,
+        nutrition: ingredientNutritionByName.get(normalizeKey(sourceName)) ?? emptyNutrition(),
+      }
+    })
   })
 }
 
@@ -781,6 +786,14 @@ function sumMeasuredIngredients(ingredients: ParsedIngredient[]) {
 
 function isQuantityFreeSeasoning(value: string) {
   return normalizeKey(value).startsWith('a gosto')
+}
+
+function getIndividualIngredientNames(sourceName: string, isFreeSeasoning: boolean) {
+  if (!isFreeSeasoning) return [sourceName]
+
+  const splitNames = splitCompoundShoppingName(sourceName)
+
+  return splitNames.length ? splitNames : [sourceName]
 }
 
 async function createSupabaseClient() {

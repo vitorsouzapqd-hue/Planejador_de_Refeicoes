@@ -42,7 +42,9 @@
 | Cebola | 80g |
 | Alho | 20g (~5 dentes) |
 | Salsinha fresca | 10g |
-| Sal, pimenta-do-reino, noz-moscada | a gosto |
+| Sal | a gosto |
+| Pimenta-do-reino | a gosto |
+| Noz-moscada | a gosto |
 
 ### Tabela Nutricional por Ingrediente
 
@@ -54,7 +56,9 @@
 | Cebola | 80g | 40 | 1,0g | 9,0g | 0g | 32,0 | 0,8g | 7,2g | 0g |
 | Alho | 20g | 149 | 6,4g | 33,0g | 0,5g | 29,8 | 1,3g | 6,6g | 0,1g |
 | Salsinha | 10g | 36 | 3,0g | 5,0g | 0,8g | 3,6 | 0,3g | 0,5g | 0,1g |
-| Sal, pimenta, noz-moscada | a gosto | — | — | — | — | desprezível | — | — | — |
+| Sal | a gosto | — | — | — | — | desprezível | — | — | — |
+| Pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
+| Noz-moscada | a gosto | — | — | — | — | desprezível | — | — | — |
 
 ### Total da Receita
 
@@ -88,7 +92,9 @@
 | Cebola | 80g |
 | Alho | 20g (~5 dentes) |
 | Salsinha fresca | 10g |
-| Sal, pimenta-do-reino, noz-moscada | a gosto |
+| Sal | a gosto |
+| Pimenta-do-reino | a gosto |
+| Noz-moscada | a gosto |
 
 ### Tabela Nutricional por Ingrediente
 
@@ -100,7 +106,9 @@
 | Cebola | 80g | 40 | 1,0g | 9,0g | 0g | 32,0 | 0,8g | 7,2g | 0g |
 | Alho | 20g | 149 | 6,4g | 33,0g | 0,5g | 29,8 | 1,3g | 6,6g | 0,1g |
 | Salsinha | 10g | 36 | 3,0g | 5,0g | 0,8g | 3,6 | 0,3g | 0,5g | 0,1g |
-| Sal, pimenta, noz-moscada | a gosto | — | — | — | — | desprezível | — | — | — |
+| Sal | a gosto | — | — | — | — | desprezível | — | — | — |
+| Pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
+| Noz-moscada | a gosto | — | — | — | — | desprezível | — | — | — |
 
 ### Total da Receita
 
@@ -136,7 +144,9 @@
 | Extrato de tomate | 30g (~2 col. de sopa) |
 | Shoyu | 30g (~2 col. de sopa) |
 | Azeite de oliva | 15g (~1 col. de sopa) |
-| Sal, pimenta-do-reino, louro | a gosto |
+| Sal | a gosto |
+| Pimenta-do-reino | a gosto |
+| Louro | a gosto |
 
 ### Tabela Nutricional por Ingrediente
 
@@ -149,7 +159,9 @@
 | Extrato de tomate | 30g | 32 | 1,5g | 6,0g | 0,5g | 9,6 | 0,5g | 1,8g | 0,2g |
 | Shoyu | 30g | 60 | 6,0g | 5,2g | 0g | 18,0 | 1,8g | 1,6g | 0g |
 | Azeite de oliva | 15g | 884 | 0g | 0g | 100g | 132,6 | 0g | 0g | 15,0g |
-| Sal, pimenta, louro | a gosto | — | — | — | — | desprezível | — | — | — |
+| Sal | a gosto | — | — | — | — | desprezível | — | — | — |
+| Pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
+| Louro | a gosto | — | — | — | — | desprezível | — | — | — |
 
 ### Total da Receita
 
@@ -183,7 +195,9 @@
 | Cebola | 300g (~2 grandes) |
 | Alho | 20g (~5 dentes) |
 | Azeite de oliva | 15g (~1 col. de sopa) |
-| Sal, pimenta-do-reino, alecrim (opcional) | a gosto |
+| Sal | a gosto |
+| Pimenta-do-reino | a gosto |
+| Alecrim | a gosto |
 
 ### Tabela Nutricional por Ingrediente
 
@@ -193,7 +207,9 @@
 | Cebola | 300g | 40 | 1,0g | 9,0g | 0g | 120,0 | 3,0g | 27,0g | 0g |
 | Alho | 20g | 149 | 6,4g | 33,0g | 0,5g | 29,8 | 1,3g | 6,6g | 0,1g |
 | Azeite de oliva | 15g | 884 | 0g | 0g | 100g | 132,6 | 0g | 0g | 15,0g |
-| Sal, pimenta, alecrim | a gosto | — | — | — | — | desprezível | — | — | — |
+| Sal | a gosto | — | — | — | — | desprezível | — | — | — |
+| Pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
+| Alecrim | a gosto | — | — | — | — | desprezível | — | — | — |
 
 ### Total da Receita
 
@@ -228,7 +244,10 @@
 | Milho verde (lata, escorrido) | 200g (~1 lata) |
 | Cebola | 100g (~1 média) |
 | Alho | 20g (~5 dentes) |
-| Sal, pimenta, colorau, louro | a gosto |
+| Sal | a gosto |
+| Pimenta | a gosto |
+| Colorau | a gosto |
+| Louro | a gosto |
 
 ### Tabela Nutricional por Ingrediente
 
@@ -239,7 +258,10 @@
 | Milho verde (escorrido) | 200g | 67 | 2,1g | 14,4g | 0,9g | 134,0 | 4,2g | 28,8g | 1,8g |
 | Cebola | 100g | 40 | 1,0g | 9,0g | 0g | 40,0 | 1,0g | 9,0g | 0g |
 | Alho | 20g | 149 | 6,4g | 33,0g | 0,5g | 29,8 | 1,3g | 6,6g | 0,1g |
-| Sal, pimenta, colorau, louro | a gosto | — | — | — | — | desprezível | — | — | — |
+| Sal | a gosto | — | — | — | — | desprezível | — | — | — |
+| Pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
+| Colorau | a gosto | — | — | — | — | desprezível | — | — | — |
+| Louro | a gosto | — | — | — | — | desprezível | — | — | — |
 
 ### Total da Receita
 
@@ -272,7 +294,11 @@
 | Cebola | 100g (~1 média) |
 | Alho | 20g (~5 dentes) |
 | Azeite de oliva | 10g (~2 col. de chá) |
-| Sal, pimenta, colorau, louro, cominho | a gosto |
+| Sal | a gosto |
+| Pimenta | a gosto |
+| Colorau | a gosto |
+| Louro | a gosto |
+| Cominho | a gosto |
 
 ### Tabela Nutricional por Ingrediente
 
@@ -282,7 +308,11 @@
 | Cebola | 100g | 40 | 1,0g | 9,0g | 0g | 40,0 | 1,0g | 9,0g | 0g |
 | Alho | 20g | 149 | 6,4g | 33,0g | 0,5g | 29,8 | 1,3g | 6,6g | 0,1g |
 | Azeite de oliva | 10g | 884 | 0g | 0g | 100g | 88,4 | 0g | 0g | 10,0g |
-| Sal, pimenta, colorau, louro, cominho | a gosto | — | — | — | — | desprezível | — | — | — |
+| Sal | a gosto | — | — | — | — | desprezível | — | — | — |
+| Pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
+| Colorau | a gosto | — | — | — | — | desprezível | — | — | — |
+| Louro | a gosto | — | — | — | — | desprezível | — | — | — |
+| Cominho | a gosto | — | — | — | — | desprezível | — | — | — |
 
 ### Total da Receita
 
@@ -317,7 +347,9 @@
 | Tomate | 100g (~1 médio) |
 | Azeite de oliva | 10g (~2 col. de chá) |
 | Salsinha fresca | 10g |
-| Sal, pimenta, colorau | a gosto |
+| Sal | a gosto |
+| Pimenta | a gosto |
+| Colorau | a gosto |
 
 ### Tabela Nutricional por Ingrediente
 
@@ -329,7 +361,9 @@
 | Tomate | 100g | 18 | 0,9g | 3,9g | 0,2g | 18,0 | 0,9g | 3,9g | 0,2g |
 | Azeite de oliva | 10g | 884 | 0g | 0g | 100g | 88,4 | 0g | 0g | 10,0g |
 | Salsinha | 10g | 36 | 3,0g | 5,0g | 0,8g | 3,6 | 0,3g | 0,5g | 0,1g |
-| Sal, pimenta, colorau | a gosto | — | — | — | — | desprezível | — | — | — |
+| Sal | a gosto | — | — | — | — | desprezível | — | — | — |
+| Pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
+| Colorau | a gosto | — | — | — | — | desprezível | — | — | — |
 
 ### Total da Receita
 
@@ -363,7 +397,9 @@
 | Molho barbecue (Heinz) | 100g (~7 col. de sopa) |
 | Alho | 20g (~5 dentes) |
 | Azeite de oliva | 15g (~1 col. de sopa) |
-| Sal, pimenta, ervas finas (alecrim, tomilho) | a gosto |
+| Sal | a gosto |
+| Pimenta | a gosto |
+| Ervas finas | a gosto |
 
 ### Tabela Nutricional por Ingrediente
 
@@ -373,7 +409,9 @@
 | Molho barbecue Heinz | 100g | 110 | 0,8g | 26,0g | 0,3g | 110,0 | 0,8g | 26,0g | 0,3g |
 | Alho | 20g | 149 | 6,4g | 33,0g | 0,5g | 29,8 | 1,3g | 6,6g | 0,1g |
 | Azeite de oliva | 15g | 884 | 0g | 0g | 100g | 132,6 | 0g | 0g | 15,0g |
-| Sal, pimenta, ervas | a gosto | — | — | — | — | desprezível | — | — | — |
+| Sal | a gosto | — | — | — | — | desprezível | — | — | — |
+| Pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
+| Ervas | a gosto | — | — | — | — | desprezível | — | — | — |
 
 ### Total da Receita
 
@@ -409,7 +447,9 @@
 | Tomate | 100g (~1 médio) |
 | Azeite de oliva | 10g (~2 col. de chá) |
 | Salsinha fresca | 10g |
-| Sal, pimenta-do-reino, colorau | a gosto |
+| Sal | a gosto |
+| Pimenta-do-reino | a gosto |
+| Colorau | a gosto |
 
 ### Tabela Nutricional por Ingrediente
 
@@ -421,7 +461,9 @@
 | Tomate | 100g | 18 | 0,9g | 3,9g | 0,2g | 18,0 | 0,9g | 3,9g | 0,2g |
 | Azeite de oliva | 10g | 884 | 0g | 0g | 100g | 88,4 | 0g | 0g | 10,0g |
 | Salsinha | 10g | 36 | 3,0g | 5,0g | 0,8g | 3,6 | 0,3g | 0,5g | 0,1g |
-| Sal, pimenta, colorau | a gosto | — | — | — | — | desprezível | — | — | — |
+| Sal | a gosto | — | — | — | — | desprezível | — | — | — |
+| Pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
+| Colorau | a gosto | — | — | — | — | desprezível | — | — | — |
 
 ### Total da Receita
 
@@ -457,7 +499,10 @@
 | Alho | 30g (~7 dentes) |
 | Suco de limão | 30g (~1 limão) |
 | Azeite de oliva | 15g (~1 col. de sopa) |
-| Sal, pimenta, colorau, páprica defumada | a gosto |
+| Sal | a gosto |
+| Pimenta | a gosto |
+| Colorau | a gosto |
+| Páprica defumada | a gosto |
 
 ### Tabela Nutricional por Ingrediente
 
@@ -468,7 +513,10 @@
 | Alho | 30g | 149 | 6,4g | 33,0g | 0,5g | 44,7 | 1,9g | 9,9g | 0,2g |
 | Suco de limão | 30g | 29 | 0,5g | 7,0g | 0,1g | 8,7 | 0,2g | 2,1g | 0g |
 | Azeite de oliva | 15g | 884 | 0g | 0g | 100g | 132,6 | 0g | 0g | 15,0g |
-| Sal, pimenta, colorau, páprica | a gosto | — | — | — | — | desprezível | — | — | — |
+| Sal | a gosto | — | — | — | — | desprezível | — | — | — |
+| Pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
+| Colorau | a gosto | — | — | — | — | desprezível | — | — | — |
+| Páprica | a gosto | — | — | — | — | desprezível | — | — | — |
 
 ### Total da Receita
 
@@ -506,7 +554,8 @@
 | Cebola | 100g (~1 média) |
 | Alho | 20g (~5 dentes) |
 | Azeite de oliva | 10g (~2 col. de chá) |
-| Sal, pimenta-do-reino | a gosto |
+| Sal | a gosto |
+| Pimenta-do-reino | a gosto |
 
 ### Tabela Nutricional por Ingrediente
 
@@ -520,7 +569,8 @@
 | Cebola | 100g | 40 | 1,0g | 9,0g | 0g | 40,0 | 1,0g | 9,0g | 0g |
 | Alho | 20g | 149 | 6,4g | 33,0g | 0,5g | 29,8 | 1,3g | 6,6g | 0,1g |
 | Azeite de oliva | 10g | 884 | 0g | 0g | 100g | 88,4 | 0g | 0g | 10,0g |
-| Sal, pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
+| Sal | a gosto | — | — | — | — | desprezível | — | — | — |
+| Pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
 
 ### Total da Receita
 
@@ -558,7 +608,8 @@
 | Cebola | 100g (~1 média) |
 | Alho | 20g (~5 dentes) |
 | Azeite de oliva | 10g (~2 col. de chá) |
-| Sal, pimenta-do-reino | a gosto |
+| Sal | a gosto |
+| Pimenta-do-reino | a gosto |
 
 ### Tabela Nutricional por Ingrediente
 
@@ -572,7 +623,8 @@
 | Cebola | 100g | 40 | 1,0g | 9,0g | 0g | 40,0 | 1,0g | 9,0g | 0g |
 | Alho | 20g | 149 | 6,4g | 33,0g | 0,5g | 29,8 | 1,3g | 6,6g | 0,1g |
 | Azeite de oliva | 10g | 884 | 0g | 0g | 100g | 88,4 | 0g | 0g | 10,0g |
-| Sal, pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
+| Sal | a gosto | — | — | — | — | desprezível | — | — | — |
+| Pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
 
 ### Total da Receita
 
@@ -608,7 +660,10 @@
 | Pimentão (misto) | 240g (~2 unidades) |
 | Alho | 20g (~5 dentes) |
 | Azeite de oliva | 15g (~1 col. de sopa) |
-| Sal, pimenta, colorau, orégano | a gosto |
+| Sal | a gosto |
+| Pimenta | a gosto |
+| Colorau | a gosto |
+| Orégano | a gosto |
 
 ### Tabela Nutricional por Ingrediente
 
@@ -620,7 +675,10 @@
 | Pimentão (misto) | 240g | 28 | 1,0g | 6,0g | 0,3g | 67,2 | 2,4g | 14,4g | 0,7g |
 | Alho | 20g | 149 | 6,4g | 33,0g | 0,5g | 29,8 | 1,3g | 6,6g | 0,1g |
 | Azeite de oliva | 15g | 884 | 0g | 0g | 100g | 132,6 | 0g | 0g | 15,0g |
-| Sal, pimenta, colorau, orégano | a gosto | — | — | — | — | desprezível | — | — | — |
+| Sal | a gosto | — | — | — | — | desprezível | — | — | — |
+| Pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
+| Colorau | a gosto | — | — | — | — | desprezível | — | — | — |
+| Orégano | a gosto | — | — | — | — | desprezível | — | — | — |
 
 ### Total da Receita
 
@@ -655,7 +713,10 @@
 | Pimentão (misto) | 240g (~2 unidades) |
 | Alho | 20g (~5 dentes) |
 | Azeite de oliva | 15g (~1 col. de sopa) |
-| Sal, pimenta, colorau, orégano | a gosto |
+| Sal | a gosto |
+| Pimenta | a gosto |
+| Colorau | a gosto |
+| Orégano | a gosto |
 
 ### Tabela Nutricional por Ingrediente
 
@@ -667,7 +728,10 @@
 | Pimentão (misto) | 240g | 28 | 1,0g | 6,0g | 0,3g | 67,2 | 2,4g | 14,4g | 0,7g |
 | Alho | 20g | 149 | 6,4g | 33,0g | 0,5g | 29,8 | 1,3g | 6,6g | 0,1g |
 | Azeite de oliva | 15g | 884 | 0g | 0g | 100g | 132,6 | 0g | 0g | 15,0g |
-| Sal, pimenta, colorau, orégano | a gosto | — | — | — | — | desprezível | — | — | — |
+| Sal | a gosto | — | — | — | — | desprezível | — | — | — |
+| Pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
+| Colorau | a gosto | — | — | — | — | desprezível | — | — | — |
+| Orégano | a gosto | — | — | — | — | desprezível | — | — | — |
 
 ### Total da Receita
 
@@ -699,7 +763,9 @@
 | Filé de tilápia | 1.000g |
 | Suco de limão | 30g (~1 limão) |
 | Azeite de oliva | 10g (~2 col. de chá) |
-| Sal, pimenta-do-reino, lemon pepper (opcional) | a gosto |
+| Sal | a gosto |
+| Pimenta-do-reino | a gosto |
+| Lemon pepper | a gosto |
 
 ### Tabela Nutricional por Ingrediente
 
@@ -708,7 +774,9 @@
 | Filé de tilápia | 1.000g | 96 | 20,1g | 0g | 1,7g | 960 | 201,0g | 0g | 17,0g |
 | Suco de limão | 30g | 29 | 0,5g | 7,0g | 0,1g | 8,7 | 0,2g | 2,1g | 0g |
 | Azeite de oliva | 10g | 884 | 0g | 0g | 100g | 88,4 | 0g | 0g | 10,0g |
-| Sal, pimenta, lemon pepper | a gosto | — | — | — | — | desprezível | — | — | — |
+| Sal | a gosto | — | — | — | — | desprezível | — | — | — |
+| Pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
+| Lemon pepper | a gosto | — | — | — | — | desprezível | — | — | — |
 
 ### Total da Receita
 

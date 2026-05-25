@@ -15,7 +15,9 @@ type PhotoCatalogItem = {
   ingredientName?: string
   ingredientNames?: string[]
   baseRawWeightG?: number
+  baseCleanWeightG?: number
   baseReadyWeightG?: number
+  ediblePortionPercent?: number
   prepTimeMinutes?: number
   costLevel?: number
   timeLevel?: number
@@ -30,6 +32,24 @@ const moduleLabels = {
   carboidratos: 'Carboidratos',
   saladas: 'Saladas',
   frutas: 'Frutas',
+}
+
+const fruitEdiblePortionPercent: Record<string, number> = {
+  abacaxi: 52,
+  banana: 74,
+  caqui: 90,
+  goiaba: 93,
+  laranja: 73,
+  maca: 84,
+  mamao: 70,
+  manga: 70,
+  melancia: 52,
+  melao: 52,
+  morango: 94,
+  pera: 90,
+  pitaya: 60,
+  tangerina: 72,
+  uva: 95,
 }
 
 const photoCatalogItems: PhotoCatalogItem[] = [
@@ -118,7 +138,11 @@ export function getPhotoCatalogRecipeBySlug(slug: string) {
 function mapPhotoCatalogItem(item: PhotoCatalogItem): Recipe {
   const categoryLabel = moduleLabels[item.module]
   const rawWeight = item.baseRawWeightG ?? 1000
+  const cleanWeight = item.baseCleanWeightG ?? null
   const readyWeight = item.baseReadyWeightG ?? 1000
+  const correctionFactor = item.ediblePortionPercent
+    ? Number((rawWeight / readyWeight).toFixed(2))
+    : null
   const attributeSource = {
     slug: item.fileSlug,
     name: item.name,
@@ -148,8 +172,11 @@ function mapPhotoCatalogItem(item: PhotoCatalogItem): Recipe {
     imagePath: `/recipe-images/${item.fileSlug}.png`,
     imageUrl: `/recipe-images/${item.fileSlug}.png`,
     baseRawWeightG: rawWeight,
+    baseCleanWeightG: cleanWeight,
     baseReadyWeightG: readyWeight,
-    baseYieldNote: `${formatKg(rawWeight)} cru rende cerca de ${formatKg(readyWeight)} pronto.`,
+    correctionFactor,
+    cookingFactor: Number((readyWeight / rawWeight).toFixed(3)),
+    baseYieldNote: formatBaseYieldNote(item, rawWeight, readyWeight),
     prepTimeMinutes: item.prepTimeMinutes ?? getRecipePrepTimeMinutes(attributeSource),
     costLevel: item.costLevel ?? 2,
     timeLevel: item.timeLevel ?? 2,
@@ -309,6 +336,10 @@ function createFruit(
   name: string,
   type: string,
 ): PhotoCatalogItem {
+  const ediblePortionPercent = fruitEdiblePortionPercent[type] ?? 90
+  const readyWeightG = 1000
+  const rawWeightG = Math.round((readyWeightG * 100) / ediblePortionPercent)
+
   return {
     fileSlug,
     name,
@@ -316,8 +347,10 @@ function createFruit(
     type,
     shoppingCategory: 'Frutas',
     ingredientName: name,
-    baseRawWeightG: 1000,
-    baseReadyWeightG: 1000,
+    baseRawWeightG: rawWeightG,
+    baseCleanWeightG: readyWeightG,
+    baseReadyWeightG: readyWeightG,
+    ediblePortionPercent,
     costLevel: 2,
     timeLevel: 1,
     workLevel: 1,
@@ -361,4 +394,12 @@ function formatKg(value: number) {
   if (value >= 1000) return `${new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 1 }).format(value / 1000)}kg`
 
   return `${value}g`
+}
+
+function formatBaseYieldNote(item: PhotoCatalogItem, rawWeight: number, readyWeight: number) {
+  if (item.module === 'frutas') {
+    return `${formatKg(rawWeight)} de fruta inteira rende cerca de ${formatKg(readyWeight)} de peso pronto.`
+  }
+
+  return `${formatKg(rawWeight)} cru rende cerca de ${formatKg(readyWeight)} pronto.`
 }

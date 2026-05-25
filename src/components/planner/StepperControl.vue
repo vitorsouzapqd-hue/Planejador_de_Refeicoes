@@ -49,6 +49,7 @@ function updateFromInput(value: string) {
       :disabled="(value ?? min) <= min"
       :aria-label="`Reduzir ${inputLabel}`"
       @click="change(-step)"
+      @dblclick.prevent
     >
       <BaseIcon name="minus" />
     </button>
@@ -72,6 +73,7 @@ function updateFromInput(value: string) {
       :disabled="(value ?? min) >= max"
       :aria-label="`Aumentar ${inputLabel}`"
       @click="change(step)"
+      @dblclick.prevent
     >
       <BaseIcon name="plus" />
     </button>

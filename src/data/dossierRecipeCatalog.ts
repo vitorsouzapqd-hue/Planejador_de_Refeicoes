@@ -33,7 +33,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     "prepTimeMinutes": 35,
     "costLevel": 3,
     "timeLevel": 3,
-    "workLevel": 2,
+    "workLevel": 3,
     "practicalityLevel": 3,
     "versatilityLevel": 3,
     "freezesWell": true,
@@ -64,7 +64,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "bec2b513-ae09-4e4e-9190-a60db6225b78",
+        "id": "ce7f59b3-e7c1-4f0e-b660-f8e0f394b757",
         "recipeId": "46f2e548-366d-4a63-9f17-f4d0888a70ce",
         "ingredientId": "2396425c-508b-435a-b089-d08d093095af",
         "ingredient": {
@@ -149,7 +149,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "20f720a9-569b-4642-a53a-fe0123112559",
+        "id": "6ef9f301-a904-4b62-8df8-4297b092468b",
         "recipeId": "46f2e548-366d-4a63-9f17-f4d0888a70ce",
         "ingredientId": "98c9ed5c-3c76-4689-aba5-7d3f6271ee42",
         "ingredient": {
@@ -244,7 +244,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "a5e965a8-466a-43fe-a104-4b5a8fa0605c",
+        "id": "4046374e-2248-4ae3-af1b-74e45464f7a3",
         "recipeId": "46f2e548-366d-4a63-9f17-f4d0888a70ce",
         "ingredientId": "3fe54b1b-5833-4420-9304-41aa229558e5",
         "ingredient": {
@@ -339,7 +339,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "2d98092b-146a-4346-b6ec-a563150816e6",
+        "id": "4b00be53-48fc-471e-93b7-8ded2645ca4d",
         "recipeId": "46f2e548-366d-4a63-9f17-f4d0888a70ce",
         "ingredientId": "40000000-0000-0000-0000-000000000008",
         "ingredient": {
@@ -444,7 +444,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "f15af3c9-66f6-48aa-ba96-d74c64a47be2",
+        "id": "3acea920-270d-4027-935e-0cd68888ea6a",
         "recipeId": "46f2e548-366d-4a63-9f17-f4d0888a70ce",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -539,7 +539,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "e3346696-554c-48c4-9209-77014dd40041",
+        "id": "d12ae357-9aaa-4be3-b002-aaf131a07326",
         "recipeId": "46f2e548-366d-4a63-9f17-f4d0888a70ce",
         "ingredientId": "fed96ab6-56f4-41c8-adfe-2e362084000a",
         "ingredient": {
@@ -626,11 +626,11 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "b0d47374-3904-4c93-8fa2-99bea68d2a7b",
+        "id": "0d56aff6-2f09-48e6-9c86-4acce9b64a37",
         "recipeId": "46f2e548-366d-4a63-9f17-f4d0888a70ce",
         "ingredientId": null,
         "ingredient": null,
-        "name": "Sal, pimenta-do-reino, noz-moscada",
+        "name": "Sal",
         "shoppingCategory": "Temperos e Condimentos",
         "ingredientRole": "seasoning",
         "role": "seasoning",
@@ -645,9 +645,67 @@ export const dossierRecipeCatalog: Recipe[] = [
         "includeInShoppingList": true,
         "roundingStep": null,
         "roundingMode": "none",
-        "displayName": "Sal, pimenta-do-reino, noz-moscada",
+        "displayName": "Sal",
         "notes": null,
         "sortOrder": 6,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "35efcf16-f3de-4de3-8fda-53feb8f2e761",
+        "recipeId": "46f2e548-366d-4a63-9f17-f4d0888a70ce",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Pimenta-do-reino",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Pimenta-do-reino",
+        "notes": null,
+        "sortOrder": 7,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "806bdf8e-707d-4f9e-94f6-9c99136c3cdc",
+        "recipeId": "46f2e548-366d-4a63-9f17-f4d0888a70ce",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Noz-moscada",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Noz-moscada",
+        "notes": null,
+        "sortOrder": 8,
         "packageSizeG": null,
         "purchaseIncrementG": null,
         "purchaseUnit": null,
@@ -657,25 +715,25 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "29d51de3-ca1f-4425-814f-6d062350a600",
+        "id": "3288bb18-e93a-4f05-bfce-71c0ac041c5b",
         "recipeId": "46f2e548-366d-4a63-9f17-f4d0888a70ce",
         "stepNumber": 1,
         "instruction": "Processe a cebola e o alho até ficarem bem picados."
       },
       {
-        "id": "da132c18-7934-43e4-9384-ba464f691de3",
+        "id": "eb1b1378-0b75-43da-8756-c25b5000894e",
         "recipeId": "46f2e548-366d-4a63-9f17-f4d0888a70ce",
         "stepNumber": 2,
         "instruction": "Em um bowl, misture o patinho moído, ovo, farelo de aveia, cebola, alho, salsinha, sal, pimenta e noz-moscada. Incorpore bem com as mãos."
       },
       {
-        "id": "3052a2cf-7385-4011-a818-d263896ab17b",
+        "id": "0e378885-c8e5-4ac3-accd-bcafe8999db4",
         "recipeId": "46f2e548-366d-4a63-9f17-f4d0888a70ce",
         "stepNumber": 3,
         "instruction": "Modele as almôndegas (aprox. 40–50g cada) e disponha em assadeira untada levemente com azeite."
       },
       {
-        "id": "c3c4efbc-21f9-49e9-8ed4-e82dedb5e0f9",
+        "id": "38f9ca60-97aa-490a-91a8-d606b19a8263",
         "recipeId": "46f2e548-366d-4a63-9f17-f4d0888a70ce",
         "stepNumber": 4,
         "instruction": "Leve ao forno preaquecido a 200°C por 20–25 minutos, virando na metade do tempo, até dourar. Alternativa: doure em frigideira antiaderente com fio de azeite, em fogo médio-alto."
@@ -714,7 +772,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     "prepTimeMinutes": 35,
     "costLevel": 3,
     "timeLevel": 3,
-    "workLevel": 2,
+    "workLevel": 3,
     "practicalityLevel": 3,
     "versatilityLevel": 3,
     "freezesWell": true,
@@ -745,7 +803,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "2d057194-53c0-4ecb-b782-60189ad1d6d3",
+        "id": "ab3a63bb-25f9-48a6-924b-c9bd7727eb1b",
         "recipeId": "ec17d5f7-98d5-43cd-8984-710246aeee15",
         "ingredientId": "cf6ea440-f8ad-4807-bddd-88a994478ca9",
         "ingredient": {
@@ -842,7 +900,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "13d36ddd-5364-4b69-93a1-9cb420b4a54c",
+        "id": "9576869c-23a6-4449-a1cf-b86c80eec298",
         "recipeId": "ec17d5f7-98d5-43cd-8984-710246aeee15",
         "ingredientId": "98c9ed5c-3c76-4689-aba5-7d3f6271ee42",
         "ingredient": {
@@ -937,7 +995,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "9caa04ee-dc35-4bea-a59e-8f7c7fcf7131",
+        "id": "4082ec22-3a46-4824-bf1f-55cd021cae65",
         "recipeId": "ec17d5f7-98d5-43cd-8984-710246aeee15",
         "ingredientId": "3fe54b1b-5833-4420-9304-41aa229558e5",
         "ingredient": {
@@ -1032,7 +1090,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "8d878fc8-8154-4a59-b729-f59ddd1f59b7",
+        "id": "bd46c4b8-e5af-46ee-84b8-818818106cd1",
         "recipeId": "ec17d5f7-98d5-43cd-8984-710246aeee15",
         "ingredientId": "40000000-0000-0000-0000-000000000008",
         "ingredient": {
@@ -1137,7 +1195,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "b66d78d9-a0cc-41a8-8680-1e7124680c36",
+        "id": "8ab1ddd9-7d9f-495e-a2e4-2f0780ea91cc",
         "recipeId": "ec17d5f7-98d5-43cd-8984-710246aeee15",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -1232,7 +1290,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "dadbe265-2781-425a-9588-bab4a4343f7d",
+        "id": "b31269a0-dd81-4477-bcb0-f2acc67606f5",
         "recipeId": "ec17d5f7-98d5-43cd-8984-710246aeee15",
         "ingredientId": "fed96ab6-56f4-41c8-adfe-2e362084000a",
         "ingredient": {
@@ -1319,11 +1377,11 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "68aa4bb3-b673-49f8-9d69-339f3e123592",
+        "id": "248535ca-abc4-4c48-a2cf-b9e90831408c",
         "recipeId": "ec17d5f7-98d5-43cd-8984-710246aeee15",
         "ingredientId": null,
         "ingredient": null,
-        "name": "Sal, pimenta-do-reino, noz-moscada",
+        "name": "Sal",
         "shoppingCategory": "Temperos e Condimentos",
         "ingredientRole": "seasoning",
         "role": "seasoning",
@@ -1338,9 +1396,67 @@ export const dossierRecipeCatalog: Recipe[] = [
         "includeInShoppingList": true,
         "roundingStep": null,
         "roundingMode": "none",
-        "displayName": "Sal, pimenta-do-reino, noz-moscada",
+        "displayName": "Sal",
         "notes": null,
         "sortOrder": 6,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "b192ded9-0d9c-417c-a7c9-b0ee802d6768",
+        "recipeId": "ec17d5f7-98d5-43cd-8984-710246aeee15",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Pimenta-do-reino",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Pimenta-do-reino",
+        "notes": null,
+        "sortOrder": 7,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "50cdb5d8-17ef-4e4d-ab68-82cf0777b4cd",
+        "recipeId": "ec17d5f7-98d5-43cd-8984-710246aeee15",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Noz-moscada",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Noz-moscada",
+        "notes": null,
+        "sortOrder": 8,
         "packageSizeG": null,
         "purchaseIncrementG": null,
         "purchaseUnit": null,
@@ -1350,31 +1466,31 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "41b71aa2-4da6-440a-b45d-32fd84181df9",
+        "id": "703a0252-9984-40ef-bbca-423be4530629",
         "recipeId": "ec17d5f7-98d5-43cd-8984-710246aeee15",
         "stepNumber": 1,
         "instruction": "Processe o peito de frango em pedaços no processador até obter textura de carne moída. Não bata demais para não virar pasta."
       },
       {
-        "id": "cf0b8bae-994c-41f8-9548-1a31ccef9b3d",
+        "id": "fea4b4c9-ab8d-49f4-a5f3-f915d3720327",
         "recipeId": "ec17d5f7-98d5-43cd-8984-710246aeee15",
         "stepNumber": 2,
         "instruction": "Processe a cebola e o alho separadamente."
       },
       {
-        "id": "a2253c68-56d6-44d8-8025-03fee349bb8d",
+        "id": "5965af00-ada8-4c16-b9ac-a7d40aac94f3",
         "recipeId": "ec17d5f7-98d5-43cd-8984-710246aeee15",
         "stepNumber": 3,
         "instruction": "Em um bowl, misture todos os ingredientes e incorpore bem com as mãos. A massa de frango é mais úmida — o farelo de aveia é fundamental para dar liga."
       },
       {
-        "id": "a1bb5718-8c31-4961-99c7-049c96e5cdf2",
+        "id": "66d0c578-2e93-445a-98af-345f31e95f63",
         "recipeId": "ec17d5f7-98d5-43cd-8984-710246aeee15",
         "stepNumber": 4,
         "instruction": "Modele as almôndegas (aprox. 40–50g cada) com as mãos levemente umedecidas."
       },
       {
-        "id": "6bb7d72d-1288-4d9a-b2a6-6068595ac534",
+        "id": "a94e2e30-8ec9-48f0-9ade-f80487c3db05",
         "recipeId": "ec17d5f7-98d5-43cd-8984-710246aeee15",
         "stepNumber": 5,
         "instruction": "Leve ao forno preaquecido a 200°C por 20–22 minutos, virando na metade. Ficam prontas quando douradas e firmes ao toque."
@@ -1444,7 +1560,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "845e0d90-1fb2-454b-9144-c6d8a4b2653e",
+        "id": "23ea4681-1ab6-4d04-886e-a683f527db55",
         "recipeId": "dcf76a43-7bc8-451d-876c-87a8afde0dbe",
         "ingredientId": "080f7052-b190-4cc4-868b-9e773f7983d6",
         "ingredient": {
@@ -1541,7 +1657,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "ea30b6e0-cf22-44f6-ae40-9eb19039f94c",
+        "id": "7495cd84-31c6-48ce-a3bc-9030b2700553",
         "recipeId": "dcf76a43-7bc8-451d-876c-87a8afde0dbe",
         "ingredientId": "40000000-0000-0000-0000-000000000008",
         "ingredient": {
@@ -1646,7 +1762,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "713b4216-6974-4503-90a9-f34cbfd72857",
+        "id": "821042aa-3dc1-4dd5-8f25-279763db0367",
         "recipeId": "dcf76a43-7bc8-451d-876c-87a8afde0dbe",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -1741,7 +1857,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "c33a88e9-34af-4a68-acfa-8d1b3c6dbfd0",
+        "id": "f4c7f9fd-10d5-44d9-bbf3-0784b4c8a71e",
         "recipeId": "dcf76a43-7bc8-451d-876c-87a8afde0dbe",
         "ingredientId": "40000000-0000-0000-0000-000000000007",
         "ingredient": {
@@ -1846,7 +1962,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "d0e0e3e8-5504-4c74-9be6-bfc57b7c2d4c",
+        "id": "9aef7e6e-1d13-4277-a3ba-5bd4bbee88a6",
         "recipeId": "dcf76a43-7bc8-451d-876c-87a8afde0dbe",
         "ingredientId": "ba274e2a-ec84-43f8-b803-a0690e2dedc9",
         "ingredient": {
@@ -1931,7 +2047,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "e5689964-e52c-4534-8f6f-ee0c2afaaa77",
+        "id": "e3b6146b-2adf-44d9-8b09-00b7dce4e099",
         "recipeId": "dcf76a43-7bc8-451d-876c-87a8afde0dbe",
         "ingredientId": "00f2e090-919e-4502-b964-bcd056a63034",
         "ingredient": {
@@ -2016,7 +2132,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "62706d23-fe11-477b-9d60-2209f979cc2c",
+        "id": "2ba34b67-c943-4b77-9d4e-41b52c3cefd0",
         "recipeId": "dcf76a43-7bc8-451d-876c-87a8afde0dbe",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -2101,11 +2217,11 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "9b196781-942b-4f09-b669-5c64e7c53e5d",
+        "id": "214b100b-eeca-4eb9-bc62-42a45343da2a",
         "recipeId": "dcf76a43-7bc8-451d-876c-87a8afde0dbe",
         "ingredientId": null,
         "ingredient": null,
-        "name": "Sal, pimenta-do-reino, louro",
+        "name": "Sal",
         "shoppingCategory": "Temperos e Condimentos",
         "ingredientRole": "seasoning",
         "role": "seasoning",
@@ -2120,9 +2236,67 @@ export const dossierRecipeCatalog: Recipe[] = [
         "includeInShoppingList": true,
         "roundingStep": null,
         "roundingMode": "none",
-        "displayName": "Sal, pimenta-do-reino, louro",
+        "displayName": "Sal",
         "notes": null,
         "sortOrder": 7,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "8ec06f9a-010e-44ec-8e07-abeabe2e6d7c",
+        "recipeId": "dcf76a43-7bc8-451d-876c-87a8afde0dbe",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Pimenta-do-reino",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Pimenta-do-reino",
+        "notes": null,
+        "sortOrder": 8,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "aa379b6a-6d99-4fdb-adea-fc31047eb868",
+        "recipeId": "dcf76a43-7bc8-451d-876c-87a8afde0dbe",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Louro",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Louro",
+        "notes": null,
+        "sortOrder": 9,
         "packageSizeG": null,
         "purchaseIncrementG": null,
         "purchaseUnit": null,
@@ -2132,37 +2306,37 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "ffcf4f77-0e57-4002-b968-174994af8394",
+        "id": "64922f3d-dbbc-4f0a-a6dd-1cb7ffa97ba7",
         "recipeId": "dcf76a43-7bc8-451d-876c-87a8afde0dbe",
         "stepNumber": 1,
         "instruction": "Tempere a carne com sal, pimenta e shoyu com antecedência (mínimo 30 minutos)."
       },
       {
-        "id": "13bc12ac-838b-4e73-ac16-30d2c669491b",
+        "id": "d9e59f04-4ac4-4a3d-a3ec-6b7ff14ab79a",
         "recipeId": "dcf76a43-7bc8-451d-876c-87a8afde0dbe",
         "stepNumber": 2,
         "instruction": "Aqueça o azeite na panela de pressão em fogo alto. Sele a carne por todos os lados até criar uma crosta dourada. Reserve."
       },
       {
-        "id": "1bd23552-130a-40db-811c-3f189447a29f",
+        "id": "67c52ba4-3135-4040-afea-a62527de9f38",
         "recipeId": "dcf76a43-7bc8-451d-876c-87a8afde0dbe",
         "stepNumber": 3,
         "instruction": "Na mesma panela, refogue a cebola e o alho até amolecer. Acrescente o tomate picado e o extrato de tomate. Misture bem."
       },
       {
-        "id": "8ef02e13-0c58-44c2-9065-7a2c8bf26288",
+        "id": "c16e8c19-c96d-452f-ac1e-a9a7da227c84",
         "recipeId": "dcf76a43-7bc8-451d-876c-87a8afde0dbe",
         "stepNumber": 4,
         "instruction": "Volte a carne para a panela. Adicione água suficiente para cobrir pela metade (~200ml). Tampe e cozinhe em pressão por 35–40 minutos."
       },
       {
-        "id": "037f66d8-e9c2-461a-9a2a-3175bb59985f",
+        "id": "375f624d-f14f-482e-8417-4229377e575f",
         "recipeId": "dcf76a43-7bc8-451d-876c-87a8afde0dbe",
         "stepNumber": 5,
         "instruction": "Libere a pressão, verifique o ponto da carne (deve desmanchar com o garfo) e ajuste o sal. Se o molho estiver ralo, reduza em fogo aberto até engrossar."
       },
       {
-        "id": "4c477d2f-867b-441c-ae4d-98f104f33f28",
+        "id": "533ea3c1-111d-4047-a8e4-9ceab60b2028",
         "recipeId": "dcf76a43-7bc8-451d-876c-87a8afde0dbe",
         "stepNumber": 6,
         "instruction": "Finalize com louro e sirva."
@@ -2232,7 +2406,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "3e135782-8ecd-4e0b-9644-a47a9f5788cc",
+        "id": "63e3c9e4-ab2b-4c32-9838-3a1a9aa03f21",
         "recipeId": "8c6c07e6-a0ef-47f7-be3d-7819b3eff5ee",
         "ingredientId": "717a92df-2b44-4da6-b6f9-43b04bdb3695",
         "ingredient": {
@@ -2327,7 +2501,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "2f3accbd-45eb-4541-a309-819348841f43",
+        "id": "76733282-c495-4721-8aaa-37d033253df5",
         "recipeId": "8c6c07e6-a0ef-47f7-be3d-7819b3eff5ee",
         "ingredientId": "40000000-0000-0000-0000-000000000008",
         "ingredient": {
@@ -2432,7 +2606,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "bb7fe371-1479-46e6-8178-411b32d25196",
+        "id": "f4035313-b348-4abf-ae4d-b48f29085f7b",
         "recipeId": "8c6c07e6-a0ef-47f7-be3d-7819b3eff5ee",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -2527,7 +2701,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "386f65bc-6004-41eb-8349-239e8c392cc8",
+        "id": "fac5b760-a671-4868-839c-56ec017ddc02",
         "recipeId": "8c6c07e6-a0ef-47f7-be3d-7819b3eff5ee",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -2612,11 +2786,11 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "f40036ee-8f18-425a-8fc3-96eb654521c0",
+        "id": "e2e87adc-3ae9-4682-9bdc-80b34e381c7c",
         "recipeId": "8c6c07e6-a0ef-47f7-be3d-7819b3eff5ee",
         "ingredientId": null,
         "ingredient": null,
-        "name": "Sal, pimenta-do-reino, alecrim (opcional)",
+        "name": "Sal",
         "shoppingCategory": "Temperos e Condimentos",
         "ingredientRole": "seasoning",
         "role": "seasoning",
@@ -2631,9 +2805,67 @@ export const dossierRecipeCatalog: Recipe[] = [
         "includeInShoppingList": true,
         "roundingStep": null,
         "roundingMode": "none",
-        "displayName": "Sal, pimenta-do-reino, alecrim (opcional)",
+        "displayName": "Sal",
         "notes": null,
         "sortOrder": 4,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "445d2611-5cf3-4e45-92a8-b7bfa4991826",
+        "recipeId": "8c6c07e6-a0ef-47f7-be3d-7819b3eff5ee",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Pimenta-do-reino",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Pimenta-do-reino",
+        "notes": null,
+        "sortOrder": 5,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "7c532f11-7442-4cae-ac71-4e9efc948210",
+        "recipeId": "8c6c07e6-a0ef-47f7-be3d-7819b3eff5ee",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Alecrim",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Alecrim",
+        "notes": null,
+        "sortOrder": 6,
         "packageSizeG": null,
         "purchaseIncrementG": null,
         "purchaseUnit": null,
@@ -2643,25 +2875,25 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "8c66cb12-b194-4623-9cb0-5d436ad123ea",
+        "id": "073ca593-ffe6-44a5-a509-857907b0f7f3",
         "recipeId": "8c6c07e6-a0ef-47f7-be3d-7819b3eff5ee",
         "stepNumber": 1,
         "instruction": "Corte o filé mignon suíno em medalhões de ~2cm ou em bifes. Tempere com sal, pimenta e alho amassado."
       },
       {
-        "id": "2610e06e-ad83-494d-8273-55f1411effd3",
+        "id": "1aaf93df-59bf-4fdb-9f5b-3acdf58d41d2",
         "recipeId": "8c6c07e6-a0ef-47f7-be3d-7819b3eff5ee",
         "stepNumber": 2,
         "instruction": "Aqueça o azeite em frigideira grande em fogo alto. Sele os medalhões por 3–4 minutos de cada lado até dourar. Reserve em prato aquecido."
       },
       {
-        "id": "693acf0f-f83c-4782-bba8-fbffaf274211",
+        "id": "0e1413a6-0822-4119-a0f3-fd248b21a39d",
         "recipeId": "8c6c07e6-a0ef-47f7-be3d-7819b3eff5ee",
         "stepNumber": 3,
         "instruction": "Na mesma frigideira, reduza o fogo para médio. Adicione a cebola fatiada em rodelas e refogue mexendo até caramelizar (~10 minutos). Acrescente o alho e cozinhe por mais 2 minutos."
       },
       {
-        "id": "aca43084-064d-40b5-b9c8-78289c219685",
+        "id": "993463e1-201f-464f-bb89-044e4860e13f",
         "recipeId": "8c6c07e6-a0ef-47f7-be3d-7819b3eff5ee",
         "stepNumber": 4,
         "instruction": "Volte a carne para a frigideira, incorpore ao molho de cebola e finalize com alecrim se quiser. Sirva imediatamente."
@@ -2700,7 +2932,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     "prepTimeMinutes": 30,
     "costLevel": 3,
     "timeLevel": 3,
-    "workLevel": 2,
+    "workLevel": 3,
     "practicalityLevel": 4,
     "versatilityLevel": 1,
     "freezesWell": true,
@@ -2731,7 +2963,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "04a30e28-72c7-4eee-a6e9-551331f91589",
+        "id": "31cfa4f5-303f-4548-9641-fe3cbfad69a9",
         "recipeId": "f1b19c49-9a1e-411b-8f50-5ef549c8a98a",
         "ingredientId": "cf6ea440-f8ad-4807-bddd-88a994478ca9",
         "ingredient": {
@@ -2828,7 +3060,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "fb5ec9d2-aa10-448d-9d54-e3ce2f446e08",
+        "id": "1191c1b5-4c11-4fdf-82e3-25a955bf0766",
         "recipeId": "f1b19c49-9a1e-411b-8f50-5ef549c8a98a",
         "ingredientId": "f0ed68eb-0e78-41e9-a63d-6bbec2bb83f7",
         "ingredient": {
@@ -2925,7 +3157,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "e06c775d-ae03-406f-8672-89422874349d",
+        "id": "568c5501-218f-4424-b1bd-1aabd8f9b3b4",
         "recipeId": "f1b19c49-9a1e-411b-8f50-5ef549c8a98a",
         "ingredientId": "bbca0e62-5f8c-4734-9b45-c9ccafad7307",
         "ingredient": {
@@ -3022,7 +3254,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "0167ac00-0bc0-47f3-8cbd-7f48bc3ec679",
+        "id": "8a001799-bbcc-4849-8c4d-72e8340773dd",
         "recipeId": "f1b19c49-9a1e-411b-8f50-5ef549c8a98a",
         "ingredientId": "40000000-0000-0000-0000-000000000008",
         "ingredient": {
@@ -3127,7 +3359,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "47e90ada-a0c8-4247-ac61-73762613a615",
+        "id": "828cfb14-d29e-45ee-854d-044f25e5991d",
         "recipeId": "f1b19c49-9a1e-411b-8f50-5ef549c8a98a",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -3222,11 +3454,11 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "cd20d0ec-7af5-407a-b9e9-efe063e7acc1",
+        "id": "fb9f5a1a-e205-4c20-b19a-68c35cad85a4",
         "recipeId": "f1b19c49-9a1e-411b-8f50-5ef549c8a98a",
         "ingredientId": null,
         "ingredient": null,
-        "name": "Sal, pimenta, colorau, louro",
+        "name": "Sal",
         "shoppingCategory": "Temperos e Condimentos",
         "ingredientRole": "seasoning",
         "role": "seasoning",
@@ -3241,9 +3473,96 @@ export const dossierRecipeCatalog: Recipe[] = [
         "includeInShoppingList": true,
         "roundingStep": null,
         "roundingMode": "none",
-        "displayName": "Sal, pimenta, colorau, louro",
+        "displayName": "Sal",
         "notes": null,
         "sortOrder": 5,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "e49db981-f2bb-4e7d-bd32-d3290f0be5a8",
+        "recipeId": "f1b19c49-9a1e-411b-8f50-5ef549c8a98a",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Pimenta",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Pimenta",
+        "notes": null,
+        "sortOrder": 6,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "913e6f00-44fe-4842-92aa-02f29e1fa463",
+        "recipeId": "f1b19c49-9a1e-411b-8f50-5ef549c8a98a",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Colorau",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Colorau",
+        "notes": null,
+        "sortOrder": 7,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "02693f3d-a15c-4a28-8329-4fc42f809160",
+        "recipeId": "f1b19c49-9a1e-411b-8f50-5ef549c8a98a",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Louro",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Louro",
+        "notes": null,
+        "sortOrder": 8,
         "packageSizeG": null,
         "purchaseIncrementG": null,
         "purchaseUnit": null,
@@ -3253,31 +3572,31 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "0cf2f4be-dc96-4e5c-9e69-f38da6efb41c",
+        "id": "780a50fe-8e7f-4885-9614-cb40542ff955",
         "recipeId": "f1b19c49-9a1e-411b-8f50-5ef549c8a98a",
         "stepNumber": 1,
         "instruction": "Tempere o peito de frango com sal, pimenta, colorau e louro. Leve à panela de pressão com a cebola e o alho e água suficiente para cobrir (~400ml). Cozinhe por 20–25 minutos após pegar pressão."
       },
       {
-        "id": "062f177b-8a23-4d5a-b808-cf4e1e5bb9e5",
+        "id": "17aa735c-6f60-4fa8-bbf2-fa9c2444ecf0",
         "recipeId": "f1b19c49-9a1e-411b-8f50-5ef549c8a98a",
         "stepNumber": 2,
         "instruction": "Retire o frango e desfie. Reserve o caldo do cozimento."
       },
       {
-        "id": "bad7044f-5d6b-4728-9a5e-0fc5fe0c3239",
+        "id": "97ddb3f0-a54b-402e-8487-66f05303c9a7",
         "recipeId": "f1b19c49-9a1e-411b-8f50-5ef549c8a98a",
         "stepNumber": 3,
         "instruction": "Em uma panela aberta, coloque o frango desfiado e adicione ~250ml do caldo reservado. Leve ao fogo médio."
       },
       {
-        "id": "72c33619-7d59-4a90-a0d2-bb1fe5086700",
+        "id": "1a8673e5-8f8f-4a0e-9b44-9bd61361851b",
         "recipeId": "f1b19c49-9a1e-411b-8f50-5ef549c8a98a",
         "stepNumber": 4,
         "instruction": "Acrescente o milho verde escorrido. Mexa e aqueça por 3 minutos."
       },
       {
-        "id": "d41d8bd1-947d-4dee-9972-c94d29443cb4",
+        "id": "b2b9dc3a-e651-4e43-9b15-e960e77350ae",
         "recipeId": "f1b19c49-9a1e-411b-8f50-5ef549c8a98a",
         "stepNumber": 5,
         "instruction": "Adicione o creme de leite, mexa bem e deixe apurar em fogo baixo por 5–7 minutos até o molho encorpar levemente. Ajuste o sal e sirva."
@@ -3316,7 +3635,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     "prepTimeMinutes": 35,
     "costLevel": 3,
     "timeLevel": 3,
-    "workLevel": 2,
+    "workLevel": 3,
     "practicalityLevel": 4,
     "versatilityLevel": 4,
     "freezesWell": true,
@@ -3347,7 +3666,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "0f0b93c9-18e6-47f0-8d07-3354c45743b8",
+        "id": "6063b1e6-b843-4c9a-8b1d-37f09a82b2fe",
         "recipeId": "2c68138f-75a5-46d6-8e04-ca28f7c5da5b",
         "ingredientId": "cf6ea440-f8ad-4807-bddd-88a994478ca9",
         "ingredient": {
@@ -3444,7 +3763,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "812430d1-f55a-4daf-ac0a-d05aa8253e34",
+        "id": "d37fd76c-3b68-4a54-852b-077c5d7d77cd",
         "recipeId": "2c68138f-75a5-46d6-8e04-ca28f7c5da5b",
         "ingredientId": "40000000-0000-0000-0000-000000000008",
         "ingredient": {
@@ -3549,7 +3868,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "4f5e1137-ed63-4d73-bd98-b19667758d6b",
+        "id": "bd9240b3-39d8-44a3-9c2b-a045abfb2667",
         "recipeId": "2c68138f-75a5-46d6-8e04-ca28f7c5da5b",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -3644,7 +3963,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "39f32267-90f1-403c-9529-bf70584b21d1",
+        "id": "cd8b894e-230c-4789-be52-e80c6a49fd5f",
         "recipeId": "2c68138f-75a5-46d6-8e04-ca28f7c5da5b",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -3729,11 +4048,11 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "39262982-7153-4ba6-8bde-8032ebd03dab",
+        "id": "12dfcf50-0058-4011-9e1d-7dbea7aee23a",
         "recipeId": "2c68138f-75a5-46d6-8e04-ca28f7c5da5b",
         "ingredientId": null,
         "ingredient": null,
-        "name": "Sal, pimenta, colorau, louro, cominho",
+        "name": "Sal",
         "shoppingCategory": "Temperos e Condimentos",
         "ingredientRole": "seasoning",
         "role": "seasoning",
@@ -3748,9 +4067,125 @@ export const dossierRecipeCatalog: Recipe[] = [
         "includeInShoppingList": true,
         "roundingStep": null,
         "roundingMode": "none",
-        "displayName": "Sal, pimenta, colorau, louro, cominho",
+        "displayName": "Sal",
         "notes": null,
         "sortOrder": 4,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "afc66ad5-c63b-48cb-87c3-ac37d140439b",
+        "recipeId": "2c68138f-75a5-46d6-8e04-ca28f7c5da5b",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Pimenta",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Pimenta",
+        "notes": null,
+        "sortOrder": 5,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "46707a9f-38e3-4512-b39a-a345eeeff6c2",
+        "recipeId": "2c68138f-75a5-46d6-8e04-ca28f7c5da5b",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Colorau",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Colorau",
+        "notes": null,
+        "sortOrder": 6,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "1e6342cd-6572-4dc7-b532-1b9ca693707e",
+        "recipeId": "2c68138f-75a5-46d6-8e04-ca28f7c5da5b",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Louro",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Louro",
+        "notes": null,
+        "sortOrder": 7,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "39605489-00cb-4483-bee6-3bc1c59d2b73",
+        "recipeId": "2c68138f-75a5-46d6-8e04-ca28f7c5da5b",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Cominho",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Cominho",
+        "notes": null,
+        "sortOrder": 8,
         "packageSizeG": null,
         "purchaseIncrementG": null,
         "purchaseUnit": null,
@@ -3760,31 +4195,31 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "30a6ba76-341f-475b-85fc-fad79accaacb",
+        "id": "a3442045-18de-4321-a573-0f76a630e5c0",
         "recipeId": "2c68138f-75a5-46d6-8e04-ca28f7c5da5b",
         "stepNumber": 1,
         "instruction": "Tempere o frango generosamente: sal, pimenta, colorau, cominho, louro e alho amassado. Deixe marinar pelo menos 30 minutos (idealmente de um dia para o outro)."
       },
       {
-        "id": "e94663f4-4134-4f6f-81b8-c8723cc22ca7",
+        "id": "c14b99ea-ecc1-4e43-9cae-06df87018940",
         "recipeId": "2c68138f-75a5-46d6-8e04-ca28f7c5da5b",
         "stepNumber": 2,
         "instruction": "Coloque o frango na panela de pressão com a cebola em rodelas e ~200ml de água. Leve à pressão e cozinhe por 25 minutos."
       },
       {
-        "id": "73449de9-3342-4145-992f-75c8ddcafc83",
+        "id": "2a7a7ae7-9878-4d8e-b740-5dc65fc27f0c",
         "recipeId": "2c68138f-75a5-46d6-8e04-ca28f7c5da5b",
         "stepNumber": 3,
         "instruction": "Libere a pressão e retire o frango. Reserve um pouco do caldo."
       },
       {
-        "id": "a997431c-808d-4dbd-8fc5-5d6c4497db47",
+        "id": "471cd03f-91d1-4482-9cfd-852bbbb26020",
         "recipeId": "2c68138f-75a5-46d6-8e04-ca28f7c5da5b",
         "stepNumber": 4,
         "instruction": "Desfie o frango com dois garfos enquanto ainda quente — fica muito mais fácil e o resultado é mais uniforme."
       },
       {
-        "id": "7a36510a-1d39-4c0c-80e5-04651da86964",
+        "id": "6e9c28b6-b14d-4bdc-ad40-4fd42cb88688",
         "recipeId": "2c68138f-75a5-46d6-8e04-ca28f7c5da5b",
         "stepNumber": 5,
         "instruction": "Refogue rapidamente o frango desfiado em fio de azeite com alho em fogo alto por 2–3 minutos para secar levemente e agregar sabor. Ajuste o sal."
@@ -3854,7 +4289,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "1fce1561-9850-4a5f-80ab-ba399f715198",
+        "id": "37c93cbf-e0a4-4b90-a500-02eba3e5a432",
         "recipeId": "6ad281c1-05e0-45a9-970d-f8e4e905c378",
         "ingredientId": "cf6ea440-f8ad-4807-bddd-88a994478ca9",
         "ingredient": {
@@ -3951,7 +4386,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "0c5dc515-4195-431b-9d6a-3fd9b48d68d9",
+        "id": "2cb1ab64-cea0-4776-8d46-e2f97ede867d",
         "recipeId": "6ad281c1-05e0-45a9-970d-f8e4e905c378",
         "ingredientId": "40000000-0000-0000-0000-000000000008",
         "ingredient": {
@@ -4056,7 +4491,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "4d8b888f-dfcc-4cc5-869d-9504cf2b0096",
+        "id": "c08b4726-3a6b-4077-beac-c15fdbb24084",
         "recipeId": "6ad281c1-05e0-45a9-970d-f8e4e905c378",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -4151,7 +4586,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "e78b0201-1320-4369-b9b6-9a9b93fb9a05",
+        "id": "9049d56d-1815-4fb8-b088-5c90c83b7db9",
         "recipeId": "6ad281c1-05e0-45a9-970d-f8e4e905c378",
         "ingredientId": "40000000-0000-0000-0000-000000000007",
         "ingredient": {
@@ -4256,7 +4691,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "40d8857c-7b68-4b34-aaee-903f8d85ada7",
+        "id": "7560936f-90fa-47d6-974e-325b02599d8f",
         "recipeId": "6ad281c1-05e0-45a9-970d-f8e4e905c378",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -4341,7 +4776,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "3d691a10-2d39-48de-b2f5-82b6799bfd52",
+        "id": "d4008dfa-c487-4526-998a-acb0e231bf6b",
         "recipeId": "6ad281c1-05e0-45a9-970d-f8e4e905c378",
         "ingredientId": "fed96ab6-56f4-41c8-adfe-2e362084000a",
         "ingredient": {
@@ -4428,11 +4863,11 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "a404f2f5-d156-4e25-be42-4d03830a7e9a",
+        "id": "5d5fe7aa-0416-41cc-bb12-d6c791c6105f",
         "recipeId": "6ad281c1-05e0-45a9-970d-f8e4e905c378",
         "ingredientId": null,
         "ingredient": null,
-        "name": "Sal, pimenta, colorau",
+        "name": "Sal",
         "shoppingCategory": "Temperos e Condimentos",
         "ingredientRole": "seasoning",
         "role": "seasoning",
@@ -4447,9 +4882,67 @@ export const dossierRecipeCatalog: Recipe[] = [
         "includeInShoppingList": true,
         "roundingStep": null,
         "roundingMode": "none",
-        "displayName": "Sal, pimenta, colorau",
+        "displayName": "Sal",
         "notes": null,
         "sortOrder": 6,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "7e747177-2628-48ab-9594-f06f343fa6bb",
+        "recipeId": "6ad281c1-05e0-45a9-970d-f8e4e905c378",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Pimenta",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Pimenta",
+        "notes": null,
+        "sortOrder": 7,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "bf27df30-424f-4cb2-89fb-d05720046a9b",
+        "recipeId": "6ad281c1-05e0-45a9-970d-f8e4e905c378",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Colorau",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Colorau",
+        "notes": null,
+        "sortOrder": 8,
         "packageSizeG": null,
         "purchaseIncrementG": null,
         "purchaseUnit": null,
@@ -4459,37 +4952,37 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "a6976d78-2bac-494c-bb51-0e0088ac3f12",
+        "id": "958a3c4a-ff46-4128-a2f5-699fd3761861",
         "recipeId": "6ad281c1-05e0-45a9-970d-f8e4e905c378",
         "stepNumber": 1,
         "instruction": "Processe o peito de frango no processador até textura de carne moída. Não bata além do necessário."
       },
       {
-        "id": "b28553e8-96a6-4026-8aee-8c0b1676e34f",
+        "id": "6948bf8d-6fe5-4f67-b54e-0d37eb4e2764",
         "recipeId": "6ad281c1-05e0-45a9-970d-f8e4e905c378",
         "stepNumber": 2,
         "instruction": "Aqueça o azeite em frigideira grande em fogo médio-alto. Refogue a cebola e o alho até amolecer."
       },
       {
-        "id": "3a5014ec-1fcc-4cd7-bd27-c9d8b43df7c7",
+        "id": "f8eb600b-8d55-4c12-94a7-0524ce6bf76a",
         "recipeId": "6ad281c1-05e0-45a9-970d-f8e4e905c378",
         "stepNumber": 3,
         "instruction": "Acrescente o tomate picado e refogue por mais 2 minutos."
       },
       {
-        "id": "58077cb9-f160-48fc-86ad-00c7ce912f32",
+        "id": "f12c5173-d22e-49a8-b8e4-a35ba51c3423",
         "recipeId": "6ad281c1-05e0-45a9-970d-f8e4e905c378",
         "stepNumber": 4,
         "instruction": "Adicione o frango moído. Cozinhe mexendo constantemente para não empelotar, quebrando os grumos com a espátula."
       },
       {
-        "id": "275a62ba-3356-4c68-a5c2-021fcb8fbd66",
+        "id": "cd279266-17d9-40ca-a55b-648a899bd5af",
         "recipeId": "6ad281c1-05e0-45a9-970d-f8e4e905c378",
         "stepNumber": 5,
         "instruction": "Tempere com sal, pimenta e colorau. Cozinhe até que não reste líquido e o frango esteja bem cozido e solto."
       },
       {
-        "id": "71f5477d-b533-4055-bb5e-a0c8559e1a8c",
+        "id": "57766fed-aada-46b8-a9c1-aaecdb7f73a7",
         "recipeId": "6ad281c1-05e0-45a9-970d-f8e4e905c378",
         "stepNumber": 6,
         "instruction": "Finalize com salsinha picada. Sirva."
@@ -4559,7 +5052,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "10f81a1b-1300-4892-84b0-a3aaed799c25",
+        "id": "1ec641d3-ae3b-4c5a-8613-00c49248d1a6",
         "recipeId": "c9bff63b-90d2-424b-bdd1-99f30f5c2be1",
         "ingredientId": "d67cd370-53b7-4897-a5a0-b6530ea255bd",
         "ingredient": {
@@ -4654,7 +5147,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "1841dd9a-c1af-4392-94f0-29e5edf643a2",
+        "id": "23a02e9d-0d9b-4df6-936c-dcea30965a8d",
         "recipeId": "c9bff63b-90d2-424b-bdd1-99f30f5c2be1",
         "ingredientId": "0262dc66-caab-46c5-9053-aacb77652723",
         "ingredient": {
@@ -4741,7 +5234,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "43bee72c-5877-43bc-99cb-358801848f7f",
+        "id": "071f4077-a73d-4450-ad24-6ca7a662072e",
         "recipeId": "c9bff63b-90d2-424b-bdd1-99f30f5c2be1",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -4836,7 +5329,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "f2ebaeea-08ff-4ec1-8a99-584eff87d457",
+        "id": "bdb75f3f-2b22-43cf-8dbf-c6cf60a45591",
         "recipeId": "c9bff63b-90d2-424b-bdd1-99f30f5c2be1",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -4921,12 +5414,12 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "f5e4cdd3-c866-48ab-9c2a-4f8a206e7951",
+        "id": "84b1772e-e469-4a50-949e-cdbbe9458df4",
         "recipeId": "c9bff63b-90d2-424b-bdd1-99f30f5c2be1",
         "ingredientId": null,
         "ingredient": null,
-        "name": "Sal, pimenta, ervas finas (alecrim, tomilho)",
-        "shoppingCategory": "Carboidratos",
+        "name": "Sal",
+        "shoppingCategory": "Temperos e Condimentos",
         "ingredientRole": "seasoning",
         "role": "seasoning",
         "baseQuantity": null,
@@ -4940,9 +5433,67 @@ export const dossierRecipeCatalog: Recipe[] = [
         "includeInShoppingList": true,
         "roundingStep": null,
         "roundingMode": "none",
-        "displayName": "Sal, pimenta, ervas finas (alecrim, tomilho)",
+        "displayName": "Sal",
         "notes": null,
         "sortOrder": 4,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "6ee7f887-271a-45dd-9f5b-97d6ed574edb",
+        "recipeId": "c9bff63b-90d2-424b-bdd1-99f30f5c2be1",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Pimenta",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Pimenta",
+        "notes": null,
+        "sortOrder": 5,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "eb9212cf-a13a-4e44-8855-82b6cf9c8ce3",
+        "recipeId": "c9bff63b-90d2-424b-bdd1-99f30f5c2be1",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Ervas finas",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Ervas finas",
+        "notes": null,
+        "sortOrder": 6,
         "packageSizeG": null,
         "purchaseIncrementG": null,
         "purchaseUnit": null,
@@ -4952,37 +5503,37 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "caebb7fa-e842-4dd0-b819-503c57217ea6",
+        "id": "6af7a822-c35d-4d5e-a373-c7a611cf0ad0",
         "recipeId": "c9bff63b-90d2-424b-bdd1-99f30f5c2be1",
         "stepNumber": 1,
         "instruction": "Tempere o lombo com sal, pimenta, alho amassado e ervas. Deixe marinar por pelo menos 1 hora."
       },
       {
-        "id": "a8a15239-8e9d-45f9-828b-e85bb7d1b374",
+        "id": "659b055a-662b-4226-8c30-1359a4d18c0c",
         "recipeId": "c9bff63b-90d2-424b-bdd1-99f30f5c2be1",
         "stepNumber": 2,
         "instruction": "Aqueça o azeite em fogo alto na própria panela de pressão (aberta). Sele o lombo por todos os lados até criar crosta dourada."
       },
       {
-        "id": "25e3dd10-aeb2-4906-acea-c837aca42086",
+        "id": "98121890-29d6-4c31-8f0c-35f54ca11483",
         "recipeId": "c9bff63b-90d2-424b-bdd1-99f30f5c2be1",
         "stepNumber": 3,
         "instruction": "Acrescente ~200ml de água, tampe e cozinhe em pressão por 25–30 minutos."
       },
       {
-        "id": "6b3133a9-a356-4074-ba17-f113968bfe62",
+        "id": "c98f517a-6a8d-4cca-969c-10cf6660dc18",
         "recipeId": "c9bff63b-90d2-424b-bdd1-99f30f5c2be1",
         "stepNumber": 4,
         "instruction": "Libere a pressão e retire o lombo. Reserve ~150ml do caldo de cozimento na panela."
       },
       {
-        "id": "c9b5f82a-71a8-4c4b-a230-4cd67efc933b",
+        "id": "5ebd3dbb-5ee8-43be-8b71-955fd949121f",
         "recipeId": "c9bff63b-90d2-424b-bdd1-99f30f5c2be1",
         "stepNumber": 5,
         "instruction": "Leve o caldo ao fogo médio e acrescente o molho barbecue. Mexa e deixe apurar por 5–8 minutos até engrossar levemente."
       },
       {
-        "id": "f31497fb-1632-4dea-8b53-d0be28ff85e0",
+        "id": "58023caa-9045-4644-bceb-394563e7893a",
         "recipeId": "c9bff63b-90d2-424b-bdd1-99f30f5c2be1",
         "stepNumber": 6,
         "instruction": "Fatie o lombo, regue com o molho barbecue e finalize com ervas frescas."
@@ -5021,7 +5572,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     "prepTimeMinutes": 20,
     "costLevel": 3,
     "timeLevel": 2,
-    "workLevel": 2,
+    "workLevel": 3,
     "practicalityLevel": 4,
     "versatilityLevel": 4,
     "freezesWell": true,
@@ -5052,7 +5603,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "5b9f552d-fb5c-42cc-b48a-8b8c273f395e",
+        "id": "f4cb9fad-67e5-46fe-b185-4e8d4c1721c3",
         "recipeId": "865935a0-443b-4b31-9a69-d4c91ebdb4a5",
         "ingredientId": "2396425c-508b-435a-b089-d08d093095af",
         "ingredient": {
@@ -5137,7 +5688,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "08179208-8ed4-4f28-a214-1411472b5221",
+        "id": "80bb7232-53c2-4745-b8a8-bcadd89db75b",
         "recipeId": "865935a0-443b-4b31-9a69-d4c91ebdb4a5",
         "ingredientId": "40000000-0000-0000-0000-000000000008",
         "ingredient": {
@@ -5242,7 +5793,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "c68b05f5-4a2b-4ae4-ae8f-81460cd20108",
+        "id": "cfa87359-8bff-485f-9a0d-572bb2bb1cd4",
         "recipeId": "865935a0-443b-4b31-9a69-d4c91ebdb4a5",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -5337,7 +5888,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "d952365a-19f0-4d3e-97f2-761403d0dc4c",
+        "id": "0c82fb27-dc7e-47f9-b7ad-46fc47dbc58f",
         "recipeId": "865935a0-443b-4b31-9a69-d4c91ebdb4a5",
         "ingredientId": "40000000-0000-0000-0000-000000000007",
         "ingredient": {
@@ -5442,7 +5993,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "cf27bd1c-db8a-4e53-9e87-e2417136c6f6",
+        "id": "22f6a4ce-c362-4b66-902a-8958cfeb8aba",
         "recipeId": "865935a0-443b-4b31-9a69-d4c91ebdb4a5",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -5527,7 +6078,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "789ced54-0974-4362-bbe9-e67620667360",
+        "id": "29417716-1f0f-4631-b990-46ef7ddc98a3",
         "recipeId": "865935a0-443b-4b31-9a69-d4c91ebdb4a5",
         "ingredientId": "fed96ab6-56f4-41c8-adfe-2e362084000a",
         "ingredient": {
@@ -5614,11 +6165,11 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "740aa5a1-9aae-4410-8e4c-d85d1f43f08f",
+        "id": "4693dd07-b708-4d16-bd0e-044e651ccb42",
         "recipeId": "865935a0-443b-4b31-9a69-d4c91ebdb4a5",
         "ingredientId": null,
         "ingredient": null,
-        "name": "Sal, pimenta-do-reino, colorau",
+        "name": "Sal",
         "shoppingCategory": "Temperos e Condimentos",
         "ingredientRole": "seasoning",
         "role": "seasoning",
@@ -5633,9 +6184,67 @@ export const dossierRecipeCatalog: Recipe[] = [
         "includeInShoppingList": true,
         "roundingStep": null,
         "roundingMode": "none",
-        "displayName": "Sal, pimenta-do-reino, colorau",
+        "displayName": "Sal",
         "notes": null,
         "sortOrder": 6,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "be7c6015-110b-4eb6-b5da-835defdcb69c",
+        "recipeId": "865935a0-443b-4b31-9a69-d4c91ebdb4a5",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Pimenta-do-reino",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Pimenta-do-reino",
+        "notes": null,
+        "sortOrder": 7,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "a4b5b797-1f45-4f8e-9ad3-7d7e5b03eab4",
+        "recipeId": "865935a0-443b-4b31-9a69-d4c91ebdb4a5",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Colorau",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Colorau",
+        "notes": null,
+        "sortOrder": 8,
         "packageSizeG": null,
         "purchaseIncrementG": null,
         "purchaseUnit": null,
@@ -5645,31 +6254,31 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "963ea136-40db-47b9-9b5e-99182b243934",
+        "id": "c58b2817-37bb-49ac-a5b7-cfba634710df",
         "recipeId": "865935a0-443b-4b31-9a69-d4c91ebdb4a5",
         "stepNumber": 1,
         "instruction": "Aqueça o azeite em frigideira grande em fogo alto. Refogue a cebola e o alho até dourar levemente."
       },
       {
-        "id": "10be8d8d-beca-4b12-bb85-f5924a20c6c9",
+        "id": "e177fb80-8cd1-4bed-ae9b-5729a3c8fb0b",
         "recipeId": "865935a0-443b-4b31-9a69-d4c91ebdb4a5",
         "stepNumber": 2,
         "instruction": "Adicione o patinho moído e quebre os grumos com a espátula. Cozinhe em fogo alto mexendo sempre para soltar bem a carne."
       },
       {
-        "id": "7b71efad-4b3d-4055-abcc-5dec8f4371bd",
+        "id": "59226653-1853-4231-9db2-fa03e5524e9d",
         "recipeId": "865935a0-443b-4b31-9a69-d4c91ebdb4a5",
         "stepNumber": 3,
         "instruction": "Quando a carne não tiver mais partes rosadas, acrescente o tomate picado. Mexa e cozinhe até o tomate desmanchar."
       },
       {
-        "id": "957c6163-a2b1-4cfe-8ffa-66c17facebc6",
+        "id": "28cddf29-6127-4cec-9cbc-12476890c579",
         "recipeId": "865935a0-443b-4b31-9a69-d4c91ebdb4a5",
         "stepNumber": 4,
         "instruction": "Tempere com sal, pimenta e colorau. Continue em fogo médio até evaporar todo o líquido e a carne ficar bem sequinha e soltinha."
       },
       {
-        "id": "b1f849b4-8618-43fc-9a88-25d02276afbb",
+        "id": "dfddfbf0-f201-4bc2-855e-f49773b548cf",
         "recipeId": "865935a0-443b-4b31-9a69-d4c91ebdb4a5",
         "stepNumber": 5,
         "instruction": "Finalize com salsinha picada. O ponto ideal é quando a carne começa a fritar levemente no próprio azeite que restou na frigideira."
@@ -5739,7 +6348,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "b9c3a02d-9b16-4bd2-8d61-0d42be98df7a",
+        "id": "aec473c9-a4bb-4b77-b3ff-93d85bfefa53",
         "recipeId": "2982c07b-fb60-44c5-bfde-a2217abbd1d7",
         "ingredientId": "c2ed7e94-d077-4af6-b015-128df688924c",
         "ingredient": {
@@ -5836,7 +6445,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "82504842-4fda-4de9-a77d-02732f8b8255",
+        "id": "b7133a3f-31cf-408d-a4c7-69157f6f29ea",
         "recipeId": "2982c07b-fb60-44c5-bfde-a2217abbd1d7",
         "ingredientId": "40000000-0000-0000-0000-000000000008",
         "ingredient": {
@@ -5941,7 +6550,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "bfd4a710-2fc4-4aea-b83b-36ca95d8533e",
+        "id": "b2baf0f6-4bca-4cdd-a581-eda5837882f0",
         "recipeId": "2982c07b-fb60-44c5-bfde-a2217abbd1d7",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -6036,7 +6645,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "22b7dec5-b41f-4250-a326-c1644033a466",
+        "id": "a539239e-5b4e-4ffb-a680-0b23b83a8865",
         "recipeId": "2982c07b-fb60-44c5-bfde-a2217abbd1d7",
         "ingredientId": "3c6a5a13-dca5-4db7-995f-aeac856af73f",
         "ingredient": {
@@ -6133,7 +6742,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "a951af71-d8bc-41d3-a506-ac65a9df37e2",
+        "id": "918812a2-5985-4c7f-b13b-d225434bf423",
         "recipeId": "2982c07b-fb60-44c5-bfde-a2217abbd1d7",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -6218,11 +6827,11 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "89ac8da1-5576-42c1-81cd-acac2a989b4b",
+        "id": "931fa0f1-4e5f-4996-a8a0-7272353326fc",
         "recipeId": "2982c07b-fb60-44c5-bfde-a2217abbd1d7",
         "ingredientId": null,
         "ingredient": null,
-        "name": "Sal, pimenta, colorau, páprica defumada",
+        "name": "Sal",
         "shoppingCategory": "Temperos e Condimentos",
         "ingredientRole": "seasoning",
         "role": "seasoning",
@@ -6237,9 +6846,96 @@ export const dossierRecipeCatalog: Recipe[] = [
         "includeInShoppingList": true,
         "roundingStep": null,
         "roundingMode": "none",
-        "displayName": "Sal, pimenta, colorau, páprica defumada",
+        "displayName": "Sal",
         "notes": null,
         "sortOrder": 5,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "0bffc571-b25d-4bd2-b8f6-5313d98e1f59",
+        "recipeId": "2982c07b-fb60-44c5-bfde-a2217abbd1d7",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Pimenta",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Pimenta",
+        "notes": null,
+        "sortOrder": 6,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "ea5be6b4-8c48-40fe-93fb-28568118711c",
+        "recipeId": "2982c07b-fb60-44c5-bfde-a2217abbd1d7",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Colorau",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Colorau",
+        "notes": null,
+        "sortOrder": 7,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "417cfc73-dbda-4e39-b0cb-4456d5303ec4",
+        "recipeId": "2982c07b-fb60-44c5-bfde-a2217abbd1d7",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Páprica defumada",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Páprica defumada",
+        "notes": null,
+        "sortOrder": 8,
         "packageSizeG": null,
         "purchaseIncrementG": null,
         "purchaseUnit": null,
@@ -6249,37 +6945,37 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "866421cf-4308-4bfa-84ab-9fb694003271",
+        "id": "e47c4f77-5b1e-4ac3-afce-38b1a2f78d8d",
         "recipeId": "2982c07b-fb60-44c5-bfde-a2217abbd1d7",
         "stepNumber": 1,
         "instruction": "Tempere as sobrecoxas com sal, pimenta, colorau, páprica defumada, alho amassado e suco de limão. Esfregue bem por baixo da pele. Deixe marinar por pelo menos 2 horas (ou de um dia para o outro na geladeira)."
       },
       {
-        "id": "166b26e0-752f-4e39-a45c-5481025369cd",
+        "id": "e1284924-7706-44c0-a5f1-3ff79e8562a6",
         "recipeId": "2982c07b-fb60-44c5-bfde-a2217abbd1d7",
         "stepNumber": 2,
         "instruction": "Cubra o fundo da assadeira com as rodelas de cebola. Disponha as sobrecoxas por cima com a pele para cima."
       },
       {
-        "id": "fb2185a9-5b45-485a-bd98-c2df241adfa8",
+        "id": "fe0dfc65-d8c1-458f-8f90-39abe5ff49f3",
         "recipeId": "2982c07b-fb60-44c5-bfde-a2217abbd1d7",
         "stepNumber": 3,
         "instruction": "Regue com o azeite e cubra a assadeira com papel alumínio."
       },
       {
-        "id": "b0bcb1ff-1677-412e-869c-c985c8fd3407",
+        "id": "1e399c8e-f797-42bc-ab24-aae7e16d1502",
         "recipeId": "2982c07b-fb60-44c5-bfde-a2217abbd1d7",
         "stepNumber": 4,
         "instruction": "Leve ao forno preaquecido a 180°C por 40 minutos coberto."
       },
       {
-        "id": "9c337441-68c0-4f1e-be97-66e98c769a4e",
+        "id": "a110795f-4731-4196-88fa-216b4eb37934",
         "recipeId": "2982c07b-fb60-44c5-bfde-a2217abbd1d7",
         "stepNumber": 5,
         "instruction": "Retire o papel alumínio, aumente o forno para 220°C e retorne por mais 15–20 minutos até a pele dourar e ficar crocante."
       },
       {
-        "id": "2920aebb-11bc-4d55-ba58-b2fd30fec914",
+        "id": "51c90256-56da-4b88-9c56-044595fde1aa",
         "recipeId": "2982c07b-fb60-44c5-bfde-a2217abbd1d7",
         "stepNumber": 6,
         "instruction": "Sirva com o caldo que se formou na assadeira."
@@ -6349,7 +7045,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "1a8cf6aa-82c0-4acd-9d96-ed47c5175ae2",
+        "id": "74cf6afd-9c0c-4bd1-8698-ac2029a238f4",
         "recipeId": "bec7a728-6b75-4bc5-ab31-2c69c29459f0",
         "ingredientId": "cf6ea440-f8ad-4807-bddd-88a994478ca9",
         "ingredient": {
@@ -6446,7 +7142,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "cb194359-5d4c-4d9e-a2e9-e5f2f8573f54",
+        "id": "cb668050-f0a3-4621-bcec-04fcd5e3a509",
         "recipeId": "bec7a728-6b75-4bc5-ab31-2c69c29459f0",
         "ingredientId": "f0ed68eb-0e78-41e9-a63d-6bbec2bb83f7",
         "ingredient": {
@@ -6543,7 +7239,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "db8c9eb0-e676-4065-8f65-00ea8d173350",
+        "id": "bb9a8b3d-ab3e-40bc-b0e7-5a8ed74206c3",
         "recipeId": "bec7a728-6b75-4bc5-ab31-2c69c29459f0",
         "ingredientId": "ba274e2a-ec84-43f8-b803-a0690e2dedc9",
         "ingredient": {
@@ -6628,7 +7324,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "962a8d84-e35a-42eb-9d49-31d74921dedb",
+        "id": "995c47da-b4f8-43a5-b1d1-a26625df1229",
         "recipeId": "bec7a728-6b75-4bc5-ab31-2c69c29459f0",
         "ingredientId": "8a68e73e-cdfa-4414-a74e-cb9f0e61eee8",
         "ingredient": {
@@ -6713,7 +7409,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "e78a67ed-4af2-4f15-bc3e-f6fbc483cd83",
+        "id": "20cc9b76-6e3a-4511-881a-251c7dec512d",
         "recipeId": "bec7a728-6b75-4bc5-ab31-2c69c29459f0",
         "ingredientId": "54e1fb73-118a-40e1-a728-4fb45ea88825",
         "ingredient": {
@@ -6798,7 +7494,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "22190063-119c-41aa-9572-db37dc255119",
+        "id": "b4014cbd-dd39-42ed-bdef-62cdd1ae73d8",
         "recipeId": "bec7a728-6b75-4bc5-ab31-2c69c29459f0",
         "ingredientId": "40000000-0000-0000-0000-000000000008",
         "ingredient": {
@@ -6903,7 +7599,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "2688a4de-c51d-42ec-b93c-d7c732396d72",
+        "id": "3c025152-d804-45c3-9d77-0cbea20b36cb",
         "recipeId": "bec7a728-6b75-4bc5-ab31-2c69c29459f0",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -6998,7 +7694,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "e661f15f-c272-4160-824b-40f75c0c9a1e",
+        "id": "bbd504ff-6bd7-4e96-b485-0341783ec374",
         "recipeId": "bec7a728-6b75-4bc5-ab31-2c69c29459f0",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -7083,11 +7779,11 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "c26d9e27-aa87-4273-b41c-de2090aa50bb",
+        "id": "aecaaebc-5db7-474a-8f41-dfab2a881f7c",
         "recipeId": "bec7a728-6b75-4bc5-ab31-2c69c29459f0",
         "ingredientId": null,
         "ingredient": null,
-        "name": "Sal, pimenta-do-reino",
+        "name": "Sal",
         "shoppingCategory": "Temperos e Condimentos",
         "ingredientRole": "seasoning",
         "role": "seasoning",
@@ -7102,9 +7798,38 @@ export const dossierRecipeCatalog: Recipe[] = [
         "includeInShoppingList": true,
         "roundingStep": null,
         "roundingMode": "none",
-        "displayName": "Sal, pimenta-do-reino",
+        "displayName": "Sal",
         "notes": null,
         "sortOrder": 8,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "cc02aea6-c92b-481b-aa1a-675f88ad2be1",
+        "recipeId": "bec7a728-6b75-4bc5-ab31-2c69c29459f0",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Pimenta-do-reino",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Pimenta-do-reino",
+        "notes": null,
+        "sortOrder": 9,
         "packageSizeG": null,
         "purchaseIncrementG": null,
         "purchaseUnit": null,
@@ -7114,37 +7839,37 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "446c35ba-ad86-4a78-95ab-69ebbf820464",
+        "id": "1fa6e7ca-2be0-4c02-8800-e79766b434ab",
         "recipeId": "bec7a728-6b75-4bc5-ab31-2c69c29459f0",
         "stepNumber": 1,
         "instruction": "Corte o peito de frango em cubos de ~2cm. Tempere com sal e pimenta."
       },
       {
-        "id": "5369926e-5d29-42f6-8b25-a12306927d2d",
+        "id": "755c68f4-fd0b-4db1-bde7-0934f5e68fc8",
         "recipeId": "bec7a728-6b75-4bc5-ab31-2c69c29459f0",
         "stepNumber": 2,
         "instruction": "Aqueça o azeite em frigideira grande em fogo alto. Sele os cubos até dourar por fora. Retire e reserve."
       },
       {
-        "id": "8c6abe7f-6a9d-4151-ab5a-3306cf0d6620",
+        "id": "3162b5bd-a8de-4db6-b0a0-c76a2fe8aebd",
         "recipeId": "bec7a728-6b75-4bc5-ab31-2c69c29459f0",
         "stepNumber": 3,
         "instruction": "Na mesma frigideira, refogue a cebola picada e o alho até amolecer."
       },
       {
-        "id": "e35ab1f9-732d-4a8f-bda1-ff8972e0e5c7",
+        "id": "1a88cc45-aa03-4862-8113-de5ad0c505ad",
         "recipeId": "bec7a728-6b75-4bc5-ab31-2c69c29459f0",
         "stepNumber": 4,
         "instruction": "Acrescente o extrato de tomate e refogue por 1–2 minutos."
       },
       {
-        "id": "cf29e830-7265-48c5-9173-1f62c41de13f",
+        "id": "a299dd4e-5c5a-4311-b9d6-1b31283f0200",
         "recipeId": "bec7a728-6b75-4bc5-ab31-2c69c29459f0",
         "stepNumber": 5,
         "instruction": "Volte os cubos de frango à frigideira. Adicione o ketchup e a mostarda. Misture bem."
       },
       {
-        "id": "00051763-96b2-4acf-a2ed-73da527b1c03",
+        "id": "db4bfd13-4109-401f-955a-6a6d354a8177",
         "recipeId": "bec7a728-6b75-4bc5-ab31-2c69c29459f0",
         "stepNumber": 6,
         "instruction": "Reduza o fogo para médio-baixo e adicione o creme de leite. Misture delicadamente e deixe aquecer por 3–5 minutos sem ferver. Ajuste o sal e sirva."
@@ -7214,7 +7939,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "74f041ce-7f7c-424a-a30f-efb56894ba26",
+        "id": "e559370c-0e91-4b14-a9a7-4e991d2196e6",
         "recipeId": "19258841-cf25-4b53-aaa3-a92d1324f9d4",
         "ingredientId": "d9ecce69-96a4-4ab0-8c15-2321bc3e8f8c",
         "ingredient": {
@@ -7309,7 +8034,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "76d7011f-e240-4ec6-ba18-2a06aad65a86",
+        "id": "c058ec07-f336-4bab-893e-b08ef993e39e",
         "recipeId": "19258841-cf25-4b53-aaa3-a92d1324f9d4",
         "ingredientId": "3c6a5a13-dca5-4db7-995f-aeac856af73f",
         "ingredient": {
@@ -7406,7 +8131,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "b9633969-4653-4cc3-86fc-a4fcc45fe06a",
+        "id": "8d2f96d7-92fa-4b1c-a442-c7f2837757e5",
         "recipeId": "19258841-cf25-4b53-aaa3-a92d1324f9d4",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -7491,11 +8216,11 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "b10692f5-eee6-408c-b62f-42d35f6b252c",
+        "id": "dcd8a31f-1de7-4b18-86bf-caa5db139c04",
         "recipeId": "19258841-cf25-4b53-aaa3-a92d1324f9d4",
         "ingredientId": null,
         "ingredient": null,
-        "name": "Sal, pimenta-do-reino, lemon pepper (opcional)",
+        "name": "Sal",
         "shoppingCategory": "Temperos e Condimentos",
         "ingredientRole": "seasoning",
         "role": "seasoning",
@@ -7510,9 +8235,67 @@ export const dossierRecipeCatalog: Recipe[] = [
         "includeInShoppingList": true,
         "roundingStep": null,
         "roundingMode": "none",
-        "displayName": "Sal, pimenta-do-reino, lemon pepper (opcional)",
+        "displayName": "Sal",
         "notes": null,
         "sortOrder": 3,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "de418a3d-d14e-4f6e-ade6-b1498c6c0519",
+        "recipeId": "19258841-cf25-4b53-aaa3-a92d1324f9d4",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Pimenta-do-reino",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Pimenta-do-reino",
+        "notes": null,
+        "sortOrder": 4,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "8154982a-72dc-4d8f-8568-efd5d79861a1",
+        "recipeId": "19258841-cf25-4b53-aaa3-a92d1324f9d4",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Lemon pepper",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Lemon pepper",
+        "notes": null,
+        "sortOrder": 5,
         "packageSizeG": null,
         "purchaseIncrementG": null,
         "purchaseUnit": null,
@@ -7522,25 +8305,25 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "a9e9cad4-1669-471e-9235-e5466453a3c5",
+        "id": "85d4c193-0b57-48f9-92c7-c52a275daf99",
         "recipeId": "19258841-cf25-4b53-aaa3-a92d1324f9d4",
         "stepNumber": 1,
         "instruction": "Tempere os filés com sal, pimenta (ou lemon pepper), suco de limão e um fio de azeite. Deixe marinar por 15–20 minutos."
       },
       {
-        "id": "41ade4a9-85a5-4bff-88ff-092459581a16",
+        "id": "5c6047bd-1949-48fd-952d-f04062a96673",
         "recipeId": "19258841-cf25-4b53-aaa3-a92d1324f9d4",
         "stepNumber": 2,
         "instruction": "Airfryer: 200°C por 12–15 minutos, virando na metade. Forno: 220°C por 18–22 minutos. Frigideira: fio de azeite, fogo médio-alto, ~4 minutos de cada lado até soltar naturalmente da superfície."
       },
       {
-        "id": "66278c82-c6ab-4f2d-952d-20ca8682c42a",
+        "id": "d8461e69-074a-4172-b3dc-6238ab221d67",
         "recipeId": "19258841-cf25-4b53-aaa3-a92d1324f9d4",
         "stepNumber": 3,
         "instruction": "O ponto ideal é quando o filé está opaco por completo e se desprende facilmente com o garfo. Não cozinhe além disso — tilápia resseca rápido."
       },
       {
-        "id": "48788bbc-7c70-4e56-ad6b-3fc377e42ab0",
+        "id": "b6831518-380c-4df8-9d0a-1dc4efd3b3b1",
         "recipeId": "19258841-cf25-4b53-aaa3-a92d1324f9d4",
         "stepNumber": 4,
         "instruction": "Sirva imediatamente."
@@ -7610,7 +8393,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "4c0068ee-d064-4128-b15c-a400054369af",
+        "id": "dc8443dc-ece7-4d6b-8407-aee3dff34ba2",
         "recipeId": "fb72bc5a-3809-400d-80a5-10e00f70766c",
         "ingredientId": "5a795f92-8899-4f97-a071-e35520ae2d62",
         "ingredient": {
@@ -7707,7 +8490,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "cce280e2-a4f5-4821-be97-c5202cecc452",
+        "id": "06a22342-114d-401f-ac26-19efca70c365",
         "recipeId": "fb72bc5a-3809-400d-80a5-10e00f70766c",
         "ingredientId": "f0ed68eb-0e78-41e9-a63d-6bbec2bb83f7",
         "ingredient": {
@@ -7804,7 +8587,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "aac6bd96-0de8-469f-bb62-3c8e249b92ab",
+        "id": "a0c15bcb-8179-4f2b-9e4b-615dd42cc14e",
         "recipeId": "fb72bc5a-3809-400d-80a5-10e00f70766c",
         "ingredientId": "ba274e2a-ec84-43f8-b803-a0690e2dedc9",
         "ingredient": {
@@ -7889,7 +8672,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "bf507acd-bac9-4176-bfd2-05f04c9819ee",
+        "id": "aed05918-ad02-41e8-a58e-a184f02d9984",
         "recipeId": "fb72bc5a-3809-400d-80a5-10e00f70766c",
         "ingredientId": "8a68e73e-cdfa-4414-a74e-cb9f0e61eee8",
         "ingredient": {
@@ -7974,7 +8757,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "9c0cd01e-a786-4ffa-930b-37006eec5c6e",
+        "id": "85a80c8a-04dd-43c7-8c61-122d27f0c97e",
         "recipeId": "fb72bc5a-3809-400d-80a5-10e00f70766c",
         "ingredientId": "54e1fb73-118a-40e1-a728-4fb45ea88825",
         "ingredient": {
@@ -8059,7 +8842,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "f67c7cc2-c5a7-41a9-a2c9-f224c9f851f7",
+        "id": "2cb7a6c5-17c1-4940-8cf3-e7cf77fa88f7",
         "recipeId": "fb72bc5a-3809-400d-80a5-10e00f70766c",
         "ingredientId": "40000000-0000-0000-0000-000000000008",
         "ingredient": {
@@ -8164,7 +8947,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "5222adba-78be-46bb-abc6-bfefc90d98f3",
+        "id": "eef84b8f-21d2-4405-beec-732d24f632b3",
         "recipeId": "fb72bc5a-3809-400d-80a5-10e00f70766c",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -8259,7 +9042,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "772dc10e-5833-41ef-9820-dbf5374a6f2e",
+        "id": "8130f6e0-b9af-49c0-808e-5d89e57c3896",
         "recipeId": "fb72bc5a-3809-400d-80a5-10e00f70766c",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -8344,11 +9127,11 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "58d4f6c0-dd0c-42f9-9a37-45283cc8784a",
+        "id": "2546386e-e019-4e28-9178-d68e140470ae",
         "recipeId": "fb72bc5a-3809-400d-80a5-10e00f70766c",
         "ingredientId": null,
         "ingredient": null,
-        "name": "Sal, pimenta-do-reino",
+        "name": "Sal",
         "shoppingCategory": "Temperos e Condimentos",
         "ingredientRole": "seasoning",
         "role": "seasoning",
@@ -8363,9 +9146,38 @@ export const dossierRecipeCatalog: Recipe[] = [
         "includeInShoppingList": true,
         "roundingStep": null,
         "roundingMode": "none",
-        "displayName": "Sal, pimenta-do-reino",
+        "displayName": "Sal",
         "notes": null,
         "sortOrder": 8,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "75455319-6f53-4c0a-8a6a-ddd945122caf",
+        "recipeId": "fb72bc5a-3809-400d-80a5-10e00f70766c",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Pimenta-do-reino",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Pimenta-do-reino",
+        "notes": null,
+        "sortOrder": 9,
         "packageSizeG": null,
         "purchaseIncrementG": null,
         "purchaseUnit": null,
@@ -8375,37 +9187,37 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "727371ab-eabd-4045-810d-e411f326ce36",
+        "id": "f774a752-14fa-4d09-895b-ebb3ed315587",
         "recipeId": "fb72bc5a-3809-400d-80a5-10e00f70766c",
         "stepNumber": 1,
         "instruction": "Corte o patinho em tiras finas de ~5mm de espessura. Tempere com sal e pimenta."
       },
       {
-        "id": "0e99f668-8537-468d-a58e-9678cdac62a7",
+        "id": "e5548d18-8eed-48ab-8f41-3c1b4b7ae5eb",
         "recipeId": "fb72bc5a-3809-400d-80a5-10e00f70766c",
         "stepNumber": 2,
         "instruction": "Aqueça o azeite em frigideira grande em fogo muito alto. Sele as tiras em pequenas porções (sem lotar a frigideira) para dourar e não cozinhar no vapor. Reserve."
       },
       {
-        "id": "490b818d-9675-4bf2-8886-27b37bf02926",
+        "id": "36691af8-918e-409d-b265-b988a3fe0113",
         "recipeId": "fb72bc5a-3809-400d-80a5-10e00f70766c",
         "stepNumber": 3,
         "instruction": "Na mesma frigideira, refogue a cebola e o alho."
       },
       {
-        "id": "e85725c6-9e5e-4bfb-bd5e-053c6270d036",
+        "id": "dd09e7b9-255e-48aa-9e46-c3601922f975",
         "recipeId": "fb72bc5a-3809-400d-80a5-10e00f70766c",
         "stepNumber": 4,
         "instruction": "Acrescente o extrato de tomate e refogue 1–2 minutos."
       },
       {
-        "id": "0e08532f-bb93-4ae8-a2b2-eb3ae3e9628c",
+        "id": "4aff86d7-5013-4d3e-8b77-2bc61c58ef57",
         "recipeId": "fb72bc5a-3809-400d-80a5-10e00f70766c",
         "stepNumber": 5,
         "instruction": "Volte a carne. Adicione ketchup e mostarda. Misture."
       },
       {
-        "id": "03ab2452-5fa9-4505-8015-708198d6d5fd",
+        "id": "4eadb6d1-9632-4133-aaa9-c1ec3e80e05c",
         "recipeId": "fb72bc5a-3809-400d-80a5-10e00f70766c",
         "stepNumber": 6,
         "instruction": "Reduza o fogo e acrescente o creme de leite. Aqueça sem ferver por 3–5 minutos. Ajuste o sal."
@@ -8441,10 +9253,10 @@ export const dossierRecipeCatalog: Recipe[] = [
     "correctionFactor": null,
     "cookingFactor": 1.3,
     "baseYieldNote": "1kg de proteína principal rende cerca de 1,3kg de preparo pronto.",
-    "prepTimeMinutes": 35,
+    "prepTimeMinutes": 40,
     "costLevel": 3,
     "timeLevel": 2,
-    "workLevel": 2,
+    "workLevel": 3,
     "practicalityLevel": 4,
     "versatilityLevel": 3,
     "freezesWell": true,
@@ -8475,7 +9287,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "ef42d287-970b-43c9-8611-0325d9d2ca6f",
+        "id": "bcd9d5d0-857d-44d3-8402-1f0326c9df21",
         "recipeId": "25e08d26-0072-46bd-8738-a3a587fcfc96",
         "ingredientId": "080f7052-b190-4cc4-868b-9e773f7983d6",
         "ingredient": {
@@ -8572,7 +9384,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "732628ac-7b3f-4080-83b2-dfc243fbf77c",
+        "id": "30f2cbad-4e2e-4236-94b7-11d260f10528",
         "recipeId": "25e08d26-0072-46bd-8738-a3a587fcfc96",
         "ingredientId": "40000000-0000-0000-0000-000000000008",
         "ingredient": {
@@ -8677,7 +9489,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "29be8ed1-278a-4f4b-a92e-5865e8bc00cf",
+        "id": "5f54add6-9f80-43fd-a230-0acdcf8ad9b5",
         "recipeId": "25e08d26-0072-46bd-8738-a3a587fcfc96",
         "ingredientId": "40000000-0000-0000-0000-000000000007",
         "ingredient": {
@@ -8782,7 +9594,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "8ef028b9-af6c-420d-b49a-0f6612e121dc",
+        "id": "9d24a4aa-a8c2-410f-bf29-15096dc593fe",
         "recipeId": "25e08d26-0072-46bd-8738-a3a587fcfc96",
         "ingredientId": "44a89a51-7f88-4066-bc71-34ae2b66ba28",
         "ingredient": {
@@ -8889,7 +9701,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "63f03b98-0124-4b93-9841-b795520cbdd1",
+        "id": "902709c3-515f-48ee-9a93-35278bef03ab",
         "recipeId": "25e08d26-0072-46bd-8738-a3a587fcfc96",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -8984,7 +9796,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "004f3d33-2f47-4766-a87f-be67a40e357c",
+        "id": "5e6f2e19-c7f4-482b-812c-b6e1cb22d10c",
         "recipeId": "25e08d26-0072-46bd-8738-a3a587fcfc96",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -9069,11 +9881,11 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "a2d777cb-0b4f-485b-a009-a0e71a7fef57",
+        "id": "e5249a16-5e32-4c66-9b7e-27a8993f4a16",
         "recipeId": "25e08d26-0072-46bd-8738-a3a587fcfc96",
         "ingredientId": null,
         "ingredient": null,
-        "name": "Sal, pimenta, colorau, orégano",
+        "name": "Sal",
         "shoppingCategory": "Temperos e Condimentos",
         "ingredientRole": "seasoning",
         "role": "seasoning",
@@ -9088,9 +9900,96 @@ export const dossierRecipeCatalog: Recipe[] = [
         "includeInShoppingList": true,
         "roundingStep": null,
         "roundingMode": "none",
-        "displayName": "Sal, pimenta, colorau, orégano",
+        "displayName": "Sal",
         "notes": null,
         "sortOrder": 6,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "7fd4bb1e-401a-4df7-a3d8-031647793d8d",
+        "recipeId": "25e08d26-0072-46bd-8738-a3a587fcfc96",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Pimenta",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Pimenta",
+        "notes": null,
+        "sortOrder": 7,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "9aa230a1-a6b6-493e-8bab-1b4d2cec70f5",
+        "recipeId": "25e08d26-0072-46bd-8738-a3a587fcfc96",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Colorau",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Colorau",
+        "notes": null,
+        "sortOrder": 8,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "bbdaea56-7e50-4315-b23d-441a4774e849",
+        "recipeId": "25e08d26-0072-46bd-8738-a3a587fcfc96",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Orégano",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Orégano",
+        "notes": null,
+        "sortOrder": 9,
         "packageSizeG": null,
         "purchaseIncrementG": null,
         "purchaseUnit": null,
@@ -9100,31 +9999,31 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "697cabc6-96a1-4095-bf88-970f163ef417",
+        "id": "acbff006-853b-455b-9538-4d54f9398f60",
         "recipeId": "25e08d26-0072-46bd-8738-a3a587fcfc96",
         "stepNumber": 1,
         "instruction": "Corte a carne em tiras de ~1cm de espessura e ~5cm de comprimento. Tempere com sal, pimenta e colorau."
       },
       {
-        "id": "9f848bbd-224b-4105-be0d-0a2ed55e5a51",
+        "id": "ebe413b4-a386-429d-8b76-96daad1454e3",
         "recipeId": "25e08d26-0072-46bd-8738-a3a587fcfc96",
         "stepNumber": 2,
         "instruction": "Aqueça o azeite em frigideira grande (ou wok) em fogo muito alto. Sele as iscas em lotes para não cozinhar no vapor. Reserve."
       },
       {
-        "id": "2177f877-cbe2-4cf8-a839-da3b9cd3b5a6",
+        "id": "09851e2c-ce3e-4d16-b795-6372e1386926",
         "recipeId": "25e08d26-0072-46bd-8738-a3a587fcfc96",
         "stepNumber": 3,
         "instruction": "Na mesma frigideira, refogue o alho rapidamente. Acrescente a cebola em tiras e o pimentão. Refogue em fogo alto por 3–4 minutos — os legumes devem ficar al dente, não moles."
       },
       {
-        "id": "e08ddf8e-9d52-4292-a50f-ef45c4e92c20",
+        "id": "fca1b0a4-8b80-4d1f-b3f6-b185a5a52cdf",
         "recipeId": "25e08d26-0072-46bd-8738-a3a587fcfc96",
         "stepNumber": 4,
         "instruction": "Adicione o tomate em cubos, misture e refogue por mais 2 minutos."
       },
       {
-        "id": "01c0a8bd-df14-4910-8cd7-537ba043ae48",
+        "id": "127637f6-f89e-4e3b-b6b4-b5ec6990d3a4",
         "recipeId": "25e08d26-0072-46bd-8738-a3a587fcfc96",
         "stepNumber": 5,
         "instruction": "Volte a carne à frigideira, misture tudo, acerte o sal e finalize com orégano. Sirva imediatamente."
@@ -9160,10 +10059,10 @@ export const dossierRecipeCatalog: Recipe[] = [
     "correctionFactor": null,
     "cookingFactor": 1.3,
     "baseYieldNote": "1kg de proteína principal rende cerca de 1,3kg de preparo pronto.",
-    "prepTimeMinutes": 35,
+    "prepTimeMinutes": 40,
     "costLevel": 3,
     "timeLevel": 2,
-    "workLevel": 2,
+    "workLevel": 3,
     "practicalityLevel": 4,
     "versatilityLevel": 3,
     "freezesWell": true,
@@ -9194,7 +10093,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "ba330b8a-356d-4aff-a8c8-6e2c92b16d3c",
+        "id": "f91f4ab1-f8a4-4d6a-9468-1d6b7edd6084",
         "recipeId": "b780a7fa-59e4-4d52-a25d-8cd137fca6bb",
         "ingredientId": "cf6ea440-f8ad-4807-bddd-88a994478ca9",
         "ingredient": {
@@ -9291,7 +10190,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "8b5995f3-b1ee-4ee6-9b41-e48cd11eddc5",
+        "id": "2b21f677-37ca-48c9-8d2a-3a368af8b355",
         "recipeId": "b780a7fa-59e4-4d52-a25d-8cd137fca6bb",
         "ingredientId": "40000000-0000-0000-0000-000000000008",
         "ingredient": {
@@ -9396,7 +10295,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "b1d9c43f-3975-47b3-9234-4c78e1bb7505",
+        "id": "ce12ef28-6f05-4df6-b3e1-30fb48dfc0c0",
         "recipeId": "b780a7fa-59e4-4d52-a25d-8cd137fca6bb",
         "ingredientId": "40000000-0000-0000-0000-000000000007",
         "ingredient": {
@@ -9501,7 +10400,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "be54f24c-5a76-494e-8ebc-2df271c5e4ea",
+        "id": "47afc97b-07cb-4c8f-b86b-ba721d8526b7",
         "recipeId": "b780a7fa-59e4-4d52-a25d-8cd137fca6bb",
         "ingredientId": "44a89a51-7f88-4066-bc71-34ae2b66ba28",
         "ingredient": {
@@ -9608,7 +10507,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "bbfc9db9-dbd9-4b0f-9b65-8b1ee43a46ec",
+        "id": "6b39b84f-409d-45dc-881d-3f777563a5d0",
         "recipeId": "b780a7fa-59e4-4d52-a25d-8cd137fca6bb",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -9703,7 +10602,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "743bb683-195e-4e45-afa9-93428820e966",
+        "id": "848c3fdc-40d2-4dd3-9591-fdb0ed923016",
         "recipeId": "b780a7fa-59e4-4d52-a25d-8cd137fca6bb",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -9788,11 +10687,11 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "e8ce8bfb-0764-4dba-9a65-2eb2e81ebf22",
+        "id": "0946c9d3-4632-4e71-844c-cf40c80af086",
         "recipeId": "b780a7fa-59e4-4d52-a25d-8cd137fca6bb",
         "ingredientId": null,
         "ingredient": null,
-        "name": "Sal, pimenta, colorau, orégano",
+        "name": "Sal",
         "shoppingCategory": "Temperos e Condimentos",
         "ingredientRole": "seasoning",
         "role": "seasoning",
@@ -9807,9 +10706,96 @@ export const dossierRecipeCatalog: Recipe[] = [
         "includeInShoppingList": true,
         "roundingStep": null,
         "roundingMode": "none",
-        "displayName": "Sal, pimenta, colorau, orégano",
+        "displayName": "Sal",
         "notes": null,
         "sortOrder": 6,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "93bb9b2d-111b-4264-9a3b-ea1d53376491",
+        "recipeId": "b780a7fa-59e4-4d52-a25d-8cd137fca6bb",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Pimenta",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Pimenta",
+        "notes": null,
+        "sortOrder": 7,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "a6afd4eb-5882-4b37-905b-6f75e5d0faea",
+        "recipeId": "b780a7fa-59e4-4d52-a25d-8cd137fca6bb",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Colorau",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Colorau",
+        "notes": null,
+        "sortOrder": 8,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "15b69a5d-1c7d-4f87-a6e6-340f1ca36bc5",
+        "recipeId": "b780a7fa-59e4-4d52-a25d-8cd137fca6bb",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Orégano",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Orégano",
+        "notes": null,
+        "sortOrder": 9,
         "packageSizeG": null,
         "purchaseIncrementG": null,
         "purchaseUnit": null,
@@ -9819,31 +10805,31 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "bb641b4b-39ab-447c-bd3f-0ea9f618ba2d",
+        "id": "4e227ed0-f02b-42c4-92b6-7a8d861660e0",
         "recipeId": "b780a7fa-59e4-4d52-a25d-8cd137fca6bb",
         "stepNumber": 1,
         "instruction": "Corte o peito de frango em tiras de ~1cm de espessura. Tempere com sal, pimenta e colorau."
       },
       {
-        "id": "6f22974e-eb8a-4677-8efd-4da0cba82add",
+        "id": "05e81dfe-6843-4c7f-8d2e-354eb6588a7a",
         "recipeId": "b780a7fa-59e4-4d52-a25d-8cd137fca6bb",
         "stepNumber": 2,
         "instruction": "Aqueça o azeite em frigideira grande em fogo alto. Sele as iscas de frango até dourarem. Reserve."
       },
       {
-        "id": "c20bacf8-1d5f-4ea3-84a5-580f5a6ad898",
+        "id": "7bb4bd06-38f2-41f6-940b-c486b8f3b96f",
         "recipeId": "b780a7fa-59e4-4d52-a25d-8cd137fca6bb",
         "stepNumber": 3,
         "instruction": "Refogue o alho rapidamente. Acrescente a cebola em tiras e o pimentão. Cozinhe em fogo alto por 3–4 minutos mantendo os legumes al dente."
       },
       {
-        "id": "dbfb121d-c236-44ae-a4d9-d99e29f4f5a9",
+        "id": "b63db790-0096-48de-b31c-83ded86f96f3",
         "recipeId": "b780a7fa-59e4-4d52-a25d-8cd137fca6bb",
         "stepNumber": 4,
         "instruction": "Adicione o tomate em cubos e refogue por 2 minutos."
       },
       {
-        "id": "9f576102-5122-4637-98fe-daa4a755d34e",
+        "id": "3bc52c5e-7338-400a-8737-df30d2bde05e",
         "recipeId": "b780a7fa-59e4-4d52-a25d-8cd137fca6bb",
         "stepNumber": 5,
         "instruction": "Volte o frango à frigideira, misture, ajuste o sal e finalize com orégano."
@@ -9913,7 +10899,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "bd905e41-9861-4308-bd98-b667c21b94c4",
+        "id": "41da2604-3388-42ad-a79d-7eeff894cb9e",
         "recipeId": "74a57b68-5934-40b6-aac9-cb4d5fc8e637",
         "ingredientId": "4f187b43-472b-4c15-b658-11b787ab3740",
         "ingredient": {
@@ -10010,7 +10996,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "c26c40df-1a78-4504-a442-dcbce5759d05",
+        "id": "ceabe610-fa03-454b-80de-d12cfc8f9824",
         "recipeId": "74a57b68-5934-40b6-aac9-cb4d5fc8e637",
         "ingredientId": "fed96ab6-56f4-41c8-adfe-2e362084000a",
         "ingredient": {
@@ -10097,7 +11083,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "17afee0a-ca8e-4f83-aa07-2fba44a2f168",
+        "id": "ce8d9e55-7fa0-4247-ad57-5327569d789a",
         "recipeId": "74a57b68-5934-40b6-aac9-cb4d5fc8e637",
         "ingredientId": null,
         "ingredient": null,
@@ -10128,25 +11114,25 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "4fe5acd6-ab13-4098-b78a-f0935124d5b0",
+        "id": "8494d259-c303-4d94-a989-858057e05914",
         "recipeId": "74a57b68-5934-40b6-aac9-cb4d5fc8e637",
         "stepNumber": 1,
         "instruction": "Descasque a abóbora, remova as sementes e corte em cubos de ~3cm."
       },
       {
-        "id": "09c6d95e-c46f-4b4e-9662-92469c3d2bb7",
+        "id": "2334ce4d-0051-44d4-ad96-58712abd3d19",
         "recipeId": "74a57b68-5934-40b6-aac9-cb4d5fc8e637",
         "stepNumber": 2,
         "instruction": "Leve ao fogo em panela com água suficiente para cobrir e sal a gosto."
       },
       {
-        "id": "e8f0e0fc-0158-406c-8f68-e23363d20bf7",
+        "id": "09cb01b8-c5dc-42b2-b5fd-f0871f9f2ef7",
         "recipeId": "74a57b68-5934-40b6-aac9-cb4d5fc8e637",
         "stepNumber": 3,
         "instruction": "Cozinhe por 15–20 minutos até ficar macia ao garfo. Escorra bem."
       },
       {
-        "id": "c8418de4-3e56-4520-8a82-0b6900496af8",
+        "id": "fab7f72e-1009-4068-b747-8ae32bfd3f36",
         "recipeId": "74a57b68-5934-40b6-aac9-cb4d5fc8e637",
         "stepNumber": 4,
         "instruction": "Finalize com salsinha picada se quiser. Sirva simples ou como acompanhamento."
@@ -10216,7 +11202,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "0fba86b0-d282-4328-88c9-f6d7adf0d445",
+        "id": "3c3da69e-93bd-47c4-a53d-571a098b2976",
         "recipeId": "562bab16-65c5-4fa3-8960-ce09b9c06b17",
         "ingredientId": "16d123da-0306-4c63-8194-27d7c2a827c7",
         "ingredient": {
@@ -10331,7 +11317,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "4bca02ce-f8df-46ab-9433-b41f4adf006c",
+        "id": "c1092afc-1abe-4840-8326-4ceadf2bb509",
         "recipeId": "562bab16-65c5-4fa3-8960-ce09b9c06b17",
         "ingredientId": "85eab4bc-ea16-40bd-91cf-166d04a93fc6",
         "ingredient": {
@@ -10419,7 +11405,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "d775cdc3-811e-4c9f-9ad7-a7a63c2aa11a",
+        "id": "1b6c7569-9e34-49d9-a38c-da9c64bbc2f6",
         "recipeId": "562bab16-65c5-4fa3-8960-ce09b9c06b17",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -10504,7 +11490,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "2db7cc07-0ebe-4f99-a57a-ed7e1dded227",
+        "id": "eaade535-3244-48bc-b0b1-2c07f90e0905",
         "recipeId": "562bab16-65c5-4fa3-8960-ce09b9c06b17",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -10599,7 +11585,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "8ae76237-b877-4042-93ce-8c159ab9e80c",
+        "id": "332b5cd3-94b9-4bde-b87a-8bb5d6d98b49",
         "recipeId": "562bab16-65c5-4fa3-8960-ce09b9c06b17",
         "ingredientId": null,
         "ingredient": null,
@@ -10630,31 +11616,31 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "54bdde4d-3d68-4834-a3f3-4455ddfd982f",
+        "id": "3e8d2f9a-c12c-4dc9-871f-031390648378",
         "recipeId": "562bab16-65c5-4fa3-8960-ce09b9c06b17",
         "stepNumber": 1,
         "instruction": "Aqueça o azeite em panela média em fogo médio. Refogue o alho amassado até dourar levemente."
       },
       {
-        "id": "3a48824f-0123-4660-aaac-27f1ce40caa8",
+        "id": "cec48709-5d06-49d2-8f10-6c1b641f7b28",
         "recipeId": "562bab16-65c5-4fa3-8960-ce09b9c06b17",
         "stepNumber": 2,
         "instruction": "Acrescente o açafrão-da-terra e mexa por 30 segundos para ativar a cor e o aroma."
       },
       {
-        "id": "c39cf47e-bfed-4aea-ba98-b2ea6c7a6ad8",
+        "id": "6802e0fd-dcdf-4702-86ff-1f6486e7d992",
         "recipeId": "562bab16-65c5-4fa3-8960-ce09b9c06b17",
         "stepNumber": 3,
         "instruction": "Adicione o arroz (sem lavar ou já lavado, conforme preferência). Refogue por 1–2 minutos."
       },
       {
-        "id": "dbd23f0c-77f1-4ff1-a182-5838cd4cf81d",
+        "id": "5f3453bf-20d9-440e-aaf4-62f5906b20c8",
         "recipeId": "562bab16-65c5-4fa3-8960-ce09b9c06b17",
         "stepNumber": 4,
         "instruction": "Acrescente água quente na proporção de 1:1,8 (900ml para 500g de arroz) e sal. Misture, tampe e cozinhe em fogo baixo por 15 minutos."
       },
       {
-        "id": "913e0ee1-cbf2-4221-9b2e-ffb3c9230e22",
+        "id": "443908a9-923f-43e0-bd1f-1f9b0d4d5cd6",
         "recipeId": "562bab16-65c5-4fa3-8960-ce09b9c06b17",
         "stepNumber": 5,
         "instruction": "Desligue, mantenha tampado por mais 5 minutos. Solte com garfo antes de servir."
@@ -10724,7 +11710,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "b7cb4902-f2db-4bf2-8231-ce17153e8765",
+        "id": "b0dd1bd7-30b3-4c57-b98e-01ea275344ba",
         "recipeId": "684ac207-b312-49d0-8226-823be46478e5",
         "ingredientId": "16d123da-0306-4c63-8194-27d7c2a827c7",
         "ingredient": {
@@ -10839,7 +11825,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "c2077ad9-40d5-4c7c-9994-161b837dcca9",
+        "id": "21595586-52a5-4185-a815-96ac6fc779f5",
         "recipeId": "684ac207-b312-49d0-8226-823be46478e5",
         "ingredientId": "40000000-0000-0000-0000-000000000009",
         "ingredient": {
@@ -10944,7 +11930,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "d3721f5a-14cf-40b4-b8c0-102f3851ff2b",
+        "id": "5bbdf31c-e219-4172-880b-408b8f4eed3b",
         "recipeId": "684ac207-b312-49d0-8226-823be46478e5",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -11029,7 +12015,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "22bb5b48-de30-4025-a2e2-390141ed301c",
+        "id": "2e3567cc-de88-4740-ae14-11bb69802f17",
         "recipeId": "684ac207-b312-49d0-8226-823be46478e5",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -11124,7 +12110,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "baa519b3-7898-45f0-aaa1-be4b17be4c21",
+        "id": "32afb001-f11d-497b-abce-8900794d547c",
         "recipeId": "684ac207-b312-49d0-8226-823be46478e5",
         "ingredientId": null,
         "ingredient": null,
@@ -11155,25 +12141,25 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "8eb914ab-0538-4162-876a-3ae5997cc309",
+        "id": "cb20779f-1d4a-4dba-b4e9-60dd46558c4a",
         "recipeId": "684ac207-b312-49d0-8226-823be46478e5",
         "stepNumber": 1,
         "instruction": "Rale a cenoura no lado grosso do ralador."
       },
       {
-        "id": "275d699e-7878-4dcd-b02a-0a28b5a982bc",
+        "id": "71cd52a3-328e-4a0c-8c75-f4f2478cc41a",
         "recipeId": "684ac207-b312-49d0-8226-823be46478e5",
         "stepNumber": 2,
         "instruction": "Aqueça o azeite, refogue o alho. Acrescente a cenoura ralada e refogue por 2 minutos."
       },
       {
-        "id": "145aca6a-e3e2-4b73-a42f-b2f4a19c859d",
+        "id": "c2308bc0-360d-4672-bf32-298686b99cac",
         "recipeId": "684ac207-b312-49d0-8226-823be46478e5",
         "stepNumber": 3,
         "instruction": "Adicione o arroz, refogue por 1–2 minutos. Acrescente água quente e sal."
       },
       {
-        "id": "29775dbb-0ecd-4b59-8aa4-b95749026f05",
+        "id": "05b0a956-4bc0-4b44-8197-75603a88ebc8",
         "recipeId": "684ac207-b312-49d0-8226-823be46478e5",
         "stepNumber": 4,
         "instruction": "Cozinhe tampado em fogo baixo por 15 minutos. Descanse 5 minutos tampado antes de servir."
@@ -11243,7 +12229,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "ec0a5d55-dc8f-4a4c-a790-fcb627623f27",
+        "id": "c063bf8d-acf0-47dc-b8b3-f166efe01d41",
         "recipeId": "01bf7a45-e6b5-4e51-b006-b9a5427bd429",
         "ingredientId": "16d123da-0306-4c63-8194-27d7c2a827c7",
         "ingredient": {
@@ -11358,7 +12344,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "cb197c47-1d54-42c5-aabf-6513bfc3d0f3",
+        "id": "5c8e566c-0fc9-453a-b336-8279028e75a7",
         "recipeId": "01bf7a45-e6b5-4e51-b006-b9a5427bd429",
         "ingredientId": "40000000-0000-0000-0000-000000000008",
         "ingredient": {
@@ -11463,7 +12449,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "b82a8aaa-0da2-4a08-a625-239b5cade06b",
+        "id": "4bb69b69-89e2-48bf-b0d2-c8c1f608cd7a",
         "recipeId": "01bf7a45-e6b5-4e51-b006-b9a5427bd429",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -11558,7 +12544,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "01e69392-9fc4-4763-84e0-cec62d2e4694",
+        "id": "c41fb841-e740-492d-94fd-414297dd80ac",
         "recipeId": "01bf7a45-e6b5-4e51-b006-b9a5427bd429",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -11643,7 +12629,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "36dbe890-c9b1-4d7d-9b9c-d9def164aa29",
+        "id": "ee116093-f16c-47c3-abdb-4a898d80a5c7",
         "recipeId": "01bf7a45-e6b5-4e51-b006-b9a5427bd429",
         "ingredientId": null,
         "ingredient": null,
@@ -11674,25 +12660,25 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "69d31387-905b-442e-a1a2-5da78680a759",
+        "id": "c86f699d-4a33-4dbd-8e6b-8479ad954532",
         "recipeId": "01bf7a45-e6b5-4e51-b006-b9a5427bd429",
         "stepNumber": 1,
         "instruction": "Aqueça o azeite em fogo médio. Refogue a cebola picada até amolecer (~3 minutos). Adicione o alho e refogue mais 1 minuto."
       },
       {
-        "id": "f2f77cc8-0f13-446a-acc6-5b22de42e5e6",
+        "id": "5e6169da-d6e6-4e38-b21a-5acadda68f85",
         "recipeId": "01bf7a45-e6b5-4e51-b006-b9a5427bd429",
         "stepNumber": 2,
         "instruction": "Acrescente o arroz e refogue por 2 minutos até os grãos ficarem levemente translúcidos."
       },
       {
-        "id": "88048e89-1533-42d7-86c7-6dcca802e1b6",
+        "id": "5805e054-3567-46ed-b3b5-13136ecc211c",
         "recipeId": "01bf7a45-e6b5-4e51-b006-b9a5427bd429",
         "stepNumber": 3,
         "instruction": "Adicione água quente (900ml), sal, tampe e cozinhe em fogo baixo por 15 minutos."
       },
       {
-        "id": "64b4ffa3-1321-421d-9267-29d0a60e7a99",
+        "id": "0e8d659f-a220-4926-ab26-d48a5771820d",
         "recipeId": "01bf7a45-e6b5-4e51-b006-b9a5427bd429",
         "stepNumber": 4,
         "instruction": "Desligue e descanse tampado por 5 minutos. Solte com garfo antes de servir."
@@ -11762,7 +12748,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "f6d67209-d2ea-4646-9027-d86e8ba3e188",
+        "id": "4b478046-eabc-43fd-a8a6-c8a35588c5d5",
         "recipeId": "c6b1b18e-0622-421a-99ab-38e7be223d3d",
         "ingredientId": "16d123da-0306-4c63-8194-27d7c2a827c7",
         "ingredient": {
@@ -11877,7 +12863,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "d859904c-09cc-4433-b15b-9e140bc85e16",
+        "id": "0c17981c-56b4-4cbb-8fed-7e3728bf56ee",
         "recipeId": "c6b1b18e-0622-421a-99ab-38e7be223d3d",
         "ingredientId": "bbca0e62-5f8c-4734-9b45-c9ccafad7307",
         "ingredient": {
@@ -11974,7 +12960,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "b82bf851-4d60-429c-9e03-fa16f7e43c07",
+        "id": "9f85aeed-71a5-483d-a496-f981242b7e9c",
         "recipeId": "c6b1b18e-0622-421a-99ab-38e7be223d3d",
         "ingredientId": "cdf4f708-e86c-4176-9198-13adc062fd5c",
         "ingredient": {
@@ -12071,7 +13057,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "cf8f5bb3-bd1b-4c27-ac70-6c8b3faefba1",
+        "id": "5d415a07-0ab2-4889-9939-f749bbb552cf",
         "recipeId": "c6b1b18e-0622-421a-99ab-38e7be223d3d",
         "ingredientId": "40000000-0000-0000-0000-000000000009",
         "ingredient": {
@@ -12176,7 +13162,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "bcc68d93-0e9d-428c-9fbc-cc2f379634a6",
+        "id": "5d8d2333-009d-4013-9a52-b5f0cdae4be3",
         "recipeId": "c6b1b18e-0622-421a-99ab-38e7be223d3d",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -12261,7 +13247,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "77f20d25-6591-45e4-9435-5e9e76c94c57",
+        "id": "44793722-1ff9-43ed-a989-e10bc419ac8e",
         "recipeId": "c6b1b18e-0622-421a-99ab-38e7be223d3d",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -12356,7 +13342,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "c212aee9-50e3-4b09-923a-90fbbea9a77c",
+        "id": "ecdbf066-3023-48e1-951f-60dddbb90092",
         "recipeId": "c6b1b18e-0622-421a-99ab-38e7be223d3d",
         "ingredientId": null,
         "ingredient": null,
@@ -12387,37 +13373,37 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "f2b62297-8377-4858-9666-419f99af1a27",
+        "id": "b88df9d0-d0b1-45ac-a77c-049e6a6a0458",
         "recipeId": "c6b1b18e-0622-421a-99ab-38e7be223d3d",
         "stepNumber": 1,
         "instruction": "Rale a cenoura no lado grosso."
       },
       {
-        "id": "8cb3338e-f944-4c42-ab26-2dd4b96e9c84",
+        "id": "9d149120-20d9-41d2-a980-7d6c56d04cef",
         "recipeId": "c6b1b18e-0622-421a-99ab-38e7be223d3d",
         "stepNumber": 2,
         "instruction": "Refogue o alho no azeite. Acrescente a cenoura ralada e refogue 2 minutos."
       },
       {
-        "id": "f7961704-49f0-4991-b712-e041ea8d2e38",
+        "id": "eca1646d-f387-41c5-91fe-02783b24238f",
         "recipeId": "c6b1b18e-0622-421a-99ab-38e7be223d3d",
         "stepNumber": 3,
         "instruction": "Adicione o arroz, refogue 1–2 minutos."
       },
       {
-        "id": "deed1c69-8c75-4a7b-b6c5-424323114f9c",
+        "id": "6ad12a5d-3f30-485d-8920-cb59373c46fb",
         "recipeId": "c6b1b18e-0622-421a-99ab-38e7be223d3d",
         "stepNumber": 4,
         "instruction": "Acrescente água quente e sal. Cozinhe tampado em fogo baixo por 15 minutos."
       },
       {
-        "id": "813ac956-d441-4d94-b727-a752d3999041",
+        "id": "bb5ed6b5-9af9-4b05-8064-5f38dc1cebe1",
         "recipeId": "c6b1b18e-0622-421a-99ab-38e7be223d3d",
         "stepNumber": 5,
         "instruction": "Nos últimos 2 minutos de cozimento, acrescente o milho e a ervilha escorridos por cima do arroz sem mexer. Tampe novamente."
       },
       {
-        "id": "b9fad2b6-08ac-4d40-8f17-cd181c2f1886",
+        "id": "7e541a14-8f0d-48b7-99ba-e1779fa53538",
         "recipeId": "c6b1b18e-0622-421a-99ab-38e7be223d3d",
         "stepNumber": 6,
         "instruction": "Desligue, descanse 5 minutos e misture delicadamente antes de servir."
@@ -12487,7 +13473,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "e3bceab5-4c18-4af3-b6ac-6a811ca33851",
+        "id": "3b40e708-2872-4db5-ae3f-c9da86307350",
         "recipeId": "d9163f8d-18d5-43c1-b709-11da11353ffe",
         "ingredientId": "16d123da-0306-4c63-8194-27d7c2a827c7",
         "ingredient": {
@@ -12602,7 +13588,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "6acb32d1-f205-4844-acbb-4bc33c307b03",
+        "id": "6e9e8a2b-10d4-45b5-82a4-384b6173af31",
         "recipeId": "d9163f8d-18d5-43c1-b709-11da11353ffe",
         "ingredientId": "99df11e8-54db-4ed4-9f4e-ab5c5d238f0d",
         "ingredient": {
@@ -12697,7 +13683,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "437ee316-5402-4de3-813b-6a02becd374d",
+        "id": "4c1550af-26de-46fb-bc75-10af91270028",
         "recipeId": "d9163f8d-18d5-43c1-b709-11da11353ffe",
         "ingredientId": "40000000-0000-0000-0000-000000000008",
         "ingredient": {
@@ -12802,7 +13788,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "3757ff18-67db-42ca-9d78-463bdbe00e51",
+        "id": "49e8770f-0041-4e30-aed4-b23cac64e8f3",
         "recipeId": "d9163f8d-18d5-43c1-b709-11da11353ffe",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -12897,7 +13883,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "0abf25df-b29d-4985-a125-a6114c0e8745",
+        "id": "027347ee-454e-4e62-b840-b8383cb877a0",
         "recipeId": "d9163f8d-18d5-43c1-b709-11da11353ffe",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -12982,11 +13968,11 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "5a133efa-2a7f-468b-8f37-219d4055776e",
+        "id": "ffe4f235-2406-493b-b8c8-2161677a187e",
         "recipeId": "d9163f8d-18d5-43c1-b709-11da11353ffe",
         "ingredientId": null,
         "ingredient": null,
-        "name": "Sal, pimenta, cominho",
+        "name": "Sal",
         "shoppingCategory": "Temperos e Condimentos",
         "ingredientRole": "seasoning",
         "role": "seasoning",
@@ -13001,9 +13987,67 @@ export const dossierRecipeCatalog: Recipe[] = [
         "includeInShoppingList": true,
         "roundingStep": null,
         "roundingMode": "none",
-        "displayName": "Sal, pimenta, cominho",
+        "displayName": "Sal",
         "notes": null,
         "sortOrder": 5,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "8a5710bf-5ff4-42a1-a2c5-bde61c492b2b",
+        "recipeId": "d9163f8d-18d5-43c1-b709-11da11353ffe",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Pimenta",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Pimenta",
+        "notes": null,
+        "sortOrder": 6,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "c1505253-380a-4da0-85bc-c56ae95d0d37",
+        "recipeId": "d9163f8d-18d5-43c1-b709-11da11353ffe",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Cominho",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Cominho",
+        "notes": null,
+        "sortOrder": 7,
         "packageSizeG": null,
         "purchaseIncrementG": null,
         "purchaseUnit": null,
@@ -13013,37 +14057,37 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "9002cc67-4771-46ad-b2e6-8166b4e837f4",
+        "id": "b398b0a9-20de-4afc-b7f7-e133b7d57588",
         "recipeId": "d9163f8d-18d5-43c1-b709-11da11353ffe",
         "stepNumber": 1,
         "instruction": "Pré-cozinhe a lentilha em água sem sal por 15–20 minutos até ficar al dente (não mole). Escorra e reserve."
       },
       {
-        "id": "22266342-5ab6-48f3-94b0-0fea6a71b59d",
+        "id": "bd0a503a-2d9a-4ac6-9fe4-fba2a743ac00",
         "recipeId": "d9163f8d-18d5-43c1-b709-11da11353ffe",
         "stepNumber": 2,
         "instruction": "Refogue a cebola e o alho no azeite até amolecer."
       },
       {
-        "id": "d9f7ff65-abd9-40a2-b7be-9362ae43bc7e",
+        "id": "a733cd69-e6b6-4ef4-adcc-a7f3f37061dd",
         "recipeId": "d9163f8d-18d5-43c1-b709-11da11353ffe",
         "stepNumber": 3,
         "instruction": "Adicione o arroz e refogue 1–2 minutos. Tempere com cominho e sal."
       },
       {
-        "id": "3edee9bb-707a-471f-bcc0-6ff6b28f314e",
+        "id": "ba4cb6a9-6b6d-401b-be15-e48a43fe9ba1",
         "recipeId": "d9163f8d-18d5-43c1-b709-11da11353ffe",
         "stepNumber": 4,
         "instruction": "Acrescente água quente e cozinhe tampado em fogo baixo por 12 minutos."
       },
       {
-        "id": "5d3e03d3-9a18-4310-91e8-3561a8e915e2",
+        "id": "61bea717-9661-46e9-9fe8-5ffd94113b91",
         "recipeId": "d9163f8d-18d5-43c1-b709-11da11353ffe",
         "stepNumber": 5,
         "instruction": "Nos últimos 3 minutos, acrescente a lentilha pré-cozida por cima sem mexer. Tampe novamente."
       },
       {
-        "id": "4546b4b3-dd63-4782-b182-957367bb6728",
+        "id": "929110b2-0347-43c7-90d8-4e9abccd7c84",
         "recipeId": "d9163f8d-18d5-43c1-b709-11da11353ffe",
         "stepNumber": 6,
         "instruction": "Desligue, descanse 5 minutos e misture antes de servir."
@@ -13113,7 +14157,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "5befbf73-c349-4bf6-a7e2-73f55b78a55d",
+        "id": "a2b85c7f-7c42-4ca5-9f3b-4651b8f12a12",
         "recipeId": "2f84cf91-9f1c-4820-9d1b-301ee64df81c",
         "ingredientId": "16d123da-0306-4c63-8194-27d7c2a827c7",
         "ingredient": {
@@ -13228,7 +14272,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "8cc71e51-f854-41ea-a7af-3a926e68f52c",
+        "id": "75ee85fe-4ef7-468c-aa98-8c3810a0d0d8",
         "recipeId": "2f84cf91-9f1c-4820-9d1b-301ee64df81c",
         "ingredientId": "bbca0e62-5f8c-4734-9b45-c9ccafad7307",
         "ingredient": {
@@ -13325,7 +14369,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "47ee1e2e-f7e8-4ee1-aa06-3e7f7879f760",
+        "id": "006bb1a6-745b-4f10-9610-131472dff160",
         "recipeId": "2f84cf91-9f1c-4820-9d1b-301ee64df81c",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -13410,7 +14454,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "adf1130b-9888-42c5-8129-00bfdafb3a00",
+        "id": "d6de525a-1d66-43bf-b62e-155cc9c0e928",
         "recipeId": "2f84cf91-9f1c-4820-9d1b-301ee64df81c",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -13505,7 +14549,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "2a47f465-b202-4813-a6cc-ed142f6da3c8",
+        "id": "4ed66d5f-4e7e-4d0f-bfff-5bff8daa2b81",
         "recipeId": "2f84cf91-9f1c-4820-9d1b-301ee64df81c",
         "ingredientId": null,
         "ingredient": null,
@@ -13536,25 +14580,25 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "59a06d06-9b6c-469f-ba93-c73791849d6f",
+        "id": "137665f9-9849-4983-ba3f-7d5aa853b15f",
         "recipeId": "2f84cf91-9f1c-4820-9d1b-301ee64df81c",
         "stepNumber": 1,
         "instruction": "Refogue o alho no azeite. Adicione o arroz e refogue 1–2 minutos."
       },
       {
-        "id": "41ac24a5-63c1-463d-bd90-5cd48f513391",
+        "id": "68d73ae8-6876-40ae-a5ed-ba1c43236c17",
         "recipeId": "2f84cf91-9f1c-4820-9d1b-301ee64df81c",
         "stepNumber": 2,
         "instruction": "Acrescente água quente e sal. Cozinhe tampado em fogo baixo por 13 minutos."
       },
       {
-        "id": "4970eca9-385d-4662-84d1-dc8c6714fa06",
+        "id": "6b423570-e3ce-420a-9623-166306d1a076",
         "recipeId": "2f84cf91-9f1c-4820-9d1b-301ee64df81c",
         "stepNumber": 3,
         "instruction": "Nos últimos 2 minutos, acrescente o milho escorrido sem mexer e tampe novamente."
       },
       {
-        "id": "f2820409-ec88-49b6-9cd0-236cfb24c66a",
+        "id": "926cbd50-bac8-4529-a368-323c83315f21",
         "recipeId": "2f84cf91-9f1c-4820-9d1b-301ee64df81c",
         "stepNumber": 4,
         "instruction": "Desligue, descanse 5 minutos e misture antes de servir."
@@ -13624,7 +14668,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "37504e50-2f04-4c94-9bbd-71b5aa16e214",
+        "id": "3178661e-d7c0-484e-85bd-916025950ea2",
         "recipeId": "099eec12-56cf-4ac0-9211-a3108ff172b1",
         "ingredientId": "314d7f30-b05c-46f3-850c-0458146e8ab6",
         "ingredient": {
@@ -13739,7 +14783,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "f6577c2c-1106-43d0-a955-ddf9063daa9d",
+        "id": "3623c02c-22c6-4a9c-b556-7be0ac7d9478",
         "recipeId": "099eec12-56cf-4ac0-9211-a3108ff172b1",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -13824,7 +14868,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "cbada603-a256-4c50-a049-ef4da6b79732",
+        "id": "f50b9b8a-d1af-4e55-ac23-8a40565da3d3",
         "recipeId": "099eec12-56cf-4ac0-9211-a3108ff172b1",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -13919,7 +14963,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "ec454960-8df0-4a3a-a575-2872bc7691ee",
+        "id": "d005f75e-f5f8-42d1-9225-8cbff29a0497",
         "recipeId": "099eec12-56cf-4ac0-9211-a3108ff172b1",
         "ingredientId": null,
         "ingredient": null,
@@ -13950,31 +14994,31 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "a78388c0-d9cb-4b03-b5f4-aa9db113008c",
+        "id": "14858036-f2ae-4d59-bdfb-5bb98d6b7c6d",
         "recipeId": "099eec12-56cf-4ac0-9211-a3108ff172b1",
         "stepNumber": 1,
         "instruction": "Se possível, deixe o arroz de molho em água por 8–12 horas. Escorra antes de usar."
       },
       {
-        "id": "046569ba-2bc8-470c-8bf4-4a7844a92a30",
+        "id": "44257d45-bec8-497e-9a50-0acc8ca698b3",
         "recipeId": "099eec12-56cf-4ac0-9211-a3108ff172b1",
         "stepNumber": 2,
         "instruction": "Refogue o alho no azeite. Acrescente o arroz e refogue 2 minutos."
       },
       {
-        "id": "5d7ef8dd-6bf4-473e-ac33-c0e454a02a4b",
+        "id": "49ac4326-ef8b-44a5-9aed-d743a2a3a982",
         "recipeId": "099eec12-56cf-4ac0-9211-a3108ff172b1",
         "stepNumber": 3,
         "instruction": "Adicione água quente na proporção 1:2 (1.000ml para 500g de arroz), sal e tampe."
       },
       {
-        "id": "6257667f-afe8-4987-907a-31589c8b451f",
+        "id": "9d148936-9421-4cae-a0c3-fd84d20866b3",
         "recipeId": "099eec12-56cf-4ac0-9211-a3108ff172b1",
         "stepNumber": 4,
         "instruction": "Cozinhe em fogo baixo por 35–40 minutos (sem molho, 25–30 minutos se deixou de molho)."
       },
       {
-        "id": "8da0cfc1-2f9b-422f-a57a-f4b1a4a02fa9",
+        "id": "b805d295-30b7-4ba3-8560-268e8ddd1f9a",
         "recipeId": "099eec12-56cf-4ac0-9211-a3108ff172b1",
         "stepNumber": 5,
         "instruction": "Desligue e descanse tampado por 10 minutos antes de soltar com garfo."
@@ -14044,7 +15088,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "297bcbff-bbd3-4c11-bd86-fc8e5fd85b35",
+        "id": "68e65146-f375-4a9e-9aca-dee60cc8b0d9",
         "recipeId": "a4839b3f-637f-4cfe-a0f8-b2aeac2c47f1",
         "ingredientId": "52b8dbd7-003b-4590-9a40-59c1b613a7a9",
         "ingredient": {
@@ -14151,7 +15195,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "0d090479-17b7-40e3-8901-06db9bcfc937",
+        "id": "d3fcbcb6-3410-4861-b4ef-75b8f7ebe711",
         "recipeId": "a4839b3f-637f-4cfe-a0f8-b2aeac2c47f1",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -14236,7 +15280,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "e96cebc2-7c50-464a-ae83-4c1b9e24b6b5",
+        "id": "30b2d0ee-5807-40b6-a923-5886866dd9b8",
         "recipeId": "a4839b3f-637f-4cfe-a0f8-b2aeac2c47f1",
         "ingredientId": null,
         "ingredient": null,
@@ -14267,25 +15311,25 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "cc4201d3-49cf-4ed3-8b84-a91ab57352ea",
+        "id": "406cf034-fab0-48f1-b1ec-b02cef4d3c4e",
         "recipeId": "a4839b3f-637f-4cfe-a0f8-b2aeac2c47f1",
         "stepNumber": 1,
         "instruction": "Lave bem as batatas. Corte ao meio no sentido do comprimento ou em rodelas de ~1,5cm."
       },
       {
-        "id": "744843ae-131a-4188-87e7-a97ec00df99f",
+        "id": "342b14e5-354a-402e-b87f-02a19fd5ac06",
         "recipeId": "a4839b3f-637f-4cfe-a0f8-b2aeac2c47f1",
         "stepNumber": 2,
         "instruction": "Tempere com sal e azeite, distribuindo bem."
       },
       {
-        "id": "fa09f0e6-8277-4055-84b0-7500b401a58e",
+        "id": "123e461c-dfd1-4a0b-8e73-db341751a381",
         "recipeId": "a4839b3f-637f-4cfe-a0f8-b2aeac2c47f1",
         "stepNumber": 3,
         "instruction": "Forno: 200°C por 35–40 minutos, virando na metade. Airfryer: 180°C por 20–25 minutos, virando na metade."
       },
       {
-        "id": "64e6668b-ba5b-4fdb-9ad5-da5c2c655bef",
+        "id": "0d8da721-d9b1-4388-8837-d63df8d82e7d",
         "recipeId": "a4839b3f-637f-4cfe-a0f8-b2aeac2c47f1",
         "stepNumber": 4,
         "instruction": "Está pronta quando a casca dourar e um garfo entrar sem resistência."
@@ -14355,7 +15399,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "a7002738-057e-4e70-a0a5-58d88be3a10c",
+        "id": "f3c9b803-f214-426b-afb9-ec0286f0a053",
         "recipeId": "9c74a108-03c9-43f4-9ac0-027897bc5f03",
         "ingredientId": "52b8dbd7-003b-4590-9a40-59c1b613a7a9",
         "ingredient": {
@@ -14462,7 +15506,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "29116c78-e8c4-4e6a-b097-05a0adf26492",
+        "id": "8115d578-18de-434c-9d85-8b642207cb7c",
         "recipeId": "9c74a108-03c9-43f4-9ac0-027897bc5f03",
         "ingredientId": null,
         "ingredient": null,
@@ -14493,13 +15537,13 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "adfa52c3-592f-4551-ac18-a708f21a9740",
+        "id": "46ce674a-4c3a-42d6-a2d4-e2aeb557c498",
         "recipeId": "9c74a108-03c9-43f4-9ac0-027897bc5f03",
         "stepNumber": 1,
         "instruction": "Lave as batatas. Cozinhe com casca em água com sal por 25–30 minutos até ficarem macias."
       },
       {
-        "id": "75077e2a-8ac7-441d-9440-c324e35d099b",
+        "id": "79d0b469-302c-44d0-82b5-1d65c4b44753",
         "recipeId": "9c74a108-03c9-43f4-9ac0-027897bc5f03",
         "stepNumber": 2,
         "instruction": "Escorra, deixe esfriar levemente e descasque se preferir. A casca sai com facilidade após o cozimento."
@@ -14569,7 +15613,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "a057d5ae-254e-4bb9-990d-7a2f5fd3ebfa",
+        "id": "29eea042-2b27-4af8-9c60-b7b64d243b90",
         "recipeId": "6ffb0bff-22e2-4c55-a728-7edba9f9cdca",
         "ingredientId": "c64d9347-842f-4637-b70a-10e840439194",
         "ingredient": {
@@ -14676,7 +15720,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "df02d6f3-58cf-4f5f-8e58-5d2d0c3daa43",
+        "id": "aac0d71f-b903-499e-acd7-6e4604a6d046",
         "recipeId": "6ffb0bff-22e2-4c55-a728-7edba9f9cdca",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -14761,7 +15805,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "667b3f30-0f97-40b9-9fbd-f9f2b5e988f9",
+        "id": "183065b7-6b06-44cf-bf2f-fcb48acbfdd4",
         "recipeId": "6ffb0bff-22e2-4c55-a728-7edba9f9cdca",
         "ingredientId": null,
         "ingredient": null,
@@ -14792,25 +15836,25 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "25d7b561-26e2-4611-8dc6-46a641602797",
+        "id": "54fd645b-2ccb-4179-ad9d-2b6762e52199",
         "recipeId": "6ffb0bff-22e2-4c55-a728-7edba9f9cdca",
         "stepNumber": 1,
         "instruction": "Lave as batatas. Corte em cubos grandes ou em rodelas de ~1,5cm."
       },
       {
-        "id": "c711baa8-58d9-4a9a-9504-46a03c370c96",
+        "id": "fdf92e32-fed2-4cfa-bf3d-9b1d99eb88c2",
         "recipeId": "6ffb0bff-22e2-4c55-a728-7edba9f9cdca",
         "stepNumber": 2,
         "instruction": "Tempere com sal e azeite."
       },
       {
-        "id": "03c15f99-45d7-4397-9d4b-2b52f845aa01",
+        "id": "30fbff26-fe23-4249-bff0-6f9c5a01747f",
         "recipeId": "6ffb0bff-22e2-4c55-a728-7edba9f9cdca",
         "stepNumber": 3,
         "instruction": "Forno: 200°C por 35–40 minutos, virando na metade. Airfryer: 180°C por 20–25 minutos."
       },
       {
-        "id": "f7d7e127-d6e0-47b5-a5d8-42992a787a33",
+        "id": "45c17dd9-8c6b-4d3c-b956-54afb6c31163",
         "recipeId": "6ffb0bff-22e2-4c55-a728-7edba9f9cdca",
         "stepNumber": 4,
         "instruction": "Está pronta quando dourada por fora e macia por dentro."
@@ -14880,7 +15924,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "3f49a5eb-94f9-451a-9afa-9830b72f0298",
+        "id": "2a6f8a38-3110-426c-9fbe-fc87879f6f9e",
         "recipeId": "eeb0075b-5053-4705-8b39-a1d61fcee925",
         "ingredientId": "c64d9347-842f-4637-b70a-10e840439194",
         "ingredient": {
@@ -14987,7 +16031,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "e3565b55-8d09-46ba-a44b-21022fe730a2",
+        "id": "2d756cbb-fe85-4757-bc2c-e5da89ccbc55",
         "recipeId": "eeb0075b-5053-4705-8b39-a1d61fcee925",
         "ingredientId": null,
         "ingredient": null,
@@ -15018,13 +16062,13 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "781dc539-d0ae-4485-9780-588c55713255",
+        "id": "62ca93a9-3e52-495c-b489-907d83914a8c",
         "recipeId": "eeb0075b-5053-4705-8b39-a1d61fcee925",
         "stepNumber": 1,
         "instruction": "Descasque as batatas e corte em cubos médios."
       },
       {
-        "id": "726f430e-5499-4099-b374-0f5eb6fa9507",
+        "id": "7ac838a9-07e1-4fab-a35f-e70295d29208",
         "recipeId": "eeb0075b-5053-4705-8b39-a1d61fcee925",
         "stepNumber": 2,
         "instruction": "Cozinhe em água com sal por 20–25 minutos até ficarem macias. Escorra bem antes de servir."
@@ -15094,7 +16138,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "d2f25109-669d-4190-8ea6-1bd064edac51",
+        "id": "636a9b78-5607-488a-8a6e-b0d46d789059",
         "recipeId": "ac2cea1c-91ef-403c-8c6b-9c1585b8df82",
         "ingredientId": "b8063aa3-8e4e-4af7-960c-62f4afe720d6",
         "ingredient": {
@@ -15191,7 +16235,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "9f1e026f-d4b9-42d9-8d9e-5cf599aa5beb",
+        "id": "fb7a3620-8d54-4006-97d3-96c4b0692048",
         "recipeId": "ac2cea1c-91ef-403c-8c6b-9c1585b8df82",
         "ingredientId": null,
         "ingredient": null,
@@ -15222,19 +16266,19 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "185c3fc0-88ef-468f-9775-5f464fce8f25",
+        "id": "e0f72a56-f155-4df1-8179-dbb214d395c7",
         "recipeId": "ac2cea1c-91ef-403c-8c6b-9c1585b8df82",
         "stepNumber": 1,
         "instruction": "Ferva água abundante com sal generoso (a água deve ter sabor)."
       },
       {
-        "id": "d89f8e2f-e023-4573-88c0-d7bc9b0fe6e7",
+        "id": "482ab6ca-1b5b-47a1-b062-f5b53693a5b9",
         "recipeId": "ac2cea1c-91ef-403c-8c6b-9c1585b8df82",
         "stepNumber": 2,
         "instruction": "Cozinhe o macarrão pelo tempo indicado na embalagem (geralmente 8–12 minutos para al dente)."
       },
       {
-        "id": "6dc204fd-ca25-4029-8303-2d974ae6eb69",
+        "id": "238a164a-59e1-4a20-b6e8-2a9c5883520a",
         "recipeId": "ac2cea1c-91ef-403c-8c6b-9c1585b8df82",
         "stepNumber": 3,
         "instruction": "Escorra e sirva com o acompanhamento desejado."
@@ -15304,7 +16348,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "21edc3ec-7bd2-4502-bcdf-6148130f2e0c",
+        "id": "95a3e363-3757-4ce9-9687-9c366d1485b2",
         "recipeId": "d38e9126-d2bc-42b0-bf8c-8bbeb9d5ecf1",
         "ingredientId": "80ebe6a8-5401-47e2-ad80-7b0c8fe581cc",
         "ingredient": {
@@ -15401,7 +16445,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "f885082d-ea33-4eef-adba-14fc28d193a3",
+        "id": "e79f8e39-60c6-48ed-be23-0851f8ee5409",
         "recipeId": "d38e9126-d2bc-42b0-bf8c-8bbeb9d5ecf1",
         "ingredientId": null,
         "ingredient": null,
@@ -15432,19 +16476,19 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "82b5b638-5f2b-4a7e-be29-53dd4b75bc10",
+        "id": "a99fa1f8-b0dd-4031-9fb1-a2893d2e943f",
         "recipeId": "d38e9126-d2bc-42b0-bf8c-8bbeb9d5ecf1",
         "stepNumber": 1,
         "instruction": "Descasque a mandioca, corte em pedaços de ~8cm e retire o fio central (fibroso)."
       },
       {
-        "id": "efd148a5-6efe-4635-b23a-38287e12e9f2",
+        "id": "1f0db5f1-51c3-4611-836d-0e50547b82e2",
         "recipeId": "d38e9126-d2bc-42b0-bf8c-8bbeb9d5ecf1",
         "stepNumber": 2,
         "instruction": "Leve ao fogo em água com sal. Cozinhe por 25–35 minutos até ficar completamente macia — deve desmanchar facilmente com o garfo."
       },
       {
-        "id": "6de44a89-90d0-4646-9f10-6d6bef4aa0b8",
+        "id": "2a056c2b-c80d-40c9-8024-a0719c8c83cf",
         "recipeId": "d38e9126-d2bc-42b0-bf8c-8bbeb9d5ecf1",
         "stepNumber": 3,
         "instruction": "Escorra e sirva."
@@ -15514,7 +16558,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "f275716e-6c46-41e5-8e9a-2fa42a1757fe",
+        "id": "4739c850-1bdf-47fd-9ef0-e7613200331a",
         "recipeId": "2bb200ce-6cd6-4e68-8860-f3fdd5aa8ea1",
         "ingredientId": "c64d9347-842f-4637-b70a-10e840439194",
         "ingredient": {
@@ -15621,7 +16665,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "ddd4f7a6-4d27-494c-988b-b94169c7c465",
+        "id": "59722421-58e3-4a49-8a8d-434e50bf7a79",
         "recipeId": "2bb200ce-6cd6-4e68-8860-f3fdd5aa8ea1",
         "ingredientId": "2ca5b2ad-1725-4828-830f-ac9c717034ef",
         "ingredient": {
@@ -15716,7 +16760,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "ce1297af-a7f1-4fe3-a7e6-d1cf3512aeb9",
+        "id": "27ab55d5-dd6d-42e9-91aa-31d352cc1895",
         "recipeId": "2bb200ce-6cd6-4e68-8860-f3fdd5aa8ea1",
         "ingredientId": "9829e42e-43ca-4eed-8e55-d7823e9ccfd0",
         "ingredient": {
@@ -15801,11 +16845,11 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "38a3c836-7746-4664-8baa-2fb8042ff2c1",
+        "id": "8071b5ea-61e3-49cc-ac5b-1df9e85884e1",
         "recipeId": "2bb200ce-6cd6-4e68-8860-f3fdd5aa8ea1",
         "ingredientId": null,
         "ingredient": null,
-        "name": "Sal, noz-moscada",
+        "name": "Sal",
         "shoppingCategory": "Temperos e Condimentos",
         "ingredientRole": "seasoning",
         "role": "seasoning",
@@ -15820,9 +16864,38 @@ export const dossierRecipeCatalog: Recipe[] = [
         "includeInShoppingList": true,
         "roundingStep": null,
         "roundingMode": "none",
-        "displayName": "Sal, noz-moscada",
+        "displayName": "Sal",
         "notes": null,
         "sortOrder": 3,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "085e2aff-7edb-40ff-bdcd-652989e90ba2",
+        "recipeId": "2bb200ce-6cd6-4e68-8860-f3fdd5aa8ea1",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Noz-moscada",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Noz-moscada",
+        "notes": null,
+        "sortOrder": 4,
         "packageSizeG": null,
         "purchaseIncrementG": null,
         "purchaseUnit": null,
@@ -15832,25 +16905,25 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "5f85c375-1e1b-4a70-b60b-3a9f03444395",
+        "id": "3a1758e9-5573-4f8f-82ab-fdc5a90d848c",
         "recipeId": "2bb200ce-6cd6-4e68-8860-f3fdd5aa8ea1",
         "stepNumber": 1,
         "instruction": "Cozinhe as batatas descascadas em água com sal até ficarem bem macias. Escorra totalmente."
       },
       {
-        "id": "23e71723-0662-4db4-9cac-71e7e8cb9ac8",
+        "id": "68c9b69b-df6c-48f9-b6ab-095ec30d67f1",
         "recipeId": "2bb200ce-6cd6-4e68-8860-f3fdd5aa8ea1",
         "stepNumber": 2,
         "instruction": "Passe pelo espremedor ainda quente. Não use liquidificador nem processador."
       },
       {
-        "id": "154aa49c-f75d-4b12-8e2c-3678e7a76bef",
+        "id": "6b04dcbf-2933-4247-8303-3a14bb366f18",
         "recipeId": "2bb200ce-6cd6-4e68-8860-f3fdd5aa8ea1",
         "stepNumber": 3,
         "instruction": "Acrescente a manteiga e incorpore. Adicione o leite aquecido aos poucos, mexendo até a consistência ficar cremosa."
       },
       {
-        "id": "6dff1542-3fa9-48a6-993c-f7f4ec543ae9",
+        "id": "1cedb1a3-9e27-45a0-b054-b62b10bcdf4c",
         "recipeId": "2bb200ce-6cd6-4e68-8860-f3fdd5aa8ea1",
         "stepNumber": 4,
         "instruction": "Finalize com noz-moscada ralada e ajuste o sal."
@@ -15920,7 +16993,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "a1bfac0c-8571-4b90-ba94-272ecfd3fa63",
+        "id": "50689a13-f325-482b-8390-66aecccf21c2",
         "recipeId": "715fb206-f0d9-4a49-98cc-06249656d787",
         "ingredientId": "cfc47e05-c15f-42c0-8ae3-91793b78d5be",
         "ingredient": {
@@ -16017,7 +17090,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "223f850b-e5dc-44df-aa85-678e8baa7ebe",
+        "id": "7eda819d-0b20-4a70-90d7-2fcbcb5f2e72",
         "recipeId": "715fb206-f0d9-4a49-98cc-06249656d787",
         "ingredientId": "2ca5b2ad-1725-4828-830f-ac9c717034ef",
         "ingredient": {
@@ -16112,7 +17185,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "3ca9fccf-8a34-42b1-94b9-9d8ccb922b9e",
+        "id": "8e4a8a6d-2af8-4683-9e12-6e1b94304aa9",
         "recipeId": "715fb206-f0d9-4a49-98cc-06249656d787",
         "ingredientId": "9829e42e-43ca-4eed-8e55-d7823e9ccfd0",
         "ingredient": {
@@ -16197,7 +17270,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "832999ee-893f-474e-8eb3-855f1879500c",
+        "id": "e2500ba8-546e-47c3-a325-b0f641b300be",
         "recipeId": "715fb206-f0d9-4a49-98cc-06249656d787",
         "ingredientId": null,
         "ingredient": null,
@@ -16228,19 +17301,19 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "b7e1f23e-bdf2-4e5c-b2d6-5cc94e9eca37",
+        "id": "4cc3bf3c-0ec7-4062-af6a-155f7e3857dc",
         "recipeId": "715fb206-f0d9-4a49-98cc-06249656d787",
         "stepNumber": 1,
         "instruction": "Cozinhe o inhame descascado em água com sal até ficar bem macio. Escorra e esprema ainda quente."
       },
       {
-        "id": "540a7b2b-a014-4404-8aa3-0ec0dbad28fc",
+        "id": "427e2448-dfee-41d3-9ce5-8e9b37a71bf9",
         "recipeId": "715fb206-f0d9-4a49-98cc-06249656d787",
         "stepNumber": 2,
         "instruction": "A mucilagem do inhame dá ao purê uma textura naturalmente cremosa — aproveite isso."
       },
       {
-        "id": "3ead216a-c9d5-4d5a-9d74-257b78ee4271",
+        "id": "6a65be78-452b-4c1b-91eb-4b989e69066e",
         "recipeId": "715fb206-f0d9-4a49-98cc-06249656d787",
         "stepNumber": 3,
         "instruction": "Incorpore a manteiga e adicione o leite aquecido aos poucos até a consistência desejada. Ajuste o sal."
@@ -16310,7 +17383,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "f74da3e2-ccc3-4749-8f1d-a0184a3e50c5",
+        "id": "7cc80e49-b3e9-4de8-9ad7-bc556ab731e7",
         "recipeId": "1aeafd21-bb77-4bb6-944f-54dc8ea18790",
         "ingredientId": "80ebe6a8-5401-47e2-ad80-7b0c8fe581cc",
         "ingredient": {
@@ -16407,7 +17480,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "fe402642-bbd4-449b-b057-7f86a7fa6c95",
+        "id": "fd411d3d-c76e-40be-9b58-3fb79224dc59",
         "recipeId": "1aeafd21-bb77-4bb6-944f-54dc8ea18790",
         "ingredientId": "2ca5b2ad-1725-4828-830f-ac9c717034ef",
         "ingredient": {
@@ -16502,7 +17575,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "30aaee10-b483-4311-bf52-d74b2654a67a",
+        "id": "9a8da17f-66da-4b1d-ba2b-0ff45803a3c8",
         "recipeId": "1aeafd21-bb77-4bb6-944f-54dc8ea18790",
         "ingredientId": "9829e42e-43ca-4eed-8e55-d7823e9ccfd0",
         "ingredient": {
@@ -16587,7 +17660,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "85c97e69-f96b-40f5-ac47-c03f883a2664",
+        "id": "04d073fe-3038-47a3-b4c6-473b44c168ac",
         "recipeId": "1aeafd21-bb77-4bb6-944f-54dc8ea18790",
         "ingredientId": null,
         "ingredient": null,
@@ -16618,25 +17691,25 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "28d519a0-a465-42ee-974f-d5f3f80a4a77",
+        "id": "8ec0e0a6-c736-47f7-b092-4f0be227971a",
         "recipeId": "1aeafd21-bb77-4bb6-944f-54dc8ea18790",
         "stepNumber": 1,
         "instruction": "Cozinhe a mandioca descascada (sem o fio central) em água com sal até desmanchar. Escorra."
       },
       {
-        "id": "be882e6b-8243-4d7f-9c74-73cc34e66493",
+        "id": "6dcfae35-7f97-4002-8af4-1eabe947c324",
         "recipeId": "1aeafd21-bb77-4bb6-944f-54dc8ea18790",
         "stepNumber": 2,
         "instruction": "Enquanto quente, amasse com garfo ou espremedor. O purê de mandioca fica naturalmente mais elástico que o de batata — é normal."
       },
       {
-        "id": "8c61943c-9281-4329-babf-db75d6c3d6b0",
+        "id": "94e8b3d4-5ae6-41b1-a32d-9caaa071a997",
         "recipeId": "1aeafd21-bb77-4bb6-944f-54dc8ea18790",
         "stepNumber": 3,
         "instruction": "Incorpore a manteiga. Adicione o leite aquecido aos poucos até a consistência desejada."
       },
       {
-        "id": "3831508d-182a-4dea-86fd-0d7057f8ea10",
+        "id": "c9453fdf-7539-4373-aeb3-f07c87d928ea",
         "recipeId": "1aeafd21-bb77-4bb6-944f-54dc8ea18790",
         "stepNumber": 4,
         "instruction": "Ajuste o sal e sirva imediatamente."
@@ -16706,7 +17779,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "fe5f2179-0cab-4a68-ae1f-2421b319b5a9",
+        "id": "5753ea5c-7642-4319-9def-3e0fc7b1c8a3",
         "recipeId": "d3e875b0-c785-485b-a2d0-e5b8b84ee12e",
         "ingredientId": "16d123da-0306-4c63-8194-27d7c2a827c7",
         "ingredient": {
@@ -16821,7 +17894,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "0d29f271-be54-460b-9244-910fa6764037",
+        "id": "304e9d5e-c151-493e-91de-4930bc7db137",
         "recipeId": "d3e875b0-c785-485b-a2d0-e5b8b84ee12e",
         "ingredientId": "61800c19-3e3b-4b11-9154-6017eab93c74",
         "ingredient": {
@@ -16906,7 +17979,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "50a47e04-e699-4cc8-8480-4f01962c7438",
+        "id": "d33a719b-c819-4c28-963a-2b29c56ee863",
         "recipeId": "d3e875b0-c785-485b-a2d0-e5b8b84ee12e",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -16991,7 +18064,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "bf83f096-bb4a-4ecc-9d9f-87508ff7c887",
+        "id": "097ec6f3-48c2-440f-8a2e-c6ff72215a7c",
         "recipeId": "d3e875b0-c785-485b-a2d0-e5b8b84ee12e",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -17086,7 +18159,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "7a7e0910-d9fa-4a24-ba49-306feea444b8",
+        "id": "36b08caf-91d5-460c-89a7-99c88952be62",
         "recipeId": "d3e875b0-c785-485b-a2d0-e5b8b84ee12e",
         "ingredientId": null,
         "ingredient": null,
@@ -17117,25 +18190,25 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "5a33ec1d-41c4-4948-9cd1-78d38c0295dc",
+        "id": "2dd177d0-1997-461d-988c-2a270c60e609",
         "recipeId": "d3e875b0-c785-485b-a2d0-e5b8b84ee12e",
         "stepNumber": 1,
         "instruction": "Lave os talos de couve e corte em rodelas finas (~3mm)."
       },
       {
-        "id": "11184d24-6dba-4eb8-9998-157d0efff364",
+        "id": "d288e515-0398-4ffa-90f9-86300de72783",
         "recipeId": "d3e875b0-c785-485b-a2d0-e5b8b84ee12e",
         "stepNumber": 2,
         "instruction": "Refogue o alho no azeite. Acrescente os talos picados e refogue por 2 minutos."
       },
       {
-        "id": "7286e252-3300-4588-8403-11df7ea5d4ec",
+        "id": "96f26c47-ecc6-4b8b-996f-7b149df2ffd3",
         "recipeId": "d3e875b0-c785-485b-a2d0-e5b8b84ee12e",
         "stepNumber": 3,
         "instruction": "Adicione o arroz e refogue 1–2 minutos. Acrescente água quente e sal."
       },
       {
-        "id": "a8d0ab6e-4a5c-4738-a629-b74ea7ca15c8",
+        "id": "f5499459-cf4b-4847-ae98-a4a6fd907791",
         "recipeId": "d3e875b0-c785-485b-a2d0-e5b8b84ee12e",
         "stepNumber": 4,
         "instruction": "Cozinhe tampado em fogo baixo por 15 minutos. Descanse 5 minutos e sirva."
@@ -17205,7 +18278,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "132be7c6-089a-423a-801f-01c42cc5b3eb",
+        "id": "9b18c11d-eb3b-4722-b30c-eda0d242d8d1",
         "recipeId": "3d71a80a-63d4-43d8-905f-02e0b7dd3f9e",
         "ingredientId": "16d123da-0306-4c63-8194-27d7c2a827c7",
         "ingredient": {
@@ -17320,7 +18393,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "14383335-0fc1-4db4-a092-f62482bcee00",
+        "id": "780419ae-b0e3-418a-a14f-ba054ce49c37",
         "recipeId": "3d71a80a-63d4-43d8-905f-02e0b7dd3f9e",
         "ingredientId": "3849a08e-544e-4b18-bfd9-e3f577af42bb",
         "ingredient": {
@@ -17407,7 +18480,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "a393bf54-1aca-41b2-aec4-ff2fed8452d8",
+        "id": "00af10a7-d41a-4dfd-a156-b587216dbf19",
         "recipeId": "3d71a80a-63d4-43d8-905f-02e0b7dd3f9e",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -17492,7 +18565,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "d8c57e37-a733-4b5a-9b71-790d718d8041",
+        "id": "0dabbbdb-a2e5-466c-bf2e-8648c4910303",
         "recipeId": "3d71a80a-63d4-43d8-905f-02e0b7dd3f9e",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -17587,7 +18660,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "75a3c90b-60b8-4888-b658-5e2fac6b8cf0",
+        "id": "b4b698f6-813f-41d8-a5ca-9c0a67d0bf5a",
         "recipeId": "3d71a80a-63d4-43d8-905f-02e0b7dd3f9e",
         "ingredientId": null,
         "ingredient": null,
@@ -17618,25 +18691,25 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "640bf8d4-abc0-4915-9464-0f3de4ffe196",
+        "id": "54f4b2df-d4d1-40bf-90e9-05957cd4cc5f",
         "recipeId": "3d71a80a-63d4-43d8-905f-02e0b7dd3f9e",
         "stepNumber": 1,
         "instruction": "Refogue o alho no azeite. Adicione o arroz e refogue 1–2 minutos. Acrescente água quente e sal."
       },
       {
-        "id": "47fb8eab-bccb-4179-80d3-b39e72ecffcc",
+        "id": "a3361160-6f8d-4c67-8a60-d37404778a0d",
         "recipeId": "3d71a80a-63d4-43d8-905f-02e0b7dd3f9e",
         "stepNumber": 2,
         "instruction": "Cozinhe tampado em fogo baixo por 15 minutos."
       },
       {
-        "id": "fad35048-ab88-4cfa-8ccf-69f3e222ca5b",
+        "id": "86c53e14-6faa-4dd8-b805-da51f3ca6cf7",
         "recipeId": "3d71a80a-63d4-43d8-905f-02e0b7dd3f9e",
         "stepNumber": 3,
         "instruction": "Nos últimos 3 minutos, coloque os floretes de brócolis por cima do arroz, tampe e deixe no vapor residual."
       },
       {
-        "id": "2b86cf9d-3fe3-4bdc-a660-b4654f164e58",
+        "id": "1610c6de-9d78-485a-b4c5-cb60e42f54a7",
         "recipeId": "3d71a80a-63d4-43d8-905f-02e0b7dd3f9e",
         "stepNumber": 4,
         "instruction": "Desligue, descanse 5 minutos. Misture delicadamente e sirva — o brócolis deve ficar al dente e verde, não murcho."
@@ -17706,7 +18779,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "47ecf1aa-8e4f-46c6-b634-fd1edccc8935",
+        "id": "df37b096-82e3-494a-b2c3-7272713d963f",
         "recipeId": "95392184-7589-4fe8-b241-88d1b1eb28d8",
         "ingredientId": "52b8dbd7-003b-4590-9a40-59c1b613a7a9",
         "ingredient": {
@@ -17813,7 +18886,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "e42f58b5-32d5-422b-bf17-269c2e69728c",
+        "id": "00a698f5-6ab6-4894-a3fa-828cbf7a4de8",
         "recipeId": "95392184-7589-4fe8-b241-88d1b1eb28d8",
         "ingredientId": "2ca5b2ad-1725-4828-830f-ac9c717034ef",
         "ingredient": {
@@ -17908,7 +18981,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "9bcf4e2d-27b8-4453-bb86-98e9b2a200a7",
+        "id": "08e5ad8a-6034-4d97-9edf-281da61221f5",
         "recipeId": "95392184-7589-4fe8-b241-88d1b1eb28d8",
         "ingredientId": "9829e42e-43ca-4eed-8e55-d7823e9ccfd0",
         "ingredient": {
@@ -17993,7 +19066,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "c95f501c-24b9-4c39-9c23-fcaf0469dc8e",
+        "id": "eb5ec6db-2b13-4fcc-bc65-1afdac334771",
         "recipeId": "95392184-7589-4fe8-b241-88d1b1eb28d8",
         "ingredientId": null,
         "ingredient": null,
@@ -18024,25 +19097,25 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "633a8d9a-3310-4cb5-a349-94ac834df7b7",
+        "id": "acb57deb-6bd6-49f1-b900-3f7736ae6b14",
         "recipeId": "95392184-7589-4fe8-b241-88d1b1eb28d8",
         "stepNumber": 1,
         "instruction": "Cozinhe a batata doce descascada em água com sal até ficar muito macia (~30 minutos). Escorra."
       },
       {
-        "id": "7d779a32-2fa4-49a4-a849-be368826c1ef",
+        "id": "a3a0770a-f28e-4992-b600-a92cff529e01",
         "recipeId": "95392184-7589-4fe8-b241-88d1b1eb28d8",
         "stepNumber": 2,
         "instruction": "Enquanto ainda quente, amasse com espremedor ou garfo. Não use liquidificador — o amido escorrega."
       },
       {
-        "id": "28be887c-360b-4bf3-bcc4-f39edf37d65c",
+        "id": "9767a091-9744-4d39-9ff8-44ae35caea6b",
         "recipeId": "95392184-7589-4fe8-b241-88d1b1eb28d8",
         "stepNumber": 3,
         "instruction": "Acrescente a manteiga e incorpore. Adicione o leite aquecido aos poucos até atingir a consistência desejada."
       },
       {
-        "id": "dcc3ffee-f5a0-4b0c-855a-aafe2f519e61",
+        "id": "b2dde521-cd62-441b-9005-f9774e237431",
         "recipeId": "95392184-7589-4fe8-b241-88d1b1eb28d8",
         "stepNumber": 4,
         "instruction": "Ajuste o sal e sirva imediatamente."
@@ -18112,7 +19185,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "cbf2a8af-aa53-4a64-a114-af75db5fe6dd",
+        "id": "9a36a78b-0558-43f3-befd-203847089129",
         "recipeId": "c2a3c6b2-ac7c-49e4-b341-35714e56edae",
         "ingredientId": "cfc47e05-c15f-42c0-8ae3-91793b78d5be",
         "ingredient": {
@@ -18209,7 +19282,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "a186cf46-d462-4839-aeef-59486c54f7b1",
+        "id": "bfe81a9c-83d0-42f4-b201-244eb6144371",
         "recipeId": "c2a3c6b2-ac7c-49e4-b341-35714e56edae",
         "ingredientId": null,
         "ingredient": null,
@@ -18240,19 +19313,19 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "f828e2a0-e4fe-4c82-83df-0f77f94014fa",
+        "id": "87213fac-f935-44df-be49-7722fa47f364",
         "recipeId": "c2a3c6b2-ac7c-49e4-b341-35714e56edae",
         "stepNumber": 1,
         "instruction": "Descasque o inhame com luva ou em água corrente (a mucilagem pode irritar a pele)."
       },
       {
-        "id": "1db0a520-b386-4b1e-a20e-64b1972a020b",
+        "id": "647c4945-94fc-408d-af6a-3ac3a385ec4e",
         "recipeId": "c2a3c6b2-ac7c-49e4-b341-35714e56edae",
         "stepNumber": 2,
         "instruction": "Corte em rodelas ou cubos. Leve ao fogo em água com sal por 25–30 minutos até ficar macio."
       },
       {
-        "id": "9791497c-8bac-4897-925c-4294a9f014cc",
+        "id": "e51276ad-7e0a-48d4-a475-10c88fcc5228",
         "recipeId": "c2a3c6b2-ac7c-49e4-b341-35714e56edae",
         "stepNumber": 3,
         "instruction": "Escorra bem — o inhame retém bastante líquido."
@@ -18322,7 +19395,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "31223211-92aa-4f4a-84a9-6d689853343e",
+        "id": "4afce6ec-21e5-4b4b-a282-ffe0f3c7c081",
         "recipeId": "24a04cd0-47ce-4319-8f9c-075b3300d744",
         "ingredientId": "80ebe6a8-5401-47e2-ad80-7b0c8fe581cc",
         "ingredient": {
@@ -18419,7 +19492,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "9a5eb598-9c4e-4e69-9cb3-e43b95f927bc",
+        "id": "22abdc5e-d74d-4db9-a4b6-ca1d2a73c1cf",
         "recipeId": "24a04cd0-47ce-4319-8f9c-075b3300d744",
         "ingredientId": "e77d5152-4637-46e5-bb7c-b19c7e1a85d3",
         "ingredient": {
@@ -18504,7 +19577,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "5f39b9c6-a3bb-494a-b646-da08e388855c",
+        "id": "671a09a4-d463-4a62-9a02-6e7981c2e170",
         "recipeId": "24a04cd0-47ce-4319-8f9c-075b3300d744",
         "ingredientId": null,
         "ingredient": null,
@@ -18535,25 +19608,25 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "44d5af32-6e99-4686-b86e-ead47eadb9bd",
+        "id": "8cd98669-007e-4e02-8d9e-e242a93b921a",
         "recipeId": "24a04cd0-47ce-4319-8f9c-075b3300d744",
         "stepNumber": 1,
         "instruction": "Cozinhe a mandioca em água com sal até ficar macia mas ainda firme (~20 minutos). Escorra."
       },
       {
-        "id": "ff17e117-45c1-428f-901e-74601595220b",
+        "id": "8b5772db-c679-4f73-93ff-fa5d060480a1",
         "recipeId": "24a04cd0-47ce-4319-8f9c-075b3300d744",
         "stepNumber": 2,
         "instruction": "Retire o fio central, corte em palitos ou deixe em pedaços."
       },
       {
-        "id": "297ce632-5f63-4f0b-b6c0-53d74fdf602d",
+        "id": "2234525c-9e9d-498c-85b6-13ebc1e16b5b",
         "recipeId": "24a04cd0-47ce-4319-8f9c-075b3300d744",
         "stepNumber": 3,
         "instruction": "Tempere com azeite e sal."
       },
       {
-        "id": "5ef4d9ae-0a8c-474e-afa0-0c7f31c421c1",
+        "id": "e101ab17-097f-4d20-ab2d-5d4df999b621",
         "recipeId": "24a04cd0-47ce-4319-8f9c-075b3300d744",
         "stepNumber": 4,
         "instruction": "Forno: 220°C por 20–25 minutos virando na metade até dourar. Airfryer: 200°C por 15–18 minutos."
@@ -18623,7 +19696,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "b5e49e93-bb3a-4ab4-a6d1-99f11e0c5f57",
+        "id": "c448616b-af48-4603-b543-76f20776585c",
         "recipeId": "bf11e46a-4749-41e5-bb3c-17a24a06a279",
         "ingredientId": "ce37f20f-d773-41e3-8d0e-1780ea3dae69",
         "ingredient": {
@@ -18720,7 +19793,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "c6e8842f-c6ed-405d-8e32-c3a56928f103",
+        "id": "8b754a48-c47d-48ef-9556-e3948c4ca7e3",
         "recipeId": "bf11e46a-4749-41e5-bb3c-17a24a06a279",
         "ingredientId": null,
         "ingredient": null,
@@ -18751,25 +19824,25 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "53405ad0-5c58-4fda-95d2-2d42c3737af9",
+        "id": "c6c8ac0e-f6fc-4deb-909f-4085949c4525",
         "recipeId": "bf11e46a-4749-41e5-bb3c-17a24a06a279",
         "stepNumber": 1,
         "instruction": "Ferva água abundante com sal."
       },
       {
-        "id": "237eed0a-b608-4007-bfe3-538312a48197",
+        "id": "52de33ea-ef3f-4e10-9d20-6038b26d27fe",
         "recipeId": "bf11e46a-4749-41e5-bb3c-17a24a06a279",
         "stepNumber": 2,
         "instruction": "Cozinhe o macarrão integral pelo tempo indicado na embalagem — geralmente 2–3 minutos a mais que o convencional (10–14 minutos)."
       },
       {
-        "id": "b04cbe26-a4f9-434f-bfbc-11210ef4744c",
+        "id": "9d305ac9-804b-400e-ae75-7ccb1b70079f",
         "recipeId": "bf11e46a-4749-41e5-bb3c-17a24a06a279",
         "stepNumber": 3,
         "instruction": "O ponto al dente é mais firme que o convencional: o centro deve oferecer leve resistência."
       },
       {
-        "id": "59aa75ef-1b1d-4450-9635-f6d6972ad500",
+        "id": "073e363c-6b17-4ccd-918e-d50f68ff6f80",
         "recipeId": "bf11e46a-4749-41e5-bb3c-17a24a06a279",
         "stepNumber": 4,
         "instruction": "Escorra e sirva imediatamente."
@@ -18839,7 +19912,7 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "ingredients": [
       {
-        "id": "708721f4-fd67-4934-8665-743d83cd41e3",
+        "id": "2c64fcf2-5166-4a32-9b11-a9d108946e85",
         "recipeId": "81255aa0-709f-4677-a1f4-60761f25db9e",
         "ingredientId": "663fc5e3-9101-40a8-a6e3-db939b6b9506",
         "ingredient": {
@@ -18946,7 +20019,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "dd61acf4-d9da-46b6-84da-4f73ce95c15e",
+        "id": "27b22771-f94f-4338-aee0-2687cbb84b6c",
         "recipeId": "81255aa0-709f-4677-a1f4-60761f25db9e",
         "ingredientId": "c88522f9-5c45-4739-b113-f818cbd220f2",
         "ingredient": {
@@ -19031,7 +20104,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "651babe5-e24e-4365-a03b-fb95ab7eb0da",
+        "id": "a9483389-9bc9-4d2a-aa15-748e7d316ab0",
         "recipeId": "81255aa0-709f-4677-a1f4-60761f25db9e",
         "ingredientId": "40000000-0000-0000-0000-000000000008",
         "ingredient": {
@@ -19136,7 +20209,7 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "6d32e8fa-fbaf-4f37-b4c4-dc27fd02d8ae",
+        "id": "e08f0f67-b4d2-4a77-8008-f0c026f4019d",
         "recipeId": "81255aa0-709f-4677-a1f4-60761f25db9e",
         "ingredientId": "66587b47-87a0-499b-98b9-967bbdc2bfec",
         "ingredient": {
@@ -19231,11 +20304,11 @@ export const dossierRecipeCatalog: Recipe[] = [
         "buyInWholePackages": false
       },
       {
-        "id": "092e127f-40fe-4259-902f-069f15b45334",
+        "id": "84616df8-a02b-473d-af15-97626e9a8fea",
         "recipeId": "81255aa0-709f-4677-a1f4-60761f25db9e",
         "ingredientId": null,
         "ingredient": null,
-        "name": "Sal, louro, pimenta-do-reino, cominho",
+        "name": "Sal",
         "shoppingCategory": "Temperos e Condimentos",
         "ingredientRole": "seasoning",
         "role": "seasoning",
@@ -19250,9 +20323,96 @@ export const dossierRecipeCatalog: Recipe[] = [
         "includeInShoppingList": true,
         "roundingStep": null,
         "roundingMode": "none",
-        "displayName": "Sal, louro, pimenta-do-reino, cominho",
+        "displayName": "Sal",
         "notes": null,
         "sortOrder": 4,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "d0638d89-0eba-4f17-9a1b-c87ab47df09e",
+        "recipeId": "81255aa0-709f-4677-a1f4-60761f25db9e",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Louro",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Louro",
+        "notes": null,
+        "sortOrder": 5,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "6c1e9f07-0741-4a18-917c-6501da17deb8",
+        "recipeId": "81255aa0-709f-4677-a1f4-60761f25db9e",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Pimenta-do-reino",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Pimenta-do-reino",
+        "notes": null,
+        "sortOrder": 6,
+        "packageSizeG": null,
+        "purchaseIncrementG": null,
+        "purchaseUnit": null,
+        "packageLabel": null,
+        "buyInWholePackages": false
+      },
+      {
+        "id": "91880325-515e-4602-8421-dec3475a6fef",
+        "recipeId": "81255aa0-709f-4677-a1f4-60761f25db9e",
+        "ingredientId": null,
+        "ingredient": null,
+        "name": "Cominho",
+        "shoppingCategory": "Temperos e Condimentos",
+        "ingredientRole": "seasoning",
+        "role": "seasoning",
+        "baseQuantity": null,
+        "quantidade": null,
+        "unit": null,
+        "unidade": null,
+        "isCritical": false,
+        "critical": false,
+        "isFreeSeasoning": true,
+        "seasoning": true,
+        "includeInShoppingList": true,
+        "roundingStep": null,
+        "roundingMode": "none",
+        "displayName": "Cominho",
+        "notes": null,
+        "sortOrder": 7,
         "packageSizeG": null,
         "purchaseIncrementG": null,
         "purchaseUnit": null,
@@ -19262,43 +20422,43 @@ export const dossierRecipeCatalog: Recipe[] = [
     ],
     "steps": [
       {
-        "id": "fe62d7e3-9f62-432d-a5da-829202801882",
+        "id": "7588a51b-f57b-41ac-8b37-919ce074b7f5",
         "recipeId": "81255aa0-709f-4677-a1f4-60761f25db9e",
         "stepNumber": 1,
         "instruction": "Deixe o feijão de molho em água por 8–12 horas. Escorra antes de cozinhar."
       },
       {
-        "id": "0de4111c-e37e-4d40-bf68-5a312de75064",
+        "id": "98c96225-f9bc-4584-a6e5-77579136973f",
         "recipeId": "81255aa0-709f-4677-a1f4-60761f25db9e",
         "stepNumber": 2,
         "instruction": "Em panela de pressão, doure o bacon picado em fogo médio até fritar levemente na própria gordura. Retire o bacon e reserve, deixando a gordura na panela."
       },
       {
-        "id": "161a9c0d-6f29-4827-b973-4d0f8c6609ed",
+        "id": "eed50c82-dd65-4da1-bd2d-532b532b71fa",
         "recipeId": "81255aa0-709f-4677-a1f4-60761f25db9e",
         "stepNumber": 3,
         "instruction": "Na gordura do bacon, refogue o alho amassado e a cebola picada até amolecer."
       },
       {
-        "id": "23a17fb1-9184-4f05-a8f8-7760214e8862",
+        "id": "a36a1136-26d0-4f26-b1c1-b5bb6333179e",
         "recipeId": "81255aa0-709f-4677-a1f4-60761f25db9e",
         "stepNumber": 4,
         "instruction": "Acrescente o feijão escorrido, o bacon reservado, louro, pimenta e cominho. Cubra com água (~1,5 litro)."
       },
       {
-        "id": "12126dfd-cadb-4aa0-9d73-d3faa4b38f60",
+        "id": "48daa817-ce40-42a6-8722-c3f6106d647c",
         "recipeId": "81255aa0-709f-4677-a1f4-60761f25db9e",
         "stepNumber": 5,
         "instruction": "Tampe e cozinhe em pressão por 25–30 minutos após pegar pressão."
       },
       {
-        "id": "ee8b4632-95f0-499b-8f5e-7ce6efeea844",
+        "id": "bc11579e-fae3-4452-90ef-6110f6f0e75f",
         "recipeId": "81255aa0-709f-4677-a1f4-60761f25db9e",
         "stepNumber": 6,
         "instruction": "Libere a pressão, ajuste o sal e a consistência do caldo. Se quiser caldo mais grosso, amasse alguns grãos contra a lateral da panela com a colher e mexa bem."
       },
       {
-        "id": "fd24db6b-4a9f-4a38-a574-4173cffdf639",
+        "id": "94fd9254-4270-4a6a-85d7-bf66bfac80ba",
         "recipeId": "81255aa0-709f-4677-a1f4-60761f25db9e",
         "stepNumber": 7,
         "instruction": "O feijão ideal tem caldo encorpado, escuro, com gosto profundo de alho e cominho."

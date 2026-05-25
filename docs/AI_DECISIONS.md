@@ -184,3 +184,29 @@ Motivo: o fallback completo tem muitos dados operacionais. A importacao dinamica
 Decisao complementar: os scripts de importacao devem aceitar tanto `--file=caminho` quanto `--file caminho`.
 
 Motivo: os dois formatos sao comuns em CLI. Aceitar apenas o formato com `=` aumentava o risco de dry run ou importacao usar o caminho padrao sem que isso ficasse evidente.
+
+## 2026-05-25 - Temperos livres tambem sao ingredientes individuais
+
+Decisao: ingredientes de receita marcados como tempero livre, mesmo com quantidade `a gosto`, devem ser cadastrados em linhas individuais quando aparecem na receita e quando chegam na lista de compras.
+
+Motivo: `Sal, pimenta e cheiro-verde` nao e um item real de compra nem uma entidade unica de receita. A importacao dos dossies agora abre nomes compostos em `Sal`, `Pimenta`, `Cheiro-verde` e equivalentes; a auditoria passa a validar tambem temperos livres, mocks e fallback estatico.
+
+Decisao complementar: o catalogo estatico dos dossies deve ser gerado por slugs derivados dos arquivos de dossie, e nao apenas por categoria.
+
+Motivo: categorias como `proteinas` e `carboidratos` podem ter receitas publicadas fora dos dossies. Filtrar pelos slugs da fonte evita incluir receitas extras no fallback.
+
+## 2026-05-25 - Ajustes repetidos em mobile nao devem disparar zoom
+
+Decisao: manter os botoes de incremento/decremento nas telas de distribuicao de porcoes e informe de peso pronto, mas adicionar slider de ajuste e defesa de toque (`touch-action: manipulation` e prevencao de duplo clique).
+
+Motivo: o problema vinha da interacao repetida no mobile. O slider reduz a necessidade de taps consecutivos e a defesa de toque evita zoom indesejado sem remover o controle preciso por botao.
+
+## 2026-05-25 - Frutas usam fator de correcao por parte comestivel
+
+Decisao: tratar o `peso pronto` das frutas como parte comestivel e converter a lista de compras para fruta inteira comprada usando percentual comestivel por fruta.
+
+Motivo: alimentos como melancia, mamao, banana, manga e pitaya nao tem rendimento de compra proximo de 100%. A lista de compras precisa refletir a quantidade comprada, enquanto o aluno informa o peso pronto que realmente consome.
+
+Decisao complementar: sincronizar os fatores no catalogo local e tambem no Supabase, atualizando receita, ingrediente da receita e ingrediente mestre.
+
+Motivo: o Supabase e a fonte real de dados, mas o fallback local precisa continuar coerente quando o app estiver sem provider remoto.

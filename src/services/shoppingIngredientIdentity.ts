@@ -81,15 +81,19 @@ function normalizeCompoundName(value: string): string {
 }
 
 function splitGenericCompoundIngredientName(value: string): string[] {
-  const cleanedValue = stripIngredientStateSuffix(value)
+  const cleanedValue = stripIngredientStateSuffix(stripParentheticalDescriptors(value))
   if (!/(\s+e\s+|\s+com\s+|,)/i.test(cleanedValue)) return []
 
   const parts = cleanedValue
     .split(/\s*(?:,|\s+e\s+|\s+com\s+)\s*/i)
-    .map((part) => formatIngredientPartName(stripIngredientStateSuffix(part)))
+    .map((part) => formatIngredientPartName(stripIngredientStateSuffix(stripParentheticalDescriptors(part))))
     .filter((part) => part.length > 0)
 
   return parts.length > 1 ? parts : []
+}
+
+function stripParentheticalDescriptors(value: string): string {
+  return value.replace(/\s*\(.+?\)\s*/g, ' ').replace(/\s+/g, ' ').trim()
 }
 
 function stripIngredientStateSuffix(value: string): string {

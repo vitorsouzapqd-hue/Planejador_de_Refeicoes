@@ -110,6 +110,15 @@
   color: var(--color-muted);
   font-size: 0.82rem;
 }
+.weight-control__range,
+.distribution-card__range {
+  width: 100%;
+  accent-color: var(--color-accent);
+  touch-action: pan-x;
+}
+.weight-control__range {
+  margin: 0.1rem 0 0.15rem;
+}
 .weight-presets {
   display: flex;
   flex-wrap: wrap;

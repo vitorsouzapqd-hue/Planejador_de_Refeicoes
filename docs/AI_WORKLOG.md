@@ -1339,3 +1339,137 @@ Corrigir a lista de receitas do deploy para exibir receitas, ingredientes e prep
 
 - Confirmar no painel da Vercel que `NUXT_PUBLIC_SUPABASE_URL` e `NUXT_PUBLIC_SUPABASE_ANON_KEY` estao configuradas no ambiente de producao.
 - Adicionar imagens dedicadas para as receitas novas dos dossies quando houver os arquivos finais.
+
+## 2026-05-25 - Individualizar temperos compostos em receitas e lista de compras
+
+### LLM usada
+
+Codex
+
+### Objetivo
+
+Corrigir receitas que levavam temperos compostos como `Sal, pimenta e cheiro-verde` para a lista de compras como um unico item, garantindo que cada ingrediente seja individualizado na receita e na lista de compras.
+
+### Arquivos alterados
+
+- `cardapio-engenharia-hibrida.md`
+- `carboidratos-engenharia-hibrida.md`
+- `package.json`
+- `scripts/audit-recipe-shopping-integrity.ts`
+- `scripts/generate-dossier-recipe-catalog.ts`
+- `scripts/import-carb-dossier.ts`
+- `scripts/import-recipe-dossier.ts`
+- `src/data/dossierRecipeCatalog.ts`
+- `src/providers/recipes/mockRecipesProvider.ts`
+- `src/services/shoppingIngredientIdentity.ts`
+- `docs/AI_DECISIONS.md`
+- `docs/AI_WORKLOG.md`
+
+### O que foi feito
+
+- Ajustado o splitter de ingredientes compostos para ignorar exemplos dentro de parenteses, como `ervas finas (alecrim, tomilho)`.
+- Alterados os importadores dos dossies para abrir temperos livres compostos em linhas individuais.
+- Normalizados os dois dossies fonte, abrindo 30 linhas compostas no dossie de proteinas e 6 no dossie de carboidratos.
+- Atualizado o mock provider para nao manter temperos compostos.
+- Ampliada a auditoria para validar tambem temperos livres, mock e fallback estatico dos dossies.
+- Criado `npm run generate:dossier-catalog` para regenerar o fallback estatico dos dossies pelo Supabase.
+- Reimportadas as 39 receitas dos dossies no Supabase e regenerado `src/data/dossierRecipeCatalog.ts` com 39 receitas.
+
+### Comandos rodados
+
+- `npm run import:recipe-dossier -- --file cardapio-engenharia-hibrida.md --dry-run`
+- `npm run import:carb-dossier -- --file carboidratos-engenharia-hibrida.md --dry-run`
+- `npx vite-node --script scripts/check-planning-calculator.ts`
+- `npm run import:recipe-dossier -- --file cardapio-engenharia-hibrida.md`
+- `npm run import:carb-dossier -- --file carboidratos-engenharia-hibrida.md`
+- `npm run generate:dossier-catalog`
+- `npm run audit:recipe-shopping`
+- `npm run typecheck`
+- `npm run build`
+- Checagem Node do `dossierRecipeCatalog` para confirmar 39 receitas e 0 ingredientes com aparencia composta.
+- `rg` para confirmar ausencia de linhas de ingrediente com `Sal, ...` e variações compostas nos dados de app e dossies.
+
+### Erros encontrados
+
+- A primeira tentativa de gerar o catalogo estatico com `node --experimental-strip-types --input-type=module` falhou por import TypeScript sem resolucao Vite; foi substituida por script dedicado via `vite-node`.
+- A primeira geracao por categoria trouxe 40 receitas por incluir `feijao-preto`, que nao faz parte dos dossies; o gerador foi ajustado para filtrar pelos slugs derivados dos arquivos fonte.
+- `git status --short` falhou porque este diretorio nao esta exposto como repositorio Git na sessao atual.
+
+### Avisos encontrados
+
+- O build manteve aviso de sourcemap possivelmente incorreto em `nuxt:module-preload-polyfill`.
+- O build manteve `DEP0155` relacionado a export mapping com barra final em dependencia `@vue/shared`.
+
+### Riscos
+
+- Temperos livres continuam sem quantidade calculada, mas agora aparecem individualizados quando forem exibidos na lista de compras.
+- O fallback estatico segue sendo snapshot do Supabase; deve ser regenerado apos novas importacoes relevantes dos dossies.
+
+### Proximos passos
+
+- Manter `npm run audit:recipe-shopping` e `npm run generate:dossier-catalog` no fluxo de qualquer nova importacao de receitas.
+
+## 2026-05-25 - Evitar zoom nos controles e corrigir fatores das frutas
+
+### LLM usada
+
+Codex
+
+### Objetivo
+
+Corrigir o zoom indesejado em mobile nas telas `Distribua Suas Porções` e `Informe o peso pronto`, e ajustar frutas para que a lista de compras considere fator de correcao da parte comestivel.
+
+### Arquivos alterados
+
+- `package.json`
+- `scripts/check-planning-calculator.ts`
+- `scripts/sync-fruit-corrections.ts`
+- `src/assets/css/base/reset.css`
+- `src/assets/css/student/compact.css`
+- `src/assets/css/student/planner-steps.css`
+- `src/components/planner/ProteinPortionDistributionStep.vue`
+- `src/components/planner/ProteinPortionSingleRecipeStep.vue`
+- `src/components/planner/StepperControl.vue`
+- `src/data/photoRecipeCatalog.ts`
+- `docs/AI_DECISIONS.md`
+- `docs/AI_WORKLOG.md`
+
+### O que foi feito
+
+- Adicionado slider nas telas de distribuicao de porcoes e informe de peso pronto para reduzir taps repetidos.
+- Adicionada defesa de toque em botoes para evitar zoom por toque repetido/duplo toque no mobile.
+- Incluidos percentuais comestiveis para frutas no catalogo local, convertendo `peso pronto` comestivel em peso de fruta inteira para compra.
+- Criado `npm run sync:fruit-corrections` para sincronizar fatores de frutas no Supabase.
+- Sincronizadas 16 receitas de frutas, 16 ingredientes de receita e 16 ingredientes mestre no Supabase.
+- Atualizado o teste do calculo para garantir que melancia gera compra maior que o peso pronto informado.
+
+### Comandos rodados
+
+- `npx vite-node --script scripts/check-planning-calculator.ts`
+- `npm run typecheck`
+- `npm run sync:fruit-corrections`
+- `npm run audit:recipe-shopping`
+- `npm run build`
+- `Invoke-WebRequest -UseBasicParsing http://127.0.0.1:3000`
+- Consulta Supabase via `vite-node` para confirmar fatores de banana, mamao, manga, melancia e pitaya.
+
+### Erros encontrados
+
+- Uma tentativa diagnostica com `npx vite-node --script -e ...` falhou porque esse formato de `-e` nao e suportado pelo CLI usado.
+- A tentativa de subir outro dev server na porta `3002` foi bloqueada porque ja havia Nuxt rodando em `http://127.0.0.1:3000` para este projeto.
+- A ferramenta de browser nao estava exposta na sessao; a verificacao visual automatizada nao foi executada.
+
+### Avisos encontrados
+
+- O build manteve aviso de sourcemap possivelmente incorreto em `nuxt:module-preload-polyfill`.
+- O build manteve `DEP0155` relacionado a export mapping com barra final em dependencia `@vue/shared`.
+
+### Riscos
+
+- Os percentuais comestiveis sao medias operacionais por fruta; variam por tamanho, variedade e maturacao.
+- Frutas novas adicionadas fora do catalogo fotografico precisam receber percentual comestivel no cadastro para evitar voltar ao rendimento de 100%.
+
+### Proximos passos
+
+- Conferir no celular real se o gesto repetido nos botoes nao aciona mais zoom no navegador usado pelo aluno.
+- Ao cadastrar novas frutas no admin, preencher fator de correcao/percentual comestivel antes de publicar.

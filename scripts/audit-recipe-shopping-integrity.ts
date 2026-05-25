@@ -2,6 +2,8 @@ import { createClient } from '@supabase/supabase-js'
 import { existsSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { listPhotoCatalogRecipes } from '../src/data/photoRecipeCatalog'
+import { dossierRecipesProvider } from '../src/providers/recipes/dossierRecipesProvider'
+import { mockRecipesProvider } from '../src/providers/recipes/mockRecipesProvider'
 import { hasCompoundShoppingName } from '../src/services/shoppingIngredientIdentity'
 import type { Recipe } from '../src/types/recipe'
 
@@ -31,6 +33,8 @@ async function main() {
   const findings: AuditFinding[] = []
 
   findings.push(...auditRecipes('photo-catalog', listPhotoCatalogRecipes()))
+  findings.push(...auditRecipes('mock-catalog', await mockRecipesProvider.listPublishedRecipes()))
+  findings.push(...auditRecipes('dossier-catalog', await dossierRecipesProvider.listPublishedRecipes()))
   findings.push(...await auditSupabaseRecipes())
 
   if (!findings.length) {
@@ -49,8 +53,6 @@ async function main() {
 function auditRecipes(source: string, recipes: Recipe[]): AuditFinding[] {
   return recipes.flatMap((recipe) =>
     recipe.ingredients.flatMap((ingredient) => {
-      if (!ingredient.includeInShoppingList || ingredient.isFreeSeasoning) return []
-
       const displayName = ingredient.displayName ?? ingredient.name
       const findings: AuditFinding[] = []
 
@@ -102,8 +104,6 @@ async function auditSupabaseRecipes(): Promise<AuditFinding[]> {
 
   return (data as SupabaseRecipeRow[] | null ?? []).flatMap((recipe) =>
     (recipe.recipe_ingredients ?? []).flatMap((ingredient) => {
-      if (!ingredient.include_in_shopping_list || ingredient.is_free_seasoning) return []
-
       const displayName = ingredient.display_name ?? ingredient.name
       const findings: AuditFinding[] = []
 
@@ -117,7 +117,7 @@ async function auditSupabaseRecipes(): Promise<AuditFinding[]> {
         })
       }
 
-      if (!ingredient.ingredient_id) {
+      if (ingredient.include_in_shopping_list && !ingredient.is_free_seasoning && !ingredient.ingredient_id) {
         findings.push({
           source: 'supabase',
           recipe: recipe.name,

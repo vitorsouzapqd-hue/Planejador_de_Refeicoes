@@ -268,7 +268,9 @@
 | Cebola | 100g (~1 média) |
 | Alho | 20g (~5 dentes) |
 | Azeite de oliva | 15g (~1 col. de sopa) |
-| Sal, pimenta, cominho | a gosto |
+| Sal | a gosto |
+| Pimenta | a gosto |
+| Cominho | a gosto |
 
 ### Tabela Nutricional por Ingrediente
 
@@ -279,7 +281,9 @@
 | Cebola | 100g | 40 | 1,0g | 9,0g | 0g | 40,0 | 1,0g | 9,0g | 0g |
 | Alho | 20g | 149 | 6,4g | 33,0g | 0,5g | 29,8 | 1,3g | 6,6g | 0,1g |
 | Azeite de oliva | 15g | 884 | 0g | 0g | 100g | 132,6 | 0g | 0g | 15,0g |
-| Sal, pimenta, cominho | a gosto | — | — | — | — | desprezível | — | — | — |
+| Sal | a gosto | — | — | — | — | desprezível | — | — | — |
+| Pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
+| Cominho | a gosto | — | — | — | — | desprezível | — | — | — |
 
 ### Total da Receita
 
@@ -624,7 +628,8 @@
 | Batata inglesa | 1.000g |
 | Leite integral | 150ml |
 | Manteiga | 15g |
-| Sal, noz-moscada | a gosto |
+| Sal | a gosto |
+| Noz-moscada | a gosto |
 
 ### Tabela Nutricional por Ingrediente
 
@@ -633,7 +638,8 @@
 | Batata inglesa | 1.000g | 56 | 1,8g | 12,0g | 0,1g | 560,0 | 18,0g | 120,0g | 1,0g |
 | Leite integral | 150ml | 61 | 3,0g | 4,7g | 3,4g | 91,5 | 4,5g | 7,1g | 5,1g |
 | Manteiga | 15g | 726 | 0,4g | 0g | 82,5g | 108,9 | 0,06g | 0g | 12,4g |
-| Sal, noz-moscada | a gosto | — | — | — | — | desprezível | — | — | — |
+| Sal | a gosto | — | — | — | — | desprezível | — | — | — |
+| Noz-moscada | a gosto | — | — | — | — | desprezível | — | — | — |
 
 ### Total da Receita
 
@@ -970,7 +976,10 @@
 | Bacon | 100g |
 | Cebola | 100g (~1 média) |
 | Alho | 20g (~5 dentes) |
-| Sal, louro, pimenta-do-reino, cominho | a gosto (generoso) |
+| Sal | a gosto (generoso) |
+| Louro | a gosto (generoso) |
+| Pimenta-do-reino | a gosto (generoso) |
+| Cominho | a gosto (generoso) |
 
 ### Tabela Nutricional por Ingrediente
 
@@ -980,7 +989,10 @@
 | Bacon | 100g | 541 | 37,0g | 0g | 43,0g | 541,0 | 37,0g | 0g | 43,0g |
 | Cebola | 100g | 40 | 1,0g | 9,0g | 0g | 40,0 | 1,0g | 9,0g | 0g |
 | Alho | 20g | 149 | 6,4g | 33,0g | 0,5g | 29,8 | 1,3g | 6,6g | 0,1g |
-| Sal, louro, pimenta, cominho | a gosto | — | — | — | — | desprezível | — | — | — |
+| Sal | a gosto | — | — | — | — | desprezível | — | — | — |
+| Louro | a gosto | — | — | — | — | desprezível | — | — | — |
+| Pimenta | a gosto | — | — | — | — | desprezível | — | — | — |
+| Cominho | a gosto | — | — | — | — | desprezível | — | — | — |
 
 ### Total da Receita
 
