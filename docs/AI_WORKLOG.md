@@ -1217,3 +1217,56 @@ Corrigir o modal "Adicionar da Lista de Compras", que mostrava `Supabase nao con
 
 - Configurar/confirmar `NUXT_PUBLIC_SUPABASE_URL` e `NUXT_PUBLIC_SUPABASE_ANON_KEY` na Vercel para usar o catalogo real em producao.
 - Considerar dividir o catalogo estatico em chunk proprio se o tamanho do bundle virar gargalo.
+
+## 2026-05-24 - Comprimir imagens de receitas
+
+### LLM usada
+
+Codex
+
+### Objetivo
+
+Investigar o tamanho das imagens carregadas na aplicacao e comprimir os arquivos publicos de receitas sem alterar caminhos usados pelo app.
+
+### Arquivos alterados
+
+- `public/recipe-images/*.png`
+- `docs/AI_WORKLOG.md`
+
+### O que foi feito
+
+- Medido o catalogo de imagens em `public/recipe-images`.
+- Confirmado que as 60 imagens estavam em 1024x1024 e somavam 134,45 MB.
+- Redimensionadas as 60 imagens para 640x640.
+- Recompactadas as imagens como PNG com paleta otimizada, mantendo os mesmos nomes e caminhos.
+- Resultado final: 60 imagens em 640x640, total de 14,50 MB, media de 247,5 KB por imagem.
+
+### Comandos rodados
+
+- `Get-ChildItem 'public/recipe-images' -File -Include *.png,*.jpg,*.jpeg,*.webp -Recurse`
+- `Add-Type -AssemblyName System.Drawing`
+- `npm install sharp --no-save --no-package-lock`
+- Script Node com `sharp` para redimensionar e comprimir PNGs.
+- `npm run build`
+- `git --git-dir='_publish-gitdir-20260523-0128' --work-tree='.' status --short -- package.json package-lock.json public/recipe-images`
+
+### Erros encontrados
+
+- Tentativas de usar `npx`/`npm exec` com `sharp` nao expuseram o pacote para `require` no PowerShell.
+- Uma tentativa de script Node usou heredoc de bash e falhou no PowerShell.
+- Uma passada com `sharp` excedeu o timeout, mas nao deixou arquivos temporarios; a otimizacao foi retomada nos arquivos restantes.
+
+### Avisos encontrados
+
+- `npm install sharp --no-save --no-package-lock` reportou 3 vulnerabilidades em dependencias locais existentes/auditadas, sem alterar `package.json` ou `package-lock.json`.
+- Build manteve aviso de sourcemap possivelmente incorreto em `nuxt:module-preload-polyfill`.
+- Build manteve `DEP0155` relacionado a export mapping com barra final em dependencia `@vue/shared`.
+
+### Riscos
+
+- As imagens estao menores e em 640x640; se alguma tela futura exigir zoom/visualizacao muito grande, pode haver menos detalhe que nos arquivos originais.
+- A compressao PNG com paleta reduz tamanho mantendo formato/caminho, mas pode alterar levemente gradacoes de cor em fotos.
+
+### Proximos passos
+
+- Considerar gerar variantes WebP/AVIF em uma etapa futura, com fallback, para reduzir ainda mais o carregamento sem depender apenas de PNG.
