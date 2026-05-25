@@ -1,6 +1,7 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 import type { Recipe } from '../../types/recipe'
 import type { RecipeListFilters, RecipesProvider } from './recipesProvider'
+import { dossierRecipesProvider } from './dossierRecipesProvider'
 import { mockRecipesProvider } from './mockRecipesProvider'
 import { photoCatalogRecipesProvider } from './photoCatalogRecipesProvider'
 import { createSupabaseRecipesProvider } from './supabaseRecipesProvider'
@@ -14,7 +15,10 @@ export type RecipesProviderConfig = {
 
 export function createRecipesProvider(config: RecipesProviderConfig): RecipesProvider {
   const dataProvider = config.dataProvider ?? 'supabase'
-  const staticCatalogProvider = createHybridRecipesProvider(mockRecipesProvider, photoCatalogRecipesProvider)
+  const staticCatalogProvider = createHybridRecipesProvider(
+    dossierRecipesProvider,
+    createHybridRecipesProvider(mockRecipesProvider, photoCatalogRecipesProvider),
+  )
 
   if (dataProvider === 'mock') {
     return staticCatalogProvider

@@ -1270,3 +1270,72 @@ Investigar o tamanho das imagens carregadas na aplicacao e comprimir os arquivos
 ### Proximos passos
 
 - Considerar gerar variantes WebP/AVIF em uma etapa futura, com fallback, para reduzir ainda mais o carregamento sem depender apenas de PNG.
+
+## 2026-05-25 - Sincronizar dossies de receitas no Supabase e fallback
+
+### LLM usada
+
+Codex
+
+### Objetivo
+
+Corrigir a lista de receitas do deploy para exibir receitas, ingredientes e preparo conforme `cardapio-engenharia-hibrida.md`, e importar tambem os carboidratos de `carboidratos-engenharia-hibrida.md`.
+
+### Arquivos alterados
+
+- `cardapio-engenharia-hibrida.md`
+- `carboidratos-engenharia-hibrida.md`
+- `scripts/import-recipe-dossier.ts`
+- `scripts/import-carb-dossier.ts`
+- `src/data/dossierRecipeCatalog.ts`
+- `src/providers/recipes/dossierRecipesProvider.ts`
+- `src/providers/recipes/index.ts`
+- `docs/AI_DECISIONS.md`
+- `docs/AI_WORKLOG.md`
+
+### O que foi feito
+
+- Executado dry run do dossie de proteinas: 15 receitas lidas, 15 atualizacoes, 0 novas.
+- Executada importacao real do dossie de proteinas no Supabase.
+- Executado dry run do dossie de carboidratos: 24 receitas lidas, 24 atualizacoes, 0 novas.
+- Executada importacao real do dossie de carboidratos no Supabase.
+- Validado no Supabase que as 39 receitas esperadas estao publicadas, com 191 ingredientes e 175 passos de preparo.
+- Gerado catalogo estatico `dossierRecipeCatalog` a partir do Supabase sincronizado.
+- Criado provider estatico dos dossies e conectado ao fallback de receitas, preservando Supabase como fonte real quando configurado.
+- Ajustado o catalogo estatico para carregar por importacao dinamica.
+- Corrigidos os importadores para aceitar `--file caminho` alem de `--file=caminho`.
+- Versionados os dois dossies de origem.
+
+### Comandos rodados
+
+- `npm run import:recipe-dossier -- --file=cardapio-engenharia-hibrida.md --dry-run`
+- `npm run import:carb-dossier -- --file=carboidratos-engenharia-hibrida.md --dry-run`
+- `npm run import:recipe-dossier -- --file=cardapio-engenharia-hibrida.md`
+- `npm run import:carb-dossier -- --file=carboidratos-engenharia-hibrida.md`
+- `npm run import:recipe-dossier -- --file cardapio-engenharia-hibrida.md --dry-run`
+- `npm run import:carb-dossier -- --file carboidratos-engenharia-hibrida.md --dry-run`
+- `node --experimental-strip-types --input-type=module -e "import { dossierRecipeCatalog } from './src/data/dossierRecipeCatalog.ts'; ..."`
+- `npm run audit:recipe-shopping`
+- `npm run typecheck`
+- `npm run build`
+
+### Erros encontrados
+
+- A primeira tentativa local de exportar o catalogo estatico falhou por ordem de declaracao no script inline; foi corrigida e reexecutada.
+- Uma validacao manual marcou temperos livres como ingredientes de compra sem vinculo porque a consulta nao filtrava `include_in_shopping_list`; a consulta foi corrigida e passou sem pendencias.
+
+### Avisos encontrados
+
+- O build manteve aviso de sourcemap possivelmente incorreto em `nuxt:module-preload-polyfill`.
+- O build manteve `DEP0155` relacionado a export mapping com barra final em dependencia `@vue/shared`.
+- O catalogo estatico dos dossies gera um chunk separado para fallback; no build, esse chunk nao entra no caminho principal quando Supabase esta configurado.
+
+### Riscos
+
+- O fallback estatico e um snapshot dos dossies sincronizados e pode ficar desatualizado se o admin alterar receitas no Supabase depois.
+- Algumas receitas novas dos dossies ainda nao possuem imagem local dedicada, embora receitas, ingredientes e preparo estejam disponiveis.
+
+### Proximos passos
+
+- Confirmar no painel da Vercel que `NUXT_PUBLIC_SUPABASE_URL` e `NUXT_PUBLIC_SUPABASE_ANON_KEY` estao configuradas no ambiente de producao.
+- Adicionar imagens dedicadas para as receitas novas dos dossies quando houver os arquivos finais.

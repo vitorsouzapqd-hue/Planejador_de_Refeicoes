@@ -170,3 +170,17 @@ Motivo: o fluxo do aluno nao deve ficar vazio com a mensagem `Supabase nao confi
 Decisao complementar: operacoes administrativas de escrita no fallback devem falhar com mensagem clara.
 
 Motivo: criar, editar, ativar ou excluir itens da Lista de Compras exige Supabase para persistencia real. Permitir escrita apenas em memoria poderia dar falsa confirmacao no admin.
+
+## 2026-05-25 - Receitas dos dossies precisam funcionar tambem no fallback
+
+Decisao: importar os dossies `cardapio-engenharia-hibrida.md` e `carboidratos-engenharia-hibrida.md` no Supabase e tambem versionar um catalogo estatico gerado a partir do resultado sincronizado.
+
+Motivo: o Supabase e a fonte real, mas o deploy ja mostrou comportamento de ambiente sem dados visiveis quando as variaveis publicas estavam ausentes ou incorretas. O fallback estatico garante que a area do aluno continue exibindo receitas, ingredientes e preparo dos dossies mesmo nessa condicao.
+
+Decisao complementar: carregar o catalogo estatico dos dossies por importacao dinamica.
+
+Motivo: o fallback completo tem muitos dados operacionais. A importacao dinamica evita colocar esse catalogo no bundle inicial quando o deploy esta corretamente conectado ao Supabase.
+
+Decisao complementar: os scripts de importacao devem aceitar tanto `--file=caminho` quanto `--file caminho`.
+
+Motivo: os dois formatos sao comuns em CLI. Aceitar apenas o formato com `=` aumentava o risco de dry run ou importacao usar o caminho padrao sem que isso ficasse evidente.

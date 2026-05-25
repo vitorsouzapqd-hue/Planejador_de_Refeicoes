@@ -922,6 +922,12 @@ function findDuplicates(items: string[]) {
 
 function getArgValue(name: string) {
   const argument = process.argv.find((arg) => arg.startsWith(`${name}=`))
+  if (argument) {
+    return argument.split('=').slice(1).join('=')
+  }
 
-  return argument?.split('=').slice(1).join('=')
+  const argumentIndex = process.argv.indexOf(name)
+  if (argumentIndex < 0) return undefined
+
+  return process.argv[argumentIndex + 1]
 }
