@@ -1963,3 +1963,51 @@ Corrigir o modo escuro da lista de compras e melhorar a leitura/alinhamento dos 
 ### Proximos passos
 
 - Conferir no celular real a leitura da lista de compras em modo escuro e os cards compactos do resultado.
+
+## 2026-05-26 - Corrigir layout da etapa consolidada de peso pronto
+
+### LLM usada
+
+Codex
+
+### Objetivo
+
+Investigar e corrigir a tela que ficou desorganizada ao informar os pesos prontos/porcoes em outro computador.
+
+### Arquivos alterados
+
+- `src/assets/css/student/planner-steps.css`
+- `docs/AI_DECISIONS.md`
+- `docs/AI_WORKLOG.md`
+
+### O que foi feito
+
+- Verificado que o deploy de producao estava pronto e apontando para o commit publicado em `main`.
+- Identificada a causa: o componente `ProteinPortionWeightsStep` usava classes novas sem estilos correspondentes no CSS.
+- Criados estilos para resumo, grupos, cards, midia, badges, area de controle, chips de pesos rapidos e mensagens.
+- Mantidos os chips de peso em uma linha, com ajustes para telas muito estreitas.
+
+### Comandos rodados
+
+- `vercel ls planejador-de-refeicoes`
+- `vercel inspect https://planejador-de-refeicoes-ten.vercel.app`
+- `rg -n "ProteinPortionWeightsStep|all-weight-card|all-weights|quick" src`
+- `npm run typecheck`
+- `npm run build`
+
+### Erros encontrados
+
+- Nenhum erro de TypeScript ou build.
+
+### Avisos encontrados
+
+- O build manteve aviso de sourcemap possivelmente incorreto em `nuxt:module-preload-polyfill`.
+- O build manteve `DEP0155` relacionado a export mapping com barra final em dependencia `@vue/shared`.
+
+### Riscos
+
+- Nao havia ferramenta de browser/screenshot disponivel nesta sessao; a validacao visual final ainda deve ser conferida no navegador real.
+
+### Proximos passos
+
+- Publicar o hotfix em `main` e conferir a tela em outro computador/celular.

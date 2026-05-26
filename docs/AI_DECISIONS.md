@@ -270,3 +270,9 @@ Motivo: a lista de compras ainda tinha fundos claros fixos que impediam o modo e
 Decisao complementar: remover os atalhos `Ver preparo` da tela de resultado.
 
 Motivo: o preparo detalhado ja pertence ao fluxo de receitas. Repetir esse atalho no resultado aumentava densidade visual sem melhorar a tarefa principal de compra, preparo e porcionamento.
+
+## 2026-05-26 - Etapa consolidada de peso pronto precisa de CSS proprio
+
+Decisao: adicionar estilos dedicados para a tela consolidada de peso pronto, cobrindo resumo, grupos, cards, badges, stepper, chips rapidos e estados de erro/concluido.
+
+Motivo: o componente `ProteinPortionWeightsStep` foi criado com classes novas, mas essas classes nao tinham CSS no bundle. Em outro computador, sem qualquer cache local anterior, a tela aparecia praticamente sem estrutura visual.
