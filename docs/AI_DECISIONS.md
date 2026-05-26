@@ -1,4 +1,4 @@
-# AI_DECISIONS
+﻿# AI_DECISIONS
 
 ## 2026-05-24 - Area do aluno sem tela de acesso
 
@@ -210,3 +210,63 @@ Motivo: alimentos como melancia, mamao, banana, manga e pitaya nao tem rendiment
 Decisao complementar: sincronizar os fatores no catalogo local e tambem no Supabase, atualizando receita, ingrediente da receita e ingrediente mestre.
 
 Motivo: o Supabase e a fonte real de dados, mas o fallback local precisa continuar coerente quando o app estiver sem provider remoto.
+
+## 2026-05-25 - Etapa de porcoes mostra todos os grupos selecionados
+
+Decisao: consolidar a etapa de total de porcoes em uma unica tela com cards para todos os grupos selecionados, mantendo escolha de receitas, distribuicao e pesos por grupo.
+
+Motivo: o total de porcoes e a mesma pergunta operacional para proteinas, carboidratos, saladas e frutas. Mostrar os grupos juntos reduz navegacao repetida sem misturar telas que ainda dependem de filtros, listas e validacoes diferentes.
+
+## 2026-05-25 - Distribuicao usa atalhos operacionais sem barra secundaria
+
+Decisao: remover a barra de progresso individual abaixo do slider na tela de distribuicao e manter apenas contador, slider, campo numerico e atalhos rapidos.
+
+Motivo: a barra repetia uma informacao que o slider e o contador ja comunicam. O espaco passa a servir melhor aos atalhos `zerar`, `1/3`, `metade` e `tudo`, que reduzem toques em distribuicoes comuns.
+
+## 2026-05-25 - Peso pronto consolidado em uma tela
+
+Decisao: consolidar a etapa `Informe o peso pronto da sua dieta` em uma unica tela com todos os preparos selecionados, agrupados por tipo.
+
+Motivo: informar peso pronto e uma tarefa repetitiva e operacional. Mostrar todos os preparos juntos reduz navegacao, preserva contexto e facilita completar o planejamento sem alternar entre telas quase iguais.
+
+Decisao complementar: manter escolha de receitas e distribuicao de porcoes por grupo antes da etapa consolidada.
+
+Motivo: essas etapas ainda dependem de filtros, selecao e validacoes especificas de cada grupo. Consolidar apenas o peso pronto entrega ganho de UX sem misturar decisoes diferentes na mesma tela.
+
+## 2026-05-25 - Peso pronto tem atalhos de valores comuns
+
+Decisao: adicionar chips de peso rapido na etapa consolidada de peso pronto com os valores `80g`, `100g`, `120g`, `150g`, `170g`, `200g` e `250g`.
+
+Motivo: esses pesos aparecem com frequencia em prescricoes e reduzem digitacao, toques repetidos no stepper e ajuste fino no slider. Os chips ficam em uma unica linha distribuida na largura do card para economizar altura, com destaque discreto para o valor ativo.
+
+## 2026-05-25 - Slider de peso pronto limitado a 500g
+
+Decisao: limitar o slider e o stepper de peso pronto a `500g`.
+
+Motivo: `1000g` deixava o slider pouco sensivel para o uso comum da tela. `500g` cobre com folga as porcoes esperadas e melhora o ajuste fino no mobile.
+
+## 2026-05-25 - Acoes do topo precisam ser explicitas
+
+Decisao: os controles do topo da area do aluno devem mostrar icone e texto para `Modo Claro`/`Modo Escuro` e `Limpar planejamento`.
+
+Motivo: controles apenas com texto curto ou icone isolado deixam a intencao ambigua. O topo e uma area de acao frequente, entao os botoes precisam ser reconheciveis, acessiveis e funcionais.
+
+Decisao complementar: limpar o planejamento deve tambem resetar a etapa local do fluxo para o inicio quando o aluno estiver em `/planejar`.
+
+Motivo: apagar apenas o estado persistido podia deixar a interface parada em uma etapa interna antiga. Resetar o fluxo confirma visualmente que o planejamento foi limpo.
+
+## 2026-05-25 - Modo escuro neutro e menos avermelhado
+
+Decisao: trocar a base do modo escuro de marrom/vermelho para grafite neutro, mantendo um acento coral mais discreto.
+
+Motivo: a paleta escura anterior deixava a interface quente demais e visualmente estranha. Um fundo neutro com paineis bem separados melhora conforto visual, leitura e consistencia entre planejamento, resultado e modal de receitas.
+
+## 2026-05-25 - Resultado e compras respeitam contraste no modo escuro
+
+Decisao: criar overrides especificos para a tela de compras e refinar os cards compactos do resultado sem alterar regras de calculo.
+
+Motivo: a lista de compras ainda tinha fundos claros fixos que impediam o modo escuro de funcionar bem. No resultado, badges e textos em cards pequenos precisavam de empilhamento e alinhamento mais previsiveis para evitar sobreposicao.
+
+Decisao complementar: remover os atalhos `Ver preparo` da tela de resultado.
+
+Motivo: o preparo detalhado ja pertence ao fluxo de receitas. Repetir esse atalho no resultado aumentava densidade visual sem melhorar a tarefa principal de compra, preparo e porcionamento.

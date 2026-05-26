@@ -37,9 +37,9 @@
 }
 
 .theme-dark .recipe-premium-dialog {
-  border-color: rgba(245, 232, 218, 0.12);
+  border-color: rgba(238, 242, 246, 0.12);
   background:
-    linear-gradient(180deg, rgba(46, 32, 27, 0.96), rgba(35, 24, 20, 0.98)),
+    linear-gradient(180deg, rgba(32, 37, 42, 0.96), rgba(18, 21, 24, 0.98)),
     var(--color-panel-soft);
 }
 
@@ -62,7 +62,7 @@
 }
 
 .theme-dark .recipe-premium-topbar {
-  background: rgba(35, 24, 20, 0.9);
+  background: rgba(18, 21, 24, 0.92);
 }
 
 .recipe-premium-brand,
@@ -412,7 +412,7 @@
 }
 
 .theme-dark .recipe-premium-ingredient-list {
-  background: rgba(255, 232, 218, 0.04);
+  background: rgba(238, 242, 246, 0.04);
 }
 
 .recipe-premium-ingredient-row {
@@ -559,7 +559,7 @@
 }
 
 .theme-dark .recipe-premium-nutrition-strip span {
-  background: rgba(255, 232, 218, 0.08);
+  background: rgba(238, 242, 246, 0.07);
 }
 
 .recipe-premium-nutrition-strip strong,
@@ -599,7 +599,7 @@
 }
 
 .theme-dark .recipe-premium-actions {
-  background: rgba(35, 24, 20, 0.92);
+  background: rgba(18, 21, 24, 0.92);
 }
 
 .recipe-premium-actions .primary-button,

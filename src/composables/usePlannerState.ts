@@ -25,6 +25,7 @@ const emptyGroupPlan = (groupSlug: PlanningGroupSlug): PlanningGroupPlan => ({
 export function usePlannerState() {
   const planning = useState<CurrentPlanning>('planner:current', emptyPlanning)
   const hasLoadedStorage = useState<boolean>('planner:storage-loaded', () => false)
+  const clearRevision = useState<number>('planner:clear-revision', () => 0)
 
   onMounted(() => {
     loadPlanning()
@@ -147,6 +148,7 @@ export function usePlannerState() {
 
   function clearPlanning() {
     planning.value = emptyPlanning()
+    clearRevision.value += 1
 
     if (typeof window !== 'undefined') {
       window.localStorage.removeItem(PLANNER_STORAGE_KEY)
@@ -167,6 +169,7 @@ export function usePlannerState() {
     loadPlanning,
     savePlanning,
     clearPlanning,
+    clearRevision,
   }
 }
 

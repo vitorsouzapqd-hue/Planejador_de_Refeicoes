@@ -21,6 +21,20 @@ defineProps<{
       <path d="M5.8 18.6c-1 .8-2.5.8-3.2 0s-.7-2.2.2-3.1" />
       <path d="M13.5 7.3c.6-.6 1.6-.6 2.2 0s.6 1.6 0 2.2" />
     </template>
+    <template v-else-if="name === 'sun'">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2" />
+      <path d="M12 20v2" />
+      <path d="m4.9 4.9 1.4 1.4" />
+      <path d="m17.7 17.7 1.4 1.4" />
+      <path d="M2 12h2" />
+      <path d="M20 12h2" />
+      <path d="m4.9 19.1 1.4-1.4" />
+      <path d="m17.7 6.3 1.4-1.4" />
+    </template>
+    <template v-else-if="name === 'moon'">
+      <path d="M21 14.8A8.5 8.5 0 0 1 9.2 3a7 7 0 1 0 11.8 11.8Z" />
+    </template>
     <template v-else-if="name === 'home'">
       <path d="m3 11 9-8 9 8" />
       <path d="M5 10v10h5v-6h4v6h5V10" />

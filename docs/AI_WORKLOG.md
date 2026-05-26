@@ -1473,3 +1473,493 @@ Corrigir o zoom indesejado em mobile nas telas `Distribua Suas Porções` e `Inf
 
 - Conferir no celular real se o gesto repetido nos botoes nao aciona mais zoom no navegador usado pelo aluno.
 - Ao cadastrar novas frutas no admin, preencher fator de correcao/percentual comestivel antes de publicar.
+
+## 2026-05-25 - Consolidar etapa de porcoes por grupo
+
+### LLM usada
+
+Codex
+
+### Objetivo
+
+Melhorar a UX da etapa 2 do planejamento para que todos os grupos selecionados tenham o total de porcoes ajustado na mesma tela.
+
+### Arquivos alterados
+
+- `src/pages/planejar.vue`
+- `src/assets/css/student/compact.css`
+- `docs/AI_DECISIONS.md`
+- `docs/AI_WORKLOG.md`
+
+### O que foi feito
+
+- Alterado o calculo de progresso para considerar uma etapa unica de total de porcoes.
+- A tela `Quantas porcoes voce quer planejar?` agora lista um card por grupo selecionado.
+- Cada grupo manteve slider e controle de incremento/decremento proprio.
+- O fluxo agora segue da etapa consolidada para o primeiro grupo pendente, sem repetir a tela de total de porcoes entre grupos.
+- Mantidas as etapas por grupo para escolha de receitas, distribuicao de porcoes e informe de peso pronto.
+
+### Comandos rodados
+
+- `npm run typecheck`
+- `npx vite-node --script scripts/check-planning-calculator.ts`
+- `npm run audit:recipe-shopping`
+- `npm run build`
+- `Invoke-WebRequest -UseBasicParsing http://127.0.0.1:3000/planejar`
+
+### Erros encontrados
+
+- Nenhum erro encontrado.
+
+### Avisos encontrados
+
+- O build manteve aviso de sourcemap possivelmente incorreto em `nuxt:module-preload-polyfill`.
+- O build manteve `DEP0155` relacionado a export mapping com barra final em dependencia `@vue/shared`.
+
+### Riscos
+
+- O fluxo ficou mais curto, mas ainda precisa de conferencia em celular real para validar altura da tela quando 3 ou 4 grupos forem selecionados.
+
+### Proximos passos
+
+- Conferir a etapa 2 em celular real com 3 ou 4 grupos selecionados para validar conforto de rolagem e leitura.
+
+## 2026-05-25 - Ajustar atalhos da distribuicao de porcoes
+
+### LLM usada
+
+Codex
+
+### Objetivo
+
+Remover a barra visual redundante da tela `Distribua suas porções` e adicionar um atalho rapido para preencher um terco do total.
+
+### Arquivos alterados
+
+- `src/components/planner/ProteinPortionDistributionStep.vue`
+- `src/assets/css/student/compact.css`
+- `docs/AI_DECISIONS.md`
+- `docs/AI_WORKLOG.md`
+
+### O que foi feito
+
+- Removida a barra de progresso abaixo do slider em cada card de distribuicao.
+- Removido o helper de percentual que era usado apenas por essa barra.
+- Adicionado o atalho `1/3` para preencher aproximadamente um terco do total de porcoes.
+- Ajustado o grid de atalhos para quatro botoes: `zerar`, `1/3`, `metade` e `tudo`.
+
+### Comandos rodados
+
+- `npm run typecheck`
+- `npx vite-node --script scripts/check-planning-calculator.ts`
+- `npm run build`
+- `npm run audit:recipe-shopping`
+- `Invoke-WebRequest -UseBasicParsing http://127.0.0.1:3000/planejar`
+
+### Erros encontrados
+
+- Nenhum erro encontrado.
+
+### Avisos encontrados
+
+- O build manteve aviso de sourcemap possivelmente incorreto em `nuxt:module-preload-polyfill`.
+- O build manteve `DEP0155` relacionado a export mapping com barra final em dependencia `@vue/shared`.
+
+### Riscos
+
+- O atalho `1/3` usa arredondamento para manter porcoes inteiras; em totais que nao dividem exatamente por 3, o aluno ainda pode precisar ajustar 1 ou 2 porcoes manualmente.
+
+### Proximos passos
+
+- Conferir em celular real se quatro botoes de atalho continuam confortaveis em telas estreitas.
+
+## 2026-05-25 - Consolidar informe de peso pronto
+
+### LLM usada
+
+Codex
+
+### Objetivo
+
+Melhorar a UX da etapa `Informe o peso pronto da sua dieta`, evitando uma tela separada para cada preparo selecionado.
+
+### Arquivos alterados
+
+- `src/pages/planejar.vue`
+- `src/components/planner/ProteinPortionWeightsStep.vue`
+- `src/assets/css/student/planner-steps.css`
+- `docs/AI_DECISIONS.md`
+- `docs/AI_WORKLOG.md`
+
+### O que foi feito
+
+- Criado componente consolidado para listar todos os preparos selecionados na mesma tela.
+- Agrupados os cards por grupo de planejamento, com resumo de pesos informados e total pronto.
+- Mantidos stepper e slider para cada preparo, usando peso pronto por porcao.
+- Ajustado o fluxo para chegar na tela consolidada depois das distribuicoes de porcoes de todos os grupos.
+- Ajustada a revisao para editar pesos pela tela consolidada.
+
+### Comandos rodados
+
+- `npm run typecheck`
+- `npx vite-node --script scripts/check-planning-calculator.ts`
+- `npm run audit:recipe-shopping`
+- `npm run build`
+
+### Erros encontrados
+
+- O primeiro `npm run typecheck` apontou uma comparacao antiga com a etapa `weights` no helper de pendencias por grupo. O helper foi ajustado e o typecheck passou.
+- Uma busca `rg` com aspas escapadas de forma incorreta falhou, sem impacto no codigo.
+
+### Avisos encontrados
+
+- O build manteve aviso de sourcemap possivelmente incorreto em `nuxt:module-preload-polyfill`.
+- O build manteve `DEP0155` relacionado a export mapping com barra final em dependencia `@vue/shared`.
+
+### Riscos
+
+- A tela consolidada pode ficar longa quando muitos grupos e preparos forem escolhidos; o layout foi feito em cards compactos, mas ainda merece conferencia em celular real.
+
+### Proximos passos
+
+- Validar o fluxo completo no celular real com 3 grupos selecionados e pelo menos 2 preparos em cada grupo.
+
+## 2026-05-25 - Adicionar pesos rapidos no peso pronto
+
+### LLM usada
+
+Codex
+
+### Objetivo
+
+Facilitar o preenchimento do peso pronto com atalhos para valores comuns.
+
+### Arquivos alterados
+
+- `src/components/planner/ProteinPortionWeightsStep.vue`
+- `src/assets/css/student/planner-steps.css`
+- `docs/AI_DECISIONS.md`
+- `docs/AI_WORKLOG.md`
+
+### O que foi feito
+
+- Adicionados atalhos `80g`, `100g`, `120g`, `150g`, `170g`, `200g` e `250g` em cada card de peso pronto.
+- Os atalhos emitem o mesmo evento de atualizacao do stepper e do slider.
+- O valor selecionado fica destacado com estado visual e `aria-pressed`.
+- A linha de atalhos usa rolagem horizontal e alvos de toque confortaveis para preservar a tela mobile.
+
+### Comandos rodados
+
+- `npm run typecheck`
+- `npm run build`
+
+### Erros encontrados
+
+- Nenhum erro encontrado.
+
+### Avisos encontrados
+
+- O build manteve aviso de sourcemap possivelmente incorreto em `nuxt:module-preload-polyfill`.
+- O build manteve `DEP0155` relacionado a export mapping com barra final em dependencia `@vue/shared`.
+
+### Riscos
+
+- Em telas muito estreitas, os atalhos dependem de rolagem horizontal; o componente oculta a scrollbar para manter a tela limpa.
+
+### Proximos passos
+
+- Conferir em celular real se os chips de peso rapido ficam confortaveis para toque e descoberta.
+
+## 2026-05-25 - Polir distribuicao dos pesos rapidos
+
+### LLM usada
+
+Codex
+
+### Objetivo
+
+Deixar os pesos rapidos mais bonitos, discretos e distribuidos ao longo da largura do card.
+
+### Arquivos alterados
+
+- `src/components/planner/ProteinPortionWeightsStep.vue`
+- `src/assets/css/student/planner-steps.css`
+- `docs/AI_DECISIONS.md`
+- `docs/AI_WORKLOG.md`
+
+### O que foi feito
+
+- Removida a rolagem horizontal dos pesos rapidos.
+- Ajustado o layout para flex com quebra de linha, preenchendo toda a largura do card.
+- Suavizado o visual dos botoes com borda, fundo e estado ativo mais discretos.
+- Refinado o `aria-label` do grupo de atalhos.
+
+### Comandos rodados
+
+- `npm run typecheck`
+
+### Erros encontrados
+
+- Nenhum erro encontrado.
+
+### Avisos encontrados
+
+- Nenhum aviso novo alem da saida padrao de performance do Nuxt.
+
+### Riscos
+
+- Em telas muito estreitas, os botoes podem quebrar em mais linhas, mas continuam preenchendo a largura do card.
+
+### Proximos passos
+
+- Conferir em celular real a composicao visual dos atalhos com nomes longos de preparo no mesmo card.
+
+## 2026-05-25 - Compactar pesos rapidos em uma linha
+
+### LLM usada
+
+Codex
+
+### Objetivo
+
+Economizar altura nos cards de peso pronto mantendo todos os pesos rapidos visiveis.
+
+### Arquivos alterados
+
+- `src/assets/css/student/planner-steps.css`
+- `docs/AI_DECISIONS.md`
+- `docs/AI_WORKLOG.md`
+
+### O que foi feito
+
+- Ajustado o layout dos pesos rapidos para uma grade fixa de 7 colunas.
+- Reduzidos fonte, gap e padding dos atalhos para caberem em uma linha.
+- Mantido visual discreto e estado ativo leve.
+
+### Comandos rodados
+
+- `npm run typecheck`
+
+### Erros encontrados
+
+- Nenhum erro encontrado.
+
+### Avisos encontrados
+
+- Nenhum aviso novo alem da saida padrao de performance do Nuxt.
+
+### Riscos
+
+- Em telas muito estreitas, os botoes ficam mais compactos para caber em uma linha; ainda precisam ser conferidos em celular real.
+
+### Proximos passos
+
+- Conferir toque e legibilidade em celular real, principalmente em telas de 360px de largura.
+
+## 2026-05-25 - Limitar slider de peso pronto a 500g
+
+### LLM usada
+
+Codex
+
+### Objetivo
+
+Melhorar a sensibilidade do slider de peso pronto reduzindo o limite maximo de 1000g para 500g.
+
+### Arquivos alterados
+
+- `src/components/planner/ProteinPortionWeightsStep.vue`
+- `src/components/planner/ProteinPortionSingleRecipeStep.vue`
+- `docs/AI_DECISIONS.md`
+- `docs/AI_WORKLOG.md`
+
+### O que foi feito
+
+- Alterado o limite maximo do componente consolidado de peso pronto para `500g`.
+- Alinhado o componente antigo de peso por preparo para o mesmo limite, evitando regressao caso volte a ser usado.
+- O stepper e o slider agora usam a mesma constante de limite.
+
+### Comandos rodados
+
+- `npm run typecheck`
+- `Select-String -Path src\\components\\planner\\ProteinPortionWeightsStep.vue,src\\components\\planner\\ProteinPortionSingleRecipeStep.vue -Pattern 'maxWeightReadyG = 1000',':max=\"1000\"','maxWeightReadyG = 500'`
+- `Invoke-WebRequest -UseBasicParsing http://127.0.0.1:3000/planejar`
+
+### Erros encontrados
+
+- Duas tentativas de `rg` com aspas escapadas de forma inadequada no PowerShell falharam, sem impacto no codigo.
+
+### Avisos encontrados
+
+- Nenhum aviso novo alem da saida padrao de performance do Nuxt.
+
+### Riscos
+
+- Caso alguma prescricao excepcional tenha porcao pronta acima de 500g, o usuario precisaria ajuste futuro no limite.
+
+### Proximos passos
+
+- Validar no celular real se o slider ficou mais preciso para os pesos comuns.
+
+## 2026-05-25 - Tornar acoes do topo explicitas
+
+### LLM usada
+
+Codex
+
+### Objetivo
+
+Fazer os botoes do topo comunicarem claramente o que fazem e garantir que as acoes sejam funcionais.
+
+### Arquivos alterados
+
+- `src/components/layout/StudentShell.vue`
+- `src/components/ui/BaseIcon.vue`
+- `src/composables/usePlannerState.ts`
+- `src/pages/planejar.vue`
+- `src/assets/css/student/shell.css`
+- `src/assets/css/student/compact.css`
+- `docs/AI_DECISIONS.md`
+- `docs/AI_WORKLOG.md`
+
+### O que foi feito
+
+- O botao de tema agora mostra icone e texto `Modo Claro` ou `Modo Escuro`, conforme a acao disponivel.
+- O botao de limpeza agora mostra icone e texto `Limpar planejamento`.
+- Adicionados icones `sun` e `moon` ao componente base de icones.
+- A limpeza do planejamento incrementa um sinal reativo para telas consumidoras.
+- A tela `/planejar` escuta esse sinal e volta para a primeira etapa ao limpar.
+- Ao limpar a partir de outras rotas, o app navega para `/planejar`.
+- Ajustado o CSS do topo para caber melhor no mobile com botoes textuais compactos.
+
+### Comandos rodados
+
+- `npm run typecheck`
+- `npm run build`
+- `Invoke-WebRequest -UseBasicParsing http://127.0.0.1:3000/planejar`
+
+### Erros encontrados
+
+- Nenhum erro encontrado.
+
+### Avisos encontrados
+
+- O build manteve aviso de sourcemap possivelmente incorreto em `nuxt:module-preload-polyfill`.
+- O build manteve `DEP0155` relacionado a export mapping com barra final em dependencia `@vue/shared`.
+
+### Riscos
+
+- Em telas muito estreitas, o topo ficou mais denso por exigir icone e texto nos dois botoes. O CSS reduz fonte e espacamento no breakpoint pequeno.
+
+### Proximos passos
+
+- Conferir em celular real se os dois botoes cabem confortavelmente no topo junto da marca.
+
+## 2026-05-25 - Refinar cores do modo escuro
+
+### LLM usada
+
+Codex
+
+### Objetivo
+
+Deixar o modo escuro mais agradavel, com cores menos estranhas e menos avermelhadas.
+
+### Arquivos alterados
+
+- `src/assets/css/base/tokens.css`
+- `src/assets/css/base/reset.css`
+- `src/assets/css/student/shell.css`
+- `src/assets/css/student/compact.css`
+- `src/assets/css/student/planning-flow.css`
+- `src/assets/css/student/planner-core.css`
+- `src/assets/css/student/result-ready-redesign.css`
+- `src/assets/css/student/recipe-premium.css`
+- `docs/AI_DECISIONS.md`
+- `docs/AI_WORKLOG.md`
+
+### O que foi feito
+
+- Refeita a paleta do modo escuro para uma base grafite neutra.
+- Reduzido o vermelho saturado dos acentos para um coral mais controlado.
+- Atualizados fundos de `body`, app frame, topbar, bottom nav e barras fixas.
+- Ajustados painéis, inputs e cards para manter separacao visual no escuro.
+- Alinhados overrides escuros da tela de resultado e do modal premium de receitas.
+- Verificado que nao restaram os tons antigos marrom/vermelho hardcoded nos CSS de aluno/base.
+
+### Comandos rodados
+
+- `npm run typecheck`
+- `npm run build`
+- `Invoke-WebRequest -UseBasicParsing http://127.0.0.1:3000/planejar`
+- `rg -n "#1a1210|#231814|#2e201b|#271b17|#3a2820|26, 18, 14|30, 20, 16|35, 24, 20|46, 32, 27|255, 232, 218" src\\assets\\css\\student src\\assets\\css\\base`
+
+### Erros encontrados
+
+- Nenhum erro encontrado.
+
+### Avisos encontrados
+
+- O build manteve aviso de sourcemap possivelmente incorreto em `nuxt:module-preload-polyfill`.
+- O build manteve `DEP0155` relacionado a export mapping com barra final em dependencia `@vue/shared`.
+
+### Riscos
+
+- Sem screenshot automatizado nesta sessao, a validacao visual final ainda depende de conferir no celular real.
+
+### Proximos passos
+
+- Conferir em celular real se o modo escuro ficou confortavel nas telas `planejar`, `resultado`, `receitas` e `compras`.
+
+## 2026-05-25 - Corrigir contraste e alinhamento do resultado
+
+### LLM usada
+
+Codex
+
+### Objetivo
+
+Corrigir o modo escuro da lista de compras e melhorar a leitura/alinhamento dos cards compactos da tela de resultado.
+
+### Arquivos alterados
+
+- `src/assets/css/student/shopping.css`
+- `src/assets/css/student/planning-flow.css`
+- `src/assets/css/student/result-ready-redesign.css`
+- `src/components/planner/result/PreparationPreview.vue`
+- `src/components/planner/result/ResultActionStack.vue`
+- `docs/AI_DECISIONS.md`
+- `docs/AI_WORKLOG.md`
+
+### O que foi feito
+
+- Adicionados estilos escuros especificos para `/compras`, incluindo cards, filtros, sheet, catalogo, formulario e bottom nav ativo.
+- Melhorado o contraste dos cards `em breve` na selecao de tipos de planejamento.
+- Ajustado o resumo `O que foi planejado` para empilhar o badge de porcoes e evitar sobreposicao com o titulo.
+- Refeito o alinhamento do bloco de peso cru/peso pronto em `Preparo e rendimento`.
+- Removidos os atalhos `Ver preparo` do resultado.
+- Ajustados espaçamentos e alturas dos cards de `Porcionamento final`.
+
+### Comandos rodados
+
+- `npm run typecheck`
+- `npm run build`
+- `rg -n "Ver preparo|referenceVideoLabel|preparation-preview-card__actions" src\\components\\planner\\result src\\assets\\css\\student\\result-ready-redesign.css`
+- `Invoke-WebRequest -UseBasicParsing http://127.0.0.1:3000/compras -TimeoutSec 4`
+
+### Erros encontrados
+
+- Nenhum erro encontrado.
+
+### Avisos encontrados
+
+- O build manteve aviso de sourcemap possivelmente incorreto em `nuxt:module-preload-polyfill`.
+- O build manteve `DEP0155` relacionado a export mapping com barra final em dependencia `@vue/shared`.
+
+### Riscos
+
+- A validacao visual foi feita por build e rota local respondendo; sem screenshot automatizado nesta sessao.
+
+### Proximos passos
+
+- Conferir no celular real a leitura da lista de compras em modo escuro e os cards compactos do resultado.

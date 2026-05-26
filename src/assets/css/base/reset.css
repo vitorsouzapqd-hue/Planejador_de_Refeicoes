@@ -23,7 +23,7 @@ body {
 
 .theme-dark body,
 .theme-dark {
-  background: linear-gradient(160deg, #1a1210, #231814 60%, #1e1410);
+  background: linear-gradient(160deg, #0f1215 0%, #171b1f 52%, #111417 100%);
 }
 
 a {

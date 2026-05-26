@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
-import { useRoute } from '#imports'
+import { navigateTo, useRoute } from '#imports'
 import { usePlannerState } from '../../composables/usePlannerState'
 import { useStudentTheme } from '../../composables/useStudentTheme'
 import BaseIcon from '../ui/BaseIcon.vue'
@@ -8,6 +8,8 @@ import BaseIcon from '../ui/BaseIcon.vue'
 const { planning, clearPlanning } = usePlannerState()
 const route = useRoute()
 const { isDarkMode, themeButtonLabel, loadTheme, toggleTheme } = useStudentTheme()
+const themeModeLabel = computed(() => `Modo ${themeButtonLabel.value}`)
+const themeIconName = computed(() => (isDarkMode.value ? 'sun' : 'moon'))
 
 const totalPortions = computed(() =>
   planning.value.selectedGroupSlugs.reduce((groupTotal, groupSlug) => {
@@ -27,6 +29,14 @@ const appFrameClass = computed(() => ({
 onMounted(() => {
   loadTheme()
 })
+
+function handleClearPlanning() {
+  clearPlanning()
+
+  if (route.path !== '/planejar') {
+    navigateTo('/planejar')
+  }
+}
 </script>
 
 <template>
@@ -44,25 +54,29 @@ onMounted(() => {
             </span>
           </NuxtLink>
 
-          <button
-            class="theme-toggle"
-            type="button"
-            :aria-pressed="isDarkMode"
-            :aria-label="`Ativar modo ${themeButtonLabel.toLowerCase()}`"
-            @click="toggleTheme"
-          >
-            <span aria-hidden="true">{{ themeButtonLabel }}</span>
-          </button>
+          <div class="student-shell__actions" aria-label="Ações do planejamento">
+            <button
+              class="student-shell-action"
+              type="button"
+              :aria-pressed="isDarkMode"
+              :aria-label="`Ativar ${themeModeLabel.toLowerCase()}`"
+              @click="toggleTheme"
+            >
+              <BaseIcon :name="themeIconName" />
+              <span>{{ themeModeLabel }}</span>
+            </button>
 
-          <button
-            class="icon-button"
-            type="button"
-            title="Limpar planejamento"
-            aria-label="Limpar planejamento"
-            @click="clearPlanning"
-          >
-            <BaseIcon name="trash" />
-          </button>
+            <button
+              class="student-shell-action student-shell-action--danger"
+              type="button"
+              title="Limpar planejamento"
+              aria-label="Limpar planejamento"
+              @click="handleClearPlanning"
+            >
+              <BaseIcon name="trash" />
+              <span>Limpar planejamento</span>
+            </button>
+          </div>
         </div>
       </header>
 

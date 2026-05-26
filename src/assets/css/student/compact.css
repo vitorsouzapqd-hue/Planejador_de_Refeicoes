@@ -18,7 +18,7 @@
 }
 
 .theme-dark .theme-toggle {
-  background: rgba(255, 232, 218, 0.08);
+  background: rgba(238, 242, 246, 0.07);
 }
 
 .flow-screen {
@@ -467,11 +467,27 @@
 
 @media (max-width: 390px) {
   .student-shell__topbar-inner {
-    padding-inline: 0.75rem;
+    gap: 0.38rem;
+    padding-inline: 0.6rem;
   }
 
   .brand-mark__title {
-    max-width: 8.5rem;
+    max-width: 5.4rem;
+  }
+
+  .student-shell__actions {
+    gap: 0.28rem;
+  }
+
+  .student-shell-action {
+    gap: 0.2rem;
+    font-size: 0.61rem;
+    padding-inline: 0.34rem;
+  }
+
+  .student-shell-action .svg-icon {
+    width: 13px;
+    height: 13px;
   }
 
   .theme-toggle {
@@ -960,24 +976,9 @@
   white-space: nowrap;
 }
 
-.distribution-card__bar {
-  height: 6px;
-  margin: 0 12px 12px;
-  border-radius: 999px;
-  overflow: hidden;
-  background: var(--color-border);
-}
-
-.distribution-card__bar-fill {
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-strong));
-  transition: width .18s ease;
-}
-
 .distribution-card__actions {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 7px;
   padding: 0 12px 12px;
 }
@@ -1162,6 +1163,38 @@
 .total-portions-card--interactive {
   gap: 1rem;
   justify-items: center;
+}
+
+.total-portions-list {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.total-portions-card--group {
+  align-items: stretch;
+}
+
+.total-portions-card__header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.total-portions-card__header .section-kicker {
+  margin: 0;
+}
+
+.total-portions-card__header span {
+  flex: 0 0 auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-panel-soft);
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  padding: 0.32rem 0.58rem;
 }
 
 .total-portions-card__value {

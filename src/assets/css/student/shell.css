@@ -12,7 +12,7 @@
 }
 
 .theme-dark .app-frame {
-  background: linear-gradient(180deg, rgba(30, 20, 16, .97), rgba(26, 18, 14, .98));
+  background: linear-gradient(180deg, rgba(24, 28, 32, 0.98), rgba(17, 20, 23, 0.99));
 }
 
 .student-shell {
@@ -32,14 +32,14 @@
 }
 
 .theme-dark .student-shell__topbar {
-  background: rgba(26, 18, 14, 0.90);
+  background: rgba(18, 21, 24, 0.92);
 }
 
 .student-shell__topbar-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
+  gap: 0.55rem;
   padding: 10px 14px;
   height: 100%;
 }
@@ -47,6 +47,7 @@
 .brand-mark {
   display: flex;
   min-width: 0;
+  flex: 1 1 auto;
   align-items: center;
   gap: var(--space-3);
 }
@@ -107,7 +108,52 @@
 }
 
 .theme-dark .icon-button {
-  background: rgba(255, 232, 218, 0.08);
+  background: rgba(238, 242, 246, 0.07);
+}
+
+.student-shell__actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.38rem;
+  margin-left: auto;
+}
+
+.student-shell-action {
+  display: inline-flex;
+  min-width: 0;
+  min-height: 34px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.28rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 9px;
+  background: #f3eadf;
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: 0.68rem;
+  font-weight: 920;
+  line-height: 1;
+  padding: 0.38rem 0.5rem;
+  touch-action: manipulation;
+}
+
+.student-shell-action .svg-icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+.student-shell-action span {
+  white-space: nowrap;
+}
+
+.student-shell-action--danger {
+  color: color-mix(in srgb, var(--color-accent-strong) 88%, var(--color-text));
+}
+
+.theme-dark .student-shell-action {
+  background: rgba(238, 242, 246, 0.07);
 }
 
 .student-shell__main {
@@ -134,7 +180,7 @@
 }
 
 .theme-dark .bottom-nav {
-  background: rgba(26, 18, 14, 0.92);
+  background: rgba(18, 21, 24, 0.92);
 }
 
 .bottom-nav__inner {
@@ -161,8 +207,8 @@
 }
 
 .theme-dark .bottom-nav__link.router-link-active {
-  background: rgba(189, 32, 23, 0.18);
-  box-shadow: inset 0 0 0 1px rgba(189, 32, 23, .25);
+  background: rgba(225, 91, 73, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(225, 91, 73, 0.22);
 }
 
 .page-stack {
@@ -180,7 +226,7 @@
 
 .theme-dark .hero-panel,
 .theme-dark .content-panel {
-  background: rgba(46, 32, 27, 0.82);
+  background: rgba(32, 37, 42, 0.86);
 }
 
 .hero-panel {
@@ -308,7 +354,7 @@
 }
 
 .theme-dark .field input {
-  background: rgba(46, 32, 27, 0.80);
+  background: rgba(38, 44, 49, 0.82);
 }
 
 .field select,
@@ -324,7 +370,7 @@
 
 .theme-dark .field select,
 .theme-dark .field textarea {
-  background: rgba(46, 32, 27, 0.80);
+  background: rgba(38, 44, 49, 0.82);
 }
 
 .field select {

@@ -2,7 +2,6 @@
 import type { PreparationRecipeResult } from '../../../types/planner'
 import type { Recipe } from '../../../types/recipe'
 import { resolveRecipeImage } from '../../../utils/recipeImages'
-import BaseIcon from '../../ui/BaseIcon.vue'
 import ResultSectionHeader from './ResultSectionHeader.vue'
 import YieldTransform from './YieldTransform.vue'
 
@@ -23,10 +22,6 @@ function formatLines(lines: Array<{ portions: number; weightReadyG: number }>) {
   return lines
     .map((line) => `${line.portions} porções de ${line.weightReadyG}g`)
     .join(' + ')
-}
-
-function referenceVideoLabel(recipe: PreparationRecipeResult) {
-  return recipe.referenceVideoTitle || 'Ver preparo em vídeo'
 }
 </script>
 
@@ -62,25 +57,7 @@ function referenceVideoLabel(recipe: PreparationRecipeResult) {
 
             <YieldTransform :stages="recipe.transformationStages" />
 
-            <div class="preparation-preview-card__actions">
-              <a
-                v-if="recipe.referenceVideoUrl"
-                class="secondary-button secondary-button--compact"
-                :href="recipe.referenceVideoUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {{ referenceVideoLabel(recipe) }}
-              </a>
-              <details class="result-disclosure">
-                <summary>
-                  Ver preparo
-                  <BaseIcon name="arrow-right" />
-                </summary>
-                <p>{{ recipe.yieldNote }}</p>
-                <pre>{{ recipe.text }}</pre>
-              </details>
-            </div>
+            <p class="preparation-preview-card__note">{{ recipe.yieldNote }}</p>
           </div>
         </article>
       </div>

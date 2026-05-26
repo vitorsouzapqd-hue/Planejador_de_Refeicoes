@@ -68,10 +68,6 @@ function formatItemQuantity(item: ShoppingListItem): string {
     </NuxtLink>
 
     <div class="result-next-action__secondary">
-      <a class="secondary-button" href="#preparo">
-        Ver preparo
-        <BaseIcon name="chef-hat" />
-      </a>
       <a class="secondary-button" href="#porcionamento">
         Ver porcionamento
         <BaseIcon name="clipboard-check" />
