@@ -592,13 +592,13 @@
 .flow-step-header--hero {
   position: relative;
   overflow: hidden;
-  border-radius: 24px;
+  border-radius: 18px;
   background:
     radial-gradient(ellipse 80% 60% at 20% 30%, rgba(232, 68, 42, 0.22) 0%, transparent 70%),
     radial-gradient(ellipse 60% 80% at 80% 70%, rgba(120, 40, 20, 0.18) 0%, transparent 65%),
     linear-gradient(145deg, #1a120e, #2a1810 60%, #1e1410);
-  padding: 22px 20px 20px;
-  gap: var(--space-4);
+  padding: 16px 18px;
+  gap: 0.72rem;
 }
 
 .flow-step-header--hero .flow-step-header__kicker {
@@ -607,32 +607,37 @@
 
 .flow-step-header--hero h1 {
   color: #fffaf3;
+  font-size: clamp(1.48rem, 4.4vw, 1.85rem);
+  line-height: 1.02;
 }
 
 .flow-step-header--hero p {
+  max-width: 34rem;
   color: rgba(255, 250, 243, 0.72);
+  font-size: 0.82rem;
 }
 
 .review-hero-pills {
-  display: flex;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.42rem;
 }
 
 .review-hero-pill {
   display: grid;
-  gap: 0.12rem;
-  flex: 1;
+  min-width: 0;
+  gap: 0.08rem;
   border: 1px solid rgba(255, 250, 243, 0.14);
-  border-radius: 12px;
+  border-radius: 10px;
   background: rgba(255, 250, 243, 0.08);
-  padding: 10px 10px 8px;
+  padding: 0.52rem 0.4rem 0.46rem;
   text-align: center;
 }
 
 .review-hero-pill strong {
   display: block;
   color: #fffaf3;
-  font-size: 1.5rem;
+  font-size: 1.16rem;
   font-weight: 1000;
   line-height: 1;
   letter-spacing: -0.03em;
@@ -640,52 +645,10 @@
 
 .review-hero-pill span {
   color: rgba(255, 250, 243, 0.56);
-  font-size: 0.70rem;
+  font-size: 0.62rem;
   font-weight: 850;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.review-status-panel {
-  display: flex;
-  gap: 0.65rem;
-  align-items: flex-start;
-  border: 1px solid rgba(24, 135, 84, 0.30);
-  border-radius: 12px;
-  background: rgba(24, 135, 84, 0.20);
-  padding: 12px;
-}
-
-.review-status-panel__icon {
-  display: grid;
-  width: 30px;
-  height: 30px;
-  flex-shrink: 0;
-  place-items: center;
-  border-radius: 999px;
-  background: rgba(24, 135, 84, 0.28);
-  color: #4ade80;
-}
-
-.review-status-panel__icon .svg-icon {
-  width: 16px;
-  height: 16px;
-}
-
-.review-status-panel strong {
-  display: block;
-  color: #fffaf3;
-  font-size: 0.88rem;
-  font-weight: 950;
-  line-height: 1.25;
-}
-
-.review-status-panel span {
-  display: block;
-  margin-top: 0.15rem;
-  color: rgba(255, 250, 243, 0.62);
-  font-size: 0.76rem;
-  line-height: 1.35;
+  letter-spacing: 0.04em;
 }
 
 .review-add-btn {

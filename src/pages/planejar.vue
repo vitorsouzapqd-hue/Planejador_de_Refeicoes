@@ -1135,17 +1135,6 @@ function normalize(value: string) {
           </div>
         </div>
 
-        <div class="review-status-panel">
-          <div class="review-status-panel__icon" aria-hidden="true">
-            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <strong>Planejamento pronto para gerar.</strong>
-            <span>Depois disso, o app monta compras, preparo e porcionamento final.</span>
-          </div>
-        </div>
       </template>
 
       <ProteinReviewStep

@@ -2011,3 +2011,53 @@ Investigar e corrigir a tela que ficou desorganizada ao informar os pesos pronto
 ### Proximos passos
 
 - Publicar o hotfix em `main` e conferir a tela em outro computador/celular.
+
+## 2026-05-26 - Otimizar tela de revisao do planejamento
+
+### LLM usada
+
+Codex
+
+### Objetivo
+
+Corrigir o layout apertado da tela final `Revise seu planejamento` e revisar a utilidade dos elementos exibidos antes de gerar o plano.
+
+### Arquivos alterados
+
+- `src/pages/planejar.vue`
+- `src/components/planner/ProteinReviewStep.vue`
+- `src/assets/css/student/planning-flow.css`
+- `src/assets/css/student/planner-steps.css`
+- `docs/AI_DECISIONS.md`
+- `docs/AI_WORKLOG.md`
+
+### O que foi feito
+
+- Removido o painel verde redundante de `Planejamento pronto para gerar`.
+- Removidos o card de total geral duplicado, o badge `confira os dados` e o checklist que apenas repetia validacoes ja feitas no fluxo.
+- Compactado o card hero com estatisticas em tres colunas mais estaveis no mobile.
+- Compactados os cards de grupos e preparos, mantendo atalhos de edicao para distribuicao de porcoes e peso pronto.
+- Mantido um aviso operacional curto sobre seguir as receitas como estao.
+- Removidos seletores CSS que ficaram sem uso apos a simplificacao.
+
+### Comandos rodados
+
+- `npm run typecheck`
+- `npm run build`
+
+### Erros encontrados
+
+- Nenhum erro de TypeScript ou build.
+
+### Avisos encontrados
+
+- O build manteve aviso de sourcemap possivelmente incorreto em `nuxt:module-preload-polyfill`.
+- O build manteve `DEP0155` relacionado a export mapping com barra final em dependencia `@vue/shared`.
+
+### Riscos
+
+- A mudanca e visual e nao altera calculos, Supabase, providers ou regras de planejamento.
+
+### Proximos passos
+
+- Conferir a tela no celular real apos o deploy para validar densidade visual com planejamentos maiores.
